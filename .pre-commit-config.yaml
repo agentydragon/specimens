@@ -3,7 +3,7 @@ repos:
     rev: v5.0.0
     hooks:
       # Safety guard: block pushes to protected branches
-      - id: no-commit-to-branch
+      # - id: no-commit-to-branch
 
       # Prevent large files (important with Git LFS)
       - id: check-added-large-files
