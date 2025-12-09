@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Duplicated CSS/styling patterns across UI components that should be extracted
     into common stylesheet/module.
 

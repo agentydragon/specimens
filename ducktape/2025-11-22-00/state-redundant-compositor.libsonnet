@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     status_shared.py AgentStatusCore duplicates data available via the 2-layer
     compositor. Three fields (mcp: McpState lines 76-78, policy: PolicyState lines
     66-68, pending_approvals: int line 91) wrap compositor resources without adding
@@ -28,9 +28,9 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/status_shared.py': [
-      [66, 68],   // PolicyState thin wrapper
-      [76, 78],   // McpState thin wrapper
-      [91, 91],   // pending_approvals redundant field
+      [66, 68],  // PolicyState thin wrapper
+      [76, 78],  // McpState thin wrapper
+      [91, 91],  // pending_approvals redundant field
     ],
   },
 )

@@ -19,13 +19,13 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/state.py': [
-      [41, 41],   // ApprovalKind type alias definition - delete
-      [73, 73],   // ToolItem.decision field - replace with UserApprovalDecision
-      [130, 130], // update_tool_decision parameter - replace with UserApprovalDecision
+      [41, 41],  // ApprovalKind type alias definition - delete
+      [73, 73],  // ToolItem.decision field - replace with UserApprovalDecision
+      [130, 130],  // update_tool_decision parameter - replace with UserApprovalDecision
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [
-      [30, 30],   // Import statement - replace ApprovalKind with UserApprovalDecision
-      [609, 609], // Parameter type - replace ApprovalKind with UserApprovalDecision
+      [30, 30],  // Import statement - replace ApprovalKind with UserApprovalDecision
+      [609, 609],  // Parameter type - replace ApprovalKind with UserApprovalDecision
     ],
   },
 )

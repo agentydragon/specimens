@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Tests use multiple separate assertions instead of structured matchers (hamcrest or Pydantic model equality).
 
     Benefits of structured matchers:

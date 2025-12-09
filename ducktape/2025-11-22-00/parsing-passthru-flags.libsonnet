@@ -4,7 +4,7 @@ local I = import '../../lib.libsonnet';
 // Both describe manual parsing of CLI flags from passthru strings
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Functions manually parse `passthru: list[str]` with string checks to determine CLI flags:
     `include_all_from_passthru()` checks for `-a`/`--all` (core.py:61-63), `filter_commit_passthru()`
     removes those flags (cli.py:508-510), `_validate_no_message_flag()` checks `-m`/`--message`
@@ -22,23 +22,23 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/git_commit_ai/core.py': [
-      [61, 63],   // include_all_from_passthru: fragile flag parsing
-      [170, 170], // diffstat: using passthru instead of bool
-      [190, 190], // build_prompt: using passthru instead of bool
+      [61, 63],  // include_all_from_passthru: fragile flag parsing
+      [170, 170],  // diffstat: using passthru instead of bool
+      [190, 190],  // build_prompt: using passthru instead of bool
     ],
     'adgn/src/adgn/git_commit_ai/cli.py': [
-      [52, 52],   // import of include_all_from_passthru
-      [128, 128], // _build_amend_diff: takes passthru instead of bool
-      [145, 145], // _format_amend_comparison: using passthru
-      [153, 153], // _get_diff_to_commit: using passthru
-      [508, 510], // filter_commit_passthru: filters -a/--all from passthru
-      [513, 520], // _validate_no_message_flag: fragile string parsing
-      [524, 524], // _stage_all_if_requested: using passthru
-      [672, 672], // is_amend = "--amend" in passthru: inline flag parsing
-      [698, 698], // prepare_commit_msg: using passthru
+      [52, 52],  // import of include_all_from_passthru
+      [128, 128],  // _build_amend_diff: takes passthru instead of bool
+      [145, 145],  // _format_amend_comparison: using passthru
+      [153, 153],  // _get_diff_to_commit: using passthru
+      [508, 510],  // filter_commit_passthru: filters -a/--all from passthru
+      [513, 520],  // _validate_no_message_flag: fragile string parsing
+      [524, 524],  // _stage_all_if_requested: using passthru
+      [672, 672],  // is_amend = "--amend" in passthru: inline flag parsing
+      [698, 698],  // prepare_commit_msg: using passthru
     ],
     'adgn/src/adgn/git_commit_ai/editor_template.py': [
-      [77, 77],   // include_verbose = ("-v" in passthru) or ("--verbose" in passthru)
+      [77, 77],  // include_verbose = ("-v" in passthru) or ("--verbose" in passthru)
     ],
   },
   expect_caught_from=[

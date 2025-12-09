@@ -4,7 +4,7 @@ local I = import '../../lib.libsonnet';
 // All describe assign-and-check patterns that should use walrus operator
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Twelve locations use assign-then-check patterns instead of walrus operator (:=). Common patterns:
     assign value then check if None (registry.py:93-95, approvals.py:243-245, agent.py:335-336),
     assign for ternary/conditional (server.py:162-163), dict.get with None check (mcp_routing.py:107-111

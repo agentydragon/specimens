@@ -16,12 +16,12 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/tests/agent/test_reasoning_threading.py': [
-      [89, 94],   // fc1 extraction + assertion
+      [89, 94],  // fc1 extraction + assertion
       [96, 101],  // fco1 extraction + assertion
-      [113, 114], // fc1 extraction + assertion (turn 3)
-      [115, 116], // fco1 extraction + assertion (turn 3)
-      [124, 129], // fc2 extraction + assertion
-      [131, 132], // fco2 extraction + assertion
+      [113, 114],  // fc1 extraction + assertion (turn 3)
+      [115, 116],  // fco1 extraction + assertion (turn 3)
+      [124, 129],  // fc2 extraction + assertion
+      [131, 132],  // fco2 extraction + assertion
     ],
   },
 )

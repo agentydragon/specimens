@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     chat_param_message_content_as_text (lines 75-105) has repetitive match cases with nearly
     identical logic for each role. Instead of handling each role separately (ASSISTANT, USER,
     SYSTEM, TOOL/FUNCTION/DEVELOPER) with duplicated content-parsing code, it could have a single

@@ -34,25 +34,25 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/tests/mcp/approval_policy/test_proposals_resources.py': [
-      [25, 25],   // proposer creation
-      [32, 36],   // POLICY_ALLOW duplication 1
-      [44, 44],   // reader creation
-      [59, 59],   // proposer creation
-      [60, 64],   // POLICY_ALLOW duplication 2
-      [71, 71],   // reader creation
-      [86, 90],   // POLICY_ALLOW duplication 3
-      [93, 93],   // proposer creation
-      [99, 99],   // admin creation
-      [106, 106], // reader creation
-      [127, 131], // POLICY_DENY_ABORT
-      [134, 134], // proposer creation
-      [140, 140], // admin creation
-      [147, 147], // reader creation
-      [159, 168], // POLICY_ALLOW + POLICY_DENY_CONTINUE
-      [171, 171], // proposer creation
-      [181, 181], // admin creation
-      [187, 187], // reader creation
-      [204, 204], // reader creation
+      [25, 25],  // proposer creation
+      [32, 36],  // POLICY_ALLOW duplication 1
+      [44, 44],  // reader creation
+      [59, 59],  // proposer creation
+      [60, 64],  // POLICY_ALLOW duplication 2
+      [71, 71],  // reader creation
+      [86, 90],  // POLICY_ALLOW duplication 3
+      [93, 93],  // proposer creation
+      [99, 99],  // admin creation
+      [106, 106],  // reader creation
+      [127, 131],  // POLICY_DENY_ABORT
+      [134, 134],  // proposer creation
+      [140, 140],  // admin creation
+      [147, 147],  // reader creation
+      [159, 168],  // POLICY_ALLOW + POLICY_DENY_CONTINUE
+      [171, 171],  // proposer creation
+      [181, 181],  // admin creation
+      [187, 187],  // reader creation
+      [204, 204],  // reader creation
     ],
   },
 )

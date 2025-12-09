@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The codebase contains extensive WebSocket-related code and documentation that is no longer used because WebSocket endpoints are no longer mounted.
 
     **Problem 1: Outdated documentation in AgentRuntime**

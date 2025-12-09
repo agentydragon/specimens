@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     JUPYTER_CONFIG_STRATEGY.md specifies that JUPYTER_RUNTIME_DIR should be set to
     <run_root>/runtime (line 6), but launch.py's child_env (lines 111-114) only sets
     JUPYTER_PATH, JUPYTER_DATA_DIR, and JUPYTER_CONFIG_DIR, omitting JUPYTER_RUNTIME_DIR

@@ -3,7 +3,7 @@ local I = import '../../lib.libsonnet';
 // Related issue: pydantic-read-path.libsonnet (input side of persistence boundary handling)
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Pre-serialization of Pydantic models before passing to persistence layer.
 
     Calls model_dump() at caller site (lines 102-103, 110, 145-146) before passing

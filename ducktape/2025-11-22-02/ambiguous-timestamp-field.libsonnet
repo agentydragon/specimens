@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The ApprovalItem model has a `timestamp` field whose meaning is ambiguous:
 
     ```python
@@ -36,8 +36,8 @@ I.issue(
   filesToRanges={
     'adgn/src/adgn/agent/approvals.py': [
       [79, 85],  // ApprovalItem class definition with timestamp field
-      167,       // timestamp=datetime.now() for pending
-      189,       // timestamp=record.decision.decided_at for decided
+      167,  // timestamp=datetime.now() for pending
+      189,  // timestamp=record.decision.decided_at for decided
     ],
   },
 )

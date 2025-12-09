@@ -61,7 +61,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/reducer.py': [
-      [69, 88],     // Inline cmd/argv extraction logic
+      [69, 88],  // Inline cmd/argv extraction logic
     ],
   },
 )

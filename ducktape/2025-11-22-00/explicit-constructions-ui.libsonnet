@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 29-36 define `parseArgs()` using manual `JSON.parse()` that returns `{}` on error (silent
     failure). Lines 115-121 manually parse approval blocks with `JSON.parse()`, destructuring
     `agent_id`, `tool_call`, `timestamp` without validation.
@@ -20,7 +20,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/web/src/components/GlobalApprovalsList.svelte': [
-      [29, 36],    // parseArgs manual JSON.parse
+      [29, 36],  // parseArgs manual JSON.parse
       [115, 121],  // Manual parsing in fetchApprovals
     ],
   },

@@ -23,11 +23,11 @@ ducktape/2025-11-20-00:
   bundle:
     source_commit: b729b362de957d127d1e8ac17d8811665ce805fe
     include:
-    - adgn/
-    - wt/
+      - adgn/
+      - wt/
     exclude:
-    - adgn/src/adgn/agent/web/
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/agent/web/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-20-01:
   source:
     vcs: git
@@ -38,11 +38,11 @@ ducktape/2025-11-20-01:
   bundle:
     source_commit: c18279d2c1716008afc17a12350aaee89248c1ca
     include:
-    - adgn/
-    - wt/
+      - adgn/
+      - wt/
     exclude:
-    - adgn/src/adgn/agent/web/
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/agent/web/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-21-00:
   source:
     vcs: git
@@ -53,11 +53,11 @@ ducktape/2025-11-21-00:
   bundle:
     source_commit: 167e39012aca16381442c53bf10d5fc980d0f26a
     include:
-    - adgn/
-    - wt/
+      - adgn/
+      - wt/
     exclude:
-    - adgn/src/adgn/agent/web/
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/agent/web/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-22-00:
   source:
     vcs: git
@@ -68,9 +68,9 @@ ducktape/2025-11-22-00:
   bundle:
     source_commit: 9395ba65dcef5057176c890981fa0e973d9798eb
     include:
-    - adgn/
+      - adgn/
     exclude:
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-22-01:
   source:
     vcs: git
@@ -81,10 +81,10 @@ ducktape/2025-11-22-01:
   bundle:
     source_commit: c263d6808e04d509d1a48b17fa6016733bb1fce6
     include:
-    - adgn/
-    - wt/
+      - adgn/
+      - wt/
     exclude:
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-22-02:
   source:
     vcs: git
@@ -95,10 +95,10 @@ ducktape/2025-11-22-02:
   bundle:
     source_commit: a81550a1af11e03e397ff8344b1aa818658113db
     include:
-    - adgn/
-    - wt/
+      - adgn/
+      - wt/
     exclude:
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/props/specimens/
 ducktape/2025-11-26-00:
   source:
     vcs: git
@@ -109,9 +109,9 @@ ducktape/2025-11-26-00:
   bundle:
     source_commit: 751a2a33c8b7daaf18f6c004e31ed6485a62a6a9
     include:
-    - adgn/
+      - adgn/
     exclude:
-    - adgn/src/adgn/props/
+      - adgn/src/adgn/props/
 misc/2025-08-29-pyright_watch_report:
   source:
     vcs: local
@@ -128,6 +128,6 @@ ducktape/2025-12-04-00:
   bundle:
     source_commit: ab7e9d6f15a67bb4d1e43b3e43fdfb4ce6ce4cad
     include:
-    - adgn/
+      - adgn/
     exclude:
-    - adgn/src/adgn/props/specimens/
+      - adgn/src/adgn/props/specimens/

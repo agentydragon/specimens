@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     McpManager.close() (lines 302-304) only closes stdio handles and never calls close() on LocalServer
     instances in _state.local_servers, despite LocalServer.close() existing for cleanup (local_server.py:23-24).
     The instances are never closed anywhere in the codebase (verified: Agent.close() delegates to

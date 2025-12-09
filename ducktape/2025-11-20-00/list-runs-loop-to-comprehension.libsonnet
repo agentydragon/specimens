@@ -31,7 +31,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      [403, 417],   // list_runs loop-and-append pattern
+      [403, 417],  // list_runs loop-and-append pattern
     ],
   },
 )

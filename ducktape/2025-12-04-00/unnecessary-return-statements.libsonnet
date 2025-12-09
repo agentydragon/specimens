@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     The `_run_impl` method has a return type of `-> None` and contains two explicit `return` statements that should be removed:
 
     **Line 215**: Plain `return` after the try/except/finally block. Since the function returns `None`, this explicit return is unnecessary - the function will implicitly return None when it reaches the end.
@@ -12,12 +12,12 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[215, 215]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[215, 215]] },
       note: 'Unnecessary return after try/except/finally in if branch',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[218, 218]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[218, 218]] },
       note: 'Unnecessary return at end of method',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },

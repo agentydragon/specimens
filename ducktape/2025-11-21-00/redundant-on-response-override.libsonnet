@@ -43,7 +43,7 @@ I.issue(
   filesToRanges={
     'adgn/src/adgn/agent/server/runtime.py': [
       [167, 168],  // Redundant on_response override
-      [52, 52],    // ConnectionManager class declaration (extends BaseHandler)
+      [52, 52],  // ConnectionManager class declaration (extends BaseHandler)
     ],
   },
 )

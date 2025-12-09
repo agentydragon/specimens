@@ -5,7 +5,7 @@ local I = import '../../lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/mcp_bridge/servers/agents.py'], ['adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py'], ['adgn/src/adgn/agent/server/runtime.py']],
-  rationale= |||
+  rationale=|||
     Three functions build lists imperatively using `append()` in loops instead of list comprehensions.
 
     Lines 50-59 in agents.py define `_convert_pending_approvals()` that initializes empty list,
@@ -26,16 +26,16 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [
-      [50, 59],   // _convert_pending_approvals: loop-and-append
-      [52, 52],   // Iterates .items() but doesn't use call_id (should use .values())
+      [50, 59],  // _convert_pending_approvals: loop-and-append
+      [52, 52],  // Iterates .items() but doesn't use call_id (should use .values())
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py': [
-      [64, 65],   // approvals_list initialization
-      [71, 80],   // pending approvals loop
+      [64, 65],  // approvals_list initialization
+      [71, 80],  // pending approvals loop
       [99, 108],  // decided approvals loop
     ],
     'adgn/src/adgn/agent/server/runtime.py': [
-      [267, 274], // proposals list building with for loop
+      [267, 274],  // proposals list building with for loop
     ],
   },
 )

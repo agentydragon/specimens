@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The function name update_tool_exec_stream (state.py:142) and the reducer comment "merge
     stdout/stderr/exit" (reducer.py:101) both suggest that multiple FunctionCallOutput events
     may arrive progressively for a single tool call, requiring merging/appending of output streams.

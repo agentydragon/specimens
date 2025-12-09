@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 220-226 in runtime.py use an imperative for-loop with `.append()` to build
     a list, when a list comprehension would be more Pythonic. Additionally, it has
     redundant type conversions and a useless comment.

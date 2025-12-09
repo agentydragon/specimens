@@ -32,7 +32,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/runtime/infrastructure.py': [
-      [197, 203],   // _pending_notifier definition and ToolCall reconstruction
+      [197, 203],  // _pending_notifier definition and ToolCall reconstruction
     ],
   }
 )

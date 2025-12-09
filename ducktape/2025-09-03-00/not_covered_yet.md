@@ -7,7 +7,7 @@
   - Finding: Helper `_cap_append` mutates the `parts` list; prefer a pure helper that returns a single string to append at call sites (not performance-critical; StringBuilder pattern unnecessary here). This reduces side effects and clarifies the flow (functional > imperative for this context).
   - Rationale: No current property explicitly covers preferring return over mutation for non‑critical paths. Keeping as not-covered-yet.
   - Subject: git_commit_ai/cli.py (`_cap_append` and its call sites)
- 
+
 - Consider raising SystemExit at failure site (with note on cleanup)
   - Finding: Instead of raising `CalledProcessError` and catching it only to `sys.exit`, consider `raise SystemExit(returncode)` in the pre-commit runner. This allows inner/outer `finally` blocks to run (fd close and task teardown) before process exit. Add a short comment explaining we raise SystemExit to let cleanups run.
   - Anchors: detection at 599–607; outer try/except/finally at 621–644

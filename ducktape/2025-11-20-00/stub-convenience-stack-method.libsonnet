@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Creating typed server stubs requires verbose boilerplate (infrastructure.py:180-186):
 
     reader_client = Client(reader_server)

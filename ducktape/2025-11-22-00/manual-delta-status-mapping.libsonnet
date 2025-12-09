@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The code manually maps pygit2 delta status constants to single-letter codes
     (A/M/D/R/T) in two places, but pygit2 provides a built-in method for this:
     `DiffDelta.status_char()`.
@@ -33,8 +33,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/git_commit_ai/core.py': [
-      [36, 54],   // _format_name_status: manual delta status→letter mapping
-      [169, 186], // diffstat: duplicate delta status→letter mapping
+      [36, 54],  // _format_name_status: manual delta status→letter mapping
+      [169, 186],  // diffstat: duplicate delta status→letter mapping
     ],
     'adgn/src/adgn/mcp/git_ro/formatting.py': [
       [99, 108],  // _status_char: manual delta status→letter mapping (3rd occurrence)

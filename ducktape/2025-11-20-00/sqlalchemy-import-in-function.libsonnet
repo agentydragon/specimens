@@ -33,7 +33,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      53,           // from sqlalchemy import event (inside __init__)
+      53,  // from sqlalchemy import event (inside __init__)
     ],
   },
 )

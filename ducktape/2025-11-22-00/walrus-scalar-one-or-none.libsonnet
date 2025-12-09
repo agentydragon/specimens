@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Code uses assign-then-check pattern with `.scalar_one_or_none()` where walrus
     operator (:=) would be more concise.
 
@@ -30,8 +30,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      [263, 264], // policy = ...; if not policy (should walrus)
-      [401, 402], // run = ...; if not run (should walrus)
+      [263, 264],  // policy = ...; if not policy (should walrus)
+      [401, 402],  // run = ...; if not run (should walrus)
     ],
   },
 )

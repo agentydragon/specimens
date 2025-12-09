@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Both TokenAuthMiddleware and UITokenAuthMiddleware duplicate the same
     Bearer token extraction logic:
 
@@ -42,8 +42,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/auth.py': [
-      [75, 91],   // TokenAuthMiddleware extracts Bearer token
-      [144, 161], // UITokenAuthMiddleware extracts Bearer token
+      [75, 91],  // TokenAuthMiddleware extracts Bearer token
+      [144, 161],  // UITokenAuthMiddleware extracts Bearer token
     ],
   },
 )

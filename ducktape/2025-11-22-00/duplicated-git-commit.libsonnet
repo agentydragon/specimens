@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Both `_commit_immediately()` and `_run_editor_flow()` end by calling `git commit`
     with similar passthru argument handling. The commit logic is duplicated when it
     should be factored out into a shared helper.

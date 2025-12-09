@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     GEPA optimization repeatedly hydrates the same snapshots, causing ~200 redundant tar extractions and file discoveries during a typical optimization run.
 
     **The inefficiency:**
@@ -50,8 +50,8 @@ I.issue(
   filesToRanges={
     'adgn/src/adgn/props/gepa/gepa_adapter.py': [
       [308, 334],  // load_datasets() - hydrates once, extracts metadata, closes context
-      195,         // _evaluate_one_specimen() - re-hydrates for each evaluation
-      256,         // _evaluate_async() - calls _evaluate_one_specimen repeatedly
+      195,  // _evaluate_one_specimen() - re-hydrates for each evaluation
+      256,  // _evaluate_async() - calls _evaluate_one_specimen repeatedly
     ],
   },
   expect_caught_from=[

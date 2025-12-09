@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 67 has an unnecessarily complex pattern where shlex.quote is applied separately to cmd and each arg:
       " ".join([shlex.quote(cmd), *[shlex.quote(a) for a in args_list]])
 

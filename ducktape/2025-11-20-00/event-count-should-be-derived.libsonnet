@@ -24,12 +24,12 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/persist/models.py': [
-      65,           // event_count: Mapped[int] field definition
+      65,  // event_count: Mapped[int] field definition
     ],
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      342,          // event_count=0 in Run creation
-      389,          // Manual increment on event insert
-      415,          // event_count usage in list_runs
+      342,  // event_count=0 in Run creation
+      389,  // Manual increment on event insert
+      415,  // event_count usage in list_runs
     ],
   },
   expect_caught_from=[

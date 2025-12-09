@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 197 in container.py types `_policy_gateway` as `Any | None` with a comment
     indicating it should be `PolicyGatewayMiddleware`, but doesn't use the proper type.
 

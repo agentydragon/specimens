@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Multiple locations create intermediate variables that are immediately consumed,
     adding no clarity. These single-use variables should be inlined.
 

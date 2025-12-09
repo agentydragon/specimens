@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The code has two problems in server.py:
 
     **Problem 1: Duplicated agent info construction**

@@ -8,11 +8,11 @@ I.issue(
   //   - Direct access (runtime.py/status_shared.py) showing the violation, OR
   //   - Pattern exemplar (compositor_meta) showing the correct approach
   expect_caught_from=[
-    ['adgn/src/adgn/mcp/policy_gateway/middleware.py', 'adgn/src/adgn/agent/server/runtime.py'],         // Tracking + consumer
+    ['adgn/src/adgn/mcp/policy_gateway/middleware.py', 'adgn/src/adgn/agent/server/runtime.py'],  // Tracking + consumer
     ['adgn/src/adgn/mcp/policy_gateway/middleware.py', 'adgn/src/adgn/agent/server/status_shared.py'],  // Tracking + consumer
     ['adgn/src/adgn/mcp/policy_gateway/middleware.py', 'adgn/src/adgn/mcp/compositor_meta/server.py'],  // Tracking + pattern
   ],
-  rationale= |||
+  rationale=|||
     The policy gateway tracks in-flight tool calls via direct Python field access
     (_policy_gateway.has_inflight_calls()) instead of exposing state through MCP
     resources and notifications. This breaks the architectural pattern where all

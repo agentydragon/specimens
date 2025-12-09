@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     `ModelMetadata` (line 409) and `ModelPricing` (line 456) are duplicate database models with identical schemas. Both store the same fields:
     - model_id (primary key)
     - input_usd_per_1m_tokens
@@ -19,6 +19,6 @@ I.issue(
 
     This parallel implementation creates maintenance burden: any schema changes must be applied to both models, both tables must be synced, and queries must choose arbitrarily between them. Merge into a single model (keep `ModelMetadata` as it's more semantically accurate - it includes context limits, not just pricing).
   |||,
-  filesToRanges={'adgn/src/adgn/props/db/models.py': [[409, 426], [456, 473]]},
+  filesToRanges={ 'adgn/src/adgn/props/db/models.py': [[409, 426], [456, 473]] },
   expect_caught_from=[['adgn/src/adgn/props/db/models.py']],
 )

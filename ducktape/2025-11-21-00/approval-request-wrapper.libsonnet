@@ -25,22 +25,22 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/approvals.py': [
-      [63, 64],   // ApprovalRequest class definition
-      [71, 71],   // PendingApproval.request field
-      [96, 96],   // await_decision parameter
-      [102, 102], // PendingApproval construction with request
-      [117, 119], // pending property return type and dict comprehension
+      [63, 64],  // ApprovalRequest class definition
+      [71, 71],  // PendingApproval.request field
+      [96, 96],  // await_decision parameter
+      [102, 102],  // PendingApproval construction with request
+      [117, 119],  // pending property return type and dict comprehension
     ],
     'adgn/src/adgn/mcp/policy_gateway/middleware.py': [
-      [16, 16],   // Import ApprovalRequest
-      [291, 293], // Wrapping ToolCall in ApprovalRequest
-      [297, 297], // Unwrapping req.tool_call
+      [16, 16],  // Import ApprovalRequest
+      [291, 293],  // Wrapping ToolCall in ApprovalRequest
+      [297, 297],  // Unwrapping req.tool_call
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [
-      [21, 21],   // Import ApprovalRequest
-      [51, 51],   // Function signature with dict[str, ApprovalRequest]
-      [56, 56],   // Extracting request.tool_call
-      [57, 57],   // TODO comment about ApprovalRequest
+      [21, 21],  // Import ApprovalRequest
+      [51, 51],  // Function signature with dict[str, ApprovalRequest]
+      [56, 56],  // Extracting request.tool_call
+      [57, 57],  // TODO comment about ApprovalRequest
     ],
   },
 )

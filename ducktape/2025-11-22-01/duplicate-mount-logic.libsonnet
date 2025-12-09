@@ -18,8 +18,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/compositor_factory.py': [
-      [95, 103],    // Duplicated mounting logic
-      [113, 130],   // Canonical mount_agent_compositor_dynamically function
+      [95, 103],  // Duplicated mounting logic
+      [113, 130],  // Canonical mount_agent_compositor_dynamically function
     ],
   },
 )

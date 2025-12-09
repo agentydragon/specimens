@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 29-30 contain useless comments documenting historical implementation details.
 
     The comments explain that gateway_client parameter is "no longer used" and describe

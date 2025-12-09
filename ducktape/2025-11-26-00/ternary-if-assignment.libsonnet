@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 230-232 in runtime.py use an imperative if-statement to conditionally assign
     `details`, when a ternary expression would be clearer and more concise.
 

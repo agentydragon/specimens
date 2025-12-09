@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     After the WebSocket → MCP migration, several protocol types became dead code that should be removed.
 
     **ReasoningChunk class (lines 89-93)**: Never constructed anywhere in the codebase (no `ReasoningChunk()` instantiation calls), never imported from protocol.py, and never handled by the reducer. This class definition is completely unused.
@@ -14,12 +14,12 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/agent/server/protocol.py': [[89, 93]]},
+      files: { 'adgn/src/adgn/agent/server/protocol.py': [[89, 93]] },
       note: 'ReasoningChunk class definition',
       expect_caught_from: [['adgn/src/adgn/agent/server/protocol.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/server/protocol.py': [[113, 116]]},
+      files: { 'adgn/src/adgn/agent/server/protocol.py': [[113, 116]] },
       note: 'TranscriptItem type alias (includes ReasoningChunk at line 114)',
       expect_caught_from: [['adgn/src/adgn/agent/server/protocol.py']],
     },

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `_stream_output` function (cli.py lines 319-330) contains two nearly-identical
     `select-read-sleep` loops differing only in termination condition.
 

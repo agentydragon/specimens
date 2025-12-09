@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     `TranscriptHandler` writes the same events to two nearly-identical files: `events.jsonl`
     (with timestamps) and `transcript.jsonl` (without timestamps). Lines 38-39 define both
     paths, lines 53-57 write to both files on every event.
@@ -23,9 +23,9 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/transcript_handler.py': [
-      [38, 39],   // Both _events_path and _transcript_path defined
-      [41, 42],   // Only checks _events_path.exists()
-      [53, 57],   // Double write: events.jsonl and transcript.jsonl
+      [38, 39],  // Both _events_path and _transcript_path defined
+      [41, 42],  // Only checks _events_path.exists()
+      [53, 57],  // Double write: events.jsonl and transcript.jsonl
     ],
   },
 )

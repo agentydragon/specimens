@@ -33,7 +33,7 @@ I.issue(
       38,  // pending_count field
       65,  // pending_count increment
       80,  // decided_count increment
-      116, // pending_count in response
+      116,  // pending_count in response
     ],
   },
 )

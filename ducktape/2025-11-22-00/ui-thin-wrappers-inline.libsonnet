@@ -4,7 +4,7 @@ local I = import '../../lib.libsonnet';
 // Both describe single-use thin wrapper functions that should be inlined
 
 I.issue(
-  rationale= |||
+  rationale=|||
     UI components define thin wrapper functions with single or few call sites that add
     no value and should be inlined.
 

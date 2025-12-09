@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `reload()` method manually validates that the loaded JSON is a dict with string
     keys and values using `isinstance()` checks, but this can be done automatically and
     more robustly using Pydantic's `TypeAdapter`.
@@ -30,7 +30,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/auth.py': [
-      [60, 69],   // Manual isinstance validation loop
+      [60, 69],  // Manual isinstance validation loop
     ],
   },
 )

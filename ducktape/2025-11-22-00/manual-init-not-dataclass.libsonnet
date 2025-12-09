@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Class (container.py:17-46) uses manual `__init__` for simple field
     initialization. The constructor does assignment-only initialization
     with no complex logic, perfect candidate for `@dataclass`.

@@ -51,8 +51,8 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/server/runtime.py': [
-      [119, 128],   // send_json method
-      [187, 196],   // _send_direct_all method (duplicate logic)
+      [119, 128],  // send_json method
+      [187, 196],  // _send_direct_all method (duplicate logic)
     ],
   },
 )

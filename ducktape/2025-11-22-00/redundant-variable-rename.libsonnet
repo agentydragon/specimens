@@ -4,7 +4,7 @@ local I = import '../../lib.libsonnet';
 // Both describe unnecessary variable renames that add no clarity
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Variables are renamed without adding clarity or semantic meaning.
 
     Location 1 (runner.py:32): parameter `docker_client` is immediately
@@ -22,7 +22,7 @@ I.issue(
       [32, 32],  // client = docker_client
     ],
     'adgn/src/adgn/git_commit_ai/cli.py': [
-      [581, 581], // content_before = final_text
+      [581, 581],  // content_before = final_text
     ],
   },
   expect_caught_from=[

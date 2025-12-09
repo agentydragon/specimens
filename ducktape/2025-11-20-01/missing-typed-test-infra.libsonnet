@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Approval policy tests lack typed test infrastructure (server stubs + fixture factories) used by other MCP components.
 
     Tests directly access private `._mcp_server` internals for tool calls and resource reads instead of using typed server stubs. Multiple tests in test_policy_resources.py use raw `._mcp_server.call_tool()` and `._mcp_server.read_resource()` methods. Tests in test_policy_validation_reload.py access private `_mcp_server._tools` dict directly with pattern `await admin_server._mcp_server._tools["validate_policy"].fn(ValidatePolicyArgs(...))`.

@@ -71,7 +71,7 @@ I.issue(
       [1, 258],  // InfrastructureRegistry and HTTP bridge setup
     ],
     'adgn/src/adgn/agent/approvals.py': [
-      [96, 110],   // ApprovalHub with _notifier field
+      [96, 110],  // ApprovalHub with _notifier field
       [146, 195],  // ApprovalPolicyEngine with _notify field
     ],
   },

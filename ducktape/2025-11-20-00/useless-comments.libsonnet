@@ -3,7 +3,7 @@ local I = import '../../lib.libsonnet';
 // Extracted from redundant-documentation.libsonnet (useless break comment)
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Comment states what break statement obviously does: "Break sender loop - connection
     is broken". The break is inside an exception handler after logging "WebSocket send
     failed", so context is already clear.

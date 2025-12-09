@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     SQLAlchemy models declare fields as Mapped[str] with inline comments indicating
     they should be enum types, but don't use the actual enum types.
 

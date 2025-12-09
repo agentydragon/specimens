@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The naming "list_changed" is ambiguous - it could refer to any list changing.
     These handlers specifically react to resource list changes on mounted servers (MCP resources/list_changed notifications).
     The semantic meaning is that the list of *resources* on a server changed, not some generic "list".

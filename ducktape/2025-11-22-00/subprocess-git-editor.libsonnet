@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `_get_editor()` function spawns a subprocess (`git var GIT_EDITOR`) to get
     the configured editor, but pygit2 already provides direct access to git config
     through `repo.config`.

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Massive duplication between `mount_server()` (lines 251-279) and `mount_inproc()` (lines 280-309) in compositor/server.py. The two methods are almost identical, differing only in:
 
     1. The setup call: `await mount.setup_external(spec, ...)` vs `await mount.setup_inproc(server, ...)`

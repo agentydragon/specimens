@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Ordering drift: SQL orders ListMessagesBySession by created_at, id (messages.sql lines 6–11),
     but generated code orders by created_at, rowid (messages.sql.go lines ~105–113). This changes
     tie-breaker semantics and can cause inconsistent ordering.

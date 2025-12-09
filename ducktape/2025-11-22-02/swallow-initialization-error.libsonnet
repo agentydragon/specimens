@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 93-95 catch exceptions when mounting agent compositors and continue
     silently with logged error. This is dangerous initialization behavior.
 

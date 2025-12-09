@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Functions inconsistently mix two conventions for signaling exit codes: some declare
     `-> int` return types but actually raise `ExitWithCode` exceptions on error paths.
 

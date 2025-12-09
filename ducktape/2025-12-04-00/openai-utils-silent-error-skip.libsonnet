@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `_message_output_to_assistant` function (lines 281-294) returns `AssistantMessageOut | None`, and when it returns None (lines 292-293), the caller (lines 330-332) silently skips adding the item to `out_items`.
 
     This is dangerous for two reasons:

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 70-76 construct a `StdioServerParameters` object spread across multiple lines:
       self._stdio_cm = stdio_client(
           StdioServerParameters(

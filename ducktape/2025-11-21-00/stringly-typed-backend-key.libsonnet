@@ -19,10 +19,10 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/mcp_routing.py': [
-      [80, 80],   // _backend_apps dict with string keys
+      [80, 80],  // _backend_apps dict with string keys
       [93, 108],  // _get_backend_app method creating string keys
-      [38, 41],   // HumanTokenInfo - needs frozen=True
-      [44, 48],   // AgentTokenInfo - needs frozen=True
+      [38, 41],  // HumanTokenInfo - needs frozen=True
+      [44, 48],  // AgentTokenInfo - needs frozen=True
     ],
   },
 )

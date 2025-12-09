@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     approvals_pending_global builds approval_data as a raw dict and serializes it with json.dumps().
     Structured data should be handled in Pydantic models - either extend PendingApproval to include
     agent_id, or create a dedicated model for the global mailbox items. This provides validation,

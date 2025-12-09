@@ -14,7 +14,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py': [
-      [86, 97], // if-elif-else chain for ApprovalOutcome to ApprovalStatus mapping
+      [86, 97],  // if-elif-else chain for ApprovalOutcome to ApprovalStatus mapping
     ],
   },
 )

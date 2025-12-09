@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Bash tool timeout/limits documentation is inconsistent with implementation.
 
     - Prompt/help text claims default timeout is 30 minutes and that maximum is 10 minutes.

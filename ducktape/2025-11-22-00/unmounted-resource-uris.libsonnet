@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `resources.py` module defines ten parameterized resource URI helper functions
     (agent_state, agent_snapshot, agent_mcp_state, agent_approvals_pending, agent_approvals_history,
     agent_approval, agent_policy_proposals, agent_policy_state, agent_session_state, agent_ui_state)

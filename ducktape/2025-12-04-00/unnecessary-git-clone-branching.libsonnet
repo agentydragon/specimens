@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The three branches in `_create_archive_from_git` (bundle files, file:// URLs, and
     remote URLs) execute nearly identical sequences of git operations. All paths end up
     doing the same steps: initialize repository, configure remote, fetch ref, and checkout.

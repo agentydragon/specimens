@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 189 uses `MCPConfig(servers={})` but the correct parameter name is `mcpServers`,
     not `servers`. This creates an extra unwanted field in the config object.
 

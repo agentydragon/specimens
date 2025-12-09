@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Query (sqlite.py:145-165) uses raw SQL with `text()` instead of SQLAlchemy
     ORM constructs. The function executes a SELECT with GROUP BY and COALESCE
     using string-based column references.
@@ -16,7 +16,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      [145, 165], // Raw SQL instead of ORM for last_activity
+      [145, 165],  // Raw SQL instead of ORM for last_activity
     ],
   },
 )

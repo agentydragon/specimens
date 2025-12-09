@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Many renderer.Render implementations decode JSON params with `if err := json.Unmarshal(...); err == nil { ... }` and then build args inside the success branch. Prefer failing-fast guard clauses (if err := json.Unmarshal(...); err != nil { return fallback } ) and proceed on the happy path to reduce nesting and improve readability. The Bash renderer already uses the guard-clause style.
   |||,
   occurrences=[

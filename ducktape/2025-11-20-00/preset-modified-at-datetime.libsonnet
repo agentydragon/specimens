@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentPreset.modified_at uses str for timestamp instead of datetime type. Timestamps
     should use datetime, not strings, for type safety, operations (comparison, arithmetic),
     and automatic ISO-8601 serialization. Pydantic handles datetime serialization to JSON

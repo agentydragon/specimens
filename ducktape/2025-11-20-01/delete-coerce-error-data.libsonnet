@@ -18,11 +18,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/mcp/policy_gateway/signals.py': [
-      [56, 60],   // _ErrorFields protocol - should be deleted
-      [62, 93],   // Entire _coerce_error_data function - should be deleted
-      [116, 116], // Usage in detect_policy_gateway_error
-      [119, 119], // Usage in detect_policy_gateway_error
-      [122, 122], // Usage in detect_policy_gateway_error
+      [56, 60],  // _ErrorFields protocol - should be deleted
+      [62, 93],  // Entire _coerce_error_data function - should be deleted
+      [116, 116],  // Usage in detect_policy_gateway_error
+      [119, 119],  // Usage in detect_policy_gateway_error
+      [122, 122],  // Usage in detect_policy_gateway_error
     ],
   },
 )

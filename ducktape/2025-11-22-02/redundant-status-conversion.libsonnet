@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Both resource handlers convert p.status and got.status to ProposalStatus:
 
     Line 388: status=ProposalStatus(p.status)

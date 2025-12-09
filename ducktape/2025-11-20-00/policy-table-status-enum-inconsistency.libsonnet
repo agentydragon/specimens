@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The Policy table's status column is written with values from two different enums inconsistently:
     approve_policy_proposal (lines 303-308) writes PolicyStatus.ACTIVE and PolicyStatus.SUPERSEDED,
     while reject_policy_proposal (line 321) writes ProposalStatus.REJECTED. This means the same

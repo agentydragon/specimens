@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Infrastructure code (infrastructure.py:142) manually reads
     `ADGN_AGENT_PRESETS_DIR` and passes it to `discover_presets()`, leaking
     implementation details. The discovery function should read the env var

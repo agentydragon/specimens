@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Confusing "elif live:" inside "if infra:" block (lines 264-267):
     ```python
     if infra:

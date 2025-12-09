@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `CompositorAdminClient` in compositor/clients.py (lines 17-48) does not follow the standard typed MCP server stub pattern used throughout the codebase.
 
     **Current problems:**

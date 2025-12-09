@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     LSP client performs unsynchronized concurrent writes to the server's stdin, risking interleaved headers/bodies and JSON‑RPC/LSP stream corruption.
 
     Evidence
@@ -25,10 +25,10 @@ I.issue(
   |||,
   filesToRanges={
     'internal/lsp/transport.go': [
-      [15, 38],   // WriteMessage: header then body, no lock
-      [145, 148], // server request reply -> WriteMessage(c.stdin, response)
-      [215, 218], // client request send   -> WriteMessage(c.stdin, msg)
-      [260, 267], // client notify send    -> WriteMessage(c.stdin, msg)
+      [15, 38],  // WriteMessage: header then body, no lock
+      [145, 148],  // server request reply -> WriteMessage(c.stdin, response)
+      [215, 218],  // client request send   -> WriteMessage(c.stdin, msg)
+      [260, 267],  // client notify send    -> WriteMessage(c.stdin, msg)
     ],
   },
 )

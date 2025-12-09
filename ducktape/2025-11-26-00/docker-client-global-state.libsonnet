@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 155, 160, and 188 in app.py store `docker_client` in `app.state` but only
     use it locally within the same function where it's created.
 

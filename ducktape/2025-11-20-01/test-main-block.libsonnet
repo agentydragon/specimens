@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Test file has unnecessary `__main__` block.
 
     Lines 153-154 in test_policy_validation_reload.py contain:

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.falsePositive(
-  rationale= |||
+  rationale=|||
     Critics flagged update_tool_exec_stream (lines 142-171) for overwriting stdout/stderr instead
     of appending, claiming that multiple FunctionCallOutput events could be emitted for the same
     call_id with progressive chunks. However, the actual execution flow shows this doesn't happen:

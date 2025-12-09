@@ -21,8 +21,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py': [
-      [53, 53],    // Optional global_compositor parameter
-      [56, 56],    // Assignment of optional value
+      [53, 53],  // Optional global_compositor parameter
+      [56, 56],  // Assignment of optional value
       [152, 159],  // Defensive None check in create_agent
       [177, 183],  // Defensive None check in delete_agent
     ],

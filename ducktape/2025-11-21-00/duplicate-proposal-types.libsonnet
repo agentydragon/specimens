@@ -27,11 +27,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/mcp/approval_policy/server.py': [
-      [47, 54],    // ProposalDetail duplicate type definition
+      [47, 54],  // ProposalDetail duplicate type definition
       [163, 174],  // ProposalDetail usage (return type and construction)
     ],
     'adgn/src/adgn/agent/persist/__init__.py': [
-      [82, 87],    // PolicyProposal original type definition
+      [82, 87],  // PolicyProposal original type definition
     ],
   },
 )

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `last_event_at` field in agents_ws.py is typed as `str | None` but should be `datetime | None`.
     The field is later converted to ISO string for JSON serialization (line 81), which is
     the correct place to do that conversion.

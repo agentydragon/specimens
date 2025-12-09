@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Multiple test functions duplicate the same config resolution pattern:
       wt_dir = Path(wt_cli.env["WT_DIR"])
       config = Configuration.resolve(wt_dir)
@@ -15,12 +15,12 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'wt/tests/e2e/test_path_watcher_integration.py': [[72, 74]]},
+      files: { 'wt/tests/e2e/test_path_watcher_integration.py': [[72, 74]] },
       note: 'First occurrence in test_path_watcher_full_lifecycle',
       expect_caught_from: [['wt/tests/e2e/test_path_watcher_integration.py']],
     },
     {
-      files: {'wt/tests/e2e/test_path_watcher_integration.py': [[127, 129]]},
+      files: { 'wt/tests/e2e/test_path_watcher_integration.py': [[127, 129]] },
       note: 'Second occurrence in test_path_watcher_multiple_worktrees',
       expect_caught_from: [['wt/tests/e2e/test_path_watcher_integration.py']],
     },

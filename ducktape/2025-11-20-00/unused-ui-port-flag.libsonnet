@@ -24,17 +24,17 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/cli.py': [
-      63,           // --ui-port flag definition
-      72,           // ui_port parameter
-      103,          // ui_port passed to _run_server
-      116,          // ui_port parameter in _run_server
-      160,          // Misleading log: "Management UI"
-      161,          // Misleading log: WebSocket URL
-      166,          // Only functional use: uvicorn bind
+      63,  // --ui-port flag definition
+      72,  // ui_port parameter
+      103,  // ui_port passed to _run_server
+      116,  // ui_port parameter in _run_server
+      160,  // Misleading log: "Management UI"
+      161,  // Misleading log: WebSocket URL
+      166,  // Only functional use: uvicorn bind
     ],
     'adgn/src/adgn/agent/mcp_bridge/server.py': [
-      [260, 270],   // create_management_ui_app docstring (claims "web interface")
-      [283, 289],   // Unimplemented /ws/mcp WebSocket stub
+      [260, 270],  // create_management_ui_app docstring (claims "web interface")
+      [283, 289],  // Unimplemented /ws/mcp WebSocket stub
     ],
   },
   expect_caught_from=[

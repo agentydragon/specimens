@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Identifier typo: `isValidUt8` appears to be a misspelling of `isValidUTF8` (typo of UTF8). Correct identifier improves clarity/truthfulness of code and avoids confusion.
   |||,
   occurrences=[

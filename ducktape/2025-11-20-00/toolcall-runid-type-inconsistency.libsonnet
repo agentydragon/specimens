@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The persistence API models run identifiers inconsistently: RunRow.id is typed as UUID,
     but ToolCallRecord.run_id is typed as str | None. This forces callers to manually convert
     UUIDs to strings when working with tool call records, and forgetting the conversion causes

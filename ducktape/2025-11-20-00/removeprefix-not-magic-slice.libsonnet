@@ -38,7 +38,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/server/mcp_routing.py': [
-      [72, 73],     // Bearer prefix check and magic [7:] slice
+      [72, 73],  // Bearer prefix check and magic [7:] slice
     ],
   },
 )

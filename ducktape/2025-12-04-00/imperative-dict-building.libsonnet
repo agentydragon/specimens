@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 360-364 build a dictionary using imperative append-style code (initialize
     empty dict, then loop with assignment). This pattern should use a dict comprehension
     for clarity and conciseness:

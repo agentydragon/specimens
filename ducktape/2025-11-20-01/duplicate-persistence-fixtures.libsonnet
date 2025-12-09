@@ -31,9 +31,9 @@ I.issue(
       [54, 54],  // engine, _ = destructuring
       [68, 68],  // engine, _ = destructuring
       [84, 84],  // engine, persistence = destructuring
-      [105, 105], // engine, _ = destructuring
-      [120, 120], // engine, _ = destructuring
-      [131, 131], // engine, persistence = destructuring
+      [105, 105],  // engine, _ = destructuring
+      [120, 120],  // engine, _ = destructuring
+      [131, 131],  // engine, persistence = destructuring
     ],
     'adgn/tests/agent/mcp_bridge/test_separated_servers.py': [
       [31, 38],  // Duplicate persistence creation in infrastructure_registry

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Fixture contains unnecessary variable and docstring.
 
     The `persistence` fixture in test_policy_resources.py lines 19-25 has:

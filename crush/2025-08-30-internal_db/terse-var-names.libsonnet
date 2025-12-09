@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Ambiguous or overly terse local/var names reduce readability. Prefer descriptive names that encode units/meaning (e.g., address/storedAddr, compressEnabled, CRUSH_PROFILE env var semantics).
   |||,
   occurrences=[

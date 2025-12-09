@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     `mcp_has_inflight` parameter is always `False` (runtime.py:249,
     status_shared.py:162) with comments "not exposed", making
     `RunPhase.TOOLS_RUNNING` unreachable. The `determine_run_phase()`
@@ -21,12 +21,12 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/runtime.py': [
-      [249, 249],   // has_inflight = False with comment "not exposed at this layer"
-      [253, 253],   // Passing False to determine_run_phase
+      [249, 249],  // has_inflight = False with comment "not exposed at this layer"
+      [253, 253],  // Passing False to determine_run_phase
     ],
     'adgn/src/adgn/agent/server/status_shared.py': [
-      [42, 56],     // determine_run_phase has mcp_has_inflight parameter
-      [162, 163],   // has_inflight = False with comment "not exposed here"
+      [42, 56],  // determine_run_phase has mcp_has_inflight parameter
+      [162, 163],  // has_inflight = False with comment "not exposed here"
     ],
   },
   expect_caught_from=[

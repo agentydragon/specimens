@@ -18,7 +18,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/approvals.py': [
-      [95, 96],   // pending = get(); if None pattern that should use walrus
+      [95, 96],  // pending = get(); if None pattern that should use walrus
     ],
   },
 )

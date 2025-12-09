@@ -28,10 +28,9 @@ repos:
         args: ["-d", "{extends: default, rules: {line-length: {max: 120}, document-start: disable}}"]
 
   # Jsonnet formatter for specimen .libsonnet files
-  - repo: https://github.com/serokell/jsonnet-pre-commit
-    rev: v0.2.0
+  - repo: https://github.com/google/go-jsonnet
+    rev: v0.20.0
     hooks:
-      - id: jsonnetfmt
-        name: jsonnetfmt (format specimen .libsonnet files)
+      - id: jsonnet-format
+        name: jsonnet-format (format specimen .libsonnet files)
         files: ".*\\.libsonnet$"
-        args: ["-i"]

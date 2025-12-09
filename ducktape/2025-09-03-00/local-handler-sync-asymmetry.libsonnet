@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     McpManager.call_tool() has asymmetric calling conventions: stdio tools are awaited (L273),
     but local handlers are called synchronously (L280). This means local tools doing
     time.sleep(10) would block the event loop, while "sleep 10" in a stdio tool would not.

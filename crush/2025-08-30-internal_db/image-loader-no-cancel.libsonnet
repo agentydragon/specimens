@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     TUI image loader uses context.Background() for HTTP fetches and provides no cancellation/timeout, preventing UI-driven aborts and risking hangs on slow endpoints.
 
     Evidence

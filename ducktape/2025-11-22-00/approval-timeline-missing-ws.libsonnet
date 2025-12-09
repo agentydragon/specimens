@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     ApprovalTimeline.svelte lines 54-61 subscribe to WebSocket endpoint `/ws/approvals?agent_id=...`
     that doesn't exist in backend (app.py has TODO placeholder). Lines 64-87 expect messages with
     type `approval_decision` (tool_call/outcome/reason/timestamp) and `approvals_snapshot` (timeline)
@@ -21,11 +21,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/web/src/components/ApprovalTimeline.svelte': [
-      [54, 61],   // WebSocket subscription to non-existent endpoint
-      [92, 98],   // Silent error/close handlers
+      [54, 61],  // WebSocket subscription to non-existent endpoint
+      [92, 98],  // Silent error/close handlers
     ],
     'adgn/src/adgn/agent/server/app.py': [
-      [1, 1],     // TODO placeholder for WebSocket routes (actual line varies)
+      [1, 1],  // TODO placeholder for WebSocket routes (actual line varies)
     ],
   },
   expect_caught_from=[

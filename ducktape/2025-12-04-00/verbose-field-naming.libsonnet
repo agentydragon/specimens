@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The field name `_events_path` is unnecessarily verbose. It should be shortened to `_path` since the
     context (TranscriptHandler that writes events) makes it clear what the path is for. The same applies
     to the `__init__` parameter `events_path`. Shorter names improve readability without losing clarity.

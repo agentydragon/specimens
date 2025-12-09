@@ -27,7 +27,7 @@ local toRange(x) =
   else if std.type(x) == 'object' && std.objectHas(x, 'start_line') then (
     // Ensure end_line is present for objects too
     if std.objectHas(x, 'end_line') then x
-    else x + { end_line: null }
+    else x { end_line: null }
   )
   else error 'Invalid line spec: ' + std.manifestJson(x);
 
@@ -127,8 +127,8 @@ local issueMulti(rationale, occurrences) =
     if !std.objectHas(occurrences[i], 'note') || occurrences[i].note == null
   ];
   local notes_valid = if std.length(missing_notes) > 0
-    then error 'All occurrences in issueMulti must have a note field. Missing in occurrences at indices: ' + std.manifestJson(missing_notes)
-    else true;
+  then error 'All occurrences in issueMulti must have a note field. Missing in occurrences at indices: ' + std.manifestJson(missing_notes)
+  else true;
 
   // Compute total unique files across all occurrences
   local all_files = std.foldl(
@@ -146,8 +146,8 @@ local issueMulti(rationale, occurrences) =
     if !std.objectHas(occurrences[i], 'expect_caught_from')
   ] else [];
   local expect_valid = if std.length(missing_expect) > 0
-    then error 'Multi-file issue (total files: %d) requires expect_caught_from on ALL occurrences. Missing in occurrences at indices: %s. Files: %s' % [total_files, std.manifestJson(missing_expect), std.manifestJson(unique_files)]
-    else true;
+  then error 'Multi-file issue (total files: %d) requires expect_caught_from on ALL occurrences. Missing in occurrences at indices: %s. Files: %s' % [total_files, std.manifestJson(missing_expect), std.manifestJson(unique_files)]
+  else true;
 
   {
     rationale: rationale,
@@ -211,8 +211,8 @@ local falsePositiveMulti(rationale, occurrences) =
     if !std.objectHas(occurrences[i], 'note') || occurrences[i].note == null
   ];
   local notes_valid = if std.length(missing_notes) > 0
-    then error 'All occurrences in falsePositiveMulti must have a note field. Missing in occurrences at indices: ' + std.manifestJson(missing_notes)
-    else true;
+  then error 'All occurrences in falsePositiveMulti must have a note field. Missing in occurrences at indices: ' + std.manifestJson(missing_notes)
+  else true;
 
   {
     rationale: rationale,

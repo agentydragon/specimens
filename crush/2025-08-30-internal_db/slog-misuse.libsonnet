@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     slog calls with positional arguments instead of structured key-value pairs.
 
     slog requires alternating string keys and values after the message: slog.Error(msg, "key1", val1, "key2", val2).

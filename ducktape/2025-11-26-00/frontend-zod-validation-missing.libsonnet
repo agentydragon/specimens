@@ -9,7 +9,7 @@ I.issue(
     ['adgn/src/adgn/agent/web/src/components/ToolJson.svelte'],
     ['adgn/src/adgn/agent/web/src/components/ChatPane.svelte'],
   ],
-  rationale= |||
+  rationale=|||
     Frontend components use manual type guards and type assertions instead of runtime
     validation with Zod schemas.
 

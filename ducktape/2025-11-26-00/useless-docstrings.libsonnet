@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Several functions have docstrings that add no information beyond what the function
     signature already provides. These are noise.
 

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Module docstring claims tools are exposed as "mcp:{server}.{tool}" (line 12), but
     _collect_tools_live actually creates "mcp__{server}__{tool}" format (lines 121, 133).
     Docstring should match implementation.

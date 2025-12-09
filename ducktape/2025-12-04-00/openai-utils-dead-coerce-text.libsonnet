@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `_coerce_text` validator (lines 218-230) in `AssistantMessageOut` is dead code. It attempts to coerce string or dict inputs with a "text" field into the proper `{"parts": [...]}` format, but this coercion is never used.
 
     All construction sites in the file construct AssistantMessageOut directly with the correct type:
@@ -12,5 +12,5 @@ I.issue(
 
     Delete the `_coerce_text` validator entirely.
   |||,
-  filesToRanges={'adgn/src/adgn/openai_utils/model.py': [[218, 230]]},
+  filesToRanges={ 'adgn/src/adgn/openai_utils/model.py': [[218, 230]] },
 )

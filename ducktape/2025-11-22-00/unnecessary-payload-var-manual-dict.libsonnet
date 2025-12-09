@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Unnecessary intermediate variable for dict that's used only once, combined with
     manual dict construction from Pydantic model instead of using `model_dump()`.
 

@@ -24,7 +24,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/server.py': [
-      [46, 52],     // AgentEntry class definition
+      [46, 52],  // AgentEntry class definition
     ],
   },
 )

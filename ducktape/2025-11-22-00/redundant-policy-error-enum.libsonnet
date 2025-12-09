@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 9-11 define `PolicyErrorCode` enum with `READ_ERROR` and `PARSE_ERROR` values. Lines 14-17
     define `PolicyErrorStage` enum with `READ`, `PARSE`, and `TESTS` values. Lines 21-22 in `PolicyError`
     model include both `stage: PolicyErrorStage` and `code: PolicyErrorCode` fields.
@@ -18,7 +18,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/models/policy_error.py': [
-      [9, 11],   // PolicyErrorCode enum (redundant)
+      [9, 11],  // PolicyErrorCode enum (redundant)
       [14, 17],  // PolicyErrorStage enum
       [21, 22],  // PolicyError with both stage and code fields
     ],

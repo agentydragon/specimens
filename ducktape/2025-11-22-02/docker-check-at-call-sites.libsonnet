@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The pattern `if self.docker_client is not None: self.self_check(...)` appears
     twice (lines 344-345, 360-361). This conditional is repeated at every call site.
 

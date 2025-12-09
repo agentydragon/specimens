@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The "get proposal or raise KeyError if None" pattern appears twice:
 
     Lines 357-358 (approve_proposal):

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     The `Snapshot` infrastructure is dead code left over from the WebSocket → MCP migration. Both the `Snapshot` class and the `build_snapshot()` method should be removed.
 
     **Snapshot class** (protocol.py lines 128-133): Pydantic model that was used to serialize snapshot data for the `/api/agents/{id}/snapshot` HTTP endpoint. The endpoint was removed in Phase 5c (commit d43292aa - "feat(adgn): implement Phase 5c REST API removal"). The class is no longer referenced anywhere except in dead code.
@@ -20,12 +20,12 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/agent/server/protocol.py': [[128, 133]]},
+      files: { 'adgn/src/adgn/agent/server/protocol.py': [[128, 133]] },
       note: 'Snapshot class definition',
       expect_caught_from: [['adgn/src/adgn/agent/server/protocol.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[137, 156]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[137, 156]] },
       note: 'build_snapshot() method that constructs dead Snapshot objects',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },

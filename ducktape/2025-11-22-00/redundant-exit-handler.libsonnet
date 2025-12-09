@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     cli.py async_main() (lines 659-734) has a try-except handler that catches
     ExitWithCode exceptions only to immediately call sys.exit() with the same code.
     This adds 4 lines and indents 70+ lines of main logic for no benefit.

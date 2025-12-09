@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentRegistry.close_all() leaves the registry in a partially closed state if any
     AgentRuntime.close() raises. The method loops through _items and calls close() on each
     runtime sequentially without error handling (lines 103-105). If the first close() succeeds

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     McpManager.call_tool() (lines 266-284) treats all MCP tools as if they were shell commands,
     manufacturing {"exit", "stdout", "stderr"} for everything. For local handlers that return
     dicts, it wraps them as {"exit": 0, "json": <result>} (line 281-282). This is confused

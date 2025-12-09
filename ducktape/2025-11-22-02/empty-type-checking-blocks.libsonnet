@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/approvals.py'], ['adgn/src/adgn/agent/agent.py']],
-  rationale= |||
+  rationale=|||
     Two files contain TYPE_CHECKING blocks that only contain `pass`, serving no purpose:
 
     ```python

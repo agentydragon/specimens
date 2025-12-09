@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Multiple unnecessary one-off variables should be inlined. Each variable is assigned once and used exactly once in the next line or expression, adding no value:
     - They're not reused elsewhere
     - They don't improve readability

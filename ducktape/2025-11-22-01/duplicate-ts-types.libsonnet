@@ -23,7 +23,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/web/src/features/chat/channels.ts': [
-      [138, 174], // Manual TypeScript type definitions for all message types
+      [138, 174],  // Manual TypeScript type definitions for all message types
     ],
   },
 )

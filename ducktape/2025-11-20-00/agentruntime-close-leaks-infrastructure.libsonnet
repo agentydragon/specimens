@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentRuntime.close() (lines 40-44) executes two close operations sequentially without
     error handling: await self.runtime.close() followed by await self.running.close(). If
     the first call raises, the second never executes, leaving the entire MCP infrastructure

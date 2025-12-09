@@ -5,7 +5,7 @@ local I = import '../../lib.libsonnet';
 // All describe test functions that bundle multiple independent test cases
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Test functions bundle multiple independent cases that should be split or parameterized.
 
     **Three forms:**

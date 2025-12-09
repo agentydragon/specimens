@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Code calls `str(Path.cwd())` before passing to `pygit2.discover_repository()`
     (cli.py:662, minicodex_backend.py:163), but pygit2's signature accepts
     `str | Path`. The conversion is redundant.

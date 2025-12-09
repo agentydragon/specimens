@@ -21,8 +21,8 @@ I.issueMulti(
       note: 'extra_handlers defaults to None, then converted with `list(extra_handlers or [])`',
       files: {
         'adgn/src/adgn/agent/runtime/local_runtime.py': [
-          73,           // extra_handlers: Iterable[BaseHandler] | None = None
-          84,           // self._extra_handlers = list(extra_handlers or [])
+          73,  // extra_handlers: Iterable[BaseHandler] | None = None
+          84,  // self._extra_handlers = list(extra_handlers or [])
         ],
       },
       expect_caught_from: [['adgn/src/adgn/agent/runtime/local_runtime.py']],
@@ -31,8 +31,8 @@ I.issueMulti(
       note: 'tests defaults to None, then guarded with `if tests:`',
       files: {
         'adgn/src/adgn/agent/policies/scaffold.py': [
-          11,           // tests: Sequence[...] | None = None
-          21,           // if tests:
+          11,  // tests: Sequence[...] | None = None
+          21,  // if tests:
         ],
       },
       expect_caught_from: [['adgn/src/adgn/agent/policies/scaffold.py']],
@@ -41,8 +41,8 @@ I.issueMulti(
       note: 'attach/detach default to None, then reassigned with `attach or {}` and `detach if detach is not None else []`',
       files: {
         'adgn/src/adgn/agent/persist/sqlite.py': [
-          99,           // attach/detach parameters
-          [101, 102],   // attach/detach reassignments
+          99,  // attach/detach parameters
+          [101, 102],  // attach/detach reassignments
         ],
       },
       expect_caught_from: [['adgn/src/adgn/agent/persist/sqlite.py']],
@@ -51,7 +51,7 @@ I.issueMulti(
       note: 'Protocol signature uses Optional instead of default empty collection',
       files: {
         'adgn/src/adgn/agent/persist/__init__.py': [
-          141,          // patch_agent_specs protocol signature
+          141,  // patch_agent_specs protocol signature
         ],
       },
       expect_caught_from: [['adgn/src/adgn/agent/persist/__init__.py']],

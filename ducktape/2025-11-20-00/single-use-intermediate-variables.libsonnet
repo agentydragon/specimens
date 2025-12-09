@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Variables assigned once and used immediately afterward add no semantic value
     and should be inlined at their use sites.
 

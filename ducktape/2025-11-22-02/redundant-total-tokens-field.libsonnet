@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The TokenUsage model has a total_tokens field that is a trivial sum of two other fields:
 
     class TokenUsage(BaseModel):

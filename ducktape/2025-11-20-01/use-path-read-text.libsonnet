@@ -32,7 +32,7 @@ I.issue(
   filesToRanges={
     'adgn/scripts/generate_frontend_code.py': [
       [52, 53],  // open() with manual read instead of Path.read_text()
-      [174, 174], // Line already using write_text() for comparison
+      [174, 174],  // Line already using write_text() for comparison
     ],
   },
 )

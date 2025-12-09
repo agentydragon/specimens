@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `.messages` property (lines 626-656) is a thin wrapper around `_to_openai_input_items()` (lines 431-448).
     These should be merged into a single public method named `.to_openai_messages()` for clarity. Using a
     method name instead of a property better signals that this performs a non-trivial conversion (creating

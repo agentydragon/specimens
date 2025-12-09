@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The top-level CLI help text (lines 6-10) shows a usage example with `--port 8080`, but the
     actual serve command defines `--mcp-port` (line 64) and `--ui-port` (line 65) options instead.
     There is no `--port` option, so following the documented example causes an "no such option"

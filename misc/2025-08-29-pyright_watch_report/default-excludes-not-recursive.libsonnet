@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Default exclude patterns are not recursive, so nested files under these directories are still included.
 
     In pyright_watch_report.py, excludes like "build", "dist", and ".mypy_cache" are used as literal patterns.
@@ -17,7 +17,7 @@ I.issue(
     // Defaults that include non-recursive excludes
     'pyright_watch_report.py': [
       [204, 214],  // default exclude list with 'build', 'dist', '.mypy_cache'
-      [60, 76],    // expand_include_patterns exists, but no equivalent for excludes
+      [60, 76],  // expand_include_patterns exists, but no equivalent for excludes
       [134, 141],  // exclude matching applies patterns literally via fnmatch
     ],
   },

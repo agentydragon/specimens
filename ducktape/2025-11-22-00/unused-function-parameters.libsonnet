@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Two functions declare parameters never used in the function body. Vestigial
     from previous implementations.
 

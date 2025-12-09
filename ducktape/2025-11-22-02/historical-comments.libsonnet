@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Comments reference historical code states or duplicate log messages/method names.
 
     Pattern 1 (compositor_factory.py:40, 45): "Mount...engine (now an MCP server)" references historical refactoring state irrelevant after completion.

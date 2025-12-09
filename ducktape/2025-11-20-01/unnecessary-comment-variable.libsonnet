@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Single-use variable with redundant comment.
 
     Lines 86-88 in test_policy_validation_reload.py create a variable `new_policy` that is used only once. The comment "Save a policy to persistence" is redundant since the code is self-documenting.

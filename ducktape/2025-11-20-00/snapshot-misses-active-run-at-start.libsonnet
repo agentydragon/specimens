@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentSession._run_impl builds and sends a snapshot before setting self.active_run. Line 399
     calls `await self._manager.send_payload(await self.build_snapshot())` but self.active_run isn't
     assigned until line 400-402. Since build_snapshot only includes run metadata when

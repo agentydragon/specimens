@@ -24,7 +24,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/compositor_factory.py': [
-      [96, 103],   // try/except that silently suppresses mount failures
+      [96, 103],  // try/except that silently suppresses mount failures
       [101, 103],  // Error handling that continues instead of failing
     ],
   },

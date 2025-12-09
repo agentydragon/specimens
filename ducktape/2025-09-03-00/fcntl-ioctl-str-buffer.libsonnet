@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Python 3.11/3.12 do not document accepting a str as the buffer argument to fcntl.ioctl; passing a string for TIOCGWINSZ is not supported in the targeted version (requires-python >=3.11).
     Use termios.tcgetwinsize(fd) in Python 3.11+ or pass a bytes-like buffer (e.g., struct.pack or bytearray) when calling ioctl.
 

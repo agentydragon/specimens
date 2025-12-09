@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 80 uses `.strip().splitlines()[-1]` to extract the last line, which unnecessarily constrains the policy output to not contain newlines in the JSON. Valid JSON can span multiple lines.
 
     **Current implementation assumes:**

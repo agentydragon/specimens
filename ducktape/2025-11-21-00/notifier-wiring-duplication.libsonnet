@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Four notifier factory functions (lines 841-855, 858-878, 884-898, 901-915) follow the
     exact same pattern with duplicated boilerplate: sync notifier schedules broadcast in
     event loop via `loop.create_task(server.broadcast_resource_updated(uri))` with

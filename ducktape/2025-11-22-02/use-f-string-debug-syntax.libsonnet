@@ -3,7 +3,7 @@ local I = import '../../lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/mcp_bridge/auth.py'], ['adgn/src/adgn/agent/mcp_bridge/server.py']],
-  rationale= |||
+  rationale=|||
     Python 3.8+ supports f"{variable=}" syntax which is more concise than f"variable={variable}":
 
     auth.py line 99:

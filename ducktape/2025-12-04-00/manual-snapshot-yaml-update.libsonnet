@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `cmd_build_bundle` function (lines 335-363) uses pygit2 to create filtered
     commits and tags for snapshot bundles, but doesn't return the mapping of tag names
     to commit SHAs that it creates. The function has no return value.
@@ -14,5 +14,5 @@ I.issue(
     That commit information should be captured and returned to callers for automatic
     snapshots.yaml updates.
   |||,
-  filesToRanges={'adgn/src/adgn/props/cli_app/cmd_build_bundle.py': [[335, 363]]},
+  filesToRanges={ 'adgn/src/adgn/props/cli_app/cmd_build_bundle.py': [[335, 363]] },
 )

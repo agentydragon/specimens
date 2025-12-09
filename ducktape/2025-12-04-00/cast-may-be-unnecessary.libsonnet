@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 307 uses cast(GradeValidationContext, ctx) after already checking isinstance.
     After the isinstance check on line 305, mypy should already know the type.
     The cast may be unnecessary redundancy.

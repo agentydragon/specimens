@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The code uses byte length (`_len_bytes()`) to cap context passed to LLMs,
     but LLM token budgets are better approximated by character count, not bytes.
 
@@ -38,14 +38,14 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/git_commit_ai/core.py': [
-      [8, 8],     // MAX_PROMPT_CONTEXT_BYTES constant (wrong unit)
-      [14, 15],   // _len_bytes: unnecessary helper
-      [18, 29],   // _cap_append: byte-based truncation logic
-      [146, 146], // _build_ai_context: status capping with bytes
-      [151, 151], // _build_ai_context: name-status capping with bytes
-      [155, 155], // _build_ai_context: log capping with bytes
-      [160, 160], // _build_ai_context: diff capping with bytes
-      [163, 165], // _build_ai_context: final byte-based truncation
+      [8, 8],  // MAX_PROMPT_CONTEXT_BYTES constant (wrong unit)
+      [14, 15],  // _len_bytes: unnecessary helper
+      [18, 29],  // _cap_append: byte-based truncation logic
+      [146, 146],  // _build_ai_context: status capping with bytes
+      [151, 151],  // _build_ai_context: name-status capping with bytes
+      [155, 155],  // _build_ai_context: log capping with bytes
+      [160, 160],  // _build_ai_context: diff capping with bytes
+      [163, 165],  // _build_ai_context: final byte-based truncation
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     The `prefix` parameter in both `mount_server()` and `mount_inproc()` is completely dead code with multiple issues:
 
     **Issue 1: Never passed as non-None**
@@ -24,20 +24,20 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/mcp/compositor/server.py': [
+      files: { 'adgn/src/adgn/mcp/compositor/server.py': [
         [251, 251],  // mount_server signature with dead prefix parameter
         [255, 255],  // Computed but ignored prefix assignment
         [277, 277],  // self.mount call that ignores computed prefix
-      ]},
+      ] },
       note: 'mount_server: prefix parameter and computation are dead code',
       expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
     },
     {
-      files: {'adgn/src/adgn/mcp/compositor/server.py': [
+      files: { 'adgn/src/adgn/mcp/compositor/server.py': [
         [280, 280],  // mount_inproc signature with dead prefix parameter
         [284, 284],  // Computed but ignored prefix assignment
         [302, 302],  // self.mount call that ignores computed prefix
-      ]},
+      ] },
       note: 'mount_inproc: prefix parameter and computation are dead code',
       expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
     },

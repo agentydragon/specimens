@@ -7,7 +7,7 @@ local I = import '../../lib.libsonnet';
 // All describe empty catch blocks without logging in UI code
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Seven UI modules use empty catch blocks without logging, making failures invisible:
     stores.ts lines 36-38 (agent polling), channels.ts lines 76-77 (WebSocket ops),
     stores_channels.ts line 120 (error handling itself), prefs.ts lines 27/35
@@ -39,13 +39,13 @@ I.issue(
       [35, 35],  // localStorage setItem: empty catch
     ],
     'adgn/src/adgn/agent/web/src/shared/token.ts': [
-      [11, 11],   // Token parse/validation: empty catch
-      [23, 23],   // Token parse/validation: empty catch
-      [35, 35],   // Token parse/validation: empty catch
-      [46, 46],   // Token parse/validation: empty catch
+      [11, 11],  // Token parse/validation: empty catch
+      [23, 23],  // Token parse/validation: empty catch
+      [35, 35],  // Token parse/validation: empty catch
+      [46, 46],  // Token parse/validation: empty catch
     ],
     'adgn/src/adgn/agent/web/src/shared/markdown.ts': [
-      [6, 6],    // Syntax highlighting registration: empty catch
+      [6, 6],  // Syntax highlighting registration: empty catch
       [36, 36],  // Syntax highlighting registration: empty catch
     ],
     'adgn/src/adgn/agent/web/src/features/mcp/schema.ts': [

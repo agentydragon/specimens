@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Three run phase/status enums exist with different granularity, causing name
     collisions, unclear subset relationships, and lost information when converting.
 
@@ -24,14 +24,14 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/status_shared.py': [
-      [18, 25],   // Most comprehensive RunPhase (7 states)
-      [42, 56],   // determine_run_phase with fine-grained logic
+      [18, 25],  // Most comprehensive RunPhase (7 states)
+      [42, 56],  // determine_run_phase with fine-grained logic
     ],
     'adgn/src/adgn/agent/mcp_bridge/types.py': [
-      [17, 21],   // Less granular RunPhase (3 states, should be deleted)
+      [17, 21],  // Less granular RunPhase (3 states, should be deleted)
     ],
     'adgn/src/adgn/agent/server/protocol.py': [
-      [80, 87],   // RunStatus (different granularity, possibly different concern)
+      [80, 87],  // RunStatus (different granularity, possibly different concern)
     ],
   },
   expect_caught_from=[

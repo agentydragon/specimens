@@ -26,14 +26,14 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/mcp/chat/server.py': [
-      [5, 5],       // Import aiosqlite.Row (should use ORM models instead)
-      [29, 37],     // _row_to_message converter (not needed with ORM)
-      [171, 283],   // ChatStorePersisted class using raw SQL
-      [182, 189],   // last_id_async - raw SELECT MAX query
-      [191, 200],   // get_last_read_async - raw SELECT query
-      [202, 213],   // append - raw INSERT query
-      [215, 229],   // get_message_async - raw SELECT query
-      [237, 283],   // read_pending_and_advance - multiple raw SQL queries
+      [5, 5],  // Import aiosqlite.Row (should use ORM models instead)
+      [29, 37],  // _row_to_message converter (not needed with ORM)
+      [171, 283],  // ChatStorePersisted class using raw SQL
+      [182, 189],  // last_id_async - raw SELECT MAX query
+      [191, 200],  // get_last_read_async - raw SELECT query
+      [202, 213],  // append - raw INSERT query
+      [215, 229],  // get_message_async - raw SELECT query
+      [237, 283],  // read_pending_and_advance - multiple raw SQL queries
     ],
   },
 )

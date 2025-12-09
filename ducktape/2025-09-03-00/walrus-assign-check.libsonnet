@@ -4,7 +4,7 @@ local I = import '../../lib.libsonnet';
 // All describe assign-and-check/assign-and-test patterns that should use walrus operator
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Multiple locations use assign-then-check patterns where the walrus operator (:=)
     would be more concise and idiomatic. Common patterns include:
 
@@ -47,15 +47,15 @@ I.issue(
 
   filesToRanges={
     'llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py': [
-      [421, 429],     // git config fallback (include-verbose)
-      [448, 451],     // Cache.get: path existence check
-      [599, 606],     // subprocess returncode (pre-commit hook)
-      [731, 739],     // git var GIT_EDITOR
-      [894, 902],     // git commit -m path
-      [927, 933],     // editor returncode
-      [969, 976],     // git commit -F path
-      [1044, 1052],   // Claude invocation
-      [1149, 1154],   // Codex invocation
+      [421, 429],  // git config fallback (include-verbose)
+      [448, 451],  // Cache.get: path existence check
+      [599, 606],  // subprocess returncode (pre-commit hook)
+      [731, 739],  // git var GIT_EDITOR
+      [894, 902],  // git commit -m path
+      [927, 933],  // editor returncode
+      [969, 976],  // git commit -F path
+      [1044, 1052],  // Claude invocation
+      [1149, 1154],  // Codex invocation
     ],
   },
 )

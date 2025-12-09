@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 293-301 type the snapshot parameter as nullable (`specimen_str: str | None`)
     but immediately check for None and exit with an error. This is a misleading type
     signature that should be replaced with a required parameter, and checking for presence

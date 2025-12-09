@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `OpenAIModelProto` protocol (line 401) is defined AFTER its implementations (`OpenAIModel` at line 345 and `BoundOpenAIModel` at line 376). This makes the code harder to understand - readers see implementations before understanding the interface contract.
 
     Additionally, the implementations don't explicitly inherit from the protocol. While structural typing means they satisfy the protocol, explicit inheritance would:

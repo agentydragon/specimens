@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 104-107 define `start_tool()` which takes individual `tool`, `call_id` parameters
     then fabricates a `ToolCall` object internally. This unbundles existing structure from
     callers and loses information.

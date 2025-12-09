@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The Decision class docstring claims "All fields are REQUIRED", but the reason field is
     str | None = None (optional). The docstring should be simplified to just the first line:
     "Decision made about a tool call." The statement about required fields is misleading and

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Glob tool documentation claims sorting by modification time, but implementation sorts by path length.
 
     Documentation at line 18 (in tool description shown to LLM agent):
@@ -24,8 +24,8 @@ I.issue(
   |||,
   filesToRanges={
     'internal/llm/tools/glob.go': [
-      [18, 18],      // Doc claims mtime sorting
-      [164, 166],    // Implementation sorts by path length
+      [18, 18],  // Doc claims mtime sorting
+      [164, 166],  // Implementation sorts by path length
     ],
   },
 )

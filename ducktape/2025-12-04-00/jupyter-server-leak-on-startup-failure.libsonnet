@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     run_jupyter_mcp starts a Jupyter server at line 146 but the try/finally cleanup block
     doesn't start until line 165. If any operation between lines 147-164 raises (building
     mcp_cmd, validation, etc.), the try block is never entered, so the finally block never

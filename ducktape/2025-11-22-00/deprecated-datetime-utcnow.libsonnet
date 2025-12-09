@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 45 and 52 use `datetime.utcnow().isoformat() + "Z"` for timestamp generation.
 
     `datetime.utcnow()` is deprecated as of Python 3.12 (scheduled for removal in future versions).
@@ -17,8 +17,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/transcript_handler.py': [
-      [45, 45],   // datetime.utcnow() in metadata timestamp
-      [52, 52],   // datetime.utcnow() in event timestamp
+      [45, 45],  // datetime.utcnow() in metadata timestamp
+      [52, 52],  // datetime.utcnow() in event timestamp
     ],
   },
 )

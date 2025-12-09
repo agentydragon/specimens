@@ -8,7 +8,7 @@ I.falsePositive(
     A past critique flagged the two reads surrounding the permission gate in write.go as an
     "unnecessary re-read". This is a false positive. The first read is a lightweight early
     equality check to short-circuit a no-op; the subsequent read (after directory creation and
-    before permission request) populates oldContent for canonical diff/history recording. 
+    before permission request) populates oldContent for canonical diff/history recording.
 
     Keeping these reads separate is defensible: if permission.Request blocks (user prompt) the
     file may change in the meantime and re-reading after the permission decision ensures the

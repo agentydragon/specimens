@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     cli.py lines 601-609 contain complex scissors+comment filtering logic buried
     inline: splitlines, loop with startswith checks for scissors_mark and "#",
     accumulate result_lines, join.

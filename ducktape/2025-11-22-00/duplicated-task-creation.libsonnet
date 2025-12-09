@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     cli.py lines 360-368 create identical tasks (update_task, runner, output_task) in
     both branches of an if-else. Only runner construction differs (master_fd vs None).
 

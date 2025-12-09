@@ -5,7 +5,7 @@ local I = import '../../lib.libsonnet';
 // All describe comments that add no value and should be deleted
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Comments that add no value: redundant, obvious, historical, or noise.
 
     **Four categories:**
@@ -41,15 +41,15 @@ I.issue(
       [177, 182],  // on_reasoning: "Default: no-op" comment
     ],
     'adgn/src/adgn/git_commit_ai/cli.py': [
-      [55, 55],    // Useless separator line
-      [58, 58],    // "# ---------- constants" restates obvious
+      [55, 55],  // Useless separator line
+      [58, 58],  // "# ---------- constants" restates obvious
       [176, 176],  // "# Core logic" vague label
       [680, 680],  // Comment restating code
       [683, 683],  // Comment restating code
       [687, 687],  // Comment restating code
     ],
     'adgn/src/adgn/agent/policy_eval/container.py': [
-      [58, 58],    // Historical breadcrumb about moved function
+      [58, 58],  // Historical breadcrumb about moved function
     ],
     'adgn/src/adgn/agent/persist/sqlite.py': [
       [530, 533],  // Four-line block documenting removed code

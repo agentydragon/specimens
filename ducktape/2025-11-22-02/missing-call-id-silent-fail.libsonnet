@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Both `resolve()` and `await_decision()` silently handle missing call_ids instead of failing fast.
 
     Problem 1 (lines 142-148): `resolve()` uses `pop(call_id, None)` which swallows missing call_ids AND still sends notification even though nothing changed. Should use direct dict access (`self._pending[call_id]`) to raise KeyError on missing entries.

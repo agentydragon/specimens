@@ -23,11 +23,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/openai_utils/model.py': [
-      [26, 33],   // AssistantMessage with role discriminator
-      [36, 43],   // UserMessage with role discriminator
-      [46, 53],   // SystemMessage with role discriminator
-      [93, 93],   // InputItem union - would benefit from consistent discriminators
-      [172, 182], // AssistantMessageOut uses kind discriminator (reference pattern)
+      [26, 33],  // AssistantMessage with role discriminator
+      [36, 43],  // UserMessage with role discriminator
+      [46, 53],  // SystemMessage with role discriminator
+      [93, 93],  // InputItem union - would benefit from consistent discriminators
+      [172, 182],  // AssistantMessageOut uses kind discriminator (reference pattern)
     ],
   },
 )

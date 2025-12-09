@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     InfrastructureRegistry.get() method is called but does not exist in the class definition.
 
     The calls should likely use get_running_infrastructure() instead,

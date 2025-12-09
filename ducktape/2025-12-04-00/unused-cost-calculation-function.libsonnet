@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `calculate_cost()` function in `cost.py` duplicates logic that already exists in the database `run_costs` view and is never called.
 
     All cost calculations in the codebase are performed by the database view (defined in `src/adgn/props/db/models.py:588-636`), which:

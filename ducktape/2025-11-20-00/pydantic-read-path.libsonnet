@@ -3,7 +3,7 @@ local I = import '../../lib.libsonnet';
 // Related issue: pydantic-write-path.libsonnet (output side of persistence boundary handling)
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Building intermediate dict before constructing Pydantic model at read boundary.
 
     Code creates row_dict from SQLAlchemy result (lines 445-454), then passes to

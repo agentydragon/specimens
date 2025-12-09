@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Timestamp units are inconsistent across SQL sources, generated sqlc code, and (by extension) calling Go code.
 
     Findings (evidence excerpts):

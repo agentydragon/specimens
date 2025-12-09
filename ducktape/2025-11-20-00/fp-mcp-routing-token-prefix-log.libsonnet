@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.falsePositive(
-  rationale= |||
+  rationale=|||
     Critics flagged the invalid-token logging (line 110: `logger.warning(f"Invalid token:
     {token[:10]}...")`) as a credential leak - logging partial tokens would be problematic in
     production systems. However, this is acceptable in this context because: (a) this is a personal

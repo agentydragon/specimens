@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     _call_mcp_tool_live uses defensive "try/except Exception: structured = None"
     guards around structuredContent access (lines 159-161) with type: ignore comments,
     suggesting the code is unsure about types. The proper MCP result type

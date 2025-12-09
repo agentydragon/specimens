@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     `NotifyingFastMCP` inherits from `FlatModelFastMCP` (line 107 of notifying_fastmcp.py), bundling both notification support and flat model support into one class. However, the name "Notifying" only suggests the notification feature, hiding the fact that it also provides flat model tooling.
 
     This creates confusion when servers inherit from `NotifyingFastMCP` but don't use notifications - developers ask "what notifications are you emitting?" when the answer is often "none". Many MCP servers in the snapshot instantiate NotifyingFastMCP purely to get flat model support, not notification broadcasting:

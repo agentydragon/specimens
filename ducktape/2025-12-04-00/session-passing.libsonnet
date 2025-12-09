@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Inconsistent session management: sync_detector_prompts() and sync_model_metadata()
     don't take a session parameter, while sync_snapshots_to_db() and sync_issues_to_db() do.
     This forces sync_all() to open a session for only 2 of 4 operations, then call the
@@ -11,5 +11,5 @@ I.issue(
     sync_all() to be written as a single with-block that inlines the FullSyncResult
     construction with all four calls inside the session context.
   |||,
-  filesToRanges={'adgn/src/adgn/props/cli_app/cmd_db.py': [[47, 63]]},
+  filesToRanges={ 'adgn/src/adgn/props/cli_app/cmd_db.py': [[47, 63]] },
 )

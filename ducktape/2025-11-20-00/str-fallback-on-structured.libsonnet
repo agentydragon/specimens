@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     chat_param_message_content_as_text (lines 75-105) claims to "extract text content", but when
     content is not a plain string (e.g., multi-part ChatCompletion*MessageParam with structured
     content like [{'type': 'text', 'text': 'hi'}]), it falls back to str(content) (lines 85, 92,

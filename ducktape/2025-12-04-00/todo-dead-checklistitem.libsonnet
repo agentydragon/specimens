@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The entire `ChecklistItem` Pydantic model class (lines 118-132) and its associated field definition (lines 133-136) are commented out with the rationale "checklist handling is currently disabled" (line 117).
 
     A ripgrep search across the entire codebase confirms no active usage of `ChecklistItem` - only the commented-out definition itself and its internal self-references appear.
@@ -13,5 +13,5 @@ I.issue(
 
     If the checklist feature might be re-enabled, the proper approach is to preserve it in git history (where it can be recovered via `git log -S "ChecklistItem"`) rather than cluttering the active codebase.
   |||,
-  filesToRanges={'adgn/src/adgn/props/models/lint.py': [[117, 136]]},
+  filesToRanges={ 'adgn/src/adgn/props/models/lint.py': [[117, 136]] },
 )

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     core.py _extract_message_from_text() (lines 260-263) appears to be unused dead
     code. The function extracts text between <message> tags using regex.
 
@@ -20,7 +20,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/git_commit_ai/core.py': [
-      [260, 263], // _extract_message_from_text: unused function definition
+      [260, 263],  // _extract_message_from_text: unused function definition
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 361-372 manually parse event types using dict.get() and string comparison:
       ev = obj.get("event") if isinstance(obj, dict) else None
       if ev == "hook_output":
@@ -18,5 +18,5 @@ I.issue(
           case HookOutputEvent() as hook_ev: ...
           case ProgressEvent() as prog_ev: ...
   |||,
-  filesToRanges={'wt/src/wt/client/wt_client.py': [[361, 372]]},
+  filesToRanges={ 'wt/src/wt/client/wt_client.py': [[361, 372]] },
 )

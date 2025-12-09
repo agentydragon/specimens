@@ -16,13 +16,13 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/tests/agent/test_policy_validation_reload.py': [
-      [47, 48],   // Test 1 stub creation
-      [57, 58],   // Test 2 stub creation
-      [67, 68],   // Test 3 stub creation
-      [84, 85],   // Test 4 stub creation
-      [97, 98],   // Test 5 stub creation
-      [109, 110], // Test 6 stub creation
-      [131, 132], // Test 7 stub creation
+      [47, 48],  // Test 1 stub creation
+      [57, 58],  // Test 2 stub creation
+      [67, 68],  // Test 3 stub creation
+      [84, 85],  // Test 4 stub creation
+      [97, 98],  // Test 5 stub creation
+      [109, 110],  // Test 6 stub creation
+      [131, 132],  // Test 7 stub creation
     ],
   },
 )

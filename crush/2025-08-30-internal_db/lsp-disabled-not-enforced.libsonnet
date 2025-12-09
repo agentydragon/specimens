@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     LSPConfig.Disabled flag doesn't prevent LSP initialization - disabled LSP servers still start and run.
 
     initLSPClients (internal/app/lsp.go:14-18) iterates over all configured LSPs and starts every one without checking the Disabled flag:

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 110-115 define `_find_last_tool_index()` which manually iterates backwards using
     `range(len(state.items) - 1, -1, -1)` and a separate line to extract each item. This
     is verbose and error-prone.

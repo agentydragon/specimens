@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `to_kwargs()` method (lines 184-192) is unnecessarily complex - it's essentially just `.model_dump()` but "painted blue" with redundant manual processing.
 
     Current implementation:
@@ -26,5 +26,5 @@ I.issue(
 
     This does exactly the same thing but without the unnecessary complexity.
   |||,
-  filesToRanges={'adgn/src/adgn/openai_utils/model.py': [[184, 192]]},
+  filesToRanges={ 'adgn/src/adgn/openai_utils/model.py': [[184, 192]] },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Comments state obvious facts that are already clear from method names, types,
     and code structure.
 

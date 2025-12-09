@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `_create_archive_from_git` function uses subprocess calls to invoke git commands
     directly (`subprocess.run(["git", "clone", ...])`, `subprocess.run(["git", "init", ...])`,
     etc.), while the rest of the codebase consistently uses pygit2 for git operations.

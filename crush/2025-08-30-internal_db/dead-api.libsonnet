@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Dead API: ListLatestSessionFiles is defined and wired through the DB layer but has no production callers; it is referenced only by a test fake.
 
     Summary

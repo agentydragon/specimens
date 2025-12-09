@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     notifications/types.py duplicates data in two ways: (1) NotificationsBatch
     (lines 14-30) stores both parsed fields (resources_updated, resource_list_changed)
     and raw MCP notifications, creating redundancy and unclear source of truth;

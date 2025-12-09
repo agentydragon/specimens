@@ -18,8 +18,8 @@ I.issue(
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [
       [120, 124],  // PendingApproval wrapper class
-      [50, 59],    // _convert_pending_approvals function
-      [56, 56],    // Misleading timestamp=datetime.now() with TODO
+      [50, 59],  // _convert_pending_approvals function
+      [56, 56],  // Misleading timestamp=datetime.now() with TODO
       [386, 386],  // Call site 1
       [404, 404],  // Call site 2
       [444, 444],  // Call site 3

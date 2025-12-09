@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Redundant runtime type check for parameter when type system already guarantees non-None.
 
     **Current code (container.py:34-35):**

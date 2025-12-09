@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     _load_yaml coerces any falsy YAML payload to {} before the type check (line 35:
     `data = yaml.safe_load(f) or {}`). This means non-mapping presets like [], 0, false, or None
     are silently treated as empty mappings, bypassing the isinstance(data, dict) check on line 36

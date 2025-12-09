@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     SQLAlchemy models define created_at fields without default values, requiring every
     creation site to manually pass created_at=datetime.now(). SQLAlchemy supports automatic
     timestamps via server_default=func.now() or default=lambda: datetime.now(UTC).

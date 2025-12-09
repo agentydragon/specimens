@@ -9,7 +9,7 @@ I.issue(
     ['adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte'],
     ['adgn/src/adgn/agent/web/src/components/ChatPane.svelte'],
   ],
-  rationale= |||
+  rationale=|||
     Three files have comments that merely restate what the code obviously does. Python
     examples in cli.py lines 484, 717-719, 722: "Capture -a/--all", "Parse flags from
     passthru", "Logging and config" just describe the next lines. TypeScript examples
@@ -33,13 +33,13 @@ I.issue(
       [722, 722],  // "Logging and config"
     ],
     'adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte': [
-      [73, 73],    // "Get singleton MCP client"
-      [86, 86],    // "Subscribe to agents list updates"
-      [89, 89],    // "Fetch initial list"
+      [73, 73],  // "Get singleton MCP client"
+      [86, 86],  // "Subscribe to agents list updates"
+      [89, 89],  // "Fetch initial list"
     ],
     'adgn/src/adgn/agent/web/src/components/ChatPane.svelte': [
-      [79, 79],    // "Get singleton MCP client"
-      [84, 84],    // "Parse the resource contents"
+      [79, 79],  // "Get singleton MCP client"
+      [84, 84],  // "Parse the resource contents"
       [107, 107],  // "Get singleton MCP client" (duplicate)
     ],
   },

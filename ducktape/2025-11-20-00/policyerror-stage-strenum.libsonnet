@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     PolicyError.stage uses Literal["read", "parse", "tests"] instead of StrEnum
     for consistency with the rest of the codebase.
 

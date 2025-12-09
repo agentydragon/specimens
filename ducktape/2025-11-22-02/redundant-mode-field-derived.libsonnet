@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 40 defines `RunningAgent` dataclass with both `mode: AgentMode` and
     `local_runtime: LocalAgentRuntime | None` fields. The mode is completely determined by
     whether local_runtime exists: `mode = BRIDGE` when `local_runtime = None`,

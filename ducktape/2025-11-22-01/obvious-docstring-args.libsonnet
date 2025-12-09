@@ -20,12 +20,12 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py': [
-      [142, 143], // create_agent Args
-      [170, 171], // delete_agent Args
+      [142, 143],  // create_agent Args
+      [170, 171],  // delete_agent Args
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py': [
-      [125, 127], // approve Args
-      [141, 143], // reject Args
+      [125, 127],  // approve Args
+      [141, 143],  // reject Args
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     run_seatbelt calls _ensure_document_id twice on the same document path, causing a crash
     on the second call. At line 449, run_seatbelt calls _ensure_document_id(ws, document_id),
     which either generates a unique timestamped path (if document_id is None) or uses the

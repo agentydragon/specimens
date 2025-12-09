@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     A ~30-line sequence (generate diff, build permission.CreatePermissionRequest, write file, history bookkeeping, recordFileWrite/read) is duplicated across multiple branches in internal/llm/tools/edit.go. Extract a single helper parameterized by action, description, and params to centralize permission, diff, write, history bookkeeping and avoid drift.
   |||,
   occurrences=[

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `ensure_schema` method unconditionally drops ALL tables before recreating them,
     destroying all persisted data on every call. The function name suggests safe,
     idempotent behavior (ensuring schema exists), but the implementation calls

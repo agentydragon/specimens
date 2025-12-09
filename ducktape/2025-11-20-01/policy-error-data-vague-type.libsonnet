@@ -24,10 +24,10 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/mcp/policy_gateway/signals.py': [
-      [33, 37],   // PolicyGatewayError model with vague 'data' field
-      [133, 133], // Line extracting data from error_data
-      [136, 136], // Line checking for POLICY_GATEWAY_STAMP_KEY in data
-      [142, 142], // Line passing data to PolicyGatewayError constructor
+      [33, 37],  // PolicyGatewayError model with vague 'data' field
+      [133, 133],  // Line extracting data from error_data
+      [136, 136],  // Line checking for POLICY_GATEWAY_STAMP_KEY in data
+      [142, 142],  // Line passing data to PolicyGatewayError constructor
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Tool detection machinery (`detect_tools()`, `tools_section()` macro, `available_tools` parameter) is dead code because `include_tools` is hardcoded to `False` in `build_standard_context()`.
 
     The flow:
@@ -37,21 +37,21 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/props/prompts/util.py': [
-      [86, 88],   // available_tools parameter
-      [105, 105], // available_tools in context dict
-      [108, 108], // include_tools: False (the smoking gun)
+      [86, 88],  // available_tools parameter
+      [105, 105],  // available_tools in context dict
+      [108, 108],  // include_tools: False (the smoking gun)
     ],
-    'adgn/src/adgn/props/cli_app/shared.py': [[76, 111]],       // detect_tools() function definition
-    'adgn/src/adgn/props/cli_app/main.py': [448],               // detect_tools() call site
-    'adgn/src/adgn/props/prompts/_partials.j2': [[8, 21]],      // tools_section() macro
-    'adgn/src/adgn/props/prompts/_base.j2.md': [86],            // conditional include
+    'adgn/src/adgn/props/cli_app/shared.py': [[76, 111]],  // detect_tools() function definition
+    'adgn/src/adgn/props/cli_app/main.py': [448],  // detect_tools() call site
+    'adgn/src/adgn/props/prompts/_partials.j2': [[8, 21]],  // tools_section() macro
+    'adgn/src/adgn/props/prompts/_base.j2.md': [86],  // conditional include
   },
   expect_caught_from=[
     // util.py NOT included: seeing "include_tools: False" leaves open "what if some context passes True?"
     // Would require deeper search to prove no caller ever passes True - tangential investigation
-    ['adgn/src/adgn/props/cli_app/shared.py'],       // See detect_tools(), trace callers to dead end
-    ['adgn/src/adgn/props/cli_app/main.py'],         // See call, trace to discover it's gated by False
-    ['adgn/src/adgn/props/prompts/_partials.j2'],    // See tools_section() macro never called (gated by False)
-    ['adgn/src/adgn/props/prompts/_base.j2.md'],     // See include_tools conditional, search for assignments → always False
+    ['adgn/src/adgn/props/cli_app/shared.py'],  // See detect_tools(), trace callers to dead end
+    ['adgn/src/adgn/props/cli_app/main.py'],  // See call, trace to discover it's gated by False
+    ['adgn/src/adgn/props/prompts/_partials.j2'],  // See tools_section() macro never called (gated by False)
+    ['adgn/src/adgn/props/prompts/_base.j2.md'],  // See include_tools conditional, search for assignments → always False
   ],
 )

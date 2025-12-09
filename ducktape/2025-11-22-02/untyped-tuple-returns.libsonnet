@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 188-189 define policy persistence methods with unclear return types:
     `get_latest_policy` returns `tuple[str, int] | None` where tuple unpacking
     requires remembering the order and the int's meaning (policy ID) is non-obvious.

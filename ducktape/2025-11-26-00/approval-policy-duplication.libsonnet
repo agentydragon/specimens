@@ -6,7 +6,7 @@ I.issue(
     ['adgn/src/adgn/agent/server/runtime.py'],
     ['adgn/src/adgn/agent/server/protocol.py'],
   ],
-  rationale= |||
+  rationale=|||
     The `approval_policy` field appears BOTH as a direct sibling in Snapshot (protocol.py:199)
     AND inside the `details.SnapshotDetails` bundle (protocol.py:188). Construction in
     runtime.py:232, 244-245 passes `approval_policy` to SnapshotDetails and also assigns it

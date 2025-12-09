@@ -7,7 +7,7 @@ local I = import '../../lib.libsonnet';
 // Align types: prefer time.Time / time.Duration or explicit unit-suffixed integer names.
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Use `time.Time` for timestamps, `time.Duration` for timeouts/durations (avoid bare ints; if you must use int, suffix units in names).
   |||,
   occurrences=[

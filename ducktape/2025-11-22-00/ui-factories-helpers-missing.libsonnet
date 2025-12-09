@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     GlobalApprovalsList.svelte contains explicit tool/resource constructions at 6 locations instead
     of using factories/helpers with defaults: MCP client creation (line 69: createMCPClient with
     name/url/token), resource subscription (line 78: subscribeToResource with URI), resource reading
@@ -22,8 +22,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/web/src/components/GlobalApprovalsList.svelte': [
-      [69, 71],    // Explicit MCP client creation
-      [78, 78],    // Explicit resource subscription
+      [69, 71],  // Explicit MCP client creation
+      [78, 78],  // Explicit resource subscription
       [107, 107],  // Explicit resource reading
       [115, 121],  // Explicit approval construction
       [138, 142],  // Explicit approve tool call

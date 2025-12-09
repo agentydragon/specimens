@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     When user provides explicit config file flags (--mcp-config or --initial-policy) with
     non-existent file paths, the code silently falls back without error messages.
 
@@ -26,12 +26,12 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/agent/mcp_bridge/cli.py': [[86, 89]]},
+      files: { 'adgn/src/adgn/agent/mcp_bridge/cli.py': [[86, 89]] },
       note: '--mcp-config flag: silent fallback to empty config MCPConfig(mcpServers={})',
       expect_caught_from: [['adgn/src/adgn/agent/mcp_bridge/cli.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/mcp_bridge/cli.py': [[92, 93]]},
+      files: { 'adgn/src/adgn/agent/mcp_bridge/cli.py': [[92, 93]] },
       note: '--initial-policy flag: silent fallback to None',
       expect_caught_from: [['adgn/src/adgn/agent/mcp_bridge/cli.py']],
     },

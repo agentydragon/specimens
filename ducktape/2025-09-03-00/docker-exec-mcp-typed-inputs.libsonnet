@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Docker Exec MCP tool inputs should be declared as strongly-typed (Pydantic) parameters on the FastMCP
     tool function, so validation is handled by the framework and schemas are auto-exported to MCP clients.
 

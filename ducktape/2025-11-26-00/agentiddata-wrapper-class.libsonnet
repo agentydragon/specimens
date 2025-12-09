@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentIdData is a useless single-field wrapper class (lines 48-50).
 
     The class wraps a single id field and is used in AgentCreatedMsg.data and

@@ -29,7 +29,7 @@ I.issue(
       [475, 477],  // Usage in return statement
     ],
     'adgn/src/adgn/agent/persist/__init__.py': [
-      [82, 87],    // PolicyProposal original type for reference
+      [82, 87],  // PolicyProposal original type for reference
     ],
   },
 )

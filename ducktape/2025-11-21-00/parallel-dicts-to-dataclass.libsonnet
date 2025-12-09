@@ -26,11 +26,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/approvals.py': [
-      [75, 78],   // Two parallel dicts definition
-      [94, 94],   // _requests assignment
-      [98, 98],   // _futures assignment
-      [104, 105], // Both dicts popped together
-      [111, 114], // pending property returning _requests
+      [75, 78],  // Two parallel dicts definition
+      [94, 94],  // _requests assignment
+      [98, 98],  // _futures assignment
+      [104, 105],  // Both dicts popped together
+      [111, 114],  // pending property returning _requests
     ],
   },
 )

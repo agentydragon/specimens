@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `parse_event()` function manually parses event dictionaries using if-elif
     chains that inspect the `type` field and construct the appropriate payload class.
     This is exactly what Pydantic's discriminated union parsing does automatically,
@@ -44,7 +44,7 @@ I.issue(
   filesToRanges={
     'adgn/src/adgn/agent/persist/events.py': [
       [47, 50],  // TypedPayload union with discriminator=None
-      [67, 100], // Manual parse_event() with if-elif chains
+      [67, 100],  // Manual parse_event() with if-elif chains
     ],
   },
 )

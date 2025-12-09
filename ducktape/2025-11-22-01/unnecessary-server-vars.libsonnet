@@ -21,8 +21,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/compositor_factory.py': [
-      [47, 50],   // Unnecessary policy_server variable
-      [52, 59],   // Unnecessary approvals_server variable
+      [47, 50],  // Unnecessary policy_server variable
+      [52, 59],  // Unnecessary approvals_server variable
     ],
   },
 )

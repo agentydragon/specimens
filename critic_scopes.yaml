@@ -79,7 +79,9 @@ ducktape/2025-09-03-00:
   - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/cli.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py"]
-  - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py", "llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py"]
+  - files:
+      - "llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py"
+      - "llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py"
   - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/kernel_exec.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mini_codex/agent.py"]
@@ -88,7 +90,9 @@ ducktape/2025-09-03-00:
   - files: ["llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py"]
   - files: ["llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py"]
-  - files: ["llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py", "llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py"]
+  - files:
+      - "llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py"
+      - "llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py"
 
 ducktape/2025-11-20-00:
   # Individual file scopes (auto-generated from expect_caught_from)

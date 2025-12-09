@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.falsePositive(
-  rationale= |||
+  rationale=|||
     Critics might flag that _run_in_sandbox accepts cwd as string without validating it's absolute,
     and passing relative paths to bubblewrap's --bind/--chdir will fail. However,
     this is acceptable because bubblewrap invoked with relative paths produces clear error messages

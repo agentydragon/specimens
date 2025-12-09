@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The policy_source initialization uses two lines when it could be a single ternary expression:
 
     ```python

@@ -5,7 +5,7 @@ local I = import '../../lib.libsonnet';
 // All describe comments that add no value and should be deleted
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Comments that add no value: obvious narration, historical notes, or trivial restatements
     of what code already shows. Good comments explain non-obvious decisions; these should
     be deleted.
@@ -40,10 +40,10 @@ I.issue(
   |||,
   filesToRanges={
     'llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py': [
-      [873, 873],    // Historical archaeology comment
-      [772, 772],    // Trivial narration: "Detect --amend flag"
-      [686, 687],    // Trivial narration: "Build status string"
-      [694, 695],    // Trivial narration: "Print the status"
+      [873, 873],  // Historical archaeology comment
+      [772, 772],  // Trivial narration: "Detect --amend flag"
+      [686, 687],  // Trivial narration: "Build status string"
+      [694, 695],  // Trivial narration: "Print the status"
     ],
   },
 )

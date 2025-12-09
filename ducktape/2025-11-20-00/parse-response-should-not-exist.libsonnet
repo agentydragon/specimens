@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     parse_response_messages accepts Any and converts to list[ResponseOutputMessage].
     This function exists because callers hold untyped data and need runtime validation.
 

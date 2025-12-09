@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Manual loop to indent lines instead of using `textwrap.indent()` from standard library.
 
     **Current code (cli.py:573-574):**

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Global PersistentShell singleton breaks session isolation and creates hard-to-reason-about shared state.
 
     Summary
@@ -20,8 +20,8 @@ I.issue(
     - Concurrency tests demonstrate isolation (no shared cwd/env/blockers across sessions).
   |||,
   filesToRanges={
-    'internal/shell/persistent.go': [[13, 36]],     // singleton definition + GetPersistentShell
-    'internal/llm/tools/bash.go': [[314, 322]],     // GetPersistentShell + mutation via SetWorkingDir/SetBlockFuncs
+    'internal/shell/persistent.go': [[13, 36]],  // singleton definition + GetPersistentShell
+    'internal/llm/tools/bash.go': [[314, 322]],  // GetPersistentShell + mutation via SetWorkingDir/SetBlockFuncs
   },
   expect_caught_from=[['internal/shell/persistent.go'], ['internal/llm/tools/bash.go']],
 )

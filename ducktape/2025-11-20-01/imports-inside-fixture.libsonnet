@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Imports are placed inside a fixture function instead of at module top level.
 
     In test_policy_resources.py lines 35-37, the fixture `engine` contains imports:

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Per-include stats are computed against the original, unexpanded include patterns, while the
     scan itself expands plain directory includes. This causes counts to be wrong (or zero) for
     includes like "src" that expand to "src/**" during the scan but are later matched literally as

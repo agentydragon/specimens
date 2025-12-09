@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Pinned server tracking uses a separate set _pinned_servers instead of storing the flag in _MountState.
     This splits mount state across two data structures, making it harder to reason about mount lifecycle.
     The pinned flag should be a boolean field in _MountState (e.g., pinned: bool = False).

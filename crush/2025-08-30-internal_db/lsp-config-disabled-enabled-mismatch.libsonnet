@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     LSPConfig.Disabled field has inverted JSON serialization: the Go field is named `Disabled` but serializes as `"enabled"` in JSON.
 
     Field definition at internal/config/config.go:127:

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `AgentRuntime` dataclass has `_ui_manager` and `_ui_bus` fields, but `AgentRegistry.create()` sets them after construction instead of passing them to the constructor.
 
     **Current implementation (registry.py, lines 80-83):**

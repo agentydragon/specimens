@@ -20,7 +20,7 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py': [
-      [67, 100],   // Duplicated logic in list_agents
+      [67, 100],  // Duplicated logic in list_agents
       [108, 135],  // Duplicated logic in get_agent_info
     ],
   },

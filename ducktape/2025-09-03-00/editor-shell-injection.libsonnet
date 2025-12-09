@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     In llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py the editor is invoked via:
     `asyncio.create_subprocess_shell(f"{editor} {commit_msg_path}")`.
 

@@ -3,7 +3,7 @@ local I = import '../../lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/mcp_bridge/auth.py'], ['adgn/src/adgn/agent/mcp_bridge/server.py'], ['adgn/src/adgn/agent/runtime/builder.py'], ['adgn/src/adgn/agent/runtime/infrastructure.py'], ['adgn/src/adgn/agent/runtime/local_runtime.py'], ['adgn/src/adgn/agent/server/mcp_routing.py']],
-  rationale= |||
+  rationale=|||
     Six files have imports inside functions instead of at module top, violating PEP 8:
     auth.py line 180 imports json inside `_create_error_response`; server.py lines
     438-439 and 475-476 import FastAPI/auth modules inside functions; builder.py,

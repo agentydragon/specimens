@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Trivial wrapper functions that add no abstraction value. Only create wrapper
     functions when they add real abstraction (combine multiple operations),
     provide domain-specific naming clarity, or encapsulate complex logic.

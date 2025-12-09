@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     _LiveServer.close() awaits session.__aexit__() and only afterwards closes the stdio
     transport context manager. If the session close raises, the stdio cleanup never runs,
     leaking subprocess pipes and file descriptors.

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `list-presets` functionality is duplicated: both a `--list-presets` boolean flag on `cmd_run` and a separate `list-presets` command exist.
 
     Both implementations call the same `_print_presets()` helper and provide identical functionality:
@@ -33,11 +33,11 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/props/cli_app/main.py': [
-      573,           // Error message mentioning --list-presets
-      592,           // Help text in --preset option
-      605,           // --list-presets flag definition
-      [614, 616],    // Flag handling (early return)
-      [680, 683],    // list-presets command definition
+      573,  // Error message mentioning --list-presets
+      592,  // Help text in --preset option
+      605,  // --list-presets flag definition
+      [614, 616],  // Flag handling (early return)
+      [680, 683],  // list-presets command definition
     ],
   },
   expect_caught_from=[

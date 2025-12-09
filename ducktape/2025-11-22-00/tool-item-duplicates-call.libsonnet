@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 71-72 in state.py define `ToolItem` with fields `tool: str` and `call_id: str` that
     duplicate fields from `ToolCall` (types.py:20-25: `name: str`, `call_id: str`, `args_json: str | None`).
 
@@ -19,10 +19,10 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/state.py': [
-      [71, 72],   // tool and call_id duplicate ToolCall fields
+      [71, 72],  // tool and call_id duplicate ToolCall fields
     ],
     'adgn/src/adgn/agent/types.py': [
-      [20, 25],   // Canonical ToolCall definition
+      [20, 25],  // Canonical ToolCall definition
     ],
   },
   expect_caught_from=[

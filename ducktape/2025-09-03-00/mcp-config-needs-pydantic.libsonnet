@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     MCP server configuration is handled using loose types (str | None for paths, Mapping[str, Any] for config objects) instead of proper Pydantic models. This loses the expected structure and forces type errors to be caught at runtime instead of at type-check time.
 
     Specific problems:

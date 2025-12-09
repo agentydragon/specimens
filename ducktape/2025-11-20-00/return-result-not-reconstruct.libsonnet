@@ -32,7 +32,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/runtime/registry.py': [
-      [43, 44],     // result extraction and dict reconstruction
+      [43, 44],  // result extraction and dict reconstruction
     ],
   },
 )

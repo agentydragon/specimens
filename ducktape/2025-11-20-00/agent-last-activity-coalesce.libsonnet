@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     list_agents_last_activity uses MAX(COALESCE(e.event_at, r.finished_at, r.started_at, a.created_at))
     but COALESCE is evaluated per joined row, not across all rows. When a run has any events,
     COALESCE always picks e.event_at for those rows, so r.finished_at and r.started_at are never

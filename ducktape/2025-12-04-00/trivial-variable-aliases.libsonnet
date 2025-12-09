@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Three event handler methods in `UiEventHandler` create trivial single-use variables that should be inlined directly into the function call:
 
     **Lines 85-86** (`on_user_text_event`): Variable `ut` is assigned `UiUserText(text=evt.text)` and immediately passed to `self._spawn(self._send_and_reduce(ut))`. Inline to: `self._spawn(self._send_and_reduce(UiUserText(text=evt.text)))`.
@@ -14,17 +14,17 @@ I.issueMulti(
   |||,
   occurrences=[
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[85, 86]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[85, 86]] },
       note: 'on_user_text_event: ut variable should be inlined',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[92, 93]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[92, 93]] },
       note: 'on_tool_call_event: tc variable should be inlined',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },
     {
-      files: {'adgn/src/adgn/agent/server/runtime.py': [[100, 101]]},
+      files: { 'adgn/src/adgn/agent/server/runtime.py': [[100, 101]] },
       note: 'on_tool_result_event: fco variable should be inlined',
       expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
     },

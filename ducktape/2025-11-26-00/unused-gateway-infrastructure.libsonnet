@@ -12,7 +12,7 @@ I.issue(
     ['adgn/tests/mcp/resources/test_notifications.py'],
     ['adgn/src/adgn/mcp/compositor/setup.py'],
   ],
-  rationale= |||
+  rationale=|||
     Unused gateway-related infrastructure (stub classes, variables, parameters) that
     should be deleted. Dead code adds maintenance burden without providing value.
 

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Path schema/docs are inconsistent with runtime behavior in internal/llm/tools; the spec (schema/docs) and implementation disagree. Resolve by aligning the declared contract with code or updating the code to meet the declared contract.
   |||,
   occurrences=[

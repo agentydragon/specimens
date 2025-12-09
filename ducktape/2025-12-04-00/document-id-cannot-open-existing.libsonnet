@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The --document-id CLI help text (lines 358, 372) states "Notebook path relative to workspace;
     if missing, a new timestamped notebook is created", implying that when a document ID is
     provided, the wrapper should open that existing notebook if it exists, and only create a new

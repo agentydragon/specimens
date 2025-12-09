@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 58-60 define `AgentStatus` which inherits from `AgentStatusCore` but adds nothing (no fields, methods, or config). Pure noop wrapper.
 
     Used at lines 266-267 for response model/return type, and line 270 performs unnecessary conversion (`AgentStatus(**core.model_dump(mode="json"))`).

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     The `describe` field in ContainerOptions and the `--describe` CLI argument are defined but never used. The field is set from the CLI argument in launcher.py (line 94), but the value is never checked or referenced anywhere in the codebase. Image history is unconditionally fetched in container_session.py (line 393) regardless of this flag's value, making the entire field and its CLI argument dead code.
   |||,
   occurrences=[

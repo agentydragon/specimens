@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Methods `get_agent_mode` (lines 168-177), `get_infrastructure` (lines 158-165), and
     `remove_agent` (lines 224-237) duplicate the same "get agent or raise KeyError" logic.
 

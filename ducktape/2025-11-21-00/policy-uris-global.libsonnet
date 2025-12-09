@@ -29,23 +29,23 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/mcp/_shared/constants.py': [
-      [47, 48],   // Global APPROVAL_POLICY_RESOURCE_URI and PROPOSALS_INDEX_URI constants
+      [47, 48],  // Global APPROVAL_POLICY_RESOURCE_URI and PROPOSALS_INDEX_URI constants
     ],
     'adgn/src/adgn/agent/mcp_bridge/resources.py': [
-      [12, 12],   // ACTIVE_POLICY global constant
-      [67, 69],   // policy_proposal() helper uses global namespace
+      [12, 12],  // ACTIVE_POLICY global constant
+      [67, 69],  // policy_proposal() helper uses global namespace
     ],
     'adgn/src/adgn/agent/approvals.py': [
-      [178, 181], // Notifies both global and agent-scoped URIs
+      [178, 181],  // Notifies both global and agent-scoped URIs
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [
-      [470, 470], // Manual URI construction using global namespace
+      [470, 470],  // Manual URI construction using global namespace
     ],
     'adgn/src/adgn/mcp/approval_policy/server.py': [
-      [132, 132], // Resource registration using global APPROVAL_POLICY_PROPOSALS_INDEX_URI
-      [142, 142], // Resource registration using global APPROVAL_POLICY_RESOURCE_URI
-      [148, 148], // Resource registration using global proposals index + "/list"
-      [161, 161], // Resource registration using global proposals index + "/{id}"
+      [132, 132],  // Resource registration using global APPROVAL_POLICY_PROPOSALS_INDEX_URI
+      [142, 142],  // Resource registration using global APPROVAL_POLICY_RESOURCE_URI
+      [148, 148],  // Resource registration using global proposals index + "/list"
+      [161, 161],  // Resource registration using global proposals index + "/{id}"
     ],
   },
 )

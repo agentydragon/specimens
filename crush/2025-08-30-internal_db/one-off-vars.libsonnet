@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Inline single-use temporaries and trivial wrapper locals (prefer struct literals or direct expressions) to reduce noise and make intent clearer.
   |||,
   occurrences=[

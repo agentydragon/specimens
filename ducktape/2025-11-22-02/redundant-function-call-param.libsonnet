@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The invoker callback is called with both a FunctionCall object and its arguments as separate parameters:
     ```python
     outcome = await invoker(fc, fc.arguments)

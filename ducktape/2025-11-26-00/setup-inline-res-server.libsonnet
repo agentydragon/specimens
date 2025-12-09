@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 31 creates unnecessary res_server intermediate variable.
 
     The variable is assigned and immediately passed to mount_inproc on the next line.

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Errors are ignored in operational code, hiding failures and making diagnosis difficult.
 
     Example

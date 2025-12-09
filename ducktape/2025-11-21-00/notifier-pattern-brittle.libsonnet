@@ -35,8 +35,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/approvals.py': [
-      [82, 82],    // ApprovalHub._notifier field
-      [84, 89],    // set_notifier with "sync and non-blocking" contract
+      [82, 82],  // ApprovalHub._notifier field
+      [84, 89],  // set_notifier with "sync and non-blocking" contract
       [101, 102],  // Unguarded notifier call in await_decision
       [109, 110],  // Unguarded notifier call in resolve
       [156, 156],  // ApprovalPolicyEngine._notify field
@@ -46,10 +46,10 @@ I.issue(
       [209, 211],  // Unnecessary intermediate cb variable pattern
     ],
     'adgn/src/adgn/mcp/approval_policy/server.py': [
-      [96, 100],   // Fire-and-forget notifier with exception swallowing
+      [96, 100],  // Fire-and-forget notifier with exception swallowing
     ],
     'adgn/src/adgn/agent/mcp_bridge/server.py': [
-      [87, 92],    // AgentRegistry.set_notifier (async variant)
+      [87, 92],  // AgentRegistry.set_notifier (async variant)
       [182, 183],  // Unguarded notifier call
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/agents.py': [

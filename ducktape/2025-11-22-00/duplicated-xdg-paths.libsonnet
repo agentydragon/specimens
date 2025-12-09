@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The code constructs XDG user data directory paths (using `user_data_dir("adgn", ...)`)
     in multiple places instead of defining these paths once in a central location.
 

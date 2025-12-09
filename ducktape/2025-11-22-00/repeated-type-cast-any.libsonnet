@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     ToolExec.svelte lines 40-51 and ToolJson.svelte line 33 repeatedly cast item.content
     to `any` instead of using proper typed TypeScript models (ExecContent, JsonContent)
     that already exist in types.ts. ToolExec has `(item.content as any)` repeated 8
@@ -20,10 +20,10 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/web/src/components/ToolExec.svelte': [
-      [40, 51],   // Repeated (item.content as any) casts
+      [40, 51],  // Repeated (item.content as any) casts
     ],
     'adgn/src/adgn/agent/web/src/components/ToolJson.svelte': [
-      [33, 33],   // (c as any).content_kind and (c as any).result
+      [33, 33],  // (c as any).content_kind and (c as any).result
     ],
   },
   expect_caught_from=[

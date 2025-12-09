@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 28 defines `_APPROVALS_AND_TOOLS = dedent("").strip()`, which always evaluates to empty
     string `""`. Line 56 includes this in `"\n\n".join([_BASE, _APPROVALS_AND_TOOLS, _OUTPUT_STYLE, _HOUSE_RULES])`.
 
@@ -15,8 +15,8 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/server/system_message.py': [
-      [28, 28],   // dedent("").strip() creates empty constant
-      [56, 56],   // Empty constant included in join
+      [28, 28],  // dedent("").strip() creates empty constant
+      [56, 56],  // Empty constant included in join
     ],
   },
 )

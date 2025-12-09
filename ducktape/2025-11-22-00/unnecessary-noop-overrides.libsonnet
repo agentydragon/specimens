@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 244-265 in reducer.py define `NotificationsHandler(BaseHandler)` that overrides 7 event
     methods (`on_response`, `on_error`, `on_user_text`, `on_assistant_text`, `on_tool_call`,
     `on_tool_result`, `on_reasoning`) that all just `return None`. Base class already provides these

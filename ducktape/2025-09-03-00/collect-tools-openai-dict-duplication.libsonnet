@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     _collect_tools_live has duplicated logic for building openai_tools dict entries.
     The stdio branch (lines 121-128) and local branch (lines 133-140) create identical
     dict structures with "type", "name", "description", "parameters" keys. Should extract

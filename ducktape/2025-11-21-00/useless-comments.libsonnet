@@ -8,7 +8,7 @@ I.issue(
     ['adgn/src/adgn/agent/mcp_bridge/servers/agents.py'],
     ['adgn/src/adgn/agent/persist/__init__.py'],
   ],
-  rationale= |||
+  rationale=|||
     Comments that add no value: either restating obvious code or providing
     incorrect information about field requirements.
 
@@ -42,8 +42,8 @@ I.issue(
       [791, 791],  // Comment: "Return agent brief with the created agent's ID"
     ],
     'adgn/src/adgn/agent/persist/__init__.py': [
-      [90, 98],    // Decision class with misleading "All fields are REQUIRED" comment
-      [93, 93],    // Line with incorrect comment
+      [90, 98],  // Decision class with misleading "All fields are REQUIRED" comment
+      [93, 93],  // Line with incorrect comment
       [101, 109],  // ToolCallExecution class with misleading "All fields are REQUIRED" comment
       [104, 104],  // Line with redundant comment
       [123, 123],  // agent_id with redundant "# REQUIRED" inline comment

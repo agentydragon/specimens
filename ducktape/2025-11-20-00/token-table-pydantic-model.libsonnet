@@ -38,9 +38,9 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/server/mcp_routing.py': [
-      [37, 40],     // TOKEN_TABLE definition
-      115,          // token_info["role"] access
-      116,          // token_info.get("agent_id") access
+      [37, 40],  // TOKEN_TABLE definition
+      115,  // token_info["role"] access
+      116,  // token_info.get("agent_id") access
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 261-273 contain three redundant `@singledispatch` registered functions that are identical - they all just return `item` unchanged with the same comment "No conversion needed, X is already an InputItem".
 
     Current pattern (duplicated 3 times):
@@ -39,5 +39,5 @@ I.issue(
 
     This eliminates the redundant function definitions while maintaining the same dispatch behavior.
   |||,
-  filesToRanges={'adgn/src/adgn/openai_utils/model.py': [[261, 273]]},
+  filesToRanges={ 'adgn/src/adgn/openai_utils/model.py': [[261, 273]] },
 )

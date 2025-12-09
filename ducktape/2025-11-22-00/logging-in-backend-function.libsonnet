@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     The `generate_commit_message_minicodex()` backend function (minicodex_backend.py, lines
     190-194) calls `configure_logging()` and silences logger levels for several packages.
     Main already has logging configuration (cli.py, lines 490-505, 675 via `_init_logging()`).

@@ -49,7 +49,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/runtime/running.py': [
-      [72, 91],     // close() method with error collection
+      [72, 91],  // close() method with error collection
     ],
   },
 )

@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 80 does `json.loads(...)` to parse JSON, then passes the dict to `PolicyResponse.model_validate(data)`. Pydantic provides `model_validate_json()` which does both steps in one call and is more efficient.
 
     **Benefits of model_validate_json():**

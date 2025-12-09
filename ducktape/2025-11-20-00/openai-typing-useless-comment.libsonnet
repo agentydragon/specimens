@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 108's comment "Removed parse_tool_call..." refers to deleted functions and should be
     removed as useless historical noise.
   |||,

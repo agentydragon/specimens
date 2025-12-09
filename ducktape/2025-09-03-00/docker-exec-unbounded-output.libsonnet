@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Docker Exec MCP returns unbounded stdout/stderr data, which is hazardous for MCP/LLM agents and
     can also lead to process memory growth.
 

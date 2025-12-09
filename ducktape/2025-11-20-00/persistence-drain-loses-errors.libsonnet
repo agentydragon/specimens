@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     RunPersistenceHandler.drain promises to raise RuntimeError when any in-flight persistence
     task fails (docstring lines 71-75), but the _spawn done callback (lines 47-50) discards
     completed tasks from _tasks and only logs exceptions without storing them. By the time

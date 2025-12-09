@@ -28,20 +28,20 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/models/proposal_status.py': [
-      [6, 10],   // ProposalStatus enum definition (should be removed/unified)
+      [6, 10],  // ProposalStatus enum definition (should be removed/unified)
     ],
     'adgn/src/adgn/agent/persist/__init__.py': [
       [54, 58],  // PolicyStatus enum definition (duplicate)
     ],
     'adgn/src/adgn/agent/persist/models.py': [
       [39, 43],  // PolicyStatus enum definition (duplicate, comment says "avoid circular imports")
-      [176, 176], // Policy.status typed as PolicyStatus
+      [176, 176],  // Policy.status typed as PolicyStatus
     ],
     'adgn/src/adgn/agent/persist/sqlite.py': [
-      [217, 217], // Creates with ProposalStatus.PENDING (wrong type)
-      [231, 231], // Filters with ProposalStatus values (wrong type, includes APPROVED which is never set!)
-      [283, 283], // Approves with PolicyStatus.ACTIVE (correct)
-      [293, 293], // Rejects with ProposalStatus.REJECTED (wrong type)
+      [217, 217],  // Creates with ProposalStatus.PENDING (wrong type)
+      [231, 231],  // Filters with ProposalStatus values (wrong type, includes APPROVED which is never set!)
+      [283, 283],  // Approves with PolicyStatus.ACTIVE (correct)
+      [293, 293],  // Rejects with ProposalStatus.REJECTED (wrong type)
     ],
     'adgn/src/adgn/agent/mcp_bridge/servers/approval_policy_bridge.py': [
       [12, 12],  // Imports ProposalStatus

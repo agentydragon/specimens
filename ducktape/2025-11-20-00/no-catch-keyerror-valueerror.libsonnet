@@ -33,7 +33,7 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/server/mcp_routing.py': [
-      [146, 148],   // except (KeyError, ValueError) catch
+      [146, 148],  // except (KeyError, ValueError) catch
     ],
   },
 )

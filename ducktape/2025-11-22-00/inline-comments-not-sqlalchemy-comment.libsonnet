@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     ORM field definitions use inline Python comments instead of SQLAlchemy's `comment=`
     parameter, preventing database schema documentation.
 
@@ -36,12 +36,12 @@ I.issue(
   |||,
   filesToRanges={
     'adgn/src/adgn/agent/persist/models.py': [
-      [68, 69],   // Inline comments instead of comment= parameter
-      [92, 92],   // UUID stored as string comment
-      [122, 122], // Sequence number comment
-      [125, 126], // Payload and call_id comments
-      [150, 152], // Tool call JSON comments
-      [203, 203], // MIME type comment
+      [68, 69],  // Inline comments instead of comment= parameter
+      [92, 92],  // UUID stored as string comment
+      [122, 122],  // Sequence number comment
+      [125, 126],  // Payload and call_id comments
+      [150, 152],  // Tool call JSON comments
+      [203, 203],  // MIME type comment
     ],
   },
 )

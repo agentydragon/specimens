@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     AgentsSidebar.svelte line 347 contains a useless historical comment: "Backdrop
     styling moved to ModalBackdrop component". This documents a past refactoring
     rather than explaining current behavior.

@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Line 293 converts `rec.status` to `ProposalStatus` enum, suggesting the persistence
     layer and application layer use different types for the same concept.
 

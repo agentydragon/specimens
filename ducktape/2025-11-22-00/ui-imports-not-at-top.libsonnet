@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Five Svelte components have imports scattered after comments, state declarations,
     or logic instead of at the top of the `<script>` block.
 

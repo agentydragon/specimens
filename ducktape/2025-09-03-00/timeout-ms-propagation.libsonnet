@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     exec_handler converts timeout_ms to seconds early with int(timeout_ms / 1000), truncating
     sub-second precision (1500ms becomes 1s, 500ms becomes 0→1s). Timeout should be propagated
     as milliseconds (int) throughout the call chain and only divided by 1000.0 at the final

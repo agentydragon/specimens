@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Lines 390-391 in `BoundOpenAIModel.responses_create()` manually construct the reasoning dict:
 
     ```python

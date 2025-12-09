@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     Iteration catches KeyError when agent isn't initialized (lines 245-249):
     ```python
     for agent_id in self.known_agents():

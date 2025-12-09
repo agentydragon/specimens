@@ -1,7 +1,7 @@
 local I = import '../../lib.libsonnet';
 
 I.issue(
-  rationale= |||
+  rationale=|||
     approvals_pending_global builds URIs and JSON by accessing approval.call_id, approval.tool,
     and approval.args, but PendingApproval only exposes tool_call (a ToolCall object) and timestamp.
     The code raises AttributeError on every invocation because these attributes don't exist at the

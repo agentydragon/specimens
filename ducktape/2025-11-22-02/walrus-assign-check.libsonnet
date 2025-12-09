@@ -5,7 +5,7 @@ local I = import '../../lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/mcp_bridge/auth.py'], ['adgn/src/adgn/agent/mcp_bridge/server.py']],
-  rationale= |||
+  rationale=|||
     Multiple locations assign a variable and immediately test it, where the walrus
     operator (:=) would combine assignment and conditional test more idiomatically.
 
@@ -57,12 +57,12 @@ I.issue(
 
   filesToRanges={
     'adgn/src/adgn/agent/mcp_bridge/auth.py': [
-      [75, 76],    // TokenAuthMiddleware.dispatch(): auth_header + if
+      [75, 76],  // TokenAuthMiddleware.dispatch(): auth_header + if
       [113, 114],  // generate_ui_token(): env_token + if
       [144, 148],  // UITokenAuthMiddleware.__call__(): auth_header + if
     ],
     'adgn/src/adgn/agent/mcp_bridge/server.py': [
-      [85, 89],    // Single-use builder variable
+      [85, 89],  // Single-use builder variable
       [172, 173],  // agent extraction and None check
     ],
   },

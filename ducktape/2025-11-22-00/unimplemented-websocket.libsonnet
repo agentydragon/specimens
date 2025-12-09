@@ -2,7 +2,7 @@ local I = import '../../lib.libsonnet';
 
 
 I.issueMulti(
-  rationale= |||
+  rationale=|||
     Four Svelte components create independent MCP client connections: AgentsSidebar (line 85), ChatPane
     (lines 87-91 and 124-128 - TWO separate clients in same component), MessageComposer (lines 16-20),
     and GlobalApprovalsList (lines 69-71 targeting non-existent /api/mcp endpoint).
