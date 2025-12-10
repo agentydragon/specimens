@@ -50,7 +50,6 @@ I.issue(
     ],
     'adgn/src/adgn/mcp/exec/docker/server.py': [
       [5, 5],  // Docstring mentions "RO/RW volumes"
-      [85, 85],  // volumes=s.volumes in container_info resource
     ],
   },
   expect_caught_from=[

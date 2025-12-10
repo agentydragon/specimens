@@ -43,23 +43,5 @@ I.issueMulti(
       note: 'Creates "global" compositor - may be justified for two-level compositor pattern but likely still redundant',
       expect_caught_from: [['adgn/src/adgn/agent/mcp_bridge/compositor_factory.py']],
     },
-    {
-      files: {
-        'adgn/src/adgn/mcp/compositor/server.py': [
-          [647, 647],  // Compositor(name="MCP Compositor Server", ...)
-        ],
-      },
-      note: 'Factory function passing custom name - likely unnecessary for factory-created compositors',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
-    },
-    {
-      files: {
-        'adgn/src/adgn/props/grader/grader.py': [
-          [397, 397],  // Compositor("compositor") in ternary
-        ],
-      },
-      note: 'Grader using default name explicitly - completely redundant',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
-    },
   ],
 )

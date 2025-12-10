@@ -20,6 +20,6 @@ I.issue(
     The database view is the single source of truth and should remain so.
   |||,
   filesToRanges={
-    'adgn/src/adgn/openai_utils/cost.py': [[13, 42]],
+    'adgn/src/adgn/openai_utils/cost.py': [[13, 41]],
   },
 )

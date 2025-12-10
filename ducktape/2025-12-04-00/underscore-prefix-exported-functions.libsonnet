@@ -56,16 +56,9 @@ I.issue(
     'adgn/src/adgn/mcp/_shared/container_session.py': [
       [100, 102],  // _session_state_from_ctx definition
       [388, 403],  // _render_container_result definition
-      [406, 490],  // _run_ephemeral_container definition
-      [493, 550],  // _run_session_container definition
     ],
     'adgn/src/adgn/mcp/exec/docker/server.py': [
       [19, 22],  // Import of underscore-prefixed functions
-      [70, 70],  // Usage: _session_state_from_ctx
-      [111, 111],  // Usage: _session_state_from_ctx
-      [117, 117],  // Usage: _run_ephemeral_container
-      [119, 119],  // Usage: _run_session_container
-      [122, 122],  // Usage: _render_container_result
     ],
   },
   expect_caught_from=[

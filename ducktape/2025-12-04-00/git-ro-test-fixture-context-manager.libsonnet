@@ -47,7 +47,7 @@ I.issue(
   filesToRanges={
     'adgn/tests/mcp/git_ro/conftest.py': [[65, 80]],  // fixture definition
     'adgn/tests/mcp/git_ro/test_diff.py': [[7, 8], [29, 30]],  // two occurrences
-    'adgn/tests/mcp/git_ro/test_show.py': [[8, 8], [22, 22], [36, 36]],  // three occurrences
+    'adgn/tests/mcp/git_ro/test_show.py': [[8, 8], [22, 22]],  // two occurrences
     'adgn/tests/mcp/git_ro/test_status_log.py': [[8, 8], [14, 14]],  // two occurrences
   },
   expect_caught_from=[
