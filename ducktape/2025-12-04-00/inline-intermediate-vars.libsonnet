@@ -110,10 +110,5 @@ I.issueMulti(
       note: 'Intermediate variable summary_items should be inlined into function call',
       expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
     },
-    {
-      files: { 'wt/src/wt/client/wt_client.py': [[373, 374]] },
-      note: 'Variable response_json assigned then break should be direct return',
-      expect_caught_from: [['wt/src/wt/client/wt_client.py']],
-    },
   ],
 )

@@ -1,0 +1,86 @@
+local I = import '../../lib.libsonnet';
+
+I.issue(
+  rationale=|||
+    Line 73 in cli_app/shared.py has a dead parameter:
+    system_prompt is never set by any caller, only uses default value.
+
+    Current code:
+
+    async def run_prompt_async(
+        prompt: str,
+        server_factories: Mapping[str, Callable[..., FastMCP]],
+        client: OpenAIModelProto,
+        system_prompt: str = "You are a code agent. Be concise.",  # ← Line 73: default value
+    ) -> AgentResult:
+        """Run the prompt using MiniCodex + MCP specs and return an AgentResult."""
+        # ... setup code ...
+        async with Client(comp) as mcp_client:
+            agent = await MiniCodex.create(
+                mcp_client=mcp_client,
+                system=system_prompt,  # ← Line 58: used here
+                client=client,
+                handlers=[...],
+                tool_policy=RequireAnyTool(),
+            )
+            res_any = await agent.run(prompt)
+        return AgentResult(final_text=res_any.text, transcript=transcript)
+
+    async def run_check_minicodex_async(...) -> int:
+        ...
+        res = await run_prompt_async(prompt, server_factories, client=client)  # ← Line 152: no system_prompt arg
+        ...
+
+    Problem:
+
+    **Dead parameter**: system_prompt has a default value but is never explicitly passed
+    by any caller (line 152). The parameter suggests configurability but there's no actual
+    use case for varying the system prompt - it's always "You are a code agent. Be concise."
+
+    Why this is dead:
+    - Only one call site (line 152)
+    - That call site never passes system_prompt argument
+    - Default value is always used
+    - No evidence of needing different system prompts for different use cases
+
+    This adds false flexibility that's never exercised, making the API look more general
+    than it actually is.
+
+    Suggested fix:
+
+    1. Remove system_prompt parameter from run_prompt_async signature (line 73)
+    2. Inline the literal at the usage site (line 58):
+       `system="You are a code agent. Be concise."`
+
+    After refactoring:
+
+    async def run_prompt_async(
+        prompt: str,
+        server_factories: Mapping[str, Callable[..., FastMCP]],
+        client: OpenAIModelProto,
+    ) -> AgentResult:
+        """Run the prompt using MiniCodex + MCP specs and return an AgentResult."""
+        # ... setup code ...
+        async with Client(comp) as mcp_client:
+            agent = await MiniCodex.create(
+                mcp_client=mcp_client,
+                system="You are a code agent. Be concise.",  # Inline the literal
+                client=client,
+                handlers=[...],
+                tool_policy=RequireAnyTool(),
+            )
+            res_any = await agent.run(prompt)
+        return AgentResult(final_text=res_any.text, transcript=transcript)
+
+    Benefits:
+    - Removes unused parameter
+    - Makes it clear the system prompt is a constant, not a variable
+    - Simpler function signature (3 params instead of 4)
+    - Reduces false generality in the API
+    - If different system prompts are needed in the future, add the parameter then
+      (YAGNI principle)
+  |||,
+  filesToRanges={
+    'adgn/src/adgn/props/cli_app/shared.py': [[73, 73], 58],
+  },
+)
