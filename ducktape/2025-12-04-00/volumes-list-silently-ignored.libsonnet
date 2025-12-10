@@ -1,0 +1,77 @@
+local I = import '../../lib.libsonnet';
+
+I.issue(
+  rationale=|||
+    The `_build_host_config` function silently ignores `opts.volumes` when it's a `list[str]`, despite `list[str]` being an explicitly allowed type in the type signature.
+
+    **Type declaration (line 54):**
+    ```python
+    volumes: dict[str, dict[str, str]] | list[str] | None = None
+    ```
+
+    **Implementation (lines 122-130):**
+    ```python
+    if opts.volumes and isinstance(opts.volumes, dict):
+        binds = []
+        for host_path, volume_config in opts.volumes.items():
+            bind = f"{host_path}:{volume_config['bind']}"
+            if mode := volume_config.get("mode"):
+                bind += f":{mode}"
+            binds.append(bind)
+        if binds:
+            host_config["Binds"] = binds
+    ```
+
+    The code only handles the `dict` case. If `opts.volumes` is a `list[str]` (which is valid according to the type), the volumes are silently ignored - no error, no warning, just skipped.
+
+    **Why this is a problem:**
+    - Silent failures are dangerous - users won't know their volumes aren't being mounted
+    - Type signature promises support for `list[str]`, but implementation doesn't deliver
+    - Violates the principle of least surprise (type-checked code fails at runtime)
+
+    **Docker Binds format:**
+    Docker expects binds as a list of strings in the format `"host_path:container_path:mode"` (mode is optional). So if `volumes` is already a `list[str]`, it likely needs minimal transformation or might already be in the correct format.
+
+    **Fix options:**
+
+    **Option 1: Support list[str] format**
+    Handle the `list[str]` case by passing it through or transforming it:
+    ```python
+    if opts.volumes:
+        if isinstance(opts.volumes, dict):
+            binds = []
+            for host_path, volume_config in opts.volumes.items():
+                bind = f"{host_path}:{volume_config['bind']}"
+                if mode := volume_config.get("mode"):
+                    bind += f":{mode}"
+                binds.append(bind)
+        elif isinstance(opts.volumes, list):
+            binds = opts.volumes  # Already in Docker bind format
+        else:
+            raise TypeError(f"volumes must be dict or list, got {type(opts.volumes)}")
+        host_config["Binds"] = binds
+    ```
+
+    **Option 2: Remove list[str] from type if unsupported**
+    If `list[str]` isn't actually supported, remove it from the type signature:
+    ```python
+    volumes: dict[str, dict[str, str]] | None = None
+    ```
+    This makes the type honest about what's actually supported.
+
+    **Option 3: Raise error on unsupported type**
+    Keep the type but explicitly error on unsupported values:
+    ```python
+    if opts.volumes:
+        if isinstance(opts.volumes, list):
+            raise ValueError("list[str] volumes not yet implemented")
+        # ... existing dict handling
+    ```
+  |||,
+  filesToRanges={
+    'adgn/src/adgn/mcp/_shared/container_session.py': [
+      [54, 54],  // Type declaration allowing list[str]
+      [122, 130],  // Implementation only handling dict case
+    ],
+  },
+)

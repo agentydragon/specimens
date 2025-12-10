@@ -1,0 +1,75 @@
+local I = import '../../lib.libsonnet';
+
+I.issue(
+  rationale=|||
+    Four functions in `container_session.py` have underscore prefixes (`_session_state_from_ctx`, `_run_session_container`, `_run_ephemeral_container`, `_render_container_result`) despite being imported and used by external modules, specifically `docker/server.py`.
+
+    **Python naming convention:**
+    Underscore-prefixed names indicate private/internal functions that should not be used outside their defining module. Functions that are part of a module's public API should not have leading underscores.
+
+    **Current state in container_session.py:**
+    - `_session_state_from_ctx` (line 100) - extracts session state from FastMCP context
+    - `_run_session_container` (line 493) - executes command in per-session container
+    - `_run_ephemeral_container` (line 406) - executes command in ephemeral container
+    - `_render_container_result` (line 388) - formats container execution result
+
+    **Usage in docker/server.py:**
+    All four functions are explicitly imported (lines 19-22) and used:
+    - `_session_state_from_ctx`: lines 70, 111
+    - `_run_session_container`: line 119
+    - `_run_ephemeral_container`: line 117
+    - `_render_container_result`: line 122
+
+    **Why this is a problem:**
+    - Violates Python naming conventions (PEP 8)
+    - Misleading - suggests these are private when they're actually public API
+    - Makes the code harder to understand (are we breaking encapsulation?)
+    - Inconsistent with non-underscore exports from same module (`make_container_lifespan`, `scoped_container`, `ContainerOptions`)
+
+    **Fix options:**
+
+    **Option 1: Remove underscore prefixes (simple rename)**
+    - `_session_state_from_ctx` → `session_state_from_ctx`
+    - `_run_session_container` → `run_session_container`
+    - `_run_ephemeral_container` → `run_ephemeral_container`
+    - `_render_container_result` → `render_container_result`
+    Update the import statement in `docker/server.py` accordingly.
+
+    **Option 2: Restructure module to match actual visibility (recommended)**
+    The current structure suggests these functions were initially intended as internal helpers but evolved into public API. Consider:
+    - Move the four public functions into their own module (e.g., `container_exec.py` or make them methods on a public class)
+    - Keep truly private helpers (`_build_host_config`, `_create_and_start_container`, etc.) in `container_session.py` with underscores
+    - This would make the module boundaries clearer and match the actual usage pattern
+
+    Alternative: If these functions are tightly coupled to the session container lifecycle, create a public class (e.g., `ContainerExecutor`) with these as public methods, keeping internal helpers as private methods.
+
+    **Truly private functions:**
+    Other underscore-prefixed functions in the module that are NOT exported are correctly named as private:
+    - `_build_host_config` (line 104)
+    - `_create_and_start_container` (line 139)
+    - `_race_with_timeout` (line 277)
+    - `_kill_container_with_retry` (line 302)
+    - `_normalize_docker_logs_to_bytes` (line 319)
+    - `_collect_from_exec_stream` (line 355)
+  |||,
+  filesToRanges={
+    'adgn/src/adgn/mcp/_shared/container_session.py': [
+      [100, 102],  // _session_state_from_ctx definition
+      [388, 403],  // _render_container_result definition
+      [406, 490],  // _run_ephemeral_container definition
+      [493, 550],  // _run_session_container definition
+    ],
+    'adgn/src/adgn/mcp/exec/docker/server.py': [
+      [19, 22],  // Import of underscore-prefixed functions
+      [70, 70],  // Usage: _session_state_from_ctx
+      [111, 111],  // Usage: _session_state_from_ctx
+      [117, 117],  // Usage: _run_ephemeral_container
+      [119, 119],  // Usage: _run_session_container
+      [122, 122],  // Usage: _render_container_result
+    ],
+  },
+  expect_caught_from=[
+    ['adgn/src/adgn/mcp/_shared/container_session.py'],
+    ['adgn/src/adgn/mcp/exec/docker/server.py'],
+  ],
+)

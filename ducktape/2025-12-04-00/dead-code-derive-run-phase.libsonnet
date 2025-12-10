@@ -1,0 +1,14 @@
+local I = import '../../lib.libsonnet';
+
+I.issue(
+  rationale=|||
+    The function `derive_run_phase` (lines 25-36) is defined but never called. It was replaced by `determine_run_phase` (lines 37+) which provides more precise run phase determination by considering both pending approvals AND MCP inflight status.
+
+    The old function only checked pending approvals, returning either IDLE or WAITING_APPROVAL. The new function adds proper IDLE detection (no pending approvals AND no MCP inflight).
+
+    Since the old function is completely unused and superseded, it should be deleted.
+  |||,
+  filesToRanges={
+    'adgn/src/adgn/agent/server/status_shared.py': [[25, 36]],
+  }
+)

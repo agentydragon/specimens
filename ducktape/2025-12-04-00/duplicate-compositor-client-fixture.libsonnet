@@ -1,0 +1,42 @@
+local I = import '../../lib.libsonnet';
+
+I.issueMulti(
+  rationale=|||
+    The `compositor_client` fixture is defined identically in two separate conftest.py
+    files, violating DRY principle:
+
+    1. tests/mcp/conftest.py:47-50
+    2. tests/agent/conftest.py:49-52
+
+    Both have identical implementation (only docstring differs slightly):
+
+    ```python
+    @pytest.fixture
+    async def compositor_client(compositor):
+        """Client connected to the compositor."""
+        async with Client(compositor) as client:
+            yield client
+    ```
+
+    This creates potential issues:
+    - Fixture shadowing/conflicts when tests import from both scopes
+    - Maintenance burden: changes must be duplicated in both places
+    - Inconsistent docstrings ("compositor" vs "compositor fixture")
+
+    Resolution: Consolidate into a single shared fixture in the common conftest.py
+    (likely tests/conftest.py at the root level, or keep in tests/mcp/conftest.py
+    since MCP tests are the primary consumer and agent tests can import from there).
+  |||,
+  occurrences=[
+    {
+      files: {
+        'adgn/tests/mcp/conftest.py': [[47, 50]],
+        'adgn/tests/agent/conftest.py': [[49, 52]],
+      },
+      note: 'Duplicate fixture definition across MCP and agent test suites',
+      expect_caught_from: [
+        ['adgn/tests/mcp/conftest.py', 'adgn/tests/agent/conftest.py'],
+      ],
+    },
+  ],
+)

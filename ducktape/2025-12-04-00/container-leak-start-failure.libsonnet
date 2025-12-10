@@ -1,0 +1,114 @@
+local I = import '../../lib.libsonnet';
+
+I.issue(
+  rationale=|||
+    Lines 132-174 in _shared/container_session.py contain a critical container leak
+    when container.start() fails after container.create() succeeds.
+
+    The vulnerable code path:
+
+    async def _start_container(...) -> dict[str, Any]:
+        container_config = opts.to_container_config(...)
+        container = await client.containers.create(container_config)  # ← CREATED
+        await container.start()  # ← If this FAILS, exception raised
+        return {"Id": container._id, "Name": ""}  # ← Never executes
+
+    def make_container_lifespan(opts: ContainerOptions):
+        @asynccontextmanager
+        async def lifespan(server: FastMCP):
+            client = await _init_docker()
+            container_dict = None  # ← Stays None if start fails
+            try:
+                if not opts.ephemeral:
+                    container_dict = await _start_container(...)  # ← Assignment never completes
+                yield ContainerSessionState(...)
+            finally:
+                if container_dict is not None:  # ← False, so cleanup skipped!
+                    # ... cleanup code never runs
+
+    Exact failure scenario:
+    1. Line 135: client.containers.create() succeeds → container exists in Docker
+    2. Line 136: container.start() fails (e.g., port conflict, resource limit,
+       invalid command, missing dependency)
+    3. Exception raised from _start_container() → return never executes
+    4. Line 151: Assignment never completes → container_dict remains None
+    5. Line 163: Cleanup skipped because container_dict is None
+    6. Result: Container leaked (created but not started, never cleaned up)
+
+    Why this is critical:
+    - Container exists in Docker daemon consuming resources (memory, storage)
+    - No reference exists to clean it up (container_dict was never set)
+    - Accumulates on repeated failures (e.g., misconfigured service startup)
+    - Not auto-removed (auto_remove=True only works for started containers)
+    - Requires manual intervention: docker container prune
+
+    Root cause: Split responsibility between creation and lifecycle management.
+    The _start_container() helper owns creation+start but doesn't own cleanup,
+    while the lifespan manager owns cleanup but can't clean up if the helper
+    fails before returning the ID.
+
+    Suggested fix: Use a context manager to tie container lifecycle to scope:
+
+    @asynccontextmanager
+    async def scoped_container(
+        client: aiodocker.Docker,
+        opts: ContainerOptions
+    ) -> AsyncIterator[str]:
+        """Create, start, and manage a Docker container's lifecycle.
+
+        Guarantees cleanup even if start fails. Yields container ID.
+        """
+        container_config = opts.to_container_config(cmd=SLEEP_FOREVER_CMD, auto_remove=False)
+        container = await client.containers.create(container_config)
+        container_id = container.id
+
+        try:
+            await container.start()
+            yield container_id
+        finally:
+            # Always clean up, even if start failed
+            with anyio.CancelScope(shield=True):
+                try:
+                    await container.kill()
+                    await container.delete(force=True)
+                except Exception as e:
+                    logger.error(f"Container cleanup failed for {container_id}: {e}")
+                    raise
+
+    Then simplify lifespan:
+
+    @asynccontextmanager
+    async def lifespan(server: FastMCP):
+        client = await _init_docker()
+        try:
+            if not opts.ephemeral:
+                async with scoped_container(client, opts) as container_id:
+                    yield ContainerSessionState(
+                        docker_client=client,
+                        container={"Id": container_id, "Name": ""},
+                        ...
+                    )
+            else:
+                yield ContainerSessionState(
+                    docker_client=client,
+                    container=None,
+                    ...
+                )
+        finally:
+            await client.close()
+
+    Benefits:
+    - Leak-proof: __aexit__ runs even if start() fails (container_id captured before start)
+    - Clear ownership: Context manager owns entire container lifecycle
+    - Composable: Can nest or chain context managers
+    - Standard pattern: Follows Python context manager idioms
+    - Simpler: Removes _start_container() helper, reducing indirection
+    - Shield-wrapped: Cleanup protected from cancellation
+
+    Note: aiodocker.containers.run() doesn't help - it combines create+start but
+    doesn't clean up on failure, just attaches container_id to the exception.
+  |||,
+  filesToRanges={
+    'adgn/src/adgn/mcp/_shared/container_session.py': [[132, 174]],
+  },
+)
