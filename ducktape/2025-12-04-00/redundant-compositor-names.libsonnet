@@ -23,23 +23,6 @@ I.issueMulti(
   occurrences=[
     {
       files: {
-        'adgn/tests/mcp/compositor/test_lifecycle.py': [
-          [17, 17],  // Compositor("test") in test_compositor_state_transitions
-          [32, 32],  // Compositor("test") in test_double_enter_raises
-          [41, 41],  // Compositor("test") in test_reuse_closed_compositor_raises
-          [54, 54],  // Compositor("test") in test_mount_after_close_raises
-          [71, 71],  // Compositor("test") in test_cleanup_removes_non_pinned_servers
-          [164, 164],  // Compositor("test") in test_exception_in_body_still_cleans_up
-          [212, 212],  // Compositor("test") in test_close_continues_on_per_server_failure
-          [282, 282],  // Compositor("test") in test_pinned_server_survives_close
-          [309, 309],  // Compositor("test") in test_leak_detection_state
-        ],
-      },
-      note: 'Test file using arbitrary "test" name throughout - completely unused',
-      expect_caught_from: [['adgn/tests/mcp/compositor/test_lifecycle.py']],
-    },
-    {
-      files: {
         'adgn/tests/conftest.py': [
           [81, 81],  // Compositor("comp") in compositor fixture
           [355, 355],  // Compositor("comp") in make_pg_client
@@ -59,15 +42,6 @@ I.issueMulti(
       },
       note: 'Creates "global" compositor - may be justified for two-level compositor pattern but likely still redundant',
       expect_caught_from: [['adgn/src/adgn/agent/mcp_bridge/compositor_factory.py']],
-    },
-    {
-      files: {
-        'adgn/src/adgn/props/noop_classifier/classifier.py': [
-          [137, 137],  // Compositor("compositor") in _worker_process
-        ],
-      },
-      note: 'Worker compositor using default name explicitly - completely redundant',
-      expect_caught_from: [['adgn/src/adgn/props/noop_classifier/classifier.py']],
     },
     {
       files: {
