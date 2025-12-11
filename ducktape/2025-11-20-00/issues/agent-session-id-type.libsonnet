@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // AgentSession.agent_id uses str instead of AgentID domain type
 

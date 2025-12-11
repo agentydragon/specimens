@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // TokenRole + agent_id allows invalid state (AGENT role without agent_id)
 

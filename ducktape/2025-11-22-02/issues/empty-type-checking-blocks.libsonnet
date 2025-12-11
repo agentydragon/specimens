@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 I.issue(
   expect_caught_from=[['adgn/src/adgn/agent/approvals.py'], ['adgn/src/adgn/agent/agent.py']],

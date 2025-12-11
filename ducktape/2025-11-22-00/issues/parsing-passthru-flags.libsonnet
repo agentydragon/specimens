@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: parsing-passthru-flags, parsing-message-flag-passthru
 // Both describe manual parsing of CLI flags from passthru strings

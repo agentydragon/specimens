@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: redundant-variable-rename, needless-variable-rename
 // Both describe unnecessary variable renames that add no clarity

@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: useless-comments (Python), useless-ts-comments (TypeScript)
 // Both describe comments that merely restate obvious code

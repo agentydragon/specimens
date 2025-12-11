@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: assign-then-test-no-walrus, builder-var-missing-walrus
 // Both describe assign-and-check patterns that should use walrus operator

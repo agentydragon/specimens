@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: walrus-env-token, walrus-eval-index, walrus-models-getattr
 // All describe assign-and-check patterns that should use walrus operator

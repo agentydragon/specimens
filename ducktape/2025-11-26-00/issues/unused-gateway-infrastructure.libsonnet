@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: test-unused-stub-gateway-classes, test-unused-gw-context-manager,
 // setup-unused-gateway-param

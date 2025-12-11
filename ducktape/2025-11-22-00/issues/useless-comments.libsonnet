@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: redundant-default-noop-comments, useless-separator-block-comments,
 // useless-moved-function-comment, useless-removed-code-comment

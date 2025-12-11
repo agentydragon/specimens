@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Related issue: pydantic-write-path.libsonnet (output side of persistence boundary handling)
 

@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Policy proposal_id: database is int but APIs use str with runtime conversion
 

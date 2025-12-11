@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: ui-swallowed-agent-polling-errors, ui-swallowed-websocket-errors,
 // ui-swallowed-error-stores-channels, ui-swallowed-localstorage-errors,

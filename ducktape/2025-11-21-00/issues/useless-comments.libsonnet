@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: create-agent-useless-comments, misleading-required-comments
 // Both describe comments that add no value (obvious or misleading)

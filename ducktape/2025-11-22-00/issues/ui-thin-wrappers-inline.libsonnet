@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: thin-wrapper-apply-preset, ui-thin-wrapper-open-method
 // Both describe single-use thin wrapper functions that should be inlined

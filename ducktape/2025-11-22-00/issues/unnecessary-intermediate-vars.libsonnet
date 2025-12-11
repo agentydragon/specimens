@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: unnecessary-intermediate-vars, intermediate-var-single-use-path, unnecessary-intermediate-boolean, unnecessary-policies-variable
 // All describe intermediate variables used only once that should be inlined

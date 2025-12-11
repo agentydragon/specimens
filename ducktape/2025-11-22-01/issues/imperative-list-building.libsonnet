@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: imperative-list-building, imperative-approvals-list, imperative-proposals-list
 // All describe imperative append() loops that should use list comprehensions

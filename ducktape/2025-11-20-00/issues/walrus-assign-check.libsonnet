@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: walrus-assign-check-none, walrus-get-local-runtime, walrus-token-remove-comment
 // All describe assign-and-check patterns that should use walrus operator

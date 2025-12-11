@@ -1,4 +1,4 @@
-local I = import '../../lib.libsonnet';
+local I = import 'lib.libsonnet';
 
 // Merged: discriminated-union-guards, zod-validation-missing
 // Both describe missing Zod validation for Pydantic-derived types in frontend
