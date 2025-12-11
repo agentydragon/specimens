@@ -34,3 +34,13 @@ repos:
       - id: jsonnet-format
         name: jsonnet-format (format specimen .libsonnet files)
         files: ".*\\.libsonnet$"
+
+  # Local hooks
+  - repo: local
+    hooks:
+      - id: block-snapshot-code-changes
+        name: Block changes to committed snapshot code
+        entry: .pre-commit-hooks/block-snapshot-code-changes.py
+        language: python
+        pass_filenames: false
+        always_run: true
