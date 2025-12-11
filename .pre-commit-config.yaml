@@ -47,3 +47,10 @@ repos:
         language: python
         pass_filenames: false
         always_run: true
+
+      - id: validate-issue-ids
+        name: Validate issue ID lengths and format
+        entry: .pre-commit-hooks/validate-issue-ids.py
+        language: python
+        pass_filenames: false
+        always_run: true
