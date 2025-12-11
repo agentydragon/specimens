@@ -54,7 +54,7 @@ def is_in_committed_snapshot(file_path: str) -> bool:
 
         # Try checking for any .libsonnet file (current structure)
         ls_tree = subprocess.run(
-            ["git", "ls-tree", "HEAD", str(snapshot_dir)],
+            ["git", "ls-tree", "-r", "HEAD", str(snapshot_dir)],
             capture_output=True,
             text=True,
         )
