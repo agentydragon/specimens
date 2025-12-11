@@ -19,15 +19,14 @@ repos:
       - id: check-yaml
         args: ["--allow-multiple-documents"]
       - id: check-json
+        exclude: '.*/code/.*'  # Skip committed snapshot code (may have JSON5/tsconfig.json)
 
   # YAML linting
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
       - id: yamllint
-        args:
-          - "-d"
-          - "{extends: default, rules: {line-length: {max: 120}, document-start: disable, indentation: {indent-sequences: consistent}}}"
+        # Config in .yamllint file (line-length: 120, indent-sequences: consistent)
         additional_dependencies: ['pyyaml']
         exclude: '.*/code/.*'  # Skip committed snapshot code directories
 
