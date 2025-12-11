@@ -15,103 +15,124 @@ ducktape/2025-09-03-00:
   bundle: null
 ducktape/2025-11-20-00:
   source:
-    vcs: git
-    url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-20-adgn
-    commit: 20d446fc735cecd865127aae52db466bccc309d6
+    vcs: local
+    root: code
   split: train
   bundle:
     source_commit: b729b362de957d127d1e8ac17d8811665ce805fe
     include:
-      - adgn/
-      - wt/
+    - adgn/
+    - wt/
     exclude:
-      - adgn/src/adgn/agent/web/
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-20-01:
-  source:
+    - adgn/src/adgn/agent/web/
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-20-repo
-    commit: 023db0b8da0f0211b268c7ebe27d38f46215be30
+    ref: refs/tags/specimen-2025-11-20-adgn
+    commit: 20d446fc735cecd865127aae52db466bccc309d6
+ducktape/2025-11-20-01:
+  source:
+    vcs: local
+    root: code
   split: test
   bundle:
     source_commit: c18279d2c1716008afc17a12350aaee89248c1ca
     include:
-      - adgn/
-      - wt/
+    - adgn/
+    - wt/
     exclude:
-      - adgn/src/adgn/agent/web/
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-21-00:
-  source:
+    - adgn/src/adgn/agent/web/
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-21-repo
-    commit: bf7fbc52075ccce94fb79cfe2e049e00f40d6083
+    ref: refs/tags/specimen-2025-11-20-repo
+    commit: 023db0b8da0f0211b268c7ebe27d38f46215be30
+ducktape/2025-11-21-00:
+  source:
+    vcs: local
+    root: code
   split: valid
   bundle:
     source_commit: 167e39012aca16381442c53bf10d5fc980d0f26a
     include:
-      - adgn/
-      - wt/
+    - adgn/
+    - wt/
     exclude:
-      - adgn/src/adgn/agent/web/
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-22-00:
-  source:
+    - adgn/src/adgn/agent/web/
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-22-post-fixes
-    commit: 74936f07c1009eecefe25ccc1d240399eb1f6a6b
+    ref: refs/tags/specimen-2025-11-21-repo
+    commit: bf7fbc52075ccce94fb79cfe2e049e00f40d6083
+ducktape/2025-11-22-00:
+  source:
+    vcs: local
+    root: code
   split: valid
   bundle:
     source_commit: 9395ba65dcef5057176c890981fa0e973d9798eb
     include:
-      - adgn/
+    - adgn/
     exclude:
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-22-01:
-  source:
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-22-repo
-    commit: 3561e7e59d91f487dbaaa4bfa99a8dd3d97b07ef
+    ref: refs/tags/specimen-2025-11-22-post-fixes
+    commit: 74936f07c1009eecefe25ccc1d240399eb1f6a6b
+ducktape/2025-11-22-01:
+  source:
+    vcs: local
+    root: code
   split: valid
   bundle:
     source_commit: c263d6808e04d509d1a48b17fa6016733bb1fce6
     include:
-      - adgn/
-      - wt/
+    - adgn/
+    - wt/
     exclude:
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-22-02:
-  source:
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-22-repo-2
-    commit: e81d92265969f98e4eef41207e295e84ffda05f7
+    ref: refs/tags/specimen-2025-11-22-repo
+    commit: 3561e7e59d91f487dbaaa4bfa99a8dd3d97b07ef
+ducktape/2025-11-22-02:
+  source:
+    vcs: local
+    root: code
   split: test
   bundle:
     source_commit: a81550a1af11e03e397ff8344b1aa818658113db
     include:
-      - adgn/
-      - wt/
+    - adgn/
+    - wt/
     exclude:
-      - adgn/src/adgn/props/specimens/
-ducktape/2025-11-26-00:
-  source:
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
     vcs: git
     url: file://../snapshots.bundle
-    ref: refs/tags/specimen-2025-11-26-code-quality
-    commit: 593813ea3db62bc9f9004e05dae236ae43f9ce2f
+    ref: refs/tags/specimen-2025-11-22-repo-2
+    commit: e81d92265969f98e4eef41207e295e84ffda05f7
+ducktape/2025-11-26-00:
+  source:
+    vcs: local
+    root: code
   split: valid
   bundle:
     source_commit: 751a2a33c8b7daaf18f6c004e31ed6485a62a6a9
     include:
-      - adgn/
+    - adgn/
     exclude:
-      - adgn/src/adgn/props/
+    - adgn/src/adgn/props/
+  _migrated_from:
+    vcs: git
+    url: file://../snapshots.bundle
+    ref: refs/tags/specimen-2025-11-26-code-quality
+    commit: 593813ea3db62bc9f9004e05dae236ae43f9ce2f
 misc/2025-08-29-pyright_watch_report:
   source:
     vcs: local
@@ -120,14 +141,17 @@ misc/2025-08-29-pyright_watch_report:
   bundle: null
 ducktape/2025-12-04-00:
   source:
-    vcs: git
-    url: file://../snapshots.bundle
-    ref: refs/tags/specimen-ducktape-2025-12-04-00
-    commit: 558809fddecdc9514c0d1922887ccb72e8093553
+    vcs: local
+    root: code
   split: train
   bundle:
     source_commit: ab7e9d6f15a67bb4d1e43b3e43fdfb4ce6ce4cad
     include:
-      - adgn/
+    - adgn/
     exclude:
-      - adgn/src/adgn/props/specimens/
+    - adgn/src/adgn/props/specimens/
+  _migrated_from:
+    vcs: git
+    url: file://../snapshots.bundle
+    ref: refs/tags/specimen-ducktape-2025-12-04-00
+    commit: 558809fddecdc9514c0d1922887ccb72e8093553
