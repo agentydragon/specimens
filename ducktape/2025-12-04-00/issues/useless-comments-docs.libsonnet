@@ -1,219 +1,720 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Useless comments and docstrings that restate what the code obviously does, duplicate information already present in docstrings/types, refer to non-existent code, or state universal behavior that applies to all items in a module. These add no value and clutter the code.
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'adgn/src/adgn/agent/server/protocol.py': [78] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/protocol.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/protocol.py': [
+          {
+            end_line: null,
+            start_line: 78,
+          },
+        ],
+      },
       note: 'Comment restates import statement visible two lines above',
-      expect_caught_from: [['adgn/src/adgn/agent/server/protocol.py']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'adgn/src/adgn/agent/server/runtime.py': [99] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 99,
+          },
+        ],
+      },
       note: 'Comment restates type annotation already present on line above',
-      expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'adgn/src/adgn/agent/server/runtime.py': [96] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 96,
+          },
+        ],
+      },
       note: 'Vague comment about middleware behavior without adding useful detail',
-      expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'adgn/src/adgn/agent/server/runtime.py': [124] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 124,
+          },
+        ],
+      },
       note: 'Comment "Agent identifier for persistence" restates what field name already communicates',
-      expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [54] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: null,
+            start_line: 54,
+          },
+        ],
+      },
       note: 'Comment restates what Event model field documentation should cover',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-4',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [61] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: null,
+            start_line: 61,
+          },
+        ],
+      },
       note: 'Comment about ORM serialization is redundant with field type',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-5',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [51] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: null,
+            start_line: 51,
+          },
+        ],
+      },
       note: 'Comment about field name extraction is obvious from code',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-6',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [[47, 49]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: 49,
+            start_line: 47,
+          },
+        ],
+      },
       note: 'Docstring duplicates information in Args section below',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-7',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [[1, 5]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: 5,
+            start_line: 1,
+          },
+        ],
+      },
       note: 'Module docstring duplicates class docstring verbatim',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-8',
     },
     {
-      files: { 'adgn/src/adgn/agent/handler.py': [4] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/handler.py': [
+          {
+            end_line: null,
+            start_line: 4,
+          },
+        ],
+      },
       note: 'Comment stating obvious fact about imports being single source of truth',
-      expect_caught_from: [['adgn/src/adgn/agent/handler.py']],
+      occurrence_id: 'occ-9',
     },
     {
-      files: { 'adgn/src/adgn/agent/transcript_handler.py': [64] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/transcript_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/transcript_handler.py': [
+          {
+            end_line: null,
+            start_line: 64,
+          },
+        ],
+      },
       note: 'Comment "Record adapter ReasoningItem via shared JSONL mapping" adds no information beyond method name',
-      expect_caught_from: [['adgn/src/adgn/agent/transcript_handler.py']],
+      occurrence_id: 'occ-10',
     },
     {
-      files: { 'adgn/src/adgn/mcp/stubs/typed_stubs.py': [17] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/stubs/typed_stubs.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/stubs/typed_stubs.py': [
+          {
+            end_line: null,
+            start_line: 17,
+          },
+        ],
+      },
       note: 'Comment "We use the concrete FastMCP Client type" restates what type annotation already shows',
-      expect_caught_from: [['adgn/src/adgn/mcp/stubs/typed_stubs.py']],
+      occurrence_id: 'occ-11',
     },
     {
-      files: { 'adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py': [290] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py': [
+          {
+            end_line: null,
+            start_line: 290,
+          },
+        ],
+      },
       note: 'Comment "Prepare a uniquely named notebook document id/path" restates what function name _ensure_document_id already communicates',
-      expect_caught_from: [['adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py']],
+      occurrence_id: 'occ-12',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [156] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 156,
+          },
+        ],
+      },
       note: 'Comment about non-existent child_* helpers',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-13',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [[227, 229]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: 229,
+            start_line: 227,
+          },
+        ],
+      },
       note: 'Comment about non-existent resource helper methods',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-14',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [328] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 328,
+          },
+        ],
+      },
       note: 'Historical comment about removed Python-only mount listing',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-15',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [331] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 331,
+          },
+        ],
+      },
       note: 'Comment stating obvious default (inherit FastMCP protocol handlers)',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-16',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [333] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 333,
+          },
+        ],
+      },
       note: 'Comment stating obvious default (resource operations not overridden)',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-17',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [341] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 341,
+          },
+        ],
+      },
       note: 'Comment about non-existent manual slot construction',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-18',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [354] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: null,
+            start_line: 354,
+          },
+        ],
+      },
       note: 'Comment about non-existent URI decoding helpers',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-19',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [188] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 188,
+          },
+        ],
+      },
       note: 'Comment "Generate unique IDs for this run" states the obvious (uuid4() calls)',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-20',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [192] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 192,
+          },
+        ],
+      },
       note: 'Comment uses "Phase 1" language unnecessarily formal for simple DB write',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-21',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [209] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 209,
+          },
+        ],
+      },
       note: 'Comment "Fetch critique from database" restates what _get_required_critique function name already communicates',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-22',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [222] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 222,
+          },
+        ],
+      },
       note: 'Comment "Build grader inputs and state" restates obvious object construction',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-23',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [280] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 280,
+          },
+        ],
+      },
       note: 'Comment uses "Phase 2" language unnecessarily formal for simple DB update',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-24',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [306] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 306,
+          },
+        ],
+      },
       note: 'Comment "Fetch snapshot_slug from critique" restates obvious field access',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-25',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [309] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 309,
+          },
+        ],
+      },
       note: 'Comment "Create grader input" restates obvious GraderInput construction',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-26',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [312] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 312,
+          },
+        ],
+      },
       note: 'Comment "Load and hydrate specimen once, then execute" restates what the async with block obviously does',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-27',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [314] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: null,
+            start_line: 314,
+          },
+        ],
+      },
       note: 'Comment "Execute grader run" restates what run_grader function call obviously does',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-28',
     },
     {
-      files: { 'adgn/src/adgn/props/cluster_unknowns.py': [145] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/cluster_unknowns.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/cluster_unknowns.py': [
+          {
+            end_line: null,
+            start_line: 145,
+          },
+        ],
+      },
       note: 'Comment "Inline cluster_output_dir (only called here)" describes what was already done, obvious from code',
-      expect_caught_from: [['adgn/src/adgn/props/cluster_unknowns.py']],
+      occurrence_id: 'occ-29',
     },
     {
-      files: { 'adgn/src/adgn/props/docker_env.py': [21] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/docker_env.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/docker_env.py': [
+          {
+            end_line: null,
+            start_line: 21,
+          },
+        ],
+      },
       note: 'Comment "Shared startup command for long-lived containers" is misplaced, no startup command follows',
-      expect_caught_from: [['adgn/src/adgn/props/docker_env.py']],
+      occurrence_id: 'occ-30',
     },
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [182] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: null,
+            start_line: 182,
+          },
+        ],
+      },
       note: 'Comment "Map container path to host path" restates obvious transformation',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-31',
     },
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [[195, 199]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: 199,
+            start_line: 195,
+          },
+        ],
+      },
       note: 'Comments "Read prompt text from host filesystem" and "Hash and upsert to database" restate self-documenting function names',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-32',
     },
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [223] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: null,
+            start_line: 223,
+          },
+        ],
+      },
       note: 'Comment "Check snapshot split and enforce validation restriction" restates what the code block does',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-33',
     },
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [358] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: null,
+            start_line: 358,
+          },
+        ],
+      },
       note: 'Comment "Build extra volumes for Docker" restates obvious dict construction',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-34',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [119] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 119,
+          },
+        ],
+      },
       note: 'Comment "API requires this field" states an obvious requirement',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-35',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [134] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 134,
+          },
+        ],
+      },
       note: 'Comment "Responses API prefers the payload under output" states obvious field naming',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-36',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [297] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 297,
+          },
+        ],
+      },
       note: 'Comment "Removed legacy aliases..." documents historical change rather than current behavior',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-37',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [323] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 323,
+          },
+        ],
+      },
       note: 'Comment "Already string from SDK" states obvious type from context',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-38',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [363] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 363,
+          },
+        ],
+      },
       note: 'Comment "No baked-in defaults..." states what code does not do rather than explaining behavior',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-39',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [[370, 372]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: 372,
+            start_line: 370,
+          },
+        ],
+      },
       note: 'Section header "Test-friendly fake..." does not describe the class below it (BoundOpenAIModel is not a test fake)',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-40',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [114] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: null,
+            start_line: 114,
+          },
+        ],
+      },
       note: 'Docstring line "Gets converted to SDK format when sending to API" states universal behavior that applies to all items',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-41',
     },
   ],
-)
+  rationale: 'Useless comments and docstrings that restate what the code obviously does, duplicate information already present in docstrings/types, refer to non-existent code, or state universal behavior that applies to all items in a module. These add no value and clutter the code.\n',
+  should_flag: true,
+}

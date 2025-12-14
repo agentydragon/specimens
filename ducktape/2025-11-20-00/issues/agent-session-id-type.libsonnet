@@ -1,19 +1,26 @@
-local I = import 'lib.libsonnet';
-
-// AgentSession.agent_id uses str instead of AgentID domain type
-
-I.issue(
-  rationale=|||
-    AgentSession.agent_id (runtime.py:234,251) uses str | None, but AgentID is
-    the semantic identifier type used throughout codebase.
-
-    Using domain types provides:
-    - Type safety: can't mix different ID types
-    - Semantic clarity: not just any string, but specific identifier
-    - No runtime conversions/validation
-    - Clear type contracts in signatures
-  |||,
-  filesToRanges={
-    'adgn/src/adgn/agent/server/runtime.py': [234, 251],
-  },
-)
+{
+  occurrences: [
+    {
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 234,
+          },
+          {
+            end_line: null,
+            start_line: 251,
+          },
+        ],
+      },
+      occurrence_id: 'occ-0',
+    },
+  ],
+  rationale: "AgentSession.agent_id (runtime.py:234,251) uses str | None, but AgentID is\nthe semantic identifier type used throughout codebase.\n\nUsing domain types provides:\n- Type safety: can't mix different ID types\n- Semantic clarity: not just any string, but specific identifier\n- No runtime conversions/validation\n- Clear type contracts in signatures\n",
+  should_flag: true,
+}

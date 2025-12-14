@@ -1,44 +1,76 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Code explicitly calls .value on StrEnum instances, but StrEnum automatically
-    coerces to its string value in string contexts.
-
-    Pattern like PolicyStatus.ACTIVE.value in WHERE clauses is unnecessary
-    verbosity. Should use PolicyStatus.ACTIVE directly in SQLAlchemy comparisons
-    and assignments.
-
-    Benefits:
-    - Cleaner code: leverages StrEnum design
-    - Type safety: keeps enum type longer in data flow
-    - Refactoring support: easier to rename enum members
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      note: 'Multiple .value calls on PolicyStatus and ApprovalStatus enums in SQLAlchemy queries and assignments',
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/sqlite.py',
+        ],
+      ],
       files: {
         'adgn/src/adgn/agent/persist/sqlite.py': [
-          192,  // .value call
-          207,  // .value call
-          208,  // .value call
-          213,  // .value call
-          301,  // .value call
-          302,  // .value call
-          306,  // .value call
-          342,  // .value call
-          356,  // .value call
-          381,  // .value call
+          {
+            end_line: null,
+            start_line: 192,
+          },
+          {
+            end_line: null,
+            start_line: 207,
+          },
+          {
+            end_line: null,
+            start_line: 208,
+          },
+          {
+            end_line: null,
+            start_line: 213,
+          },
+          {
+            end_line: null,
+            start_line: 301,
+          },
+          {
+            end_line: null,
+            start_line: 302,
+          },
+          {
+            end_line: null,
+            start_line: 306,
+          },
+          {
+            end_line: null,
+            start_line: 342,
+          },
+          {
+            end_line: null,
+            start_line: 356,
+          },
+          {
+            end_line: null,
+            start_line: 381,
+          },
         ],
       },
-      expect_caught_from: [['adgn/src/adgn/agent/persist/sqlite.py']],
+      note: 'Multiple .value calls on PolicyStatus and ApprovalStatus enums in SQLAlchemy queries and assignments',
+      occurrence_id: 'occ-0',
     },
     {
-      note: '.value call on StrEnum in history module',
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/history.py',
+        ],
+      ],
       files: {
-        'adgn/src/adgn/agent/server/history.py': [36],
+        'adgn/src/adgn/agent/server/history.py': [
+          {
+            end_line: null,
+            start_line: 36,
+          },
+        ],
       },
-      expect_caught_from: [['adgn/src/adgn/agent/server/history.py']],
+      note: '.value call on StrEnum in history module',
+      occurrence_id: 'occ-1',
     },
   ],
-)
+  rationale: 'Code explicitly calls .value on StrEnum instances, but StrEnum automatically\ncoerces to its string value in string contexts.\n\nPattern like PolicyStatus.ACTIVE.value in WHERE clauses is unnecessary\nverbosity. Should use PolicyStatus.ACTIVE directly in SQLAlchemy comparisons\nand assignments.\n\nBenefits:\n- Cleaner code: leverages StrEnum design\n- Type safety: keeps enum type longer in data flow\n- Refactoring support: easier to rename enum members\n',
+  should_flag: true,
+}

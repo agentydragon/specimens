@@ -1,33 +1,91 @@
-local I = import 'lib.libsonnet';
-
-
-I.issueMulti(
-  rationale='Prefer early returns/continues to reduce nesting and make happy-path obvious. Replace large wrapped bodies guarded by a single conditional with small guard-clauses (return/continue) at the top where appropriate.',
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'internal/logging/recover.go': [{ start_line: 11, end_line: 24 }] },
+      expect_caught_from: [
+        [
+          'internal/logging/recover.go',
+        ],
+      ],
+      files: {
+        'internal/logging/recover.go': [
+          {
+            end_line: 24,
+            start_line: 11,
+          },
+        ],
+      },
       note: 'RecoverPanic currently wraps its whole body in a recover-check; prefer early-return guard or narrower scope to reduce nesting.',
-      expect_caught_from: [['internal/logging/recover.go']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'internal/app/lsp_events.go': [{ start_line: 63, end_line: 85 }] },
+      expect_caught_from: [
+        [
+          'internal/app/lsp_events.go',
+        ],
+      ],
+      files: {
+        'internal/app/lsp_events.go': [
+          {
+            end_line: 85,
+            start_line: 63,
+          },
+        ],
+      },
       note: 'updateLSPState/updateLSPDiagnostics wrap large blocks; prefer early return/guard clauses where applicable.',
-      expect_caught_from: [['internal/app/lsp_events.go']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'internal/lsp/client.go': [{ start_line: 425, end_line: 435 }] },
+      expect_caught_from: [
+        [
+          'internal/lsp/client.go',
+        ],
+      ],
+      files: {
+        'internal/lsp/client.go': [
+          {
+            end_line: 435,
+            start_line: 425,
+          },
+        ],
+      },
       note: 'openKeyConfigFiles: when a file does not exist, use continue to skip rather than nesting the rest of the body.',
-      expect_caught_from: [['internal/lsp/client.go']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'internal/app/app.go': [{ start_line: 426, end_line: 429 }] },
+      expect_caught_from: [
+        [
+          'internal/app/app.go',
+        ],
+      ],
+      files: {
+        'internal/app/app.go': [
+          {
+            end_line: 429,
+            start_line: 426,
+          },
+        ],
+      },
       note: 'cleanup loop: use continue when cleanup is nil to avoid wrapping body in an extra nesting level.',
-      expect_caught_from: [['internal/app/app.go']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'internal/shell/shell.go': [{ start_line: 183, end_line: 201 }] },
+      expect_caught_from: [
+        [
+          'internal/shell/shell.go',
+        ],
+      ],
+      files: {
+        'internal/shell/shell.go': [
+          {
+            end_line: 201,
+            start_line: 183,
+          },
+        ],
+      },
       note: 'ArgumentsBlocker: guard with continue when args length is insufficient rather than nesting the matching body.',
-      expect_caught_from: [['internal/shell/shell.go']],
+      occurrence_id: 'occ-4',
     },
   ],
-)
+  rationale: 'Prefer early returns/continues to reduce nesting and make happy-path obvious. Replace large wrapped bodies guarded by a single conditional with small guard-clauses (return/continue) at the top where appropriate.',
+  should_flag: true,
+}

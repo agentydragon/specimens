@@ -1,38 +1,111 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Filesystem paths constructed via string concatenation instead of filepath.Join.
-
-    String concatenation with "/" hardcodes Unix path separators and fails on Windows (backslash separators). filepath.Join handles OS-specific separators and cleans redundant slashes.
-
-    Impact: Code fails on Windows; non-portable and non-idiomatic.
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'internal/diff/word_inline.go': [[43, 44]] },
+      expect_caught_from: [
+        [
+          'internal/diff/word_inline.go',
+        ],
+      ],
+      files: {
+        'internal/diff/word_inline.go': [
+          {
+            end_line: 44,
+            start_line: 43,
+          },
+        ],
+      },
       note: 'dir + "/old", dir + "/new" → filepath.Join(dir, "old"), filepath.Join(dir, "new")',
-      expect_caught_from: [['internal/diff/word_inline.go']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'internal/cmd/root.go': [[147, 147], [151, 151], [152, 152]] },
+      expect_caught_from: [
+        [
+          'internal/cmd/root.go',
+        ],
+      ],
+      files: {
+        'internal/cmd/root.go': [
+          {
+            end_line: 147,
+            start_line: 147,
+          },
+          {
+            end_line: 151,
+            start_line: 151,
+          },
+          {
+            end_line: 152,
+            start_line: 152,
+          },
+        ],
+      },
       note: 'dataDir + "/logs/..." → filepath.Join(dataDir, "logs", ...)',
-      expect_caught_from: [['internal/cmd/root.go']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'e2e/scenario_live_basic_test.go': [[44, 44]] },
+      expect_caught_from: [
+        [
+          'e2e/scenario_live_basic_test.go',
+        ],
+      ],
+      files: {
+        'e2e/scenario_live_basic_test.go': [
+          {
+            end_line: 44,
+            start_line: 44,
+          },
+        ],
+      },
       note: 'sc.ArtifactDir + "/logs/provider-wire.log" → filepath.Join(sc.ArtifactDir, "logs", "provider-wire.log")',
-      expect_caught_from: [['e2e/scenario_live_basic_test.go']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'internal/config/provider_empty_test.go': [[20, 20], [33, 33]] },
+      expect_caught_from: [
+        [
+          'internal/config/provider_empty_test.go',
+        ],
+      ],
+      files: {
+        'internal/config/provider_empty_test.go': [
+          {
+            end_line: 20,
+            start_line: 20,
+          },
+          {
+            end_line: 33,
+            start_line: 33,
+          },
+        ],
+      },
       note: 't.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")',
-      expect_caught_from: [['internal/config/provider_empty_test.go']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'internal/config/provider_test.go': [[30, 30], [44, 44], [69, 69]] },
+      expect_caught_from: [
+        [
+          'internal/config/provider_test.go',
+        ],
+      ],
+      files: {
+        'internal/config/provider_test.go': [
+          {
+            end_line: 30,
+            start_line: 30,
+          },
+          {
+            end_line: 44,
+            start_line: 44,
+          },
+          {
+            end_line: 69,
+            start_line: 69,
+          },
+        ],
+      },
       note: 't.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")',
-      expect_caught_from: [['internal/config/provider_test.go']],
+      occurrence_id: 'occ-4',
     },
   ],
-)
+  rationale: 'Filesystem paths constructed via string concatenation instead of filepath.Join.\n\nString concatenation with "/" hardcodes Unix path separators and fails on Windows (backslash separators). filepath.Join handles OS-specific separators and cleans redundant slashes.\n\nImpact: Code fails on Windows; non-portable and non-idiomatic.\n',
+  should_flag: true,
+}

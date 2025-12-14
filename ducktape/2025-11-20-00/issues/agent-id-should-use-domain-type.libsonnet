@@ -1,24 +1,33 @@
-local I = import 'lib.libsonnet';
-
-// Agent.id uses raw str instead of AgentID domain type
-
-I.issue(
-  rationale=|||
-    Agent.id (models.py:70) uses Mapped[str], but code wraps with AgentID() at
-    runtime (sqlite.py:131,147). If SQLAlchemy supports NewType, should declare
-    as AgentID to eliminate runtime wrappers.
-
-    Using domain types provides:
-    - Type safety: can't mix different ID types
-    - Semantic clarity: not just any string, but specific identifier
-    - No runtime conversions/validation
-    - Clear type contracts in signatures
-  |||,
-  filesToRanges={
-    'adgn/src/adgn/agent/persist/models.py': [70],
-    'adgn/src/adgn/agent/persist/sqlite.py': [131, 147],
-  },
-  expect_caught_from=[
-    ['adgn/src/adgn/agent/persist/models.py', 'adgn/src/adgn/agent/persist/sqlite.py'],
+{
+  occurrences: [
+    {
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+          'adgn/src/adgn/agent/persist/sqlite.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 70,
+          },
+        ],
+        'adgn/src/adgn/agent/persist/sqlite.py': [
+          {
+            end_line: null,
+            start_line: 131,
+          },
+          {
+            end_line: null,
+            start_line: 147,
+          },
+        ],
+      },
+      occurrence_id: 'occ-0',
+    },
   ],
-)
+  rationale: "Agent.id (models.py:70) uses Mapped[str], but code wraps with AgentID() at\nruntime (sqlite.py:131,147). If SQLAlchemy supports NewType, should declare\nas AgentID to eliminate runtime wrappers.\n\nUsing domain types provides:\n- Type safety: can't mix different ID types\n- Semantic clarity: not just any string, but specific identifier\n- No runtime conversions/validation\n- Clear type contracts in signatures\n",
+  should_flag: true,
+}

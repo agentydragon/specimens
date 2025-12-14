@@ -1,32 +1,74 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Modules under packages that are executed via console_scripts should not carry a `#!/usr/bin/env python3`
-    shebang or be executable; the packaging shim handles invocation. Keeping shebangs on importable modules
-    is misleading and unnecessary. Remove the shebang from library modules; reserve shebangs for true scripts
-    under bin/ (if any).
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py': [1] },
+      expect_caught_from: [
+        [
+          'llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py',
+        ],
+      ],
+      files: {
+        'llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py': [
+          {
+            end_line: null,
+            start_line: 1,
+          },
+        ],
+      },
       note: 'shebang on library module exposed via console_scripts',
-      expect_caught_from: [['llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py': [1] },
+      expect_caught_from: [
+        [
+          'llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py',
+        ],
+      ],
+      files: {
+        'llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py': [
+          {
+            end_line: null,
+            start_line: 1,
+          },
+        ],
+      },
       note: 'shebang on library module exposed via console_scripts',
-      expect_caught_from: [['llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py': [1] },
+      expect_caught_from: [
+        [
+          'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py',
+        ],
+      ],
+      files: {
+        'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py': [
+          {
+            end_line: null,
+            start_line: 1,
+          },
+        ],
+      },
       note: 'shebang on library module exposed via console_scripts',
-      expect_caught_from: [['llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py': [1] },
+      expect_caught_from: [
+        [
+          'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py',
+        ],
+      ],
+      files: {
+        'llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py': [
+          {
+            end_line: null,
+            start_line: 1,
+          },
+        ],
+      },
       note: 'shebang on library module exposed via console_scripts',
-      expect_caught_from: [['llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py']],
+      occurrence_id: 'occ-3',
     },
   ],
-)
+  rationale: 'Modules under packages that are executed via console_scripts should not carry a `#!/usr/bin/env python3`\nshebang or be executable; the packaging shim handles invocation. Keeping shebangs on importable modules\nis misleading and unnecessary. Remove the shebang from library modules; reserve shebangs for true scripts\nunder bin/ (if any).\n',
+  should_flag: true,
+}

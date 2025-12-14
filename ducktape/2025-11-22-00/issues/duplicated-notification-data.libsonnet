@@ -1,31 +1,26 @@
-local I = import 'lib.libsonnet';
-
-
-I.issue(
-  rationale=|||
-    notifications/types.py duplicates data in two ways: (1) NotificationsBatch
-    (lines 14-30) stores both parsed fields (resources_updated, resource_list_changed)
-    and raw MCP notifications, creating redundancy and unclear source of truth;
-    (2) NotificationsBatch and NotificationsForModel (lines 33-51) represent the same
-    data in different shapes (flat lists vs grouped by server).
-
-    Problems: Parsed fields are derivable from raw, creating sync risk. Two classes
-    for the same data. Manual deduplication. No single source of truth.
-
-    Replace with single grouped representation: one class with dict[server, notices],
-    parse once at construction via from_raw() classmethod, use frozenset for
-    deduplication. Remove NotificationsForModel entirely.
-
-    Benefits: Single source of truth (derived from raw on construction), no
-    duplication, efficient lookups (grouped by server), helper methods for access
-    patterns.
-
-    Principle: Store data in ONE efficient representation, derive views on-demand.
-  |||,
-  filesToRanges={
-    'adgn/src/adgn/agent/notifications/types.py': [
-      [14, 30],  // NotificationsBatch with redundant fields
-      [33, 49],  // ResourcesServerNotice and NotificationsForModel (redundant with NotificationsBatch)
-    ],
-  },
-)
+{
+  occurrences: [
+    {
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/notifications/types.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/notifications/types.py': [
+          {
+            end_line: 30,
+            start_line: 14,
+          },
+          {
+            end_line: 49,
+            start_line: 33,
+          },
+        ],
+      },
+      occurrence_id: 'occ-0',
+    },
+  ],
+  rationale: 'notifications/types.py duplicates data in two ways: (1) NotificationsBatch\n(lines 14-30) stores both parsed fields (resources_updated, resource_list_changed)\nand raw MCP notifications, creating redundancy and unclear source of truth;\n(2) NotificationsBatch and NotificationsForModel (lines 33-51) represent the same\ndata in different shapes (flat lists vs grouped by server).\n\nProblems: Parsed fields are derivable from raw, creating sync risk. Two classes\nfor the same data. Manual deduplication. No single source of truth.\n\nReplace with single grouped representation: one class with dict[server, notices],\nparse once at construction via from_raw() classmethod, use frozenset for\ndeduplication. Remove NotificationsForModel entirely.\n\nBenefits: Single source of truth (derived from raw on construction), no\nduplication, efficient lookups (grouped by server), helper methods for access\npatterns.\n\nPrinciple: Store data in ONE efficient representation, derive views on-demand.\n',
+  should_flag: true,
+}

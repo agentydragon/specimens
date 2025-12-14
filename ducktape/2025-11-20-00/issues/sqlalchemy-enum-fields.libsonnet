@@ -1,58 +1,91 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    SQLAlchemy models declare fields as Mapped[str] with inline comments indicating
-    they should be enum types, but don't use the actual enum types.
-
-    All corresponding enums exist as StrEnum types:
-    - PolicyStatus (defined in models.py)
-    - RunStatus (server/protocol.py:80)
-    - EventType (persist/__init__.py:54)
-
-    SQLAlchemy 2.0+ supports native Python Enum mapping. Should use:
-    status: Mapped[PolicyStatus] = mapped_column(nullable=False)
-
-    Benefits:
-    - Type safety: can't assign arbitrary strings
-    - IDE autocomplete for valid values
-    - Runtime validation (can't save invalid values)
-    - No need for inline comments listing valid values
-    - Consistency with enum definitions
-    - Refactoring support
-
-    SQLAlchemy automatically maps Python enums to VARCHAR/String columns while
-    preserving enum type semantics in Python code.
-
-    For ChatMessage fields (author/mime), if they have fixed sets of valid values,
-    create MessageAuthor and MessageMimeType enums. If truly arbitrary strings,
-    keep as str but add validation logic explaining why.
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'adgn/src/adgn/agent/persist/models.py': [61] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 61,
+          },
+        ],
+      },
       note: 'Run.status should use RunStatus enum',
-      expect_caught_from: [['adgn/src/adgn/agent/persist/models.py']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'adgn/src/adgn/agent/persist/models.py': [90] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 90,
+          },
+        ],
+      },
       note: 'Event.type should use EventType enum',
-      expect_caught_from: [['adgn/src/adgn/agent/persist/models.py']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'adgn/src/adgn/agent/persist/models.py': [152] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 152,
+          },
+        ],
+      },
       note: 'Policy.status should use PolicyStatus enum',
-      expect_caught_from: [['adgn/src/adgn/agent/persist/models.py']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'adgn/src/adgn/agent/persist/models.py': [178] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 178,
+          },
+        ],
+      },
       note: 'ChatMessage.author should use MessageAuthor enum',
-      expect_caught_from: [['adgn/src/adgn/agent/persist/models.py']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'adgn/src/adgn/agent/persist/models.py': [179] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: null,
+            start_line: 179,
+          },
+        ],
+      },
       note: 'ChatMessage.mime should use MessageMimeType enum',
-      expect_caught_from: [['adgn/src/adgn/agent/persist/models.py']],
+      occurrence_id: 'occ-4',
     },
   ],
-)
+  rationale: "SQLAlchemy models declare fields as Mapped[str] with inline comments indicating\nthey should be enum types, but don't use the actual enum types.\n\nAll corresponding enums exist as StrEnum types:\n- PolicyStatus (defined in models.py)\n- RunStatus (server/protocol.py:80)\n- EventType (persist/__init__.py:54)\n\nSQLAlchemy 2.0+ supports native Python Enum mapping. Should use:\nstatus: Mapped[PolicyStatus] = mapped_column(nullable=False)\n\nBenefits:\n- Type safety: can't assign arbitrary strings\n- IDE autocomplete for valid values\n- Runtime validation (can't save invalid values)\n- No need for inline comments listing valid values\n- Consistency with enum definitions\n- Refactoring support\n\nSQLAlchemy automatically maps Python enums to VARCHAR/String columns while\npreserving enum type semantics in Python code.\n\nFor ChatMessage fields (author/mime), if they have fixed sets of valid values,\ncreate MessageAuthor and MessageMimeType enums. If truly arbitrary strings,\nkeep as str but add validation logic explaining why.\n",
+  should_flag: true,
+}

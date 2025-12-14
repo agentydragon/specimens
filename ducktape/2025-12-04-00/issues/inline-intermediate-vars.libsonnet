@@ -1,114 +1,395 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Variables and helper functions used only once should be inlined at their call site to reduce unnecessary indirection. This applies to both simple variables assigned and immediately used, and to trivial helper functions that wrap a single operation without adding semantic value.
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'adgn/src/adgn/llm/sysrw/extract_dataset_crush.py': [[63, 64]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/llm/sysrw/extract_dataset_crush.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/llm/sysrw/extract_dataset_crush.py': [
+          {
+            end_line: 64,
+            start_line: 63,
+          },
+        ],
+      },
       note: 'dt variable used once immediately after assignment',
-      expect_caught_from: [['adgn/src/adgn/llm/sysrw/extract_dataset_crush.py']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'adgn/src/adgn/props/cli_app/cmd_build_bundle.py': [[188, 190]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/cli_app/cmd_build_bundle.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/cli_app/cmd_build_bundle.py': [
+          {
+            end_line: 190,
+            start_line: 188,
+          },
+        ],
+      },
       note: 'author, committer, message variables used once each immediately after assignment',
-      expect_caught_from: [['adgn/src/adgn/props/cli_app/cmd_build_bundle.py']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'adgn/src/adgn/agent/agent.py': [[132, 133], [139, 140], 412, 427, 623] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/agent.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/agent.py': [
+          {
+            end_line: 133,
+            start_line: 132,
+          },
+          {
+            end_line: 140,
+            start_line: 139,
+          },
+          {
+            end_line: null,
+            start_line: 412,
+          },
+          {
+            end_line: null,
+            start_line: 427,
+          },
+          {
+            end_line: null,
+            start_line: 623,
+          },
+        ],
+      },
       note: 'Functions _make_error_result and _abort_result - _make_error_result called only from _abort_result, and _abort_result called only 3 times without any reason argument, making the abstraction unnecessary',
-      expect_caught_from: [['adgn/src/adgn/agent/agent.py']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [52, 59] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: null,
+            start_line: 52,
+          },
+          {
+            end_line: null,
+            start_line: 59,
+          },
+        ],
+      },
       note: 'Variable event_type extracted then immediately used once on line 59',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'adgn/src/adgn/agent/db_event_handler.py': [56, 63] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/db_event_handler.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/db_event_handler.py': [
+          {
+            end_line: null,
+            start_line: 56,
+          },
+          {
+            end_line: null,
+            start_line: 63,
+          },
+        ],
+      },
       note: 'Variable event created then immediately used once on line 63',
-      expect_caught_from: [['adgn/src/adgn/agent/db_event_handler.py']],
+      occurrence_id: 'occ-4',
     },
     {
-      files: { 'adgn/src/adgn/agent/server/runtime.py': [59, 60] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 59,
+          },
+          {
+            end_line: null,
+            start_line: 60,
+          },
+        ],
+      },
       note: 'Variable bus extracted then immediately used once on line 60',
-      expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
+      occurrence_id: 'occ-5',
     },
     {
-      files: { 'adgn/src/adgn/agent/server/runtime.py': [82, 83] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/server/runtime.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/server/runtime.py': [
+          {
+            end_line: null,
+            start_line: 82,
+          },
+          {
+            end_line: null,
+            start_line: 83,
+          },
+        ],
+      },
       note: 'Variable tasks created then immediately used once on line 83',
-      expect_caught_from: [['adgn/src/adgn/agent/server/runtime.py']],
+      occurrence_id: 'occ-6',
     },
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [[294, 296]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: 296,
+            start_line: 294,
+          },
+        ],
+      },
       note: 'return statement could move into lines 294-296',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-7',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[104, 104]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 104,
+            start_line: 104,
+          },
+        ],
+      },
       note: 'tp_files variable',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-8',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[107, 107]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 107,
+            start_line: 107,
+          },
+        ],
+      },
       note: 'critique_files variable',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-9',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[201, 201]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 201,
+            start_line: 201,
+          },
+        ],
+      },
       note: 'db_run variable in session.add',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-10',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[226, 226]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 226,
+            start_line: 226,
+          },
+        ],
+      },
       note: 'submit_tool_name variable',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-11',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[224, 224]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 224,
+            start_line: 224,
+          },
+        ],
+      },
       note: 'inputs variable passed to one function call',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-12',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[229, 235]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 235,
+            start_line: 229,
+          },
+        ],
+      },
       note: 'prompt variable passed to one function call',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-13',
     },
     {
-      files: { 'adgn/src/adgn/props/grader/grader.py': [[249, 257]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/grader/grader.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/grader/grader.py': [
+          {
+            end_line: 257,
+            start_line: 249,
+          },
+        ],
+      },
       note: 'handlers variable',
-      expect_caught_from: [['adgn/src/adgn/props/grader/grader.py']],
+      occurrence_id: 'occ-14',
     },
     {
-      files: { 'adgn/src/adgn/mcp/_shared/resources.py': [[55, 57]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/_shared/resources.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/_shared/resources.py': [
+          {
+            end_line: 57,
+            start_line: 55,
+          },
+        ],
+      },
       note: 'Variables rr and s assigned once and immediately used (lines 55-57)',
-      expect_caught_from: [['adgn/src/adgn/mcp/_shared/resources.py']],
+      occurrence_id: 'occ-15',
     },
     {
-      files: { 'adgn/src/adgn/mcp/compositor/server.py': [[173, 174]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/mcp/compositor/server.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/mcp/compositor/server.py': [
+          {
+            end_line: 174,
+            start_line: 173,
+          },
+        ],
+      },
       note: 'Variable client_factory assigned at line 173 and used only at line 174',
-      expect_caught_from: [['adgn/src/adgn/mcp/compositor/server.py']],
+      occurrence_id: 'occ-16',
     },
     {
-      files: { 'adgn/src/adgn/props/cluster_unknowns.py': [[146, 147]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/cluster_unknowns.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/cluster_unknowns.py': [
+          {
+            end_line: 147,
+            start_line: 146,
+          },
+        ],
+      },
       note: 'Variable timestamp assigned at line 146 and used only once at line 147',
-      expect_caught_from: [['adgn/src/adgn/props/cluster_unknowns.py']],
+      occurrence_id: 'occ-17',
     },
     {
-      files: { 'adgn/src/adgn/props/cluster_unknowns.py': [[151, 155]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/cluster_unknowns.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/cluster_unknowns.py': [
+          {
+            end_line: 155,
+            start_line: 151,
+          },
+        ],
+      },
       note: 'Loop with intermediate variables out_spec and tasks should be inlined with asyncio.gather generator expression',
-      expect_caught_from: [['adgn/src/adgn/props/cluster_unknowns.py']],
+      occurrence_id: 'occ-18',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [[283, 291]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: 291,
+            start_line: 283,
+          },
+        ],
+      },
       note: 'Imperative loop with intermediate variable part should be list comprehension',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-19',
     },
     {
-      files: { 'adgn/src/adgn/openai_utils/model.py': [[315, 318]] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/openai_utils/model.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/openai_utils/model.py': [
+          {
+            end_line: 318,
+            start_line: 315,
+          },
+        ],
+      },
       note: 'Intermediate variable summary_items should be inlined into function call',
-      expect_caught_from: [['adgn/src/adgn/openai_utils/model.py']],
+      occurrence_id: 'occ-20',
     },
   ],
-)
+  rationale: 'Variables and helper functions used only once should be inlined at their call site to reduce unnecessary indirection. This applies to both simple variables assigned and immediately used, and to trivial helper functions that wrap a single operation without adding semantic value.\n',
+  should_flag: true,
+}

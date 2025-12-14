@@ -1,49 +1,142 @@
-local I = import 'lib.libsonnet';
-
-I.issueMulti(
-  rationale=|||
-    Multiple SQL queries compare Snapshot.split using raw string literals ("train", "valid") instead of the Split enum (Split.TRAIN, Split.VALID). This bypasses type safety and makes typos harder to catch at static analysis time.
-  |||,
-  occurrences=[
+{
+  occurrences: [
     {
-      files: { 'adgn/src/adgn/props/prompt_optimizer.py': [230] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/prompt_optimizer.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/prompt_optimizer.py': [
+          {
+            end_line: null,
+            start_line: 230,
+          },
+        ],
+      },
       note: 'Compares db_snapshot.split == "valid" in validation',
-      expect_caught_from: [['adgn/src/adgn/props/prompt_optimizer.py']],
+      occurrence_id: 'occ-0',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [77] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 77,
+          },
+        ],
+      },
       note: 'Query with Snapshot.split == "train"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-1',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [138] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 138,
+          },
+        ],
+      },
       note: 'Where clause with Snapshot.split == "train"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-2',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [152] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 152,
+          },
+        ],
+      },
       note: 'Where clause with Snapshot.split == "train"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-3',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [225] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 225,
+          },
+        ],
+      },
       note: 'Where clause with Snapshot.split == "train"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-4',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [503] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 503,
+          },
+        ],
+      },
       note: 'Subquery with Snapshot.split == "valid"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-5',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [514] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 514,
+          },
+        ],
+      },
       note: 'Subquery with Snapshot.split == "valid"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-6',
     },
     {
-      files: { 'adgn/src/adgn/props/db/query_builders.py': [526] },
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/props/db/query_builders.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/props/db/query_builders.py': [
+          {
+            end_line: null,
+            start_line: 526,
+          },
+        ],
+      },
       note: 'Where clause with Snapshot.split == "valid"',
-      expect_caught_from: [['adgn/src/adgn/props/db/query_builders.py']],
+      occurrence_id: 'occ-7',
     },
   ],
-)
+  rationale: 'Multiple SQL queries compare Snapshot.split using raw string literals ("train", "valid") instead of the Split enum (Split.TRAIN, Split.VALID). This bypasses type safety and makes typos harder to catch at static analysis time.\n',
+  should_flag: true,
+}

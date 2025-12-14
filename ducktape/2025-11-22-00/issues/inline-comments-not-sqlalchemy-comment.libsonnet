@@ -1,47 +1,42 @@
-local I = import 'lib.libsonnet';
-
-I.issue(
-  rationale=|||
-    ORM field definitions use inline Python comments instead of SQLAlchemy's `comment=`
-    parameter, preventing database schema documentation.
-
-    **Current pattern (models.py, multiple locations):**
-    ```python
-    mcp_config: Mapped[str]  # MCPConfig as JSON
-    run_id: Mapped[str]  # UUID stored as string
-    seq: Mapped[int]  # Sequence number within run
-    ```
-
-    Inline Python comments are invisible to:
-    - Database tools (pgAdmin, DBeaver, etc.)
-    - Database introspection (`PRAGMA table_info`, `\d` in psql)
-    - Database migrations (Alembic won't preserve them)
-    - DBAs inspecting schema
-
-    **Correct approach:**
-
-    Use SQLAlchemy's `comment=` parameter on `mapped_column()`:
-    ```python
-    mcp_config: Mapped[str] = mapped_column(comment="MCPConfig as JSON")
-    run_id: Mapped[str] = mapped_column(comment="UUID stored as string")
-    seq: Mapped[int] = mapped_column(comment="Sequence number within run")
-    ```
-
-    **Benefits:**
-    - Comments visible in database schema
-    - Database tools show descriptions
-    - Migrations preserve documentation
-    - DBAs can understand schema without reading Python code
-    - Standard SQLAlchemy feature for schema documentation
-  |||,
-  filesToRanges={
-    'adgn/src/adgn/agent/persist/models.py': [
-      [68, 69],  // Inline comments instead of comment= parameter
-      [92, 92],  // UUID stored as string comment
-      [122, 122],  // Sequence number comment
-      [125, 126],  // Payload and call_id comments
-      [150, 152],  // Tool call JSON comments
-      [203, 203],  // MIME type comment
-    ],
-  },
-)
+{
+  occurrences: [
+    {
+      expect_caught_from: [
+        [
+          'adgn/src/adgn/agent/persist/models.py',
+        ],
+      ],
+      files: {
+        'adgn/src/adgn/agent/persist/models.py': [
+          {
+            end_line: 69,
+            start_line: 68,
+          },
+          {
+            end_line: 92,
+            start_line: 92,
+          },
+          {
+            end_line: 122,
+            start_line: 122,
+          },
+          {
+            end_line: 126,
+            start_line: 125,
+          },
+          {
+            end_line: 152,
+            start_line: 150,
+          },
+          {
+            end_line: 203,
+            start_line: 203,
+          },
+        ],
+      },
+      occurrence_id: 'occ-0',
+    },
+  ],
+  rationale: "ORM field definitions use inline Python comments instead of SQLAlchemy's `comment=`\nparameter, preventing database schema documentation.\n\n**Current pattern (models.py, multiple locations):**\n```python\nmcp_config: Mapped[str]  # MCPConfig as JSON\nrun_id: Mapped[str]  # UUID stored as string\nseq: Mapped[int]  # Sequence number within run\n```\n\nInline Python comments are invisible to:\n- Database tools (pgAdmin, DBeaver, etc.)\n- Database introspection (`PRAGMA table_info`, `\\d` in psql)\n- Database migrations (Alembic won't preserve them)\n- DBAs inspecting schema\n\n**Correct approach:**\n\nUse SQLAlchemy's `comment=` parameter on `mapped_column()`:\n```python\nmcp_config: Mapped[str] = mapped_column(comment=\"MCPConfig as JSON\")\nrun_id: Mapped[str] = mapped_column(comment=\"UUID stored as string\")\nseq: Mapped[int] = mapped_column(comment=\"Sequence number within run\")\n```\n\n**Benefits:**\n- Comments visible in database schema\n- Database tools show descriptions\n- Migrations preserve documentation\n- DBAs can understand schema without reading Python code\n- Standard SQLAlchemy feature for schema documentation\n",
+  should_flag: true,
+}

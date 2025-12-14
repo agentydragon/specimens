@@ -1,11 +1,22 @@
-local I = import 'lib.libsonnet';
-
-I.issue(
-  rationale=|||
-    Function _commit_all returns str(oid) at line 28, but the return value is unused at all three call sites (lines 47, 50, 54).
-    The function should return None since the value is not needed.
-    The unnecessary str() conversion loses type information (Oid → str) without any benefit when the value is discarded.
-    If future callers need the commit ID, it should return Oid directly (not str).
-  |||,
-  filesToRanges={ 'adgn/tests/mcp/git_ro/conftest.py': [[18, 28]] },
-)
+{
+  occurrences: [
+    {
+      expect_caught_from: [
+        [
+          'adgn/tests/mcp/git_ro/conftest.py',
+        ],
+      ],
+      files: {
+        'adgn/tests/mcp/git_ro/conftest.py': [
+          {
+            end_line: 28,
+            start_line: 18,
+          },
+        ],
+      },
+      occurrence_id: 'occ-0',
+    },
+  ],
+  rationale: 'Function _commit_all returns str(oid) at line 28, but the return value is unused at all three call sites (lines 47, 50, 54).\nThe function should return None since the value is not needed.\nThe unnecessary str() conversion loses type information (Oid → str) without any benefit when the value is discarded.\nIf future callers need the commit ID, it should return Oid directly (not str).\n',
+  should_flag: true,
+}
