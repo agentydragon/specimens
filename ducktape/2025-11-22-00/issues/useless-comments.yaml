@@ -1,0 +1,64 @@
+rationale: |
+  Comments that add no value: redundant, obvious, historical, or noise.
+
+  **Four categories:**
+
+  **1. Redundant "Default: no-op" docstrings** (handler.py, 6 methods)
+  Hook methods with "Default: no-op" in docstrings when implementation is just
+  `return`. Base class hooks are conventionally no-ops; stating this is redundant.
+
+  **2. Separator lines and vague labels** (cli.py, 6 locations)
+  Empty "# -------" separators, "# constants" restating obvious naming, and vague
+  "# Core logic" that adds no information.
+
+  **3. Historical breadcrumbs** (container.py:58)
+  Comment noting function was moved. Git history is the source of truth for moves.
+
+  **4. Documenting removed code** (sqlite.py:530-533)
+  Four-line block listing old method names that no longer exist. Git commit messages
+  should document removals.
+
+  **Problems:** Add cognitive load, become stale, duplicate visible information,
+  replace proper documentation (git), obscure valuable comments.
+
+  **Fix:** Delete these comments. Keep only comments explaining non-obvious decisions
+  or rationale not visible in code/naming.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/src/adgn/agent/handler.py:
+    - - 132
+      - 137
+    - - 149
+      - 154
+    - - 156
+      - 161
+    - - 163
+      - 168
+    - - 170
+      - 175
+    - - 177
+      - 182
+    adgn/src/adgn/agent/persist/sqlite.py:
+    - 530
+    - 533
+    adgn/src/adgn/agent/policy_eval/container.py: 58
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - - 55
+      - 55
+    - - 58
+      - 58
+    - - 176
+      - 176
+    - - 680
+      - 680
+    - - 683
+      - 683
+    - - 687
+      - 687
+  expect_caught_from:
+  - - adgn/src/adgn/agent/handler.py
+  - - adgn/src/adgn/git_commit_ai/cli.py
+  - - adgn/src/adgn/agent/policy_eval/container.py
+  - - adgn/src/adgn/agent/persist/sqlite.py

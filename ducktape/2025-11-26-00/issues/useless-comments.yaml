@@ -1,0 +1,44 @@
+rationale: |
+  Three files have comments that merely restate what the code obviously does. Python
+  examples in cli.py lines 484, 717-719, 722: "Capture -a/--all", "Parse flags from
+  passthru", "Logging and config" just describe the next lines. TypeScript examples
+  in AgentsSidebar.svelte lines 73, 86, 89 and ChatPane.svelte lines 79, 84, 107:
+  "Get singleton MCP client" → getMCPClient(), "Subscribe to agents list updates"
+  → subscribeToResource, etc.
+
+  Problems: Noise makes code harder to scan, redundant with well-named functions,
+  maintenance burden (must update when code changes), no added value (don't explain
+  rationale, caveats, or non-obvious behavior).
+
+  Delete all these comments. Only add comments explaining WHY something is done,
+  caveats, workarounds, or complex logic that isn't self-evident. Benefits: cleaner
+  scannable code, no maintenance overhead, focus on actual insights when present.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte:
+    - - 73
+      - 73
+    - - 86
+      - 86
+    - - 89
+      - 89
+    adgn/src/adgn/agent/web/src/components/ChatPane.svelte:
+    - - 79
+      - 79
+    - - 84
+      - 84
+    - - 107
+      - 107
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - - 484
+      - 484
+    - - 717
+      - 719
+    - - 722
+      - 722
+  expect_caught_from:
+  - - adgn/src/adgn/git_commit_ai/cli.py
+  - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+  - - adgn/src/adgn/agent/web/src/components/ChatPane.svelte

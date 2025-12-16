@@ -1,0 +1,30 @@
+rationale: |
+  Four locations create intermediate variables used only once in the immediately
+  following statement: runner.py lines 44-45 assign cmd/env before passing to
+  containers.create; cli.py lines 577-578 assign edit_path before write_text;
+  cli.py lines 592-594 assign saved boolean before if check; sqlite.py line 246
+  assigns policies before list comprehension.
+
+  Problems: One-off variables add cognitive load, provide no semantic value (names
+  don't clarify intent), require extra lines to read, unnecessarily widen variable
+  scope.
+
+  Inline values directly at their use sites. Benefits: fewer variables to track,
+  more concise code, clearer single-use intent, smaller variable scope.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/src/adgn/agent/persist/sqlite.py: 246
+    adgn/src/adgn/agent/policy_eval/runner.py:
+    - 44
+    - 45
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - - 577
+      - 578
+    - - 592
+      - 594
+  expect_caught_from:
+  - - adgn/src/adgn/agent/policy_eval/runner.py
+  - - adgn/src/adgn/git_commit_ai/cli.py
+  - - adgn/src/adgn/agent/persist/sqlite.py

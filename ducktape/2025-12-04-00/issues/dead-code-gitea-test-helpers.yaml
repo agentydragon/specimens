@@ -1,0 +1,30 @@
+rationale: |
+  The test file defines two helper functions that are never used:
+
+  1. `_iter(values: list[float])` (lines 33-36)
+     - Generator function that yields values from a list and repeats the last value
+     - Has a defensive "pragma: no cover" comment suggesting it was intended as a fallback
+     - Never called by any test
+
+  2. `_extract_payload(result)` (lines 39-51)
+     - Helper to extract JSON payloads from MCP tool responses
+     - Handles both dict and tuple (blocks, payload) response formats
+     - Never called by any test
+
+  Both functions are dead code - they have complete implementations but zero call sites.
+  They should be deleted unless there's a plan to use them in future tests (in which case,
+  add those tests first or mark as TODO with explanation).
+
+  These may have been leftovers from earlier test implementations that were refactored
+  to use different assertion patterns.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/tests/mcp/test_gitea_mirror_server.py:
+    - - 33
+      - 36
+    - - 39
+      - 51
+  expect_caught_from:
+  - - adgn/tests/mcp/test_gitea_mirror_server.py

@@ -1,0 +1,18 @@
+rationale: |
+  The helper `_write_sandboxed_kernelspec(run_root: Path, workspace: Path, policy_yaml: Path, kernel_python:
+  str, *,
+  trace: bool)` declares a `workspace` parameter that is not used in the function body.
+
+  Unused parameters add cognitive overhead and misleading API surface. Remove the unused parameter (or use it if
+  there
+  is
+  a real need) to tighten the function signature and reduce confusion.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
+    - 192
+    - 208
+  expect_caught_from:
+  - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

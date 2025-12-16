@@ -1,0 +1,12 @@
+rationale: |
+  Line 31 creates unnecessary res_server intermediate variable.
+
+  The variable is assigned and immediately passed to mount_inproc on the next line.
+  Inline the make_resources_server() call directly into the mount_inproc() call.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/src/adgn/mcp/compositor/setup.py: 31
+  expect_caught_from:
+  - - adgn/src/adgn/mcp/compositor/setup.py
