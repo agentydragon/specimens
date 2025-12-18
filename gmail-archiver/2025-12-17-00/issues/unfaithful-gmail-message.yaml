@@ -1,8 +1,9 @@
 rationale: |
-  GmailMessage model only preserves a single `body: str` field (text/plain), discarding
-  HTML body, attachments, and MIME structure. Some emails only have HTML, resulting in
-  empty body. Plaintext extraction is duplicated in get_messages_batch() and get_message()
-  with no HTML fallback.
+  GmailMessage extracts and stores only `body: str` from the raw email, discarding the
+  original MIME data. This is premature data reduction - it loses information (HTML body,
+  attachments, headers) and prevents fixing parsing bugs or adding new derived fields
+  without re-fetching from the API. The model should preserve the raw email bytes and
+  derive text content on demand.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

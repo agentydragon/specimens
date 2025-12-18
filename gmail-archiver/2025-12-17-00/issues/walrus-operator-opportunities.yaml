@@ -24,3 +24,17 @@ occurrences:
   note: delivered in compute_deadline()
   expect_caught_from:
   - - gmail_archiver/planners/aliexpress.py
+- occurrence_id: occ-3
+  files:
+    gmail_archiver/gmail_client.py:
+    - [71, 72]
+  note: match = re.search(...); if match in _extract_retry_after_from_error()
+  expect_caught_from:
+  - - gmail_archiver/gmail_client.py
+- occurrence_id: occ-4
+  files:
+    gmail_archiver/__main__.py:
+    - [335, 336]
+  note: match = re.search(...); if not match in download_email()
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
