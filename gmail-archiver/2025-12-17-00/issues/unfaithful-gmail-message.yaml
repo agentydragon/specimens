@@ -1,40 +1,27 @@
 rationale: |
   GmailMessage model only preserves a single `body: str` field (text/plain), discarding
   HTML body, attachments, and MIME structure. Some emails only have HTML, resulting in
-  empty body.
-
-  Additionally, plaintext extraction is duplicated in get_messages_batch() and get_message(),
-  while __main__.py has a better pattern with text/plain + text/html fallback.
+  empty body. Plaintext extraction is duplicated in get_messages_batch() and get_message()
+  with no HTML fallback.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/models.py:
-    - 25
+    gmail_archiver/models.py: 25
   note: GmailMessage.body is single str field, loses MIME structure
   expect_caught_from:
   - - gmail_archiver/models.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/gmail_client.py:
-    - 450
-    - 461
+    - [450, 461]
   note: get_messages_batch() plaintext extraction (no HTML fallback)
   expect_caught_from:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/gmail_client.py:
-    - 517
-    - 524
+    - [517, 524]
   note: get_message() plaintext extraction (no HTML fallback)
   expect_caught_from:
   - - gmail_archiver/gmail_client.py
-- occurrence_id: occ-3
-  files:
-    gmail_archiver/__main__.py:
-    - 429
-    - 448
-  note: Better pattern - extracts both text/plain and text/html with fallback
-  expect_caught_from:
-  - - gmail_archiver/__main__.py

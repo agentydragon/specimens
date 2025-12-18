@@ -188,20 +188,32 @@ The exact phrasing can vary - the key is to acknowledge what looks problematic w
 
 ```yaml
 files:
-  file.py:
-    - 38                    # Single line (bare integer)
-    - [40, 45]              # Range [start, end] inclusive
-    - [50, 50]              # Single line as range
-    - - 60                  # Range as nested YAML list
-      - 75
+  # Single line - bare integer (NOT in a list)
+  single_file.py: 38
+
+  # Single line as explicit range
+  another_file.py: [38, 38]
+
+  # Range [start, end] inclusive
+  range_file.py: [40, 45]
+
+  # Multiple ranges - list of [start, end] pairs
+  multi_range.py:
+    - [40, 45]              # First range
+    - [50, 55]              # Second range
+    - [60, 75]              # Third range
 ```
 
-**Invalid format:**
+**⚠️ Common YAML pitfall:**
 ```yaml
 files:
   file.py:
-    - [38]  # ❌ INVALID - arrays must have exactly 2 elements
+    - 38        # ❌ CREATES [38] - INVALID (need exactly 2 elements)
+    - [38]      # ❌ ALSO INVALID - [38] has 1 element
 ```
+
+The YAML syntax `- 38` creates a list entry `[38]`, which fails validation.
+Use bare integer `38` (not in a list) or explicit range `[38, 38]`.
 
 **Auto-inference rules:**
 

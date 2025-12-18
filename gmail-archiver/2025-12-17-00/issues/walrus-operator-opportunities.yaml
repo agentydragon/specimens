@@ -6,24 +6,21 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/gmail_client.py:
-    - 590
-    - 592
+    - [590, 592]
   note: label_id in remove_label()
   expect_caught_from:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/event_classifier.py:
-    - 99
-    - 101
+    - [99, 101]
   note: cached in EmailTemplateExtractor.extract()
   expect_caught_from:
   - - gmail_archiver/event_classifier.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/planners/aliexpress.py:
-    - 124
-    - 125
+    - [124, 125]
   note: delivered in compute_deadline()
   expect_caught_from:
   - - gmail_archiver/planners/aliexpress.py

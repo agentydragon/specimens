@@ -5,15 +5,73 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/__main__.py:
-    - 104
+    gmail_archiver/__main__.py: 104
   note: '"# Display unified table" comment before display_plan() call'
   expect_caught_from:
   - - gmail_archiver/__main__.py
 - occurrence_id: occ-1
   files:
-    gmail_archiver/__main__.py:
-    - 346
+    gmail_archiver/__main__.py: 346
   note: '"# Connect to Gmail" comment before get_gmail_client() call'
   expect_caught_from:
   - - gmail_archiver/__main__.py
+- occurrence_id: occ-2
+  files:
+    gmail_archiver/__main__.py: 67
+  note: '"# Create inbox interface with caching" - GmailInbox() is self-explanatory'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-3
+  files:
+    gmail_archiver/__main__.py: 70
+  note: '"# Initialize all planners" - list assignment is obvious'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-4
+  files:
+    gmail_archiver/__main__.py: 92
+  note: '"# Merge all plans" - Plan.merge(plans) is self-explanatory'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-5
+  files:
+    gmail_archiver/__main__.py: 149
+  note: '"# Connect to Gmail" - same pattern as occ-1'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-6
+  files:
+    gmail_archiver/__main__.py: 297
+  note: '"# Summary" before print statements'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-7
+  files:
+    gmail_archiver/__main__.py: 466
+  note: '"# Display results" before console.print'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-8
+  files:
+    gmail_archiver/inbox.py: 43
+  note: '"# Fetch from API" before client.get_message()'
+  expect_caught_from:
+  - - gmail_archiver/inbox.py
+- occurrence_id: occ-9
+  files:
+    gmail_archiver/inbox.py: 55
+  note: '"# Get message IDs from query" before list_messages_by_query()'
+  expect_caught_from:
+  - - gmail_archiver/inbox.py
+- occurrence_id: occ-10
+  files:
+    gmail_archiver/cli/labels.py: 109
+  note: '"# Display unused labels" before table creation'
+  expect_caught_from:
+  - - gmail_archiver/cli/labels.py
+- occurrence_id: occ-11
+  files:
+    gmail_archiver/cli/filters.py: 364
+  note: '"# Display plan" before display_plan() call'
+  expect_caught_from:
+  - - gmail_archiver/cli/filters.py

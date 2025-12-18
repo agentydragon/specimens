@@ -5,8 +5,31 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/core.py:
-    - 17
+    gmail_archiver/core.py: 17
   note: global console = Console() at module level
   expect_caught_from:
   - - gmail_archiver/core.py
+- occurrence_id: occ-1
+  files:
+    gmail_archiver/inbox.py: 11
+  note: global console = Console() at module level
+  expect_caught_from:
+  - - gmail_archiver/inbox.py
+- occurrence_id: occ-2
+  files:
+    gmail_archiver/__main__.py: 39
+  note: global console = Console() at module level
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-3
+  files:
+    gmail_archiver/cli/filters.py: 31
+  note: global console = Console() at module level
+  expect_caught_from:
+  - - gmail_archiver/cli/filters.py
+- occurrence_id: occ-4
+  files:
+    gmail_archiver/cli/labels.py: 12
+  note: global console = Console() at module level
+  expect_caught_from:
+  - - gmail_archiver/cli/labels.py

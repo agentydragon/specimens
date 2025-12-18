@@ -191,14 +191,24 @@ occurrences:
 
 ### Line Range Formats
 
+The `files` field maps file paths to line specifications. Line specs can be:
+
 ```yaml
 files:
-  file.py:
-    - 42                    # Single line (bare integer)
-    - [10, 20]              # Range [start, end] inclusive
-    - - 30                  # Range as nested list
-      - 40
+  # Single line (bare integer) - normalized to [[42, 42]]
+  file_a.py: 42
+
+  # Line range [start, end] - normalized to [[10, 20]]
+  file_b.py: [10, 20]
+
+  # Multiple ranges (list of [start, end] pairs)
+  file_c.py:
+    - [30, 40]
+    - [50, 60]
 ```
+
+**Important**: A YAML list with a single integer like `- 42` creates `[42]` which is INVALID.
+Use bare integer `42` for single lines, or `[42, 42]` as a range.
 
 All line numbers are 1-indexed (first line is 1, not 0).
 
