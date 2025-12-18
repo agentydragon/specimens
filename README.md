@@ -16,13 +16,13 @@ Think of this as "ImageNet for code review" - immutable labeled datasets for sup
 ```
 specimens/
 ├── snapshots.yaml              # Registry of all snapshots with metadata
-├── lib.libsonnet               # Jsonnet helper functions for authoring issues
 ├── critic_scopes.yaml          # Training example specifications (per-file review scopes)
 ├── ducktape/                   # Snapshot directory (one per project)
 │   └── 2025-11-26-00/          # Snapshot slug (YYYY-MM-DD-NN)
-│       ├── dead-code.libsonnet
-│       ├── missing-types.libsonnet
-│       └── ...
+│       └── issues/             # Issue files directory
+│           ├── dead-code.yaml
+│           ├── missing-types.yaml
+│           └── ...
 ├── crush/                      # Another project's snapshots
 └── misc/                       # Miscellaneous/experimental snapshots
 ```
@@ -30,40 +30,49 @@ specimens/
 ## Snapshot Format
 
 Each snapshot directory contains:
-- **Issue files** (`.libsonnet`): One file per logical issue type, using Jsonnet for structured data
-- **Bundle reference**: Git commit SHA or bundle file path (see `snapshots.yaml`)
+- **Issue files** (`.yaml` in `issues/` directory): One file per logical issue type
+- **Source reference**: Git commit SHA or local path (see `snapshots.yaml`)
 
 ### snapshots.yaml Schema
 
 ```yaml
 ducktape/2025-11-26-00:
+  source:
+    vcs: github
+    org: agentydragon
+    repo: ducktape
+    ref: ab7e9d6f...
+  split: train                  # Dataset split: train, valid, or test
   bundle:
     source_commit: ab7e9d6f...  # Git commit SHA
     include:
       - adgn/                   # Subdirectories to include in bundle
-  split: train                  # Dataset split: train, valid, or test
 ```
 
 ## Issue File Format
 
-Issues are authored in Jsonnet for type safety and composability:
+Issues are authored in YAML for simplicity and readability:
 
-```jsonnet
-local I = import '../../lib.libsonnet';
-
-I.issue(
-  rationale='Dead code should be removed',
-  filesToRanges={'src/cli.py': [[145, 167]]},
-  // expect_caught_from auto-inferred for single-file issues
-)
+```yaml
+rationale: |
+  Dead code should be removed. Lines 145-167 define a function
+  that is never called anywhere in the codebase.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      src/cli.py:
+        - [145, 167]
+    # expect_caught_from auto-inferred for single-file issues
 ```
 
 Key fields:
 - `rationale`: What's wrong and why (objective, factual description)
-- `filesToRanges`: File paths → line ranges mapping
+- `should_flag`: `true` for real issues, `false` for false positives
+- `occurrences`: List of occurrence locations with file paths and line ranges
 - `expect_caught_from`: Minimal file sets needed to detect this issue (used for per-file training examples)
 
-See `lib.libsonnet` for available helper functions (`issue`, `issueMulti`, `falsePositive`, etc.)
+See `docs/format-spec.md` for detailed schema documentation.
 
 ## Training Strategy
 
@@ -90,7 +99,11 @@ Set environment variable to point to this repo:
 export ADGN_PROPS_SPECIMENS_ROOT="/path/to/specimens"
 ```
 
-The `adgn.props` package will automatically load specimens from this location.
+The `adgn.props` package will automatically load specimens from this location via database sync:
+
+```bash
+adgn-properties db sync
+```
 
 ### Direct Access
 
@@ -107,11 +120,11 @@ with open(specimens_root / "snapshots.yaml") as f:
     snapshots = yaml.safe_load(f)
 
 # Load issues for a specific snapshot
-import _jsonnet
-snapshot_dir = specimens_root / "ducktape" / "2025-11-26-00"
-for issue_file in snapshot_dir.glob("*.libsonnet"):
-    issue_json = _jsonnet.evaluate_file(str(issue_file))
-    # Parse JSON into Issue model
+snapshot_dir = specimens_root / "ducktape" / "2025-11-26-00" / "issues"
+for issue_file in snapshot_dir.glob("*.yaml"):
+    with open(issue_file) as f:
+        issue = yaml.safe_load(f)
+    # Process issue data
 ```
 
 ## Authoring Guidelines
@@ -142,25 +155,27 @@ Current split distribution:
 2. **Annotate**: Add issue files describing all quality problems
 3. **Validate**: Verify paths, ranges, and detection expectations
 4. **Freeze**: Commit to this repo (immutable training data)
-5. **Train**: Use for critic optimization (GEPA, prompt tuning, etc.)
-6. **Evaluate**: Measure recall/precision on validation split
+5. **Sync**: Load into database via `adgn-properties db sync`
+6. **Train**: Use for critic optimization (GEPA, prompt tuning, etc.)
+7. **Evaluate**: Measure recall/precision on validation split
 
 **Important**: Specimens are **immutable once created**. Do not update issue files after fixes are made - create new snapshots if you want to capture improvements.
 
 ## Git LFS Configuration
 
-Large bundle files should use Git LFS:
+Large files (if any) can use Git LFS:
 
 ```bash
-# .gitattributes
-*.bundle filter=lfs diff=lfs merge=lfs -text
+# .gitattributes (example)
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
 ```
 
 ## Related Documentation
 
+- [Format Specification](docs/format-spec.md): YAML schema and data models
+- [Authoring Guide](docs/authoring-guide.md): How to write issue files
+- [Quality Checklist](docs/quality-checklist.md): Pre-commit verification
 - [Training Strategy](https://github.com/agentydragon/ducktape/tree/main/adgn/src/adgn/props/docs/training_strategy.md): Per-file examples, optimization approaches
-- [Authoring Guide](https://github.com/agentydragon/ducktape/tree/main/adgn/src/adgn/props/docs/authoring.md): How to write issue files
-- [Quality Checklist](https://github.com/agentydragon/ducktape/tree/main/adgn/src/adgn/props/docs/quality-checklist.md): Pre-commit verification
 
 ## License
 

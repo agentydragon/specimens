@@ -11,22 +11,22 @@ This guide explains how to author issue files for code review snapshots. Snapsho
 ```
 specimens/
   snapshots.yaml                  # All snapshots defined here
-  lib.libsonnet                   # Jsonnet helpers
   ducktape/
     2025-11-26-00/
-      dead-code.libsonnet         # Issues directly in snapshot dir
-      missing-types.libsonnet
-      fp-intentional-duplication.libsonnet  # FPs mixed with TPs
+      issues/                     # Issues directory for this snapshot
+        dead-code.yaml            # One issue per file
+        missing-types.yaml
+        fp-intentional-duplication.yaml  # FPs mixed with TPs
 ```
 
-**Naming convention:** Issue files use descriptive slugs (lowercase with hyphens), not numerical indices. Slugs should be short (0-30 characters) and convey the issue type. Examples: `dead-code.libsonnet`, `missing-error-handling.libsonnet`, `duplicate-logic.libsonnet`.
+**Naming convention:** Issue files use descriptive slugs (lowercase with hyphens), not numerical indices. Slugs should be short (0-30 characters) and convey the issue type. Examples: `dead-code.yaml`, `missing-error-handling.yaml`, `duplicate-logic.yaml`.
 
 ## Critical: Snapshots are Frozen Code States
 
 **Snapshots are training/evaluation data representing code quality issues at a specific commit.**
 
 - Each snapshot is pinned to a specific commit (see `snapshots.yaml` source field)
-- Issue files (`.libsonnet`) describe what was **wrong at that commit**
+- Issue files (`.yaml`) describe what was **wrong at that commit**
 - **NEVER** update issue files to record resolution status or mark issues "COMPLETED"
 - Issue files should remain accurate descriptions of problems as they existed
 - Fixes happen on separate branches; snapshots remain unchanged historical records
@@ -44,11 +44,11 @@ specimens/
 
 ## Authoring Rules
 
-### 1. Single Source of Truth: Jsonnet Files
+### 1. Single Source of Truth: YAML Issue Files
 
-**All detailed issue information belongs in `*.libsonnet` files only.**
+**All detailed issue information belongs in `issues/*.yaml` files only.**
 
-Each `.libsonnet` file contains:
+Each `.yaml` file contains:
 - **Rationale**: Full explanation of what's wrong and why
 - **File locations**: Exact paths and line ranges
 - **expect_caught_from** (TPs): Files required to catch the issue
@@ -89,73 +89,80 @@ When a snapshot bundle is created with `include: [adgn/]`, the hydrated snapshot
 ### 3. Issue File Templates
 
 **True Positive (issue that should be caught):**
-```jsonnet
-local I = import '../../lib.libsonnet';
-
-I.issue(
-  rationale='Dead code should be removed',
-  filesToRanges={'src/cli.py': [[145, 167]]},
-  // expect_caught_from auto-inferred for single-file issues
-)
+```yaml
+rationale: |
+  Dead code should be removed. Lines 145-167 define a function
+  that is never called anywhere in the codebase.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      src/cli.py:
+        - [145, 167]
+    # expect_caught_from auto-inferred for single-file issues
 ```
 
 **Multi-file issue (requires explicit expect_caught_from):**
-```jsonnet
-local I = import '../../lib.libsonnet';
-
-I.issue(
-  rationale='Duplicated enum definitions',
-  filesToRanges={
-    'src/types.py': [[6, 10]],
-    'src/persist.py': [[54, 58]],
-  },
-  expect_caught_from=[
-    ['src/types.py'],      // Catch from either
-    ['src/persist.py'],
-  ],
-)
+```yaml
+rationale: |
+  Duplicated enum definitions. Both files define the same Status enum,
+  creating a maintenance burden and potential for drift.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      src/types.py:
+        - [6, 10]
+      src/persist.py:
+        - [54, 58]
+    expect_caught_from:
+      - [src/types.py]      # Catch from either file
+      - [src/persist.py]
 ```
 
 **Note on `expect_caught_from`:** This field specifies which minimal file sets are needed to detect the issue. It's used to generate focused training examples per-file rather than only full-snapshot reviews. See [Training Strategy](training_strategy.md) for details on how this enables the per-file examples approach and tighter optimization feedback loops.
 
 **Multiple occurrences:**
-```jsonnet
-local I = import '../../lib.libsonnet';
+```yaml
+rationale: |
+  Imperative list building should use comprehensions. Replace
+  `result = []; for x in items: result.append(f(x))` with
+  `[f(x) for x in items]` for cleaner, more Pythonic code.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      src/agents.py:
+        - [50, 59]
+    note: "In _convert_pending_approvals()"
+    expect_caught_from:
+      - [src/agents.py]
 
-I.issueMulti(
-  rationale='Imperative list building should use comprehensions',
-  occurrences=[
-    {
-      files: {'src/agents.py': [[50, 59]]},
-      note: 'In _convert_pending_approvals()',
-      expect_caught_from: [['src/agents.py']],
-    },
-    {
-      files: {'src/bridge.py': [[64, 108]]},
-      note: 'In list_approvals()',
-      expect_caught_from: [['src/bridge.py']],
-    },
-  ],
-)
+  - occurrence_id: occ-1
+    files:
+      src/bridge.py:
+        - [64, 108]
+    note: "In list_approvals()"
+    expect_caught_from:
+      - [src/bridge.py]
 ```
 
 **False Positive:**
-```jsonnet
-local I = import '../../lib.libsonnet';
-
-I.falsePositive(
-  rationale= |||
-    Critics might flag this duplication as problematic because the button styles
-    are repeated across components. However, our ground truth is that this is
-    intentional for visual consistency - we want all interactive elements to
-    have identical hover/active states for UX coherence.
-  |||,
-  filesToRanges={
-    'src/Button.svelte': [[45, 60]],
-    'src/Link.svelte': [[32, 47]],
-  },
-  // relevant_files auto-inferred from filesToRanges keys
-)
+```yaml
+rationale: |
+  Critics might flag this duplication as problematic because the button styles
+  are repeated across components. However, our ground truth is that this is
+  intentional for visual consistency - we want all interactive elements to
+  have identical hover/active states for UX coherence.
+should_flag: false
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      src/Button.svelte:
+        - [45, 60]
+      src/Link.svelte:
+        - [32, 47]
+    # relevant_files auto-inferred from files keys
 ```
 
 **False Positive Rationale Format:**
@@ -177,42 +184,35 @@ The exact phrasing can vary - the key is to acknowledge what looks problematic w
 
 ### 4. Range Format Specifications
 
-**Three valid formats for line ranges:**
+**Valid formats for line ranges in YAML:**
 
-```jsonnet
-filesToRanges={
-  'file.py': [
-    // Format 1: Bare number (single line)
-    38,
-
-    // Format 2: Two-element array (range)
-    [40, 45],     // Lines 40-45 inclusive
-    [50, 50],     // Single line (start = end)
-
-    // Format 3: Object (explicit fields)
-    {start_line: 60},                    // Single line (no end_line)
-    {start_line: 70, end_line: 75},      // Range with end_line
-  ]
-}
+```yaml
+files:
+  file.py:
+    - 38                    # Single line (bare integer)
+    - [40, 45]              # Range [start, end] inclusive
+    - [50, 50]              # Single line as range
+    - - 60                  # Range as nested YAML list
+      - 75
 ```
 
 **Invalid format:**
-```jsonnet
-filesToRanges={'file.py': [
-  [38],  // ❌ INVALID - arrays must have exactly 2 elements
-]}
+```yaml
+files:
+  file.py:
+    - [38]  # ❌ INVALID - arrays must have exactly 2 elements
 ```
 
 **Auto-inference rules:**
 
-**For `issue()` (single occurrence):**
-- If `filesToRanges` has 1 file: `expect_caught_from` auto-inferred as `[[that_file]]`
-- If `filesToRanges` has >1 file: Must provide explicit `expect_caught_from` (will error if missing)
+**For single occurrence issues:**
+- If `files` has 1 file: `expect_caught_from` auto-inferred as `[[that_file]]`
+- If `files` has >1 file: Must provide explicit `expect_caught_from` (will error if missing)
 
-**For `falsePositive()` (single occurrence):**
-- If `relevant_files` not provided: Auto-inferred from keys of `filesToRanges`
+**For false positives:**
+- If `relevant_files` not provided: Auto-inferred from keys of `files`
 
-**For `issueMulti()` (multiple occurrences):**
+**For multiple occurrence issues:**
 - All occurrences MUST have `note` field
 - If total unique files across ALL occurrences > 1:
   - EVERY occurrence must have explicit `expect_caught_from`
@@ -241,27 +241,27 @@ filesToRanges={'file.py': [
 - Question: "Should this use a pytest fixture?"
 - Expected action: Critic searches for existing fixtures and patterns
 - Result: Finds 12 other instances, flags duplication
-- `expect_caught_from: [['test_notifications.py']]` ✓
+- `expect_caught_from: [[test_notifications.py]]` ✓
 
 **Example 2: Wrapper calling implementation with silent fallback**
 - Files: `cli.py` (wrapper) and `local_tools.py` (implementation with fallback logic)
 - From `cli.py` alone: See wrapper name, but not fallback behavior
 - From `local_tools.py` alone: See the silent fallback directly
 - Result: Only detectable from implementation file
-- `expect_caught_from: [['local_tools.py']]` ✓
+- `expect_caught_from: [[local_tools.py]]` ✓
 
 **Example 3: Unused CLI flag**
 - File: `cli.py` defines `--ui-port` flag with logs saying "Management UI available"
 - Question: "Does this flag actually work?"
 - Expected action: Critic traces code to verify the flag is properly wired up
 - Result: Discovers server serves only stubs, flag misleads users
-- `expect_caught_from: [['cli.py']]` ✓
+- `expect_caught_from: [[cli.py]]` ✓
 
 **Example 4: Cross-file duplication of enum definitions**
 - Files: `types.py` and `persist.py` both define same enum
 - From either file alone: Cannot detect duplication (only see one instance)
 - Need both files: See duplicate definitions
-- `expect_caught_from: [['types.py', 'persist.py']]` ✓ (AND logic)
+- `expect_caught_from: [[types.py, persist.py]]` ✓ (AND logic)
 
 **General principle: Include problem code, not reference/solution code**
 
@@ -329,22 +329,20 @@ Present facts and technical rationale, not opinions or attributed suggestions.
 **Snapshots must not leave open research questions.** All investigation should be completed before authoring the issue.
 
 **WRONG - Leaving research questions open:**
-```jsonnet
-rationale=|||
+```yaml
+rationale: |
   Lines 700-704 manually discover the git directory. Check if `pygit2.Repository()`
   can discover automatically.
 
   **Investigation needed:** Check if either of these works...
-|||
 ```
 
 **CORRECT - Research completed, findings documented:**
-```jsonnet
-rationale=|||
+```yaml
+rationale: |
   Lines 700-704 manually discover the git directory using `pygit2.discover_repository()`.
   Per pygit2 docs, `Repository()` accepts a path and auto-discovers the .git directory,
   making manual discovery unnecessary.
-|||
 ```
 
 ### 9. Verifiable External References
@@ -370,25 +368,21 @@ rationale=|||
 - Avoid long blocks (10+ lines) copied from source
 - Assume reader can look up exact code at cited lines
 
-**Per-range context:** Currently, notes are only supported at the occurrence level. Use Jsonnet comments for per-range context:
-```jsonnet
-filesToRanges={
-  'file.py': [
-    [10, 20],  // definition site
-    [30, 40],  // call site
-  ],
-}
+**Per-range context:** Notes are supported at the occurrence level. For per-range context within an occurrence, use YAML comments:
+```yaml
+files:
+  file.py:
+    - [10, 20]  # definition site
+    - [30, 40]  # call site
 ```
 Note: These comments help human readers but aren't parsed into the data model.
-
-TODO: Add support for structured per-range notes in both Jsonnet and Pydantic schemas.
 
 @quality-checklist.md
 
 ## Why This Structure?
 
-1. **DRY**: One authoritative description per issue (in Jsonnet)
-2. **Tooling-friendly**: Jsonnet is machine-readable for analysis tools
-3. **Human-friendly**: Jsonnet provides full detail in a structured format
+1. **DRY**: One authoritative description per issue (in YAML)
+2. **Tooling-friendly**: YAML is machine-readable for analysis tools
+3. **Human-friendly**: YAML provides full detail in a structured format
 4. **Maintainable**: Updates happen in one place only
 5. **Composable**: Tools can combine/aggregate issues from multiple snapshots

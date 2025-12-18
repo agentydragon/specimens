@@ -1,0 +1,21 @@
+rationale: |
+  "core.py" is a code smell similar to "utils.py" or "constants.py" - a dumping
+  ground that should be refactored into modules named after actual concerns.
+
+  This file mixes domain logic (Plan, Action, PlannedAction, Planner protocol)
+  with view/display concerns (summarize_plan, display_plan, _add_table_row,
+  _collect_display_columns, gmail_link). Should split into purpose-named modules:
+  - plan.py: Plan, Action, PlannedAction, Planner protocol
+  - plan_display.py: display and formatting functions
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    gmail_archiver/core.py:
+    - 1
+    - 341
+  note: |
+    Domain types (Action, PlannedAction, Plan, Planner) mixed with display
+    functions (summarize_plan, display_plan, _add_table_row, _collect_display_columns)
+  expect_caught_from:
+  - - gmail_archiver/core.py

@@ -27,8 +27,7 @@ When working with specimens, read these documents in order:
 
 Technical reference for:
 - `snapshots.yaml` schema
-- `lib.libsonnet` API
-- Jsonnet issue file format
+- YAML issue file format
 - Data models and validation rules
 
 ### 2. Authoring Guide
@@ -47,7 +46,7 @@ How to write good specimens:
 Pre-commit verification checklist:
 - Structure validation
 - Issue quality checks
-- Jsonnet style
+- YAML style
 - Frozen snapshot principle
 
 ## Common Tasks
@@ -58,14 +57,19 @@ Pre-commit verification checklist:
 2. **Add entry to `snapshots.yaml`**:
    ```yaml
    project/YYYY-MM-DD-NN:
+     source:
+       vcs: github  # or git, local
+       org: myorg
+       repo: myrepo
+       ref: <commit-sha>
+     split: train  # or valid/test
      bundle:
        source_commit: <40-char SHA>
        include:
          - path/to/code/
-     split: train  # or valid/test
    ```
-3. **Create snapshot directory**: `mkdir -p project/YYYY-MM-DD-NN/`
-4. **Author issue files**: One `.libsonnet` file per logical issue type
+3. **Create issues directory**: `mkdir -p project/YYYY-MM-DD-NN/issues/`
+4. **Author issue files**: One `.yaml` file per logical issue type in `issues/` subdirectory
 5. **Verify with quality checklist**: @docs/quality-checklist.md
 6. **Test loading**: Use adgn.props package to verify it loads correctly
 
@@ -105,46 +109,40 @@ specimens/
 │   └── quality-checklist.md       # Pre-commit verification
 ├── snapshots.yaml                  # Registry of all snapshots
 ├── critic_scopes.yaml              # Training example specifications
-├── lib.libsonnet                   # Jsonnet helper library
 └── {project}/                      # Project snapshots
     └── {YYYY-MM-DD-NN}/           # Snapshot slug
-        └── *.libsonnet             # Issue files
+        └── issues/                # Issue files directory
+            └── *.yaml             # Issue files (one per logical issue)
 ```
 
 ## Integration with adgn.props
 
-The adgn.props package loads specimens via:
+The adgn.props package loads specimens via database sync:
 
-```python
-from adgn.props.loaders.filesystem import FilesystemLoader
-from adgn.props.snapshot_hydrator import SnapshotHydrator
-
-loader = FilesystemLoader(specimens_root=Path("/path/to/specimens"))
-hydrator = SnapshotHydrator(loader)
-
-# Load and hydrate a snapshot
-snapshot = await hydrator.hydrate(SnapshotSlug("ducktape/2025-11-26-00"))
+```bash
+# Sync specimens to database
+adgn-properties db sync
 ```
 
 The system expects:
 - `ADGN_PROPS_SPECIMENS_ROOT` environment variable pointing here
-- Valid `snapshots.yaml` with source commits
-- Issue files following `lib.libsonnet` API
+- Valid `snapshots.yaml` with source definitions
+- Issue files in YAML format under `{snapshot}/issues/`
 
 ## Conventions
 
 ### Naming
 - Snapshot slugs: `project/YYYY-MM-DD-NN` (date is creation date, NN is sequence)
-- Issue files: descriptive slugs (`dead-code.libsonnet`, not `issue-001.libsonnet`)
+- Issue files: descriptive slugs (`dead-code.yaml`, not `issue-001.yaml`)
 
-### Jsonnet Style
-- Import: `local I = import '../../lib.libsonnet';`
-- Triple-bar strings: two-space indent, closing `|||,` with comma
+### YAML Style
+- Use `|` for multi-line rationale strings
+- Line ranges: `[start, end]` for ranges, bare integers for single lines
 - Minimal comments: prefer structured fields
 
 ### Issue Organization
 - **One logical issue per file**: Group by problem type, not by location
-- **Multiple occurrences**: Use `issueMulti` when same issue appears in multiple places
+- **Multiple occurrences**: Use multiple entries in `occurrences` list when same issue appears in multiple places
 - **Separate problems**: Create separate files even if issues are on adjacent lines
 
 ## Specimen Lifecycle
@@ -153,15 +151,16 @@ The system expects:
 2. **Annotate** → Add issue files describing quality problems
 3. **Validate** → Run quality checklist
 4. **Freeze** → Commit to this repo (immutable)
-5. **Train** → Used by adgn.props for critic optimization
-6. **Evaluate** → Measure recall/precision on validation split
+5. **Sync** → Load into database via `adgn-properties db sync`
+6. **Train** → Used by adgn.props for critic optimization
+7. **Evaluate** → Measure recall/precision on validation split
 
 ## Git Configuration
 
-Large bundle files use Git LFS:
+Large files (if any) can use Git LFS:
 ```bash
-# .gitattributes
-*.bundle filter=lfs diff=lfs merge=lfs -text
+# .gitattributes (example)
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
 ```
 
 ## Questions?

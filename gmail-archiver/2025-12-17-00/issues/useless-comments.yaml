@@ -1,0 +1,19 @@
+rationale: |
+  Comments that just restate what the next line of code does provide no value.
+  "# Display unified table" before display_plan() is obvious from the code.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    gmail_archiver/__main__.py:
+    - 104
+  note: '"# Display unified table" comment before display_plan() call'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
+- occurrence_id: occ-1
+  files:
+    gmail_archiver/__main__.py:
+    - 346
+  note: '"# Connect to Gmail" comment before get_gmail_client() call'
+  expect_caught_from:
+  - - gmail_archiver/__main__.py

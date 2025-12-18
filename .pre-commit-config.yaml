@@ -14,6 +14,8 @@ repos:
       # File formatting
       - id: trailing-whitespace
       - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ['--fix=lf']  # Auto-convert CRLF to LF
 
       # Syntax checks
       - id: check-yaml
@@ -29,14 +31,6 @@ repos:
         # Config in .yamllint file (line-length: 120, indent-sequences: consistent)
         additional_dependencies: ['pyyaml']
         exclude: '.*/code/.*'  # Skip committed snapshot code directories
-
-  # Jsonnet formatter for specimen .libsonnet files
-  - repo: https://github.com/google/go-jsonnet
-    rev: v0.20.0
-    hooks:
-      - id: jsonnet-format
-        name: jsonnet-format (format specimen .libsonnet files)
-        files: ".*\\.libsonnet$"
 
   # Local hooks
   - repo: local

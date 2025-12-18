@@ -4,10 +4,9 @@ Technical reference for the specimens dataset format. This document defines the 
 
 ## Overview
 
-Specimens use a combination of:
-- **YAML** for snapshot registry and metadata (`snapshots.yaml`, `critic_scopes.yaml`)
-- **Jsonnet** for issue definitions (type-safe, composable data structures)
-- **Git bundles or commits** for code snapshots
+Specimens use:
+- **YAML** for all configuration and issue definitions (`snapshots.yaml`, `critic_scopes.yaml`, issue files)
+- **Git commits** for code snapshots (via VCS references - GitHub, git URLs, or local directories)
 
 ## Directory Structure
 
@@ -15,57 +14,95 @@ Specimens use a combination of:
 specimens/
 ├── snapshots.yaml              # Snapshot registry (all snapshots)
 ├── critic_scopes.yaml          # Training example specifications
-├── lib.libsonnet               # Jsonnet helper library
 └── {project}/                  # Project-specific snapshots
     └── {slug}/                 # YYYY-MM-DD-NN format
-        ├── *.libsonnet         # Issue files (one per logical issue)
-        └── *.bundle            # Optional: Git bundle (if not using commit ref)
+        └── issues/             # Issue files directory
+            └── *.yaml          # Issue files (one per logical issue)
 ```
 
 ## snapshots.yaml Schema
 
-Registry of all snapshots with metadata and bundle configuration.
+Registry of all snapshots with metadata and source configuration.
 
 ### Structure
 
 ```yaml
 {project}/{slug}:
-  bundle:
-    source_commit: {sha}        # Git commit SHA (40 hex chars)
-    include:                    # List of paths to include in bundle
+  source:
+    vcs: {github|git|local}       # Version control system type
+    # Additional fields depend on vcs type
+  split: {train|valid|test}       # Dataset split assignment
+  bundle:                         # Optional historical metadata
+    source_commit: {sha}          # Git commit SHA (40 hex chars)
+    include:                      # Paths that were included
       - {path}/
-  split: {train|valid|test}     # Dataset split assignment
+    exclude:                      # Paths that were excluded (optional)
+      - {path}/
 ```
+
+### Source Types
+
+**GitHub source** - fetches from GitHub tarball API:
+```yaml
+source:
+  vcs: github
+  org: agentydragon
+  repo: ducktape
+  ref: 4ad33013af27e159863bed92ffcfdb55b388e46c  # commit SHA or branch/tag
+```
+
+**Generic Git source** - clones from any git URL:
+```yaml
+source:
+  vcs: git
+  url: https://github.com/agentydragon/crush.git
+  commit: a2a1ffa00943aa373f688ac05b667083ac3230b1
+```
+
+**Local source** - copies from a local directory:
+```yaml
+source:
+  vcs: local
+  root: code  # Path relative to snapshot directory (default: ".")
+```
+
+Use `vcs: local` with `root: code` when the source code is stored directly in the specimen (in a `code/` subdirectory).
 
 ### Example
 
 ```yaml
 ducktape/2025-11-26-00:
-  bundle:
-    source_commit: ab7e9d6f8c2b1e5d3a9f4c7b2e8d5a1f6c3b9e7d
-    include:
-      - adgn/
-      - wt/
-  split: train
-
-ducktape/2025-12-01-00:
-  bundle:
-    source_commit: 1234567890abcdef1234567890abcdef12345678
-    include:
-      - adgn/
+  source:
+    vcs: local
+    root: code
   split: valid
+  bundle:
+    source_commit: 751a2a33c8b7daaf18f6c004e31ed6485a62a6a9
+    include:
+      - adgn/
+    exclude:
+      - adgn/src/adgn/props/
+
+crush/2025-08-30-internal_db:
+  source:
+    vcs: git
+    url: https://github.com/agentydragon/crush.git
+    commit: a2a1ffa00943aa373f688ac05b667083ac3230b1
+  split: train
+  bundle: null
 ```
 
 ### Fields
 
-- **`source_commit`** (string, required): Full 40-character Git SHA
-- **`include`** (list[string], required): Subdirectories to include in hydrated snapshot
-  - Paths are relative to repository root
-  - Trailing slash convention for directories
+- **`source`** (object, required): Defines where code comes from
 - **`split`** (string, required): Dataset split assignment
   - `train`: Training data (full access to labels and execution traces)
   - `valid`: Validation data (can evaluate, but cannot read labels)
   - `test`: Test data (reserved for final holdout evaluation)
+- **`bundle`** (object | null, optional): Historical metadata for provenance (not used at runtime)
+  - `source_commit`: Full 40-character Git SHA that was captured
+  - `include`: Subdirectories that were included during capture
+  - `exclude`: Subdirectories that were excluded during capture
 
 ## critic_scopes.yaml Schema
 
@@ -105,150 +142,141 @@ ducktape/2025-11-26-00:
   - Must match hydrated bundle structure (include `include` prefixes)
   - Supports glob patterns (`*.py`, `**/*.svelte`)
 
-## Issue File Format (Jsonnet)
+## Issue File Format (YAML)
 
-Each `.libsonnet` file is a single Jsonnet expression that returns an Issue or FalsePositive object.
+Each `.yaml` file in the `issues/` directory defines a single issue (true positive or false positive).
 
-### File Template
+### True Positive (should_flag: true)
 
-```jsonnet
-local I = import '../../lib.libsonnet';
+Issues that should be caught by a critic.
 
-// Your issue definition here
-I.issue(
-  rationale='...',
-  filesToRanges={...},
-  // optional: expect_caught_from
-)
+```yaml
+rationale: |
+  Multi-line explanation of what's wrong and why.
+  Describe the problem, its impact, and optionally the fix.
+
+should_flag: true
+
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      path/to/file.py:
+        - [10, 20]        # Line range (inclusive)
+        - 42              # Single line
+    note: "Optional note for this occurrence"  # Required if multiple occurrences
+    expect_caught_from:
+      - [path/to/file.py]  # File sets that should detect this
 ```
 
-### lib.libsonnet API
+### False Positive (should_flag: false)
 
-#### `I.issue(rationale, filesToRanges, expect_caught_from=null)`
+Patterns that look wrong but are actually acceptable.
 
-Single occurrence true positive issue.
+```yaml
+rationale: |
+  Critics might flag [X] because [Y looks problematic].
+  However, our ground truth is that it's acceptable because [Z].
 
-**Parameters:**
-- `rationale` (string): Full explanation of what's wrong and why
-- `filesToRanges` (object): `{file_path: [range_spec, ...], ...}`
-- `expect_caught_from` (list[list[string]] | null): Minimal file sets for detection
+should_flag: false
 
-**Range spec formats:**
-```jsonnet
-// Format 1: Bare number (single line)
-38
-
-// Format 2: Two-element array (range)
-[40, 45]     // Lines 40-45 inclusive
-
-// Format 3: Object (explicit fields)
-{start_line: 60, end_line: 75}
-{start_line: 38, end_line: null}  // Single line
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      path/to/file.py:
+        - [10, 20]
+    note: "Optional note"
+    relevant_files:
+      - path/to/file.py
 ```
 
-**Auto-inference:**
-- Single file → `expect_caught_from = [[file]]` (auto-inferred)
-- Multiple files → Must provide explicit `expect_caught_from` (or error)
+### Line Range Formats
 
-**Example:**
-```jsonnet
-I.issue(
-  rationale='Dead code should be removed',
-  filesToRanges={'src/cli.py': [[145, 167]]},
-  // expect_caught_from auto-inferred as [['src/cli.py']]
-)
+```yaml
+files:
+  file.py:
+    - 42                    # Single line (bare integer)
+    - [10, 20]              # Range [start, end] inclusive
+    - - 30                  # Range as nested list
+      - 40
 ```
 
-#### `I.issueMulti(rationale, occurrences)`
+All line numbers are 1-indexed (first line is 1, not 0).
 
-Multiple occurrences true positive issue (same logical problem, different locations).
+### Auto-Inference Rules
 
-**Parameters:**
-- `rationale` (string): Full explanation of the problem
-- `occurrences` (list[object]): List of occurrence objects
+**For true positives:**
+- Single file in occurrence → `expect_caught_from` auto-inferred as `[[that_file]]`
+- Multiple files in occurrence → Must provide explicit `expect_caught_from`
+- Multiple occurrences → `note` field required on all occurrences
 
-**Occurrence object:**
-- `files` (object): `{file_path: [range_spec, ...], ...}`
-- `note` (string, required): Explains this specific occurrence
-- `expect_caught_from` (list[list[string]]): Minimal file sets for detection
+**For false positives:**
+- `relevant_files` auto-inferred from keys of `files` if not provided
 
-**Requirement:** If total unique files across ALL occurrences > 1, EVERY occurrence must have explicit `expect_caught_from`.
+### Complete Examples
 
-**Example:**
-```jsonnet
-I.issueMulti(
-  rationale='Imperative list building should use comprehensions',
-  occurrences=[
-    {
-      files: {'src/agents.py': [[50, 59]]},
-      note: 'In _convert_pending_approvals()',
-      expect_caught_from: [['src/agents.py']],
-    },
-    {
-      files: {'src/bridge.py': [[64, 108]]},
-      note: 'In list_approvals()',
-      expect_caught_from: [['src/bridge.py']],
-    },
-  ],
-)
+**True Positive (Single File, Single Occurrence):**
+```yaml
+rationale: |
+  Lines 67-100 and 108-135 duplicate identical logic for computing AgentInfo.
+  Fix: extract helper function.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py:
+        - [67, 100]
+        - [108, 135]
+    expect_caught_from:
+      - [adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py]
 ```
 
-#### `I.falsePositive(rationale, filesToRanges, relevant_files=null)`
+**True Positive (Multiple Files, Multiple Occurrences):**
+```yaml
+rationale: |
+  Three functions build lists imperatively using append() instead of comprehensions.
+  Replace with list comprehensions for cleaner, more Pythonic code.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
+        - [50, 59]
+      adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py:
+        - [64, 65]
+        - [71, 80]
+    note: "In _convert_pending_approvals()"
+    expect_caught_from:
+      - [adgn/src/adgn/agent/mcp_bridge/servers/agents.py]
+      - [adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py]
 
-Single occurrence false positive (looks wrong but is actually acceptable).
-
-**Parameters:**
-- `rationale` (string): Explains why this is NOT an issue
-- `filesToRanges` (object): `{file_path: [range_spec, ...], ...}`
-- `relevant_files` (list[string] | null): Files that make this FP relevant (auto-inferred from filesToRanges keys if not provided)
-
-**Example:**
-```jsonnet
-I.falsePositive(
-  rationale=|||
-    Critics might flag this duplication as problematic because the button styles
-    are repeated across components. However, this is intentional for visual
-    consistency - we want all interactive elements to have identical hover/active
-    states for UX coherence.
-  |||,
-  filesToRanges={
-    'src/Button.svelte': [[45, 60]],
-    'src/Link.svelte': [[32, 47]],
-  },
-  // relevant_files auto-inferred: ['src/Button.svelte', 'src/Link.svelte']
-)
+  - occurrence_id: occ-1
+    files:
+      adgn/src/adgn/agent/server/runtime.py:
+        - 267
+        - 274
+    note: "In runtime proposals building"
+    expect_caught_from:
+      - [adgn/src/adgn/agent/server/runtime.py]
 ```
 
-#### `I.falsePositiveMulti(rationale, occurrences)`
-
-Multiple occurrences false positive.
-
-**Parameters:**
-- `rationale` (string): Explains why these are NOT issues
-- `occurrences` (list[object]): List of FP occurrence objects
-
-**Occurrence object:**
-- `files` (object): `{file_path: [range_spec, ...], ...}`
-- `note` (string, required): Explains this specific occurrence
-- `relevant_files` (list[string]): Files that make this FP relevant
-
-**Example:**
-```jsonnet
-I.falsePositiveMulti(
-  rationale='These type ignores are necessary for third-party library compatibility',
-  occurrences=[
-    {
-      files: {'src/api.py': [[23]]},
-      note: 'Library returns untyped dict',
-      relevant_files: ['src/api.py'],
-    },
-    {
-      files: {'src/client.py': [[45]]},
-      note: 'Dynamic proxy object',
-      relevant_files: ['src/client.py'],
-    },
-  ],
-)
+**False Positive:**
+```yaml
+rationale: |
+  A past critique flagged the two reads surrounding the permission gate as an
+  "unnecessary re-read". This is a false positive. The first read is a lightweight
+  early equality check; the subsequent read populates oldContent for canonical
+  diff/history recording. If permission.Request blocks, the file may change,
+  so re-reading ensures recorded history reflects state at write time.
+should_flag: false
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      internal/llm/tools/write.go:
+        - [148, 151]
+        - [161, 167]
+        - [174, 182]
+    relevant_files:
+      - internal/llm/tools/write.go
 ```
 
 ## Detection Standard (`expect_caught_from`)
@@ -269,11 +297,10 @@ The key question for `expect_caught_from`: **"If I gave a high-quality critic th
 ### Semantics
 
 `expect_caught_from` is a list of alternative file sets (OR logic):
-```jsonnet
-expect_caught_from: [
-  ['file_a.py'],                  // Detectable from file_a alone
-  ['file_b.py', 'file_c.py'],     // OR detectable from both b AND c together
-]
+```yaml
+expect_caught_from:
+  - [file_a.py]                  # Detectable from file_a alone
+  - [file_b.py, file_c.py]       # OR detectable from both b AND c together
 ```
 
 - **Outer list**: OR logic (any of these file sets works)
@@ -282,64 +309,65 @@ expect_caught_from: [
 ### Examples
 
 **Single-file issue:**
-```jsonnet
-// Unused import in server.py - obvious from the file itself
-expect_caught_from: [['src/server.py']]
+```yaml
+# Unused import in server.py - obvious from the file itself
+expect_caught_from:
+  - [src/server.py]
 ```
 
 **Either-file issue (duplication):**
-```jsonnet
-// Enum duplicated in types.py and persist.py
-// Seeing EITHER file should trigger "search for duplication"
-expect_caught_from: [
-  ['src/types.py'],
-  ['src/persist.py'],
-]
+```yaml
+# Enum duplicated in types.py and persist.py
+# Seeing EITHER file should trigger "search for duplication"
+expect_caught_from:
+  - [src/types.py]
+  - [src/persist.py]
 ```
 
 **Multi-file required (missing abstraction):**
-```jsonnet
-// Client duplicates logic that exists in utils
-// Need to see both to notice the redundancy
-expect_caught_from: [
-  ['src/client.py', 'src/utils.py'],
-]
+```yaml
+# Client duplicates logic that exists in utils
+# Need to see both to notice the redundancy
+expect_caught_from:
+  - [src/client.py, src/utils.py]
 ```
 
 ## Data Model (Python)
 
-The Jsonnet structures map to these Pydantic models (for reference):
+The YAML structures are validated by these Pydantic models:
 
 ### Issue (True Positive)
 
 ```python
-class Issue(BaseModel):
-    rationale: str
-    should_flag: bool = True
-    occurrences: list[Occurrence]
+class TruePositive(BaseModel):
+    rationale: str              # 10-5000 characters
+    should_flag: Literal[True]
+    occurrences: list[TruePositiveOccurrence]
 
-class Occurrence(BaseModel):
-    files: dict[str, list[LineRange] | None]
-    note: str | None = None
-    expect_caught_from: list[list[str]]
+class TruePositiveOccurrence(BaseModel):
+    occurrence_id: str
+    files: dict[Path, list[LineRange] | None]
+    note: str | None = None     # Required if multiple occurrences
+    expect_caught_from: set[frozenset[Path]]
 
 class LineRange(BaseModel):
-    start_line: int
-    end_line: int | None
+    start_line: int             # 1-based, >= 1
+    end_line: int | None        # 1-based, inclusive, None for single line
 ```
 
 ### FalsePositive
 
 ```python
 class FalsePositive(BaseModel):
-    rationale: str
-    should_flag: bool = False
+    rationale: str              # 10-5000 characters
+    should_flag: Literal[False]
     occurrences: list[FalsePositiveOccurrence]
 
 class FalsePositiveOccurrence(BaseModel):
-    files: dict[str, list[LineRange] | None]
-    note: str | None = None
-    relevant_files: list[str]
+    occurrence_id: str
+    files: dict[Path, list[LineRange] | None]
+    note: str | None = None     # Required if multiple occurrences
+    relevant_files: set[Path]
 ```
 
 ## Validation Rules
@@ -357,33 +385,34 @@ class FalsePositiveOccurrence(BaseModel):
 ### Line Ranges
 - 1-indexed (first line is 1, not 0)
 - Inclusive on both ends: `[10, 20]` means lines 10-20
-- Single line: `[10, 10]` or bare `10` or `{start_line: 10, end_line: null}`
+- Single line: bare integer `10` or range `[10, 10]`
 
 ### Rationale
 - Must be 10-5000 characters (after whitespace stripping)
-- Use triple-bar strings in Jsonnet for multi-line text: `|||...|||`
-- Two-space indent inside triple-bar blocks
-- Closing `|||,` on own line with comma
+- Use `|` for multi-line YAML strings
 
 ### expect_caught_from
-- Each inner list must be a subset of files mentioned in `filesToRanges` (for that occurrence)
-- Cannot be empty list (`[]`)
+- Each inner list must be a subset of files mentioned in `files` (for that occurrence)
+- Cannot be empty list
 - At least one alternative file set must be provided
+
+### Multi-occurrence Issues
+- All occurrences MUST have `note` field when there are multiple occurrences
+- If total unique files across ALL occurrences > 1, EVERY occurrence must have explicit `expect_caught_from`
 
 ## File Naming
 
 Issue files use descriptive slugs (lowercase with hyphens), not numerical indices:
-- ✅ Good: `dead-code.libsonnet`, `missing-types.libsonnet`, `duplicate-logic.libsonnet`
-- ❌ Bad: `issue-001.libsonnet`, `iss-032.libsonnet`
+- ✅ Good: `dead-code.yaml`, `missing-types.yaml`, `duplicate-logic.yaml`
+- ❌ Bad: `issue-001.yaml`, `iss-032.yaml`
 
 Slugs should be 0-30 characters and convey the issue type.
 
-## Jsonnet Style
+## YAML Style
 
-- Import helpers: `local I = import '../../lib.libsonnet';`
-- Triple-bar strings: two-space indent, closing `|||,` with comma
+- Use `|` for multi-line rationale strings
+- Line ranges: `[start, end]` for ranges, bare integers for single lines
 - Minimal comments: prefer structured fields over comments
-- Comments only for metadata that doesn't fit in data model
 
 ## Related Documentation
 

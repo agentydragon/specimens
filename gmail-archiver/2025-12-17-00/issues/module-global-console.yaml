@@ -1,0 +1,12 @@
+rationale: |
+  Module-level `console = Console()` creates global state. Console should be
+  passed in or created at call sites to allow for testing and flexibility.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    gmail_archiver/core.py:
+    - 17
+  note: global console = Console() at module level
+  expect_caught_from:
+  - - gmail_archiver/core.py

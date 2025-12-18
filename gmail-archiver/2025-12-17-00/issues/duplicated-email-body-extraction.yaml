@@ -1,0 +1,15 @@
+rationale: |
+  Email body extraction logic (prefer text/plain, fallback to text/html with
+  BeautifulSoup) is inline in classify_event command. This should be moved into
+  the template extractor or a shared helper so it's DRY between the debug
+  command and actual inbox filtering application.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    gmail_archiver/__main__.py:
+    - 430
+    - 448
+  note: body extraction in classify_event() - should be in template extractor or shared helper
+  expect_caught_from:
+  - - gmail_archiver/__main__.py
