@@ -5,39 +5,40 @@ Technical reference for the specimens dataset format. This document defines the 
 ## Overview
 
 Specimens use:
-- **YAML** for all configuration and issue definitions (`snapshots.yaml`, `critic_scopes.yaml`, issue files)
+- **YAML** for all configuration and issue definitions (`manifest.yaml` per snapshot, `critic_scopes.yaml`, issue files)
 - **Git commits** for code snapshots (via VCS references - GitHub, git URLs, or local directories)
 
 ## Directory Structure
 
 ```
 specimens/
-├── snapshots.yaml              # Snapshot registry (all snapshots)
 ├── critic_scopes.yaml          # Training example specifications
 └── {project}/                  # Project-specific snapshots
     └── {slug}/                 # YYYY-MM-DD-NN format
+        ├── manifest.yaml       # Snapshot metadata (source, split, bundle)
+        ├── code/               # Source code (for vcs: local)
         └── issues/             # Issue files directory
             └── *.yaml          # Issue files (one per logical issue)
 ```
 
-## snapshots.yaml Schema
+## manifest.yaml Schema
 
-Registry of all snapshots with metadata and source configuration.
+Each snapshot has its own `manifest.yaml` defining source, split, and optional bundle metadata.
+The slug is derived from the directory path (e.g., `ducktape/2025-11-26-00`).
 
 ### Structure
 
 ```yaml
-{project}/{slug}:
-  source:
-    vcs: {github|git|local}       # Version control system type
-    # Additional fields depend on vcs type
-  split: {train|valid|test}       # Dataset split assignment
-  bundle:                         # Optional historical metadata
-    source_commit: {sha}          # Git commit SHA (40 hex chars)
-    include:                      # Paths that were included
-      - {path}/
-    exclude:                      # Paths that were excluded (optional)
-      - {path}/
+source:
+  vcs: {github|git|local}       # Version control system type
+  # Additional fields depend on vcs type
+split: {train|valid|test}       # Dataset split assignment
+bundle:                         # Optional historical metadata
+  source_commit: {sha}          # Git commit SHA (40 hex chars)
+  include:                      # Paths that were included
+    - {path}/
+  exclude:                      # Paths that were excluded (optional)
+    - {path}/
 ```
 
 ### Source Types
@@ -68,28 +69,37 @@ source:
 
 Use `vcs: local` with `root: code` when the source code is stored directly in the specimen (in a `code/` subdirectory).
 
-### Example
+### Examples
 
+**Local source with bundle metadata** (`ducktape/2025-11-26-00/manifest.yaml`):
 ```yaml
-ducktape/2025-11-26-00:
-  source:
-    vcs: local
-    root: code
-  split: valid
-  bundle:
-    source_commit: 751a2a33c8b7daaf18f6c004e31ed6485a62a6a9
-    include:
-      - adgn/
-    exclude:
-      - adgn/src/adgn/props/
+source:
+  vcs: local
+  root: code
+split: valid
+bundle:
+  source_commit: 751a2a33c8b7daaf18f6c004e31ed6485a62a6a9
+  include:
+    - adgn/
+  exclude:
+    - adgn/src/adgn/props/
+```
 
-crush/2025-08-30-internal_db:
-  source:
-    vcs: git
-    url: https://github.com/agentydragon/crush.git
-    commit: a2a1ffa00943aa373f688ac05b667083ac3230b1
-  split: train
-  bundle: null
+**Git source** (`crush/2025-08-30-internal_db/manifest.yaml`):
+```yaml
+source:
+  vcs: git
+  url: https://github.com/agentydragon/crush.git
+  commit: a2a1ffa00943aa373f688ac05b667083ac3230b1
+split: train
+```
+
+**Minimal local source** (`gmail-archiver/2025-12-17-00/manifest.yaml`):
+```yaml
+source:
+  vcs: local
+  root: code
+split: train
 ```
 
 ### Fields
@@ -209,6 +219,15 @@ files:
 
 **Important**: A YAML list with a single integer like `- 42` creates `[42]` which is INVALID.
 Use bare integer `42` for single lines, or `[42, 42]` as a range.
+
+**Note**: YAML flow style `[10, 20]` and block style are equivalent:
+```yaml
+# These are the same - both create [10, 20] (a single range)
+file.py: [10, 20]
+file.py:
+  - 10
+  - 20
+```
 
 All line numbers are 1-indexed (first line is 1, not 0).
 

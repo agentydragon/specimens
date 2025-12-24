@@ -10,9 +10,10 @@ This guide explains how to author issue files for code review snapshots. Snapsho
 
 ```
 specimens/
-  snapshots.yaml                  # All snapshots defined here
   ducktape/
     2025-11-26-00/
+      manifest.yaml               # Snapshot metadata (source, split, bundle)
+      code/                       # Source code (for vcs: local)
       issues/                     # Issues directory for this snapshot
         dead-code.yaml            # One issue per file
         missing-types.yaml
@@ -25,7 +26,7 @@ specimens/
 
 **Snapshots are training/evaluation data representing code quality issues at a specific commit.**
 
-- Each snapshot is pinned to a specific commit (see `snapshots.yaml` source field)
+- Each snapshot is pinned to a specific commit (see `manifest.yaml` source field)
 - Issue files (`.yaml`) describe what was **wrong at that commit**
 - **NEVER** update issue files to record resolution status or mark issues "COMPLETED"
 - Issue files should remain accurate descriptions of problems as they existed
@@ -69,7 +70,7 @@ When a snapshot bundle is created with `include: [adgn/]`, the hydrated snapshot
 - `tests/props/test_foo.py` ❌
 
 **Verification steps:**
-1. **Check the bundle configuration** in `snapshots.yaml`:
+1. **Check the bundle configuration** in `manifest.yaml`:
    ```yaml
    bundle:
      source_commit: abc123...
@@ -212,8 +213,18 @@ files:
     - [38]      # ❌ ALSO INVALID - [38] has 1 element
 ```
 
-The YAML syntax `- 38` creates a list entry `[38]`, which fails validation.
+A single `- 38` entry creates `[38]` which fails validation (ranges need 2 elements).
 Use bare integer `38` (not in a list) or explicit range `[38, 38]`.
+
+**Note:** Two entries like `- 10\n- 20` create `[10, 20]` which IS valid (a range from 10 to 20):
+```yaml
+files:
+  # These are equivalent - both create a range [40, 45]
+  file_a.py: [40, 45]
+  file_b.py:
+    - 40
+    - 45
+```
 
 **Auto-inference rules:**
 

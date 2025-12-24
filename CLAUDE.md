@@ -26,7 +26,7 @@ When working with specimens, read these documents in order:
 @docs/format-spec.md
 
 Technical reference for:
-- `snapshots.yaml` schema
+- `manifest.yaml` schema (per-snapshot metadata)
 - YAML issue file format
 - Data models and validation rules
 
@@ -54,24 +54,23 @@ Pre-commit verification checklist:
 ### Authoring a New Specimen
 
 1. **Freeze code state**: Choose a commit and determine scope (which files to include)
-2. **Add entry to `snapshots.yaml`**:
+2. **Create snapshot directory**: `mkdir -p project/YYYY-MM-DD-NN/code`
+3. **Add manifest.yaml** in `project/YYYY-MM-DD-NN/manifest.yaml`:
    ```yaml
-   project/YYYY-MM-DD-NN:
-     source:
-       vcs: github  # or git, local
-       org: myorg
-       repo: myrepo
-       ref: <commit-sha>
-     split: train  # or valid/test
-     bundle:
-       source_commit: <40-char SHA>
-       include:
-         - path/to/code/
+   source:
+     vcs: local
+     root: code
+   split: train  # or valid/test
+   bundle:  # optional historical metadata
+     source_commit: <40-char SHA>
+     include:
+       - path/to/code/
    ```
-3. **Create issues directory**: `mkdir -p project/YYYY-MM-DD-NN/issues/`
-4. **Author issue files**: One `.yaml` file per logical issue type in `issues/` subdirectory
-5. **Verify with quality checklist**: @docs/quality-checklist.md
-6. **Test loading**: Use adgn.props package to verify it loads correctly
+4. **Copy source code** to `project/YYYY-MM-DD-NN/code/`
+5. **Create issues directory**: `mkdir -p project/YYYY-MM-DD-NN/issues/`
+6. **Author issue files**: One `.yaml` file per logical issue type in `issues/` subdirectory
+7. **Verify with quality checklist**: @docs/quality-checklist.md
+8. **Test loading**: Use adgn.props package to verify it loads correctly
 
 ### Updating Existing Specimens
 
@@ -107,10 +106,11 @@ specimens/
 │   ├── format-spec.md             # Technical format reference
 │   ├── authoring-guide.md         # How to write specimens
 │   └── quality-checklist.md       # Pre-commit verification
-├── snapshots.yaml                  # Registry of all snapshots
 ├── critic_scopes.yaml              # Training example specifications
 └── {project}/                      # Project snapshots
     └── {YYYY-MM-DD-NN}/           # Snapshot slug
+        ├── manifest.yaml          # Snapshot metadata (source, split, bundle)
+        ├── code/                  # Source code (for vcs: local)
         └── issues/                # Issue files directory
             └── *.yaml             # Issue files (one per logical issue)
 ```
@@ -126,7 +126,7 @@ adgn-properties db sync
 
 The system expects:
 - `ADGN_PROPS_SPECIMENS_ROOT` environment variable pointing here
-- Valid `snapshots.yaml` with source definitions
+- Valid `manifest.yaml` in each snapshot directory
 - Issue files in YAML format under `{snapshot}/issues/`
 
 ## Conventions

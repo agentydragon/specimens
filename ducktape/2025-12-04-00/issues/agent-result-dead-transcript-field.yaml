@@ -1,99 +1,12 @@
 rationale: |
-  Lines 28-32 and 45, 65 in cli_app/shared.py contain a dead field:
-  AgentResult.transcript is always an empty list and never used.
+  `AgentResult.transcript` (lines 28-32) is always an empty list. The `transcript`
+  variable is initialized to [] at line 45, never appended to, and returned still
+  empty at line 65. Callers only access `res.final_text` (lines 153-156).
 
-  Current code:
+  The TranscriptHandler writes to a file, not to a returned collection - there's
+  no mechanism to populate this field.
 
-  @dataclass
-  class AgentResult:
-      final_text: str
-      transcript: list[TranscriptItem]  # ← Never populated, always []
-
-  async def run_prompt_async(...) -> AgentResult:
-      transcript: list[TranscriptItem] = []  # ← Line 45: initialized empty
-      comp = Compositor("compositor")
-      # ... 15 lines of setup and execution ...
-      return AgentResult(final_text=res_any.text, transcript=transcript)  # ← Line 65: still []
-
-  async def run_check_minicodex_async(...) -> int:
-      ...
-      res = await run_prompt_async(prompt, server_factories, client=client)
-      if output_final_message:
-          Path(output_final_message).write_text(res.final_text, encoding="utf-8")  # ← Only uses final_text
-      if not final_only and res.final_text:
-          print(res.final_text)  # ← Only uses final_text
-      return 0
-
-  Problems:
-
-  1. **Dead field**: `transcript` is initialized to [] at line 45 and never populated.
-     The variable sits unused throughout the function body, then gets returned still empty.
-
-  2. **Unnecessary wrapper**: AgentResult exists solely to wrap a string. The transcript
-     field adds no value - it's always empty and never accessed by callers (line 153-156
-     only use res.final_text).
-
-  3. **Misleading API**: The presence of a transcript field suggests it contains useful
-     data, but it's always empty. This is confusing for readers and maintainers.
-
-  4. **Extra boilerplate**: Requires dataclass definition, importing TranscriptItem type,
-     constructing the wrapper object, and accessing .final_text at call sites.
-
-  Why transcript is dead:
-  - TranscriptHandler writes to a file (events.jsonl), not to a returned collection
-  - The transcript variable is never passed to anything or appended to
-  - There's no mechanism to populate it from the agent execution
-
-  Suggested fix:
-
-  1. Remove AgentResult class entirely (lines 28-32)
-  2. Change run_prompt_async return type from AgentResult to str
-  3. Return res_any.text directly (line 65: `return res_any.text`)
-  4. Remove transcript variable declaration (line 45)
-  5. Update run_check_minicodex_async to use string directly:
-     - Line 152: `final_text = await run_prompt_async(...)`
-     - Line 153: `Path(output_final_message).write_text(final_text, ...)`
-     - Line 155: `if not final_only and final_text:`
-     - Line 156: `print(final_text)`
-
-  After refactoring:
-
-  async def run_prompt_async(...) -> str:
-      """Run the prompt using MiniCodex + MCP specs and return the final text."""
-      comp = Compositor("compositor")
-      for name, factory in server_factories.items():
-          server = factory()
-          await comp.mount_inproc(name, server)
-      run_dir = Path.cwd() / "logs" / "mini_codex" / "agent_runner"
-      run_dir = run_dir / f"run_{int(time.time())}_{os.getpid()}"
-      run_dir.mkdir(parents=True, exist_ok=True)
-      async with Client(comp) as mcp_client:
-          agent = await MiniCodex.create(
-              mcp_client=mcp_client,
-              system=system_prompt,
-              client=client,
-              handlers=[OneLineProgressHandler(), TranscriptHandler(events_path=run_dir / "events.jsonl")],
-              tool_policy=RequireAnyTool(),
-          )
-          res_any = await agent.run(prompt)
-      return res_any.text  # Return string directly
-
-  async def run_check_minicodex_async(...) -> int:
-      wiring = properties_docker_spec(workdir, mount_properties=True)
-      server_factories = {wiring.server_name: wiring.server_factory}
-      final_text = await run_prompt_async(prompt, server_factories, client=client)
-      if output_final_message:
-          Path(output_final_message).write_text(final_text, encoding="utf-8")
-      if not final_only and final_text:
-          print(final_text)
-      return 0
-
-  Benefits:
-  - Removes dead field that's always empty
-  - Eliminates unnecessary wrapper class
-  - Simplifies API: function returns what it actually produces (string)
-  - Less boilerplate (no dataclass, no .final_text accessor)
-  - Clearer intent: the function returns text, not a complex result object
+  Fix: Remove the dead `transcript` field from AgentResult.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

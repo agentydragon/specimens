@@ -1,84 +1,10 @@
 rationale: |
-  The _StepRunner class (lines 130-153 in tests/support/responses.py) requires an unnecessary
-  wrapper function to be used with make_mock(), when it could directly implement OpenAIModelProto.
+  `_StepRunner` (lines 130-153) uses `make_mock(runner.handle_request_async)` to conform
+  to OpenAIModelProto, but could implement the protocol directly. The indirection obscures
+  intent and requires awkward method binding.
 
-  Current pattern:
-
-  class _StepRunner:
-      def __init__(self, factory: ResponsesFactory, steps: Sequence[Step]) -> None:
-          self.factory = factory
-          self.steps = steps
-          self.turn = 0
-
-      async def handle_request_async(self, req: ResponsesRequest) -> ResponsesResult:
-          """Async wrapper for handle_request."""
-          return self.handle_request(req)
-
-  # Tests do:
-  runner = _StepRunner(factory, steps)
-  client = make_mock(runner.handle_request_async)  # ← Unnecessary wrapper
-
-  Problems:
-
-  1. **Unnecessary abstraction layer**: make_mock() creates a thin wrapper that implements
-     OpenAIModelProto by delegating to the provided function. But _StepRunner could just
-     implement OpenAIModelProto directly.
-
-  2. **Indirect protocol conformance**: The connection between _StepRunner and OpenAIModelProto
-     is obscured. Reading _StepRunner code doesn't reveal it's meant to be a mock OpenAI client.
-
-  3. **Manual method binding**: Tests must pass runner.handle_request_async as a bound method,
-     which feels awkward (passing a method reference rather than using an object).
-
-  4. **Method naming mismatch**: handle_request_async vs responses_create - the method name
-     doesn't match the protocol's expected method name, obscuring the relationship.
-
-  OpenAIModelProto requirements (from src/adgn/openai_utils/model.py:401-405):
-
-  class OpenAIModelProto(Protocol):
-      @property
-      def model(self) -> str: ...
-
-      async def responses_create(self, req: ResponsesRequest) -> ResponsesResult: ...
-
-  Suggested fix:
-
-  class _StepRunner(OpenAIModelProto):  # ← Explicitly implement protocol
-      def __init__(self, factory: ResponsesFactory, steps: Sequence[Step]) -> None:
-          self.factory = factory
-          self.steps = steps
-          self.turn = 0
-
-      @property
-      def model(self) -> str:
-          return self.factory.model
-
-      async def responses_create(self, req: ResponsesRequest) -> ResponsesResult:
-          """Protocol method - run next step in sequence."""
-          if self.turn >= len(self.steps):
-              pytest.fail(f"Exceeded {len(self.steps)} expected turns (got turn {self.turn + 1})")
-          result = self.steps[self.turn].execute(req, self.factory)
-          self.turn += 1
-          return result
-
-  # Tests can use directly:
-  runner = _StepRunner(factory, steps)
-  # No make_mock() needed - runner IS an OpenAIModelProto
-
-  # If capturing is needed:
-  client = CapturingOpenAIModel(runner)
-
-  Benefits:
-  - Eliminates make_mock() wrapper entirely for step runner usage
-  - Makes protocol conformance explicit in the class definition
-  - Method name matches protocol (responses_create not handle_request_async)
-  - Clearer intent - reading the class reveals it's meant to mock OpenAI
-  - One less layer of indirection in test fixtures
-  - Still compatible with CapturingOpenAIModel when request capture is needed
-
-  Note: make_mock() should remain for cases where tests want to provide a simple function
-  without defining a class. But _StepRunner is a stateful class that naturally fits
-  protocol implementation.
+  Fix: Have `_StepRunner` implement `OpenAIModelProto` directly with a `responses_create`
+  method instead of `handle_request_async`, eliminating the `make_mock()` wrapper.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

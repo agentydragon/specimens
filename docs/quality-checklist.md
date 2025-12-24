@@ -4,7 +4,7 @@ Before committing a snapshot, verify all of these criteria:
 
 ### Structure & Organization
 - [ ] **Snapshot slug format**: Directory path follows `{project}/{YYYY-MM-DD-NN}` pattern (e.g., `ducktape/2025-11-20-00`). Date is snapshot creation date, NN is zero-padded sequence number for that day
-- [ ] **snapshots.yaml entry**: Entry exists with `source` (github/git/local/inline) and `split` (train/valid/test) fields
+- [ ] **manifest.yaml exists**: `manifest.yaml` in snapshot directory with `source` (github/git/local) and `split` (train/valid/test) fields
 - [ ] **Issue files location**: All issues in `{project}/{slug}/issues/*.yaml` directory
 - [ ] **Slug-based naming**: Issue files use descriptive slugs (e.g., `dead-code.yaml`, `missing-types.yaml`), not numerical indices. Slugs should be short (0-30 characters), lowercase with hyphens
 - [ ] **One logical issue per file**: Each `.yaml` describes ONE logical problem type
