@@ -1,0 +1,11 @@
+rationale: |
+  The run_dir path is constructed over two lines (58-59) when it could be a single
+  expression. The intermediate assignment adds no clarity.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      adgn/src/adgn/llm/llm_edit.py:
+        - [58, 59]
+    expect_caught_from:
+      - [adgn/src/adgn/llm/llm_edit.py]

@@ -1,0 +1,11 @@
+rationale: |
+  The `model` parameter in _execute() is never used inside the function body.
+  The client is already constructed by the caller and passed as the `client` parameter.
+  The `model` string is redundant and should be removed.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      adgn/src/adgn/llm/llm_edit.py: 37
+    expect_caught_from:
+      - [adgn/src/adgn/llm/llm_edit.py]
