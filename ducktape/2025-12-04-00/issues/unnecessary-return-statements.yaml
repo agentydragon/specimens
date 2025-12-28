@@ -21,9 +21,13 @@ occurrences:
   note: Unnecessary return after try/except/finally in if branch
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/runtime.py: 218
   note: Unnecessary return at end of method
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/runtime.py

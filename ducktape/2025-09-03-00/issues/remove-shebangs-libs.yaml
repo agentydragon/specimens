@@ -11,21 +11,29 @@ occurrences:
   note: shebang on library module exposed via console_scripts
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py: 1
   note: shebang on library module exposed via console_scripts
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py: 1
   note: shebang on library module exposed via console_scripts
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
 - occurrence_id: occ-3
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py: 1
   note: shebang on library module exposed via console_scripts
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py

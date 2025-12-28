@@ -24,7 +24,18 @@ occurrences:
     adgn/tests/mcp/test_gitea_mirror_server.py:
     - - 33
       - 36
-    - - 39
-      - 51
+  note: Unused _iter() helper function
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_gitea_mirror_server.py
+  graders_match_only_if_reported_on:
+  - adgn/tests/mcp/test_gitea_mirror_server.py
+- occurrence_id: occ-1
+  files:
+    adgn/tests/mcp/test_gitea_mirror_server.py:
+    - - 39
+      - 51
+  note: Unused _extract_payload() helper function
+  critic_scopes_expected_to_recall:
+  - - adgn/tests/mcp/test_gitea_mirror_server.py
+  graders_match_only_if_reported_on:
+  - adgn/tests/mcp/test_gitea_mirror_server.py

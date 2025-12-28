@@ -12,3 +12,5 @@ occurrences:
   note: diff_filters function
   critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py
+  graders_match_only_if_reported_on:
+  - gmail_archiver/filter_sync.py

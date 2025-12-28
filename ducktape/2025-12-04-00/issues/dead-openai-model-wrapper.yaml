@@ -15,3 +15,5 @@ occurrences:
     - 379
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/openai_utils/model.py

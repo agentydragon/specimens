@@ -1,6 +1,6 @@
 rationale: |
-  run_jupyter_mcp starts a Jupyter server at line 146 but the try/finally cleanup block
-  doesn't start until line 165. If any operation between lines 147-164 raises (building
+  run_jupyter_mcp starts a Jupyter server at lines 133-140 but the try/finally cleanup block
+  doesn't start until line 163. If any operation between lines 141-162 raises (building
   mcp_cmd, validation, etc.), the try block is never entered, so the finally block never
   executes, leaving the Jupyter server process running. The finally block only protects
   against failures inside the try block (subprocess.Popen and proc.wait), not failures
@@ -17,9 +17,11 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
-    - - 146
-      - 146
-    - - 165
-      - 171
+    - - 133
+      - 140
+    - - 163
+      - 170
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py

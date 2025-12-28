@@ -11,3 +11,5 @@ occurrences:
   note: '"if not messages: return plan" - loop would just be a no-op anyway'
   critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/aliexpress.py
+  graders_match_only_if_reported_on:
+  - gmail_archiver/planners/aliexpress.py

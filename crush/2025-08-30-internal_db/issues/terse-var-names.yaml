@@ -13,6 +13,8 @@ occurrences:
   note: addr atomic.Value stored as `v`; prefer naming like storedAddr/address in accessors to avoid confusion.
   critic_scopes_expected_to_recall:
   - - internal/profile/profile.go
+  graders_match_only_if_reported_on:
+  - internal/profile/profile.go
 - occurrence_id: occ-1
   files:
     internal/profile/server.go:
@@ -21,6 +23,8 @@ occurrences:
   note: v variable read from CRUSH_PROFILE is ambiguous; syscall/env var pstr should be named pprofPortStr or similar.
   critic_scopes_expected_to_recall:
   - - internal/profile/server.go
+  graders_match_only_if_reported_on:
+  - internal/profile/server.go
 - occurrence_id: occ-2
   files:
     e2e/setup_helpers.go:
@@ -29,3 +33,5 @@ occurrences:
   note: bool `b` used to set Wire.Compress; rename to compressEnabled to highlight units/purpose.
   critic_scopes_expected_to_recall:
   - - e2e/setup_helpers.go
+  graders_match_only_if_reported_on:
+  - e2e/setup_helpers.go

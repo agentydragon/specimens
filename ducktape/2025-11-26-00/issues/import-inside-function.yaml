@@ -10,3 +10,5 @@ occurrences:
     adgn/src/adgn/agent/presets.py: 70
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/presets.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/presets.py

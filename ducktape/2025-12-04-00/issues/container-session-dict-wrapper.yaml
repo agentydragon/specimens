@@ -14,7 +14,11 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/_shared/container_session.py:
-    - 136
-    - 153
+    - - 28
+      - 28
+    - - 132
+      - 138
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/_shared/container_session.py

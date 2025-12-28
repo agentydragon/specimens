@@ -13,3 +13,6 @@ occurrences:
     critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/cli.py]
       - [adgn/src/adgn/util/net.py]
+    graders_match_only_if_reported_on:
+      - adgn/src/adgn/agent/cli.py
+      - adgn/src/adgn/util/net.py

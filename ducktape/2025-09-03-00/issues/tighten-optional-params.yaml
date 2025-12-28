@@ -16,15 +16,21 @@ occurrences:
     call
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 1013
   note: 'generate(..., model: str | None = None) — prefer required or resolve default at call site'
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 1103
   note: 'generate(..., model: str | None = None) — prefer required or resolve default at call site'
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py

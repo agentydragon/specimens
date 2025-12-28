@@ -35,3 +35,5 @@ occurrences:
     - 196
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/engine.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/approval_policy/engine.py

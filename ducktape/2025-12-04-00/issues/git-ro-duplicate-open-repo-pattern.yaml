@@ -17,7 +17,7 @@ rationale: |
   state = GitRoState(git_repo=git_repo.resolve())
   ```
 
-  **Symptom: Repeated repository opening (7 occurrences)**
+  **Symptom: Repeated repository opening (8 occurrences)**
 
   Without storing the open repository, every tool must reopen it:
   ```python
@@ -25,8 +25,8 @@ rationale: |
   repo = _open_repo(root)  # Expensive I/O operation repeated
   ```
 
-  This pattern appears in 7 tool implementations (lines 232-233, 272-273, 300-301, 341-342, 396-397, 414-415,
-  424-425).
+  This pattern appears in 8 tool implementations (lines 244-245, 278, 300-301, 327-328, 367-368, 421-422,
+  438-439, 447-448).
 
   **Problems with this design:**
 
@@ -61,21 +61,25 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/git_ro/server.py:
-    - - 217
-      - 219
-    - - 232
-      - 233
-    - - 272
-      - 273
+    - - 221
+      - 223
+    - - 244
+      - 245
+    - - 278
+      - 278
     - - 300
       - 301
-    - - 341
-      - 342
-    - - 396
-      - 397
-    - - 414
-      - 415
-    - - 424
-      - 425
+    - - 327
+      - 328
+    - - 367
+      - 368
+    - - 421
+      - 422
+    - - 438
+      - 439
+    - - 447
+      - 448
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/git_ro/server.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/git_ro/server.py

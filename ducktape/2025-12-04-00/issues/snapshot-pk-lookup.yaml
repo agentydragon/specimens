@@ -12,15 +12,21 @@ occurrences:
   note: Uses .filter_by(slug=...).first() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/db/sync_specimens.py: 101
   note: Uses .filter_by(slug=...).one() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync_specimens.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/db/sync_specimens.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/props/db/sync_specimens.py: 118
   note: Uses .filter_by(slug=...).one() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync_specimens.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/db/sync_specimens.py

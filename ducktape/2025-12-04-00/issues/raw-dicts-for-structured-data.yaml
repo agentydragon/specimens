@@ -13,6 +13,8 @@ occurrences:
   note: 'In sync_snapshots_to_db: snapshot_data dict'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/db/sync.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/db/sync.py:
@@ -23,3 +25,5 @@ occurrences:
   note: 'In sync_issues_to_db: issue_data and fp_data dicts'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/db/sync.py

@@ -28,6 +28,8 @@ occurrences:
   note: ReasoningChunk class definition
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/protocol.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/protocol.py:
@@ -36,3 +38,5 @@ occurrences:
   note: TranscriptItem type alias (includes ReasoningChunk at line 114)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/protocol.py

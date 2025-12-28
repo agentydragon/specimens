@@ -23,6 +23,8 @@ occurrences:
   note: ChangedFileItem construction loses rename path information
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/git_ro/formatting.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/git_ro/formatting.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/git_ro/formatting.py:
@@ -31,3 +33,5 @@ occurrences:
   note: StatItem construction loses rename path information
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/git_ro/formatting.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/git_ro/formatting.py

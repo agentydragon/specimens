@@ -18,3 +18,5 @@ occurrences:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py: 67
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

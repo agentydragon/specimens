@@ -16,3 +16,5 @@ occurrences:
     adgn/src/adgn/mcp/_shared/json_helpers.py: null
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/json_helpers.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/_shared/json_helpers.py

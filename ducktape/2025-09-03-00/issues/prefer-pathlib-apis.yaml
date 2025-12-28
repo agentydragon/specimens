@@ -27,6 +27,8 @@ occurrences:
   note: cfg_path computed with Path(..) vs os.path usage; prefer Path APIs
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/cli.py:
@@ -35,3 +37,5 @@ occurrences:
   note: 'cwd handling: prefer Path.cwd()/Path(...) semantics instead of os.getcwd()/os.path'
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py

@@ -17,6 +17,8 @@ occurrences:
   note: First copy in cmd_detector.py with "specimen" in docstring
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_detector.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/cli_app/cmd_detector.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/cli_app/main.py:
@@ -25,3 +27,5 @@ occurrences:
   note: Second copy in main.py with "snapshot" in docstring
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/main.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/cli_app/main.py

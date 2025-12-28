@@ -45,3 +45,5 @@ occurrences:
       - 274
   critic_scopes_expected_to_recall:
   - - adgn/scripts/generate_frontend_code.py
+  graders_match_only_if_reported_on:
+  - adgn/scripts/generate_frontend_code.py

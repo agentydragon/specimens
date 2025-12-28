@@ -16,3 +16,5 @@ occurrences:
     - 83
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_db.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/cli_app/cmd_db.py

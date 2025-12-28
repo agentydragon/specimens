@@ -18,3 +18,5 @@ occurrences:
       - 159
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_mcp_notifications_flow.py
+  graders_match_only_if_reported_on:
+  - adgn/tests/agent/test_mcp_notifications_flow.py

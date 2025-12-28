@@ -14,6 +14,8 @@ occurrences:
     adaptation.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/view.go
 - occurrence_id: occ-1
   files:
     internal/tui/components/chat/messages/renderer.go:
@@ -24,3 +26,5 @@ occurrences:
     shared Digits helper.
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
+  graders_match_only_if_reported_on:
+  - internal/tui/components/chat/messages/renderer.go

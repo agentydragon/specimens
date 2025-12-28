@@ -11,3 +11,5 @@ occurrences:
     - 176
   critic_scopes_expected_to_recall:
   - - internal/config/config.go
+  graders_match_only_if_reported_on:
+  - internal/config/config.go

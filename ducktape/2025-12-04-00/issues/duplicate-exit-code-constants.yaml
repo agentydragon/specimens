@@ -24,8 +24,8 @@ occurrences:
     adgn/src/adgn/mcp/exec/models.py:
     - - 14
       - 19
-    - - 56
-      - 57
+    - - 55
+      - 56
   note: Duplicate definition in exec/models
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/models.py

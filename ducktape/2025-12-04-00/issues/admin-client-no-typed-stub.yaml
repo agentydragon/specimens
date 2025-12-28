@@ -44,3 +44,5 @@ occurrences:
       - 48
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/clients.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/compositor/clients.py

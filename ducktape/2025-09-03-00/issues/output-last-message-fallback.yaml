@@ -14,3 +14,5 @@ occurrences:
     - 1191
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py

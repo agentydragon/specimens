@@ -39,3 +39,5 @@ occurrences:
     - 73
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/mcp_routing.py

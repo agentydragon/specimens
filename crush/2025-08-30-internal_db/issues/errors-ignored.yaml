@@ -24,3 +24,5 @@ occurrences:
     - 168
   critic_scopes_expected_to_recall:
   - - internal/tui/tui.go
+  graders_match_only_if_reported_on:
+  - internal/tui/tui.go

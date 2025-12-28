@@ -14,6 +14,8 @@ occurrences:
   note: Glob tool uses WithResponseMetadata/NewTextResponse at these lines; factor via WrapTextWithMeta.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/glob.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/glob.go
 - occurrence_id: occ-1
   files:
     internal/llm/tools/bash.go:
@@ -22,6 +24,8 @@ occurrences:
   note: Bash tool wraps stdout/no-output with BashResponseMetadata - use helper to centralize.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/bash.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/bash.go
 - occurrence_id: occ-2
   files:
     internal/llm/tools/view.go:
@@ -32,6 +36,8 @@ occurrences:
     WrapTextWithMeta.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/view.go
 - occurrence_id: occ-3
   files:
     internal/llm/tools/write.go:
@@ -40,6 +46,8 @@ occurrences:
   note: Write tool wraps result with WriteResponseMetadata - consolidate.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/write.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/write.go
 - occurrence_id: occ-4
   files:
     internal/llm/tools/grep.go:
@@ -48,6 +56,8 @@ occurrences:
   note: Grep wraps matches with GrepResponseMetadata; prefer a per-tool helper.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/grep.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/grep.go
 - occurrence_id: occ-5
   files:
     internal/llm/tools/ls.go:
@@ -56,6 +66,8 @@ occurrences:
   note: LS wraps listing output with LSResponseMetadata; centralize call shape.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/ls.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/ls.go
 - occurrence_id: occ-6
   files:
     internal/llm/tools/edit.go:
@@ -68,6 +80,8 @@ occurrences:
   note: Edit tool has multiple wrap sites; provide newEditResult helper that uses WrapTextWithMeta.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/edit.go
 - occurrence_id: occ-7
   files:
     internal/llm/tools/multiedit.go:
@@ -78,3 +92,5 @@ occurrences:
   note: MultiEdit uses MultiEditResponseMetadata in multiple places; factor to helper.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/multiedit.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/multiedit.go

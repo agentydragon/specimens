@@ -21,3 +21,5 @@ occurrences:
     - 174
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/_shared/container_session.py

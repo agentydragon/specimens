@@ -21,6 +21,8 @@ occurrences:
     MCP clients
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/seatbelt.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/exec/seatbelt.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/exec/seatbelt.py:

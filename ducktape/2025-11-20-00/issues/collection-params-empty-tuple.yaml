@@ -23,6 +23,8 @@ occurrences:
   note: extra_handlers defaults to None, then converted with `list(extra_handlers or [])`
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/local_runtime.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/runtime/local_runtime.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/policies/scaffold.py:
@@ -33,6 +35,8 @@ occurrences:
   note: tests defaults to None, then guarded with `if tests:`
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policies/scaffold.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/policies/scaffold.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/persist/sqlite.py:

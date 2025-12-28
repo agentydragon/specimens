@@ -16,6 +16,8 @@ occurrences:
   note: First copy of _parse_json_or_none in event_renderer.py
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/event_renderer.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/event_renderer.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/rich_display.py:
@@ -24,3 +26,5 @@ occurrences:
   note: Second copy of _parse_json_or_none in rich_display.py
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/rich_display.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/rich_display.py

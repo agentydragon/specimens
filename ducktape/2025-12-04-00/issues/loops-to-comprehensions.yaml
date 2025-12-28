@@ -14,3 +14,5 @@ occurrences:
     v.spec is not None}
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/compositor/server.py

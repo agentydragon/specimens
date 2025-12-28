@@ -12,24 +12,32 @@ occurrences:
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 157
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 177
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-3
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 196
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-4
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
