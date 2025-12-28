@@ -17,7 +17,16 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/git_commit_ai/cli.py: 662
-    adgn/src/adgn/git_commit_ai/minicodex_backend.py: 163
+  note: str(Path.cwd()) passed to pygit2.discover_repository()
   expect_caught_from:
   - - adgn/src/adgn/git_commit_ai/cli.py
+  only_matchable_from_files:
+  - adgn/src/adgn/git_commit_ai/cli.py
+- occurrence_id: occ-1
+  files:
+    adgn/src/adgn/git_commit_ai/minicodex_backend.py: 163
+  note: str(Path.cwd()) passed to pygit2.discover_repository()
+  expect_caught_from:
   - - adgn/src/adgn/git_commit_ai/minicodex_backend.py
+  only_matchable_from_files:
+  - adgn/src/adgn/git_commit_ai/minicodex_backend.py

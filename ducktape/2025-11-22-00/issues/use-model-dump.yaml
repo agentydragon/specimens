@@ -1,0 +1,16 @@
+rationale: |
+  Manual dict construction from Pydantic model fields should use `model_dump()` instead.
+  Manually building a dict like `{"name": model.name, "arguments": model.arguments}`
+  bypasses Pydantic's serialization (aliases, validators, etc.) and creates
+  maintenance burden if model fields change. Use `model_dump(include={"name", "arguments"})`
+  for proper serialization with explicit field selection.
+should_flag: true
+occurrences:
+- occurrence_id: occ-0
+  files:
+    adgn/src/adgn/agent/policy_eval/container.py: 52
+  note: Manual dict construction instead of policy_input.model_dump(include={...})
+  expect_caught_from:
+  - - adgn/src/adgn/agent/policy_eval/container.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/policy_eval/container.py

@@ -21,21 +21,63 @@ occurrences:
     adgn/src/adgn/agent/web/src/features/agents/stores.ts:
     - 36
     - 38
+  note: empty catch in agent polling
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/features/agents/stores.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/features/agents/stores.ts
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/web/src/features/chat/channels.ts:
     - 76
     - 77
+  note: empty catch in WebSocket ops
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/features/chat/channels.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/features/chat/channels.ts
+- occurrence_id: occ-2
+  files:
     adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts: 120
+  note: empty catch in error handling
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts
+- occurrence_id: occ-3
+  files:
     adgn/src/adgn/agent/web/src/features/mcp/schema.ts: 49
+  note: empty catch in JSON parsing
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/features/mcp/schema.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/features/mcp/schema.ts
+- occurrence_id: occ-4
+  files:
     adgn/src/adgn/agent/web/src/shared/markdown.ts:
     - - 6
       - 6
     - - 36
       - 36
+  note: empty catches in syntax highlighting
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/shared/markdown.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/shared/markdown.ts
+- occurrence_id: occ-5
+  files:
     adgn/src/adgn/agent/web/src/shared/prefs.ts:
     - - 27
       - 27
     - - 35
       - 35
+  note: empty catches in localStorage access
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/shared/prefs.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/shared/prefs.ts
+- occurrence_id: occ-6
+  files:
     adgn/src/adgn/agent/web/src/shared/token.ts:
     - - 11
       - 11
@@ -45,11 +87,8 @@ occurrences:
       - 35
     - - 46
       - 46
+  note: empty catches in token parsing
   expect_caught_from:
-  - - adgn/src/adgn/agent/web/src/features/agents/stores.ts
-  - - adgn/src/adgn/agent/web/src/features/chat/channels.ts
-  - - adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts
-  - - adgn/src/adgn/agent/web/src/shared/prefs.ts
   - - adgn/src/adgn/agent/web/src/shared/token.ts
-  - - adgn/src/adgn/agent/web/src/shared/markdown.ts
-  - - adgn/src/adgn/agent/web/src/features/mcp/schema.ts
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/shared/token.ts

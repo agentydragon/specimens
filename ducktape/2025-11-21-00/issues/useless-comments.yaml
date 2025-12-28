@@ -44,6 +44,16 @@ occurrences:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-1
   files:
+    adgn/src/adgn/agent/server/runtime.py:
+    - 292
+    - 294
+  note: Comment "Strict mapping; surface invalid data" restates obvious Pydantic behavior
+  expect_caught_from:
+  - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
+- occurrence_id: occ-2
+  files:
     adgn/src/adgn/agent/persist/__init__.py:
     - - 90
       - 98

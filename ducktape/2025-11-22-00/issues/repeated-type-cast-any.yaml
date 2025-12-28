@@ -20,7 +20,16 @@ occurrences:
     adgn/src/adgn/agent/web/src/components/ToolExec.svelte:
     - 40
     - 51
-    adgn/src/adgn/agent/web/src/components/ToolJson.svelte: 33
+  note: "(item.content as any) repeated 8 times for cmd, stdout, exit_code, etc."
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
+- occurrence_id: occ-1
+  files:
+    adgn/src/adgn/agent/web/src/components/ToolJson.svelte: 33
+  note: casts content to any instead of using JsonContent type
+  expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ToolJson.svelte

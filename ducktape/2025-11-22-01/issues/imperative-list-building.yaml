@@ -25,6 +25,13 @@ occurrences:
       - 59
     - - 52
       - 52
+  note: _convert_pending_approvals() builds list with append loop
+  expect_caught_from:
+  - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py:
     - - 64
       - 65
@@ -32,10 +39,18 @@ occurrences:
       - 80
     - - 99
       - 108
+  note: list_approvals() builds approvals_list with two append loops
+  expect_caught_from:
+  - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
+- occurrence_id: occ-2
+  files:
     adgn/src/adgn/agent/server/runtime.py:
     - 267
     - 274
+  note: proposals list built with nested conditional and loop
   expect_caught_from:
-  - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py

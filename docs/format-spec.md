@@ -217,8 +217,44 @@ files:
     - [50, 60]
 ```
 
-**Important**: A YAML list with a single integer like `- 42` creates `[42]` which is INVALID.
-Use bare integer `42` for single lines, or `[42, 42]` as a range.
+**Critical constraints:**
+
+1. **Each range must have exactly 2 elements** `[start, end]`. Lists with 3+ elements are INVALID:
+   ```yaml
+   # ❌ INVALID: 3 elements
+   file.py:
+     - 10
+     - 20
+     - 30
+   # ✅ CORRECT: three separate 2-element ranges
+   file.py:
+     - [10, 10]
+     - [20, 20]
+     - [30, 30]
+   ```
+
+2. **Do NOT mix bare integers with ranges** in a list:
+   ```yaml
+   # ❌ INVALID: mixing range [10, 20] with bare integer 30
+   file.py:
+     - [10, 20]
+     - 30
+   # ✅ CORRECT: all 2-element ranges
+   file.py:
+     - [10, 20]
+     - [30, 30]
+   ```
+
+3. **Single integer lists are INVALID**. Use bare integer for single lines:
+   ```yaml
+   # ❌ INVALID: creates [42] which has 1 element
+   file.py:
+     - 42
+   # ✅ CORRECT: bare integer
+   file.py: 42
+   # ✅ ALSO CORRECT: 2-element range
+   file.py: [42, 42]
+   ```
 
 **Note**: YAML flow style `[10, 20]` and block style are equivalent:
 ```yaml
@@ -434,6 +470,14 @@ class FalsePositiveOccurrence(BaseModel):
 Issue files use descriptive slugs (lowercase with hyphens), not numerical indices:
 - ✅ Good: `dead-code.yaml`, `missing-types.yaml`, `duplicate-logic.yaml`
 - ❌ Bad: `issue-001.yaml`, `iss-032.yaml`
+
+**Prefer shorter names when meaning is preserved.** Verbose names add noise without value.
+
+@canonical-slugs.md
+
+**General examples:**
+- ✅ `swallowed-exceptions.yaml` not `ui-swallowed-exceptions.yaml`
+- ✅ `unused-params.yaml` not `unused-function-parameters.yaml`
 
 Slugs should be 0-30 characters and convey the issue type.
 

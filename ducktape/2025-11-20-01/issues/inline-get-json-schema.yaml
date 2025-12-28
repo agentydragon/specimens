@@ -39,3 +39,5 @@ occurrences:
       - 250
   expect_caught_from:
   - - adgn/scripts/generate_frontend_code.py
+  only_matchable_from_files:
+  - adgn/scripts/generate_frontend_code.py

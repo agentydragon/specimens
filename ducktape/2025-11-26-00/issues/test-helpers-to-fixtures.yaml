@@ -28,37 +28,88 @@ occurrences:
     adgn/tests/mcp/compositor/test_admin_client.py:
     - 8
     - 15
+  note: _make_origin() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/compositor/test_admin_client.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/compositor/test_admin_client.py
+- occurrence_id: occ-1
+  files:
     adgn/tests/mcp/compositor/test_meta_inproc_proxies.py:
     - 11
     - 18
+  note: _make_origin() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/compositor/test_meta_inproc_proxies.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/compositor/test_meta_inproc_proxies.py
+- occurrence_id: occ-2
+  files:
     adgn/tests/mcp/compositor/test_pinned_unmount.py:
     - 9
     - 16
+  note: _backend() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+- occurrence_id: occ-3
+  files:
     adgn/tests/mcp/exec/test_docker_unit.py:
     - 10
     - 12
+  note: _make_notifier() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/exec/test_docker_unit.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/exec/test_docker_unit.py
+- occurrence_id: occ-4
+  files:
     adgn/tests/mcp/resources/test_subscriptions_index.py:
     - 31
     - 43
+  note: _make_backend() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/resources/test_subscriptions_index.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+- occurrence_id: occ-5
+  files:
     adgn/tests/mcp/test_chat_server.py:
     - 23
     - 29
+  note: create_chat_servers() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/test_chat_server.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_server.py
+- occurrence_id: occ-6
+  files:
     adgn/tests/mcp/test_mcp_flat_model_helper.py:
     - 23
     - 31
+  note: _make_server() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/test_mcp_flat_model_helper.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_mcp_flat_model_helper.py
+- occurrence_id: occ-7
+  files:
     adgn/tests/mcp/test_notifications_envelope.py:
     - 9
     - 26
+  note: make_echo_server() helper should be fixture
+  expect_caught_from:
+  - - adgn/tests/mcp/test_notifications_envelope.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_notifications_envelope.py
+- occurrence_id: occ-8
+  files:
     adgn/tests/mcp/test_resources_subscriptions_index.py:
     - 31
     - 42
+  note: _make_backend() helper should be fixture
   expect_caught_from:
   - - adgn/tests/mcp/test_resources_subscriptions_index.py
-  - - adgn/tests/mcp/resources/test_subscriptions_index.py
-  - - adgn/tests/mcp/compositor/test_pinned_unmount.py
-  - - adgn/tests/mcp/test_notifications_envelope.py
-  - - adgn/tests/mcp/compositor/test_meta_inproc_proxies.py
-  - - adgn/tests/mcp/compositor/test_admin_client.py
-  - - adgn/tests/mcp/exec/test_docker_unit.py
-  - - adgn/tests/mcp/test_chat_server.py
-  - - adgn/tests/mcp/test_mcp_flat_model_helper.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_resources_subscriptions_index.py

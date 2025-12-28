@@ -20,7 +20,7 @@ specimens/
         fp-intentional-duplication.yaml  # FPs mixed with TPs
 ```
 
-**Naming convention:** Issue files use descriptive slugs (lowercase with hyphens), not numerical indices. Slugs should be short (0-30 characters) and convey the issue type. Examples: `dead-code.yaml`, `missing-error-handling.yaml`, `duplicate-logic.yaml`.
+**Naming convention:** Issue files use descriptive slugs (lowercase with hyphens), not numerical indices. **Prefer shorter names when meaning is preserved** - verbose names add noise. Slugs should be 0-30 characters. See format-spec.md for canonical slug names.
 
 ## Critical: Snapshots are Frozen Code States
 
@@ -183,66 +183,9 @@ The exact phrasing can vary - the key is to acknowledge what looks problematic w
 - "Critics might say this type annotation is missing because the function signature has no return type. However, our ground truth is that it's acceptable because this is a decorator that preserves the wrapped function's type, and explicit annotation would be less accurate than the inferred type."
 - "Some critics flagged this as a resource leak, but this is intentional - the handle lifetime is managed by the parent context manager which ensures cleanup in its `__exit__` method."
 
-### 4. Range Format Specifications
+### 4. Detection Standard for `expect_caught_from`
 
-**Valid formats for line ranges in YAML:**
-
-```yaml
-files:
-  # Single line - bare integer (NOT in a list)
-  single_file.py: 38
-
-  # Single line as explicit range
-  another_file.py: [38, 38]
-
-  # Range [start, end] inclusive
-  range_file.py: [40, 45]
-
-  # Multiple ranges - list of [start, end] pairs
-  multi_range.py:
-    - [40, 45]              # First range
-    - [50, 55]              # Second range
-    - [60, 75]              # Third range
-```
-
-**⚠️ Common YAML pitfall:**
-```yaml
-files:
-  file.py:
-    - 38        # ❌ CREATES [38] - INVALID (need exactly 2 elements)
-    - [38]      # ❌ ALSO INVALID - [38] has 1 element
-```
-
-A single `- 38` entry creates `[38]` which fails validation (ranges need 2 elements).
-Use bare integer `38` (not in a list) or explicit range `[38, 38]`.
-
-**Note:** Two entries like `- 10\n- 20` create `[10, 20]` which IS valid (a range from 10 to 20):
-```yaml
-files:
-  # These are equivalent - both create a range [40, 45]
-  file_a.py: [40, 45]
-  file_b.py:
-    - 40
-    - 45
-```
-
-**Auto-inference rules:**
-
-**For single occurrence issues:**
-- If `files` has 1 file: `expect_caught_from` auto-inferred as `[[that_file]]`
-- If `files` has >1 file: Must provide explicit `expect_caught_from` (will error if missing)
-
-**For false positives:**
-- If `relevant_files` not provided: Auto-inferred from keys of `files`
-
-**For multiple occurrence issues:**
-- All occurrences MUST have `note` field
-- If total unique files across ALL occurrences > 1:
-  - EVERY occurrence must have explicit `expect_caught_from`
-  - This applies even to single-file occurrences within the multi-file issue
-- Example: If occurrence 1 uses `file_a.py` and occurrence 2 uses `file_b.py`, both need `expect_caught_from`
-
-### 5. Detection Standard for `expect_caught_from`
+See format-spec.md for line range formats and auto-inference rules.
 
 **The key question:** "If I gave a high-quality critic this file set to review, and they failed to find this issue, would that be a failure on their part?"
 
@@ -310,7 +253,7 @@ Examples:
   - The file IS the problem (broken promise), not just "unused affordance"
   - Contrast with: Tests not using `server.py` fixture → fixture is fine, tests are the problem
 
-### 6. Setting `only_matchable_from_files` (Optional)
+### 5. Setting `only_matchable_from_files` (Optional)
 
 **Purpose:** This field is a grading optimization. When set, critiques that report issues only in files OUTSIDE this set are skipped during matching (assumed non-match without semantic comparison).
 
@@ -385,7 +328,7 @@ occurrences:
 
 See @docs/only-matchable-labels.md for more labeled examples.
 
-### 7. Issue Organization: Logical Problems, Not Locations
+### 6. Issue Organization: Logical Problems, Not Locations
 
 **CRITICAL PRINCIPLE: Group by LOGICAL ISSUE, not by location.**
 
@@ -406,7 +349,7 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 3. **Same problem across locations** = single issue with multiple occurrences
 4. **Different problems** = separate issues even if in adjacent lines
 
-### 8. Objectivity in Issue Descriptions
+### 7. Objectivity in Issue Descriptions
 
 **Avoid subjective phrasing** - describe problems objectively:
 
@@ -422,7 +365,7 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 
 Present facts and technical rationale, not opinions or attributed suggestions.
 
-### 9. Research First: No Open Questions
+### 8. Research First: No Open Questions
 
 **Snapshots must not leave open research questions.** All investigation should be completed before authoring the issue.
 
@@ -443,7 +386,7 @@ rationale: |
   making manual discovery unnecessary.
 ```
 
-### 10. Verifiable External References
+### 9. Verifiable External References
 
 **When referencing specific tools, APIs, or implementation details, provide verifiable links. Well-known frameworks/standards don't need URLs.**
 
@@ -457,7 +400,7 @@ rationale: |
 - Standard libraries: Python stdlib, Node.js core modules
 - Well-known tools: pytest, Jest, Docker, PostgreSQL
 
-### 11. Code Citation Guidelines
+### 10. Code Citation Guidelines
 
 **IMPORTANT**: Do NOT include long code blocks in rationale. Readers have snapshot code open - cite file paths and line ranges, briefly summarize what's there.
 

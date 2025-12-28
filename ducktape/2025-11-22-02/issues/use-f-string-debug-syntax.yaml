@@ -31,7 +31,16 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/auth.py: 99
-    adgn/src/adgn/agent/mcp_bridge/server.py: 122
+  note: f"agent_id={agent_id}" should use f"{agent_id=}"
   expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/auth.py
+- occurrence_id: occ-1
+  files:
+    adgn/src/adgn/agent/mcp_bridge/server.py: 122
+  note: f"agent_id={agent_id}" should use f"{agent_id=}"
+  expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/server.py

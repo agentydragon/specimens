@@ -24,6 +24,13 @@ occurrences:
       - 86
     - - 89
       - 89
+  note: "Comments restating obvious code: getMCPClient(), subscribeToResource"
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/web/src/components/ChatPane.svelte:
     - - 79
       - 79
@@ -31,6 +38,13 @@ occurrences:
       - 84
     - - 107
       - 107
+  note: Comments restating obvious code
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/components/ChatPane.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ChatPane.svelte
+- occurrence_id: occ-2
+  files:
     adgn/src/adgn/git_commit_ai/cli.py:
     - - 484
       - 484
@@ -38,7 +52,8 @@ occurrences:
       - 719
     - - 722
       - 722
+  note: "Comments like 'Capture -a/--all', 'Parse flags from passthru'"
   expect_caught_from:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
-  - - adgn/src/adgn/agent/web/src/components/ChatPane.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/git_commit_ai/cli.py

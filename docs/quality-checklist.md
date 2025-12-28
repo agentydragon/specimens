@@ -6,7 +6,7 @@ Before committing a snapshot, verify all of these criteria:
 - [ ] **Snapshot slug format**: Directory path follows `{project}/{YYYY-MM-DD-NN}` pattern (e.g., `ducktape/2025-11-20-00`). Date is snapshot creation date, NN is zero-padded sequence number for that day
 - [ ] **manifest.yaml exists**: `manifest.yaml` in snapshot directory with `source` (github/git/local) and `split` (train/valid/test) fields
 - [ ] **Issue files location**: All issues in `{project}/{slug}/issues/*.yaml` directory
-- [ ] **Slug-based naming**: Issue files use descriptive slugs (e.g., `dead-code.yaml`, `missing-types.yaml`), not numerical indices. Slugs should be short (0-30 characters), lowercase with hyphens
+- [ ] **Slug-based naming**: Issue files use descriptive slugs (e.g., `dead-code.yaml`, `inline-vars.yaml`), not numerical indices. **Prefer shorter names** - `walrus-operator.yaml` not `walrus-operator-opportunities.yaml`. Slugs 0-30 chars, lowercase with hyphens
 - [ ] **One logical issue per file**: Each `.yaml` describes ONE logical problem type
 - [ ] **Same issue, one file**: If the same issue occurs multiple times (e.g., "upgrade to new syntax"), all occurrences are in ONE shared issue file with multiple entries in `occurrences`
 

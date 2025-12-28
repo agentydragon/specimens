@@ -63,11 +63,20 @@ occurrences:
       - 138
     - - 254
       - 257
+  note: open() wrapper that just calls setAgentId()
+  expect_caught_from:
+  - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/web/src/components/ServersPanel.svelte:
     - - 185
       - 197
     - - 257
       - 257
+  note: applyPresetFrom() single-use function
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ServersPanel.svelte
-  - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ServersPanel.svelte
