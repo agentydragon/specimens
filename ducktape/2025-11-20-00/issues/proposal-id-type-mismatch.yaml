@@ -46,25 +46,41 @@ occurrences:
   - - adgn/src/adgn/agent/persist/__init__.py
 - occurrence_id: occ-3
   files:
-    adgn/src/adgn/agent/approvals.py:
-    - - 211
-      - 211
-    - - 237
-      - 237
-    - - 254
-      - 254
-  note: Approvals module uses str proposal_id
+    adgn/src/adgn/agent/approvals.py: 211
+  note: Approvals module uses str proposal_id at line 211
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-4
+  files:
+    adgn/src/adgn/agent/approvals.py: 237
+  note: Approvals module uses str proposal_id at line 237
+  critic_scopes_expected_to_recall:
+  - - adgn/src/adgn/agent/approvals.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/approvals.py
+- occurrence_id: occ-5
+  files:
+    adgn/src/adgn/agent/approvals.py: 254
+  note: Approvals module uses str proposal_id at line 254
+  critic_scopes_expected_to_recall:
+  - - adgn/src/adgn/agent/approvals.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/approvals.py
+- occurrence_id: occ-6
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py: 747
   note: MCP tool uses str proposal_id
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-- occurrence_id: occ-5
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
+- occurrence_id: occ-7
   files:
     adgn/src/adgn/agent/mcp_bridge/resources.py: 67
   note: Resources module uses str proposal_id
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/resources.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/mcp_bridge/resources.py

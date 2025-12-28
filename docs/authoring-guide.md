@@ -4,7 +4,7 @@
 
 This guide explains how to author issue files for code review snapshots. Snapshots are frozen code states with labeled issues used as training/evaluation data for the LLM critic.
 
-**For the broader context** on how snapshots fit into the training strategy (per-file examples, `expect_caught_from` filtering, optimization approaches), see [Training Strategy](training_strategy.md).
+**For the broader context** on how snapshots fit into the training strategy (per-file examples, `critic_scopes_expected_to_recall` filtering, optimization approaches), see [Training Strategy](training_strategy.md).
 
 ## File Structure
 
@@ -52,7 +52,7 @@ specimens/
 Each `.yaml` file contains:
 - **Rationale**: Full explanation of what's wrong and why
 - **File locations**: Exact paths and line ranges
-- **expect_caught_from** (TPs): Files required to catch the issue
+- **critic_scopes_expected_to_recall** (TPs): Files required to catch the issue
 - **relevant_files** (FPs): Files that make the FP relevant
 
 **Do NOT duplicate this information in README.md or other files.**
@@ -100,10 +100,10 @@ occurrences:
     files:
       src/cli.py:
         - [145, 167]
-    # expect_caught_from auto-inferred for single-file issues
+    # critic_scopes_expected_to_recall auto-inferred for single-file issues
 ```
 
-**Multi-file issue (requires explicit expect_caught_from):**
+**Multi-file issue (requires explicit critic_scopes_expected_to_recall):**
 ```yaml
 rationale: |
   Duplicated enum definitions. Both files define the same Status enum,
@@ -116,12 +116,12 @@ occurrences:
         - [6, 10]
       src/persist.py:
         - [54, 58]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [src/types.py]      # Catch from either file
       - [src/persist.py]
 ```
 
-**Note on `expect_caught_from`:** This field specifies which minimal file sets are needed to detect the issue. It's used to generate focused training examples per-file rather than only full-snapshot reviews. See [Training Strategy](training_strategy.md) for details on how this enables the per-file examples approach and tighter optimization feedback loops.
+**Note on `critic_scopes_expected_to_recall`:** This field specifies which minimal file sets are needed to detect the issue. It's used to generate focused training examples per-file rather than only full-snapshot reviews. See [Training Strategy](training_strategy.md) for details on how this enables the per-file examples approach and tighter optimization feedback loops.
 
 **Multiple occurrences:**
 ```yaml
@@ -136,7 +136,7 @@ occurrences:
       src/agents.py:
         - [50, 59]
     note: "In _convert_pending_approvals()"
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [src/agents.py]
 
   - occurrence_id: occ-1
@@ -144,7 +144,7 @@ occurrences:
       src/bridge.py:
         - [64, 108]
     note: "In list_approvals()"
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [src/bridge.py]
 ```
 
@@ -183,7 +183,7 @@ The exact phrasing can vary - the key is to acknowledge what looks problematic w
 - "Critics might say this type annotation is missing because the function signature has no return type. However, our ground truth is that it's acceptable because this is a decorator that preserves the wrapped function's type, and explicit annotation would be less accurate than the inferred type."
 - "Some critics flagged this as a resource leak, but this is intentional - the handle lifetime is managed by the parent context manager which ensures cleanup in its `__exit__` method."
 
-### 4. Detection Standard for `expect_caught_from`
+### 4. Detection Standard for `critic_scopes_expected_to_recall`
 
 See format-spec.md for line range formats and auto-inference rules.
 
@@ -207,27 +207,27 @@ See format-spec.md for line range formats and auto-inference rules.
 - Question: "Should this use a pytest fixture?"
 - Expected action: Critic searches for existing fixtures and patterns
 - Result: Finds 12 other instances, flags duplication
-- `expect_caught_from: [[test_notifications.py]]` ✓
+- `critic_scopes_expected_to_recall: [[test_notifications.py]]` ✓
 
 **Example 2: Wrapper calling implementation with silent fallback**
 - Files: `cli.py` (wrapper) and `local_tools.py` (implementation with fallback logic)
 - From `cli.py` alone: See wrapper name, but not fallback behavior
 - From `local_tools.py` alone: See the silent fallback directly
 - Result: Only detectable from implementation file
-- `expect_caught_from: [[local_tools.py]]` ✓
+- `critic_scopes_expected_to_recall: [[local_tools.py]]` ✓
 
 **Example 3: Unused CLI flag**
 - File: `cli.py` defines `--ui-port` flag with logs saying "Management UI available"
 - Question: "Does this flag actually work?"
 - Expected action: Critic traces code to verify the flag is properly wired up
 - Result: Discovers server serves only stubs, flag misleads users
-- `expect_caught_from: [[cli.py]]` ✓
+- `critic_scopes_expected_to_recall: [[cli.py]]` ✓
 
 **Example 4: Cross-file duplication of enum definitions**
 - Files: `types.py` and `persist.py` both define same enum
 - From either file alone: Cannot detect duplication (only see one instance)
 - Need both files: See duplicate definitions
-- `expect_caught_from: [[types.py, persist.py]]` ✓ (AND logic)
+- `critic_scopes_expected_to_recall: [[types.py, persist.py]]` ✓ (AND logic)
 
 **General principle: Include problem code, not reference/solution code**
 
@@ -253,13 +253,13 @@ Examples:
   - The file IS the problem (broken promise), not just "unused affordance"
   - Contrast with: Tests not using `server.py` fixture → fixture is fine, tests are the problem
 
-### 5. Setting `only_matchable_from_files` (Optional)
+### 5. Setting `graders_match_only_if_reported_on` (Optional)
 
 **Purpose:** This field is a grading optimization. When set, critiques that report issues only in files OUTSIDE this set are skipped during matching (assumed non-match without semantic comparison).
 
-**Relationship to `expect_caught_from`:**
-- `expect_caught_from` = where the issue can be DETECTED from (training signal)
-- `only_matchable_from_files` = where the issue can be validly REPORTED (grading optimization)
+**Relationship to `critic_scopes_expected_to_recall`:**
+- `critic_scopes_expected_to_recall` = where the issue can be DETECTED from (training signal)
+- `graders_match_only_if_reported_on` = where the issue can be validly REPORTED (grading optimization)
 
 These are independent. An issue detectable from file A might be validly reported in files A, B, or C.
 
@@ -280,7 +280,7 @@ These are independent. An issue detectable from file A might be validly reported
 ```yaml
 # Issue: Useless docstring that restates the function signature
 # Can only be reported from the file containing the docstring
-only_matchable_from_files:
+graders_match_only_if_reported_on:
   - src/persist.py
 ```
 
@@ -290,14 +290,14 @@ only_matchable_from_files:
 # Valid framings:
 #   - "agents.py calls nonexistent method" (tag agents.py)
 #   - "agent.py missing abort() that callers expect" (tag agent.py)
-only_matchable_from_files:
+graders_match_only_if_reported_on:
   - src/agents.py
   - src/agent.py
 ```
 
 **Antipattern - splitting producer/consumer issues:**
 
-Don't split a single logical issue into separate occurrences by file with narrow `only_matchable_from_files`. Example of what NOT to do:
+Don't split a single logical issue into separate occurrences by file with narrow `graders_match_only_if_reported_on`. Example of what NOT to do:
 
 ```yaml
 # WRONG: Split into two occurrences with narrow sets
@@ -305,11 +305,11 @@ occurrences:
 - occurrence_id: occ-0
   files:
     runtime.py: [249, 253]  # passes hardcoded False
-  only_matchable_from_files: [runtime.py]  # TOO NARROW
+  graders_match_only_if_reported_on: [runtime.py]  # TOO NARROW
 - occurrence_id: occ-1
   files:
     status_shared.py: [42, 56]  # has unreachable code
-  only_matchable_from_files: [status_shared.py]  # TOO NARROW
+  graders_match_only_if_reported_on: [status_shared.py]  # TOO NARROW
 ```
 
 This fails because a critique like "status_shared.py has dead code because runtime.py passes False" could validly tag either file. Instead, merge into one occurrence:
@@ -321,7 +321,7 @@ occurrences:
   files:
     runtime.py: [249, 253]
     status_shared.py: [42, 56]
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - runtime.py
   - status_shared.py
 ```

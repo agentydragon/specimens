@@ -174,7 +174,7 @@ occurrences:
         - [10, 20]        # Line range (inclusive)
         - 42              # Single line
     note: "Optional note for this occurrence"  # Required if multiple occurrences
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [path/to/file.py]  # File sets that should detect this
 ```
 
@@ -270,8 +270,8 @@ All line numbers are 1-indexed (first line is 1, not 0).
 ### Auto-Inference Rules
 
 **For true positives:**
-- Single file in occurrence → `expect_caught_from` auto-inferred as `[[that_file]]`
-- Multiple files in occurrence → Must provide explicit `expect_caught_from`
+- Single file in occurrence → `critic_scopes_expected_to_recall` auto-inferred as `[[that_file]]`
+- Multiple files in occurrence → Must provide explicit `critic_scopes_expected_to_recall`
 - Multiple occurrences → `note` field required on all occurrences
 
 **For false positives:**
@@ -291,7 +291,7 @@ occurrences:
       adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py:
         - [67, 100]
         - [108, 135]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py]
 ```
 
@@ -310,7 +310,7 @@ occurrences:
         - [64, 65]
         - [71, 80]
     note: "In _convert_pending_approvals()"
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/mcp_bridge/servers/agents.py]
       - [adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py]
 
@@ -320,7 +320,7 @@ occurrences:
         - 267
         - 274
     note: "In runtime proposals building"
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/server/runtime.py]
 ```
 
@@ -344,9 +344,9 @@ occurrences:
       - internal/llm/tools/write.go
 ```
 
-## Detection Standard (`expect_caught_from`)
+## Detection Standard (`critic_scopes_expected_to_recall`)
 
-The key question for `expect_caught_from`: **"If I gave a high-quality critic this file set to review, and they failed to find this issue, would that be a failure on their part?"**
+The key question for `critic_scopes_expected_to_recall`: **"If I gave a high-quality critic this file set to review, and they failed to find this issue, would that be a failure on their part?"**
 
 ### What "reviewing files" includes:
 - Reading files thoroughly line by line
@@ -361,9 +361,9 @@ The key question for `expect_caught_from`: **"If I gave a high-quality critic th
 
 ### Semantics
 
-`expect_caught_from` is a list of alternative file sets (OR logic):
+`critic_scopes_expected_to_recall` is a list of alternative file sets (OR logic):
 ```yaml
-expect_caught_from:
+critic_scopes_expected_to_recall:
   - [file_a.py]                  # Detectable from file_a alone
   - [file_b.py, file_c.py]       # OR detectable from both b AND c together
 ```
@@ -376,7 +376,7 @@ expect_caught_from:
 **Single-file issue:**
 ```yaml
 # Unused import in server.py - obvious from the file itself
-expect_caught_from:
+critic_scopes_expected_to_recall:
   - [src/server.py]
 ```
 
@@ -384,7 +384,7 @@ expect_caught_from:
 ```yaml
 # Enum duplicated in types.py and persist.py
 # Seeing EITHER file should trigger "search for duplication"
-expect_caught_from:
+critic_scopes_expected_to_recall:
   - [src/types.py]
   - [src/persist.py]
 ```
@@ -393,7 +393,7 @@ expect_caught_from:
 ```yaml
 # Client duplicates logic that exists in utils
 # Need to see both to notice the redundancy
-expect_caught_from:
+critic_scopes_expected_to_recall:
   - [src/client.py, src/utils.py]
 ```
 
@@ -413,7 +413,7 @@ class TruePositiveOccurrence(BaseModel):
     occurrence_id: str
     files: dict[Path, list[LineRange] | None]
     note: str | None = None     # Required if multiple occurrences
-    expect_caught_from: set[frozenset[Path]]
+    critic_scopes_expected_to_recall: set[frozenset[Path]]
 
 class LineRange(BaseModel):
     start_line: int             # 1-based, >= 1
@@ -456,14 +456,14 @@ class FalsePositiveOccurrence(BaseModel):
 - Must be 10-5000 characters (after whitespace stripping)
 - Use `|` for multi-line YAML strings
 
-### expect_caught_from
+### critic_scopes_expected_to_recall
 - Each inner list must be a subset of files mentioned in `files` (for that occurrence)
 - Cannot be empty list
 - At least one alternative file set must be provided
 
 ### Multi-occurrence Issues
 - All occurrences MUST have `note` field when there are multiple occurrences
-- If total unique files across ALL occurrences > 1, EVERY occurrence must have explicit `expect_caught_from`
+- If total unique files across ALL occurrences > 1, EVERY occurrence must have explicit `critic_scopes_expected_to_recall`
 
 ## File Naming
 
