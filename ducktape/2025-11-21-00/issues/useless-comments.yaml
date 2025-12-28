@@ -37,6 +37,13 @@ occurrences:
       - 790
     - - 791
       - 791
+  note: 'Obvious operation comments restating generate ID, call create_agent, return brief'
+  expect_caught_from:
+  - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/persist/__init__.py:
     - - 90
       - 98
@@ -48,6 +55,8 @@ occurrences:
       - 104
     - - 123
       - 123
+  note: 'Incorrect "All fields are REQUIRED" comments on Pydantic models with optional fields'
   expect_caught_from:
-  - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
   - - adgn/src/adgn/agent/persist/__init__.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/__init__.py

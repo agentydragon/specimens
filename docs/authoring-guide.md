@@ -310,7 +310,82 @@ Examples:
   - The file IS the problem (broken promise), not just "unused affordance"
   - Contrast with: Tests not using `server.py` fixture → fixture is fine, tests are the problem
 
-### 6. Issue Organization: Logical Problems, Not Locations
+### 6. Setting `only_matchable_from_files` (Optional)
+
+**Purpose:** This field is a grading optimization. When set, critiques that report issues only in files OUTSIDE this set are skipped during matching (assumed non-match without semantic comparison).
+
+**Relationship to `expect_caught_from`:**
+- `expect_caught_from` = where the issue can be DETECTED from (training signal)
+- `only_matchable_from_files` = where the issue can be validly REPORTED (grading optimization)
+
+These are independent. An issue detectable from file A might be validly reported in files A, B, or C.
+
+**When to set it:**
+- Single-file issues where the problem is fully contained → set to that file
+- Issues that can only be described from specific files → set to those files
+
+**When to leave it NULL (omit):**
+- Cross-cutting issues that could be reported from many files
+- When unsure about the complete set of valid reporting locations
+- Issues with dual framing (e.g., "X calls missing method" vs "Y is missing method callers expect")
+
+**Validation test:** Can you produce a valid critique phrasing that accurately describes this issue but tags a file outside the set?
+- **If yes** → the set is too narrow, expand it or use NULL
+- **If no** → the set is safe to use
+
+**Example - safe to set:**
+```yaml
+# Issue: Useless docstring that restates the function signature
+# Can only be reported from the file containing the docstring
+only_matchable_from_files:
+  - src/persist.py
+```
+
+**Example - must include multiple files or use NULL:**
+```yaml
+# Issue: agents.py calls agent.abort() which doesn't exist
+# Valid framings:
+#   - "agents.py calls nonexistent method" (tag agents.py)
+#   - "agent.py missing abort() that callers expect" (tag agent.py)
+only_matchable_from_files:
+  - src/agents.py
+  - src/agent.py
+```
+
+**Antipattern - splitting producer/consumer issues:**
+
+Don't split a single logical issue into separate occurrences by file with narrow `only_matchable_from_files`. Example of what NOT to do:
+
+```yaml
+# WRONG: Split into two occurrences with narrow sets
+occurrences:
+- occurrence_id: occ-0
+  files:
+    runtime.py: [249, 253]  # passes hardcoded False
+  only_matchable_from_files: [runtime.py]  # TOO NARROW
+- occurrence_id: occ-1
+  files:
+    status_shared.py: [42, 56]  # has unreachable code
+  only_matchable_from_files: [status_shared.py]  # TOO NARROW
+```
+
+This fails because a critique like "status_shared.py has dead code because runtime.py passes False" could validly tag either file. Instead, merge into one occurrence:
+
+```yaml
+# CORRECT: Single occurrence with both files
+occurrences:
+- occurrence_id: occ-0
+  files:
+    runtime.py: [249, 253]
+    status_shared.py: [42, 56]
+  only_matchable_from_files:
+  - runtime.py
+  - status_shared.py
+```
+
+See @docs/only-matchable-labels.md for more labeled examples.
+
+### 7. Issue Organization: Logical Problems, Not Locations
 
 **CRITICAL PRINCIPLE: Group by LOGICAL ISSUE, not by location.**
 
@@ -331,7 +406,7 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 3. **Same problem across locations** = single issue with multiple occurrences
 4. **Different problems** = separate issues even if in adjacent lines
 
-### 7. Objectivity in Issue Descriptions
+### 8. Objectivity in Issue Descriptions
 
 **Avoid subjective phrasing** - describe problems objectively:
 
@@ -347,7 +422,7 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 
 Present facts and technical rationale, not opinions or attributed suggestions.
 
-### 8. Research First: No Open Questions
+### 9. Research First: No Open Questions
 
 **Snapshots must not leave open research questions.** All investigation should be completed before authoring the issue.
 
@@ -368,7 +443,7 @@ rationale: |
   making manual discovery unnecessary.
 ```
 
-### 9. Verifiable External References
+### 10. Verifiable External References
 
 **When referencing specific tools, APIs, or implementation details, provide verifiable links. Well-known frameworks/standards don't need URLs.**
 
@@ -382,7 +457,7 @@ rationale: |
 - Standard libraries: Python stdlib, Node.js core modules
 - Well-known tools: pytest, Jest, Docker, PostgreSQL
 
-### 10. Code Citation Guidelines
+### 11. Code Citation Guidelines
 
 **IMPORTANT**: Do NOT include long code blocks in rationale. Readers have snapshot code open - cite file paths and line ranges, briefly summarize what's there.
 

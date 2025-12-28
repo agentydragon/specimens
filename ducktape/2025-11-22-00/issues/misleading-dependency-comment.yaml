@@ -51,3 +51,5 @@ occurrences:
     - 17
   expect_caught_from:
   - - adgn/src/adgn/agent/policy_eval/shim.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/policy_eval/shim.py

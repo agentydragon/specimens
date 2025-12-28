@@ -40,3 +40,5 @@ occurrences:
     - 83
   expect_caught_from:
   - - adgn/src/adgn/agent/runtime/registry.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/runtime/registry.py

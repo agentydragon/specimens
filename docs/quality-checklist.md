@@ -27,6 +27,7 @@ Before committing a snapshot, verify all of these criteria:
 - [ ] **should_flag: true**: True positives have `should_flag: true`
 - [ ] **expect_caught_from**: Single-file issues auto-infer; multi-file issues have explicit `expect_caught_from`
 - [ ] **Detection standard applied**: Each file set in `expect_caught_from` passes the test: "If a high-quality critic reviewed these files (including following imports, searching for patterns, etc.), would failing to find this issue be a failure on their part?"
+- [ ] **only_matchable_from_files validated**: If set, passes the validation test: "Can you produce a valid critique phrasing that accurately describes this issue but tags a file outside the set?" If yes, the set is too narrow. When unsure, use NULL (omit the field)
 - [ ] **Multi-occurrence notes**: Issues with multiple occurrences have a `note` for each occurrence
 - [ ] **Problem code only**: For "absence of use" issues, include only code that needs to change (violators), not reference/solution code (helpers, fixtures, base classes, constants, patterns, etc.) - unless the solution itself is broken
 

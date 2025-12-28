@@ -31,3 +31,6 @@ occurrences:
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
   - - adgn/src/adgn/agent/server/status_shared.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
+  - adgn/src/adgn/agent/server/status_shared.py

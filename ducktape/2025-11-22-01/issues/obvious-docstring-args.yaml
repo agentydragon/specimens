@@ -9,9 +9,6 @@ rationale: |
   Args sections should explain WHY or HOW, not WHAT (already clear from signature).
   Remove Args that restate type info. Keep only Args that add non-obvious semantic
   information (e.g., retry behavior, validation rules, side effects).
-
-  Affected: registry_bridge.py lines 142-143, 170-171; approvals_bridge.py lines 125-127,
-  141-143.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0
@@ -21,11 +18,20 @@ occurrences:
       - 127
     - - 141
       - 143
+  note: 'Redundant Args sections in approvals_bridge.py (approve and reject methods)'
+  expect_caught_from:
+  - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py:
     - - 142
       - 143
     - - 170
       - 171
+  note: 'Redundant Args sections in registry_bridge.py (create_agent and delete_agent methods)'
   expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py
-  - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py

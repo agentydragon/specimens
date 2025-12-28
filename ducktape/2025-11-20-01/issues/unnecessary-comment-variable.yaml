@@ -16,3 +16,5 @@ occurrences:
     - 88
   expect_caught_from:
   - - adgn/tests/agent/test_policy_validation_reload.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_policy_validation_reload.py

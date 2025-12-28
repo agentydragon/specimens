@@ -28,3 +28,5 @@ occurrences:
     - 89
   expect_caught_from:
   - - adgn/src/adgn/agent/event_renderer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/event_renderer.py

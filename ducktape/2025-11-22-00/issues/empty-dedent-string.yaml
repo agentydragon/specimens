@@ -20,3 +20,5 @@ occurrences:
       - 56
   expect_caught_from:
   - - adgn/src/adgn/agent/server/system_message.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/system_message.py

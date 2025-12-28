@@ -22,3 +22,5 @@ occurrences:
     - 609
   expect_caught_from:
   - - adgn/src/adgn/git_commit_ai/cli.py
+  only_matchable_from_files:
+  - adgn/src/adgn/git_commit_ai/cli.py

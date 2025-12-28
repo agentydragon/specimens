@@ -8,3 +8,5 @@ occurrences:
     adgn/src/adgn/llm/sysrw/openai_typing.py: 108
   expect_caught_from:
   - - adgn/src/adgn/llm/sysrw/openai_typing.py
+  only_matchable_from_files:
+  - adgn/src/adgn/llm/sysrw/openai_typing.py

@@ -45,3 +45,5 @@ occurrences:
       - 171
   expect_caught_from:
   - - adgn/src/adgn/agent/persist/__init__.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/__init__.py

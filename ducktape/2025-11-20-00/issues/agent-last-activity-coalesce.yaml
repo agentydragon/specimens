@@ -28,3 +28,5 @@ occurrences:
     - 178
   expect_caught_from:
   - - adgn/src/adgn/agent/persist/sqlite.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/sqlite.py

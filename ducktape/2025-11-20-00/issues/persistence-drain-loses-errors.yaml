@@ -18,3 +18,5 @@ occurrences:
       - 83
   expect_caught_from:
   - - adgn/src/adgn/agent/persist/handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/handler.py

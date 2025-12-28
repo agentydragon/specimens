@@ -44,3 +44,5 @@ occurrences:
     - 294
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py

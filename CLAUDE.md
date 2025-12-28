@@ -96,6 +96,30 @@ What it does NOT mean:
 
 See @docs/authoring-guide.md section "Detection Standard for `expect_caught_from`" for detailed examples.
 
+### Field Semantics: `expect_caught_from` vs `only_matchable_from_files`
+
+**`expect_caught_from`**: TRAINING SIGNAL. Some known files such that IF a critic is shown these files, THEN we want it to catch this issue. NOT exhaustive - does not enumerate all possible detection sources.
+
+**`only_matchable_from_files`**: GRADING OPTIMIZATION. Restricts which critique outputs can match this occurrence. If set, a critique reporting issues only in files OUTSIDE this set will be skipped during matching (assumed non-match without semantic comparison).
+
+- **NULL** = allow matching from any file. Conservative default when we haven't determined the closed set, OR for genuinely cross-cutting issues.
+- **Non-empty set (≥1 file)** = we know the closed set; skip matching if critique's files don't overlap.
+- **Empty set** = INVALID. Not allowed.
+
+These are independent concepts:
+- An issue might be detectable from file A (`expect_caught_from: [[A]]`)
+- But once detected, it could be validly reported in files A, B, or C (`only_matchable_from_files: [A, B, C]`)
+
+Example: "agents.py calls agent.abort() which doesn't exist on MiniCodex"
+- `expect_caught_from: [[agents.py]]` - detectable from the call site
+- `only_matchable_from_files: [agents.py, agent.py]` - valid to tag either:
+  - agents.py: "This calls .abort() which doesn't exist"
+  - agent.py: "MiniCodex is missing abort() that callers expect"
+
+**Validation test for `only_matchable_from_files`**: Can you produce a valid critique phrasing that accurately describes this issue but tags a file outside the set? If yes, the set is too narrow.
+
+See @docs/only-matchable-labels.md for labeled examples.
+
 ## File Organization
 
 ```

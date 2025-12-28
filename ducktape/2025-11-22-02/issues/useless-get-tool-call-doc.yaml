@@ -5,19 +5,14 @@ rationale: |
   ```python
   async def get_tool_call(self, call_id: str) -> ToolCallRecord | None:
       """Get a tool call record by call_id."""
-      ...
   ```
 
-  The docstring "Get a tool call record by call_id" merely restates:
-  - Method name: get_tool_call → "Get a tool call"
-  - Parameter name: call_id → "by call_id"
-  - Return type: ToolCallRecord | None → "record"
-
+  The docstring merely restates: method name, parameter name and return type.
   This is a textbook example of useless documentation that should be removed.
   Good documentation explains WHY or HOW, not WHAT (which is already clear from
   the signature).
 
-  Fix: Remove the docstring entirely. The method signature is self-documenting.
+  Remove the docstring, the method signature is self-documenting.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0
@@ -25,9 +20,18 @@ occurrences:
     adgn/src/adgn/agent/persist/__init__.py:
     - 175
     - 176
+  note: 'Useless docstring in abstract interface'
+  expect_caught_from:
+  - - adgn/src/adgn/agent/persist/__init__.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/__init__.py
+- occurrence_id: occ-1
+  files:
     adgn/src/adgn/agent/persist/sqlite.py:
     - 466
     - 467
+  note: 'Useless docstring in SQLite implementation'
   expect_caught_from:
-  - - adgn/src/adgn/agent/persist/__init__.py
   - - adgn/src/adgn/agent/persist/sqlite.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/sqlite.py
