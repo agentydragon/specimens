@@ -10,45 +10,61 @@ occurrences:
   note: Compares db_snapshot.split == "valid" in validation
   expect_caught_from:
   - - adgn/src/adgn/props/prompt_optimizer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/db/query_builders.py: 77
   note: Query with Snapshot.split == "train"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/props/db/query_builders.py: 138
   note: Where clause with Snapshot.split == "train"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/props/db/query_builders.py: 152
   note: Where clause with Snapshot.split == "train"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/props/db/query_builders.py: 225
   note: Where clause with Snapshot.split == "train"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/props/db/query_builders.py: 503
   note: Subquery with Snapshot.split == "valid"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-6
   files:
     adgn/src/adgn/props/db/query_builders.py: 514
   note: Subquery with Snapshot.split == "valid"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/props/db/query_builders.py: 526
   note: Where clause with Snapshot.split == "valid"
   expect_caught_from:
   - - adgn/src/adgn/props/db/query_builders.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/db/query_builders.py

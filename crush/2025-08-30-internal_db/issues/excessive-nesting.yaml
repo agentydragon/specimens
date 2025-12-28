@@ -13,6 +13,8 @@ occurrences:
     reduce nesting.
   expect_caught_from:
   - - internal/logging/recover.go
+  only_matchable_from_files:
+  - internal/logging/recover.go
 - occurrence_id: occ-1
   files:
     internal/app/lsp_events.go:
@@ -21,6 +23,8 @@ occurrences:
   note: updateLSPState/updateLSPDiagnostics wrap large blocks; prefer early return/guard clauses where applicable.
   expect_caught_from:
   - - internal/app/lsp_events.go
+  only_matchable_from_files:
+  - internal/app/lsp_events.go
 - occurrence_id: occ-2
   files:
     internal/lsp/client.go:
@@ -30,6 +34,8 @@ occurrences:
     body.'
   expect_caught_from:
   - - internal/lsp/client.go
+  only_matchable_from_files:
+  - internal/lsp/client.go
 - occurrence_id: occ-3
   files:
     internal/app/app.go:
@@ -38,6 +44,8 @@ occurrences:
   note: 'cleanup loop: use continue when cleanup is nil to avoid wrapping body in an extra nesting level.'
   expect_caught_from:
   - - internal/app/app.go
+  only_matchable_from_files:
+  - internal/app/app.go
 - occurrence_id: occ-4
   files:
     internal/shell/shell.go:
@@ -47,3 +55,5 @@ occurrences:
     body.'
   expect_caught_from:
   - - internal/shell/shell.go
+  only_matchable_from_files:
+  - internal/shell/shell.go

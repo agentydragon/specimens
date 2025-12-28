@@ -44,6 +44,8 @@ occurrences:
   note: Four unnecessary asyncio marks
   expect_caught_from:
   - - adgn/tests/agent/test_compaction.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_compaction.py
 - occurrence_id: occ-1
   files:
     adgn/tests/mcp/approval_policy/test_preset_policy_loading.py:
@@ -62,6 +64,8 @@ occurrences:
   note: Six unnecessary asyncio marks
   expect_caught_from:
   - - adgn/tests/mcp/approval_policy/test_preset_policy_loading.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/approval_policy/test_preset_policy_loading.py
 - occurrence_id: occ-2
   files:
     adgn/tests/props/bundles/test_bundle_validation.py:
@@ -78,3 +82,5 @@ occurrences:
   note: Five unnecessary asyncio marks
   expect_caught_from:
   - - adgn/tests/props/bundles/test_bundle_validation.py
+  only_matchable_from_files:
+  - adgn/tests/props/bundles/test_bundle_validation.py

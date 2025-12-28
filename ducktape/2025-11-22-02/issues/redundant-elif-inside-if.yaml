@@ -35,3 +35,5 @@ occurrences:
     - 267
   expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/server.py

@@ -19,6 +19,8 @@ occurrences:
   note: os.open(log_path, ...) — pass Path directly
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/kernel_exec.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/kernel_exec.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py:
@@ -29,6 +31,8 @@ occurrences:
   note: subprocess args include str(path) casts — pass Path objects where supported
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
@@ -39,3 +43,5 @@ occurrences:
   note: 'subprocess invocation building args: avoid converting Path -> str before passing to subprocess'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

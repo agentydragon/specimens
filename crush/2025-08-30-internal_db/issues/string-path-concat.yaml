@@ -16,6 +16,8 @@ occurrences:
   note: dir + "/old", dir + "/new" → filepath.Join(dir, "old"), filepath.Join(dir, "new")
   expect_caught_from:
   - - internal/diff/word_inline.go
+  only_matchable_from_files:
+  - internal/diff/word_inline.go
 - occurrence_id: occ-1
   files:
     internal/cmd/root.go:
@@ -28,12 +30,16 @@ occurrences:
   note: dataDir + "/logs/..." → filepath.Join(dataDir, "logs", ...)
   expect_caught_from:
   - - internal/cmd/root.go
+  only_matchable_from_files:
+  - internal/cmd/root.go
 - occurrence_id: occ-2
   files:
     e2e/scenario_live_basic_test.go: 44
   note: sc.ArtifactDir + "/logs/provider-wire.log" → filepath.Join(sc.ArtifactDir, "logs", "provider-wire.log")
   expect_caught_from:
   - - e2e/scenario_live_basic_test.go
+  only_matchable_from_files:
+  - e2e/scenario_live_basic_test.go
 - occurrence_id: occ-3
   files:
     internal/config/provider_empty_test.go:
@@ -44,6 +50,8 @@ occurrences:
   note: t.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")
   expect_caught_from:
   - - internal/config/provider_empty_test.go
+  only_matchable_from_files:
+  - internal/config/provider_empty_test.go
 - occurrence_id: occ-4
   files:
     internal/config/provider_test.go:
@@ -56,3 +64,5 @@ occurrences:
   note: t.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")
   expect_caught_from:
   - - internal/config/provider_test.go
+  only_matchable_from_files:
+  - internal/config/provider_test.go

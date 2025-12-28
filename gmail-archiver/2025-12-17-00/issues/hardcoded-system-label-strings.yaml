@@ -12,6 +12,8 @@ occurrences:
   note: normalize_yaml_rule uses hardcoded label strings
   expect_caught_from:
   - - gmail_archiver/filter_sync.py
+  only_matchable_from_files:
+  - gmail_archiver/filter_sync.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/filter_sync.py:
@@ -20,6 +22,8 @@ occurrences:
   note: format_filter_for_display uses hardcoded label strings
   expect_caught_from:
   - - gmail_archiver/filter_sync.py
+  only_matchable_from_files:
+  - gmail_archiver/filter_sync.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/filter_planner.py:
@@ -28,6 +32,8 @@ occurrences:
   note: hardcoded STARRED, IMPORTANT, INBOX, UNREAD strings
   expect_caught_from:
   - - gmail_archiver/filter_planner.py
+  only_matchable_from_files:
+  - gmail_archiver/filter_planner.py
 - occurrence_id: occ-3
   files:
     gmail_archiver/cli/filters.py:
@@ -36,3 +42,5 @@ occurrences:
   note: _gmail_filter_to_rule uses hardcoded label strings in checks
   expect_caught_from:
   - - gmail_archiver/cli/filters.py
+  only_matchable_from_files:
+  - gmail_archiver/cli/filters.py

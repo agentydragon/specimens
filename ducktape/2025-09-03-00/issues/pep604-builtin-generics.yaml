@@ -19,6 +19,8 @@ occurrences:
   note: 'extra_py: Optional[str] — prefer `str | None`'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py:
@@ -27,6 +29,8 @@ occurrences:
   note: 'log_dir: Optional[Path] — prefer `Path | None`'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py:
@@ -39,6 +43,8 @@ occurrences:
   note: typing imports and signatures use legacy typing names; modernize to builtin generics and PEP 604 unions
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
 - occurrence_id: occ-3
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/agent.py:
@@ -53,6 +59,8 @@ occurrences:
   note: ToolMap and sequence/message types use typing.Dict/List — modernize
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
 - occurrence_id: occ-4
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py:
@@ -63,6 +71,8 @@ occurrences:
   note: get_tools -> Dict[str, ToolDef] should use `dict[str, ToolDef]`
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py
 - occurrence_id: occ-5
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/local_exec_server.py:
@@ -73,3 +83,5 @@ occurrences:
   note: typing imports and return types use legacy typing names
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_exec_server.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/local_exec_server.py

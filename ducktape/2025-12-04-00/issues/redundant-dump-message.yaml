@@ -12,3 +12,5 @@ occurrences:
     - 48
   expect_caught_from:
   - - adgn/tests/support/assertions.py
+  only_matchable_from_files:
+  - adgn/tests/support/assertions.py

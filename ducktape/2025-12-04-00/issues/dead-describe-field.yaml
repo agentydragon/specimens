@@ -16,6 +16,8 @@ occurrences:
   note: Field definition in ContainerOptions dataclass
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/container_session.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/container_session.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/exec/docker/launcher.py:
@@ -26,3 +28,5 @@ occurrences:
   note: CLI argument definition and usage in launcher
   expect_caught_from:
   - - adgn/src/adgn/mcp/exec/docker/launcher.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/exec/docker/launcher.py

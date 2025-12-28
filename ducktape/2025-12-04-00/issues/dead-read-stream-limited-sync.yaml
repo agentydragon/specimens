@@ -25,3 +25,5 @@ occurrences:
     - 264
   expect_caught_from:
   - - adgn/src/adgn/mcp/exec/models.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/exec/models.py

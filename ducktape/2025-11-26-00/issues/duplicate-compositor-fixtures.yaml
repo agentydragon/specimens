@@ -21,36 +21,90 @@ occurrences:
   note: Creates Compositor("compositor") - inconsistent name
   expect_caught_from:
   - - adgn/tests/mcp/test_chat_notifications.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-1
   files:
     adgn/tests/mcp/test_resources_subscriptions_index.py: 47
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/test_resources_subscriptions_index.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-2
   files:
     adgn/tests/mcp/resources/test_notifications.py: 34
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/resources/test_notifications.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-3
   files:
     adgn/tests/mcp/resources/test_subscriptions_index.py: 46
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/resources/test_subscriptions_index.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-4
   files:
     adgn/tests/mcp/compositor/test_pinned_unmount.py: 20
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-5
   files:
     adgn/tests/mcp/test_stdio_notifications_envelope.py: 43
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-6
   files:
     adgn/tests/mcp/resources/test_list_changes_subscriptions.py:
@@ -61,9 +115,27 @@ occurrences:
   note: Creates two Compositor instances ("comp" and "comp2")
   expect_caught_from:
   - - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
 - occurrence_id: occ-7
   files:
     adgn/tests/mcp/resources/test_subscribe.py: 18
   note: Creates Compositor("comp") directly
   expect_caught_from:
   - - adgn/tests/mcp/resources/test_subscribe.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/test_chat_notifications.py
+  - adgn/tests/mcp/test_resources_subscriptions_index.py
+  - adgn/tests/mcp/resources/test_notifications.py
+  - adgn/tests/mcp/resources/test_subscriptions_index.py
+  - adgn/tests/mcp/compositor/test_pinned_unmount.py
+  - adgn/tests/mcp/test_stdio_notifications_envelope.py
+  - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
+  - adgn/tests/mcp/resources/test_subscribe.py
