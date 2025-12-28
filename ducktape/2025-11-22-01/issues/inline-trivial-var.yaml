@@ -25,3 +25,5 @@ occurrences:
       - 59
   expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py

@@ -28,6 +28,8 @@ occurrences:
   note: Import onMount/onDestroy on line 35, after comments and far below other imports (lines 2-13)
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/web/src/components/ApprovalsPanel.svelte:
@@ -38,12 +40,16 @@ occurrences:
   note: Import hljs on line 27, ProposalCard on line 32, both after comments and code
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ApprovalsPanel.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ApprovalsPanel.svelte
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte: 11
   note: Import onMount on line 11, after other imports and declarations
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/web/src/components/ToolJson.svelte:
@@ -52,6 +58,8 @@ occurrences:
   note: Import zod on line 25, after comments and component logic
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/web/src/components/ServersPanel.svelte:
@@ -60,3 +68,5 @@ occurrences:
   note: Import JSONFormatter on line 20, after comments and state declarations
   expect_caught_from:
   - - adgn/src/adgn/agent/web/src/components/ServersPanel.svelte
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/web/src/components/ServersPanel.svelte

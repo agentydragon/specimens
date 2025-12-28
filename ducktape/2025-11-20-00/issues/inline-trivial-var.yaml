@@ -23,6 +23,8 @@ occurrences:
     call
   expect_caught_from:
   - - adgn/src/adgn/agent/runtime/local_runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/runtime/local_runtime.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/mcp_routing.py:
@@ -31,6 +33,8 @@ occurrences:
   note: body and response_headers variables both created and used once in Response constructor
   expect_caught_from:
   - - adgn/src/adgn/agent/server/mcp_routing.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/mcp_routing.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/server/runtime.py:
@@ -41,6 +45,8 @@ occurrences:
   note: 'envelope and dumped variables: create Envelope, serialize with model_dump, pass to put_nowait/send_json'
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/server/reducer.py:
@@ -49,6 +55,8 @@ occurrences:
   note: md variable extracts evt.message.content, used once in AssistantMarkdownItem constructor
   expect_caught_from:
   - - adgn/src/adgn/agent/server/reducer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/reducer.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/runtime/sidecars.py:
@@ -59,6 +67,8 @@ occurrences:
   note: 'ui_server and loop_server variables: factory results used once in mount_inproc'
   expect_caught_from:
   - - adgn/src/adgn/agent/runtime/sidecars.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/runtime/sidecars.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/persist/handler.py:
@@ -67,3 +77,5 @@ occurrences:
   note: 'result_model variable: result of convert_fastmcp_result used once in FunctionCallOutputPayload'
   expect_caught_from:
   - - adgn/src/adgn/agent/persist/handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/handler.py

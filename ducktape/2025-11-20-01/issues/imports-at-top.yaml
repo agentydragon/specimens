@@ -16,3 +16,5 @@ occurrences:
     - 37
   expect_caught_from:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py
+  only_matchable_from_files:
+  - adgn/tests/mcp/approval_policy/test_policy_resources.py

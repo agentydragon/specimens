@@ -32,3 +32,5 @@ occurrences:
       - 256
   expect_caught_from:
   - - pyright_watch_report.py
+  only_matchable_from_files:
+  - pyright_watch_report.py

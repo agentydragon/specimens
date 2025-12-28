@@ -11,6 +11,8 @@ occurrences:
   note: JSONSchemaAlias returns a throwaway temp map `m` — inline the literal return value.
   expect_caught_from:
   - - internal/csync/maps.go
+  only_matchable_from_files:
+  - internal/csync/maps.go
 - occurrence_id: occ-1
   files:
     internal/format/spinner.go:
@@ -21,6 +23,8 @@ occurrences:
     struct where sensible.
   expect_caught_from:
   - - internal/format/spinner.go
+  only_matchable_from_files:
+  - internal/format/spinner.go
 - occurrence_id: occ-2
   files:
     internal/session/session.go:
@@ -31,6 +35,8 @@ occurrences:
     literal.
   expect_caught_from:
   - - internal/session/session.go
+  only_matchable_from_files:
+  - internal/session/session.go
 - occurrence_id: occ-3
   files:
     internal/config/provider.go:
@@ -41,6 +47,8 @@ occurrences:
     into the call site or helper to reduce noise.
   expect_caught_from:
   - - internal/config/provider.go
+  only_matchable_from_files:
+  - internal/config/provider.go
 - occurrence_id: occ-4
   files:
     internal/lsp/watcher/watcher.go:
@@ -51,6 +59,8 @@ occurrences:
     check.
   expect_caught_from:
   - - internal/lsp/watcher/watcher.go
+  only_matchable_from_files:
+  - internal/lsp/watcher/watcher.go
 - occurrence_id: occ-5
   files:
     internal/lsp/watcher/watcher.go:
@@ -61,3 +71,5 @@ occurrences:
     their return expressions.
   expect_caught_from:
   - - internal/lsp/watcher/watcher.go
+  only_matchable_from_files:
+  - internal/lsp/watcher/watcher.go
