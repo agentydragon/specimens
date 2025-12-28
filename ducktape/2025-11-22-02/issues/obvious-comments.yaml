@@ -26,9 +26,9 @@ occurrences:
       - 346
   note: 'Lines 319, 346: "Call persistence to get ACTUAL ID", "Create proposal and get actual database-assigned
     ID"'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-1
   files:
@@ -38,7 +38,7 @@ occurrences:
     - - 459
       - 459
   note: 'Lines 421, 459: "Generate or use provided UI token", "Health check endpoint"'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/server.py

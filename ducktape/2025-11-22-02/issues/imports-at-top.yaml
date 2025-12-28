@@ -19,9 +19,9 @@ occurrences:
   files:
     adgn/src/adgn/agent/mcp_bridge/auth.py: 180
   note: imports json inside _create_error_response
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/auth.py
 - occurrence_id: occ-1
   files:
@@ -31,33 +31,33 @@ occurrences:
     - - 475
       - 476
   note: imports FastAPI/auth modules inside functions
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/server.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/runtime/builder.py: 46
   note: import inside function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/builder.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/builder.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/runtime/infrastructure.py: 67
   note: import inside function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/infrastructure.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/runtime/local_runtime.py: 40
   note: import inside function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/local_runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/local_runtime.py
 - occurrence_id: occ-5
   files:
@@ -65,7 +65,7 @@ occurrences:
     - 23
     - 24
   note: imports inside function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/mcp_routing.py

@@ -11,9 +11,9 @@ occurrences:
     - 191
     - 224
   note: In from_config()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
 - occurrence_id: occ-1
   files:
@@ -21,7 +21,7 @@ occurrences:
     - 226
     - 258
   note: In from_servers()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

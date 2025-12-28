@@ -20,7 +20,7 @@ occurrences:
     - 75
     - 82
   note: 'Error-swallowing in approval loop with `except Exception: break`'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_concurrent.py
 - occurrence_id: occ-1
   files:
@@ -30,5 +30,5 @@ occurrences:
     - - 251
       - 255
   note: 'Error-swallowing in optional approval checks with `except Exception: pass`'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_edge_cases.py

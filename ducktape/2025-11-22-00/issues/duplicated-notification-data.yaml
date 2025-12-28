@@ -26,5 +26,5 @@ occurrences:
       - 30
     - - 33
       - 49
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/notifications/types.py

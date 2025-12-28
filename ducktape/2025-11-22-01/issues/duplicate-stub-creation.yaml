@@ -28,5 +28,5 @@ occurrences:
       - 110
     - - 131
       - 132
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py

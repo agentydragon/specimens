@@ -17,5 +17,5 @@ occurrences:
       - 55
     - - 100
       - 111
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py

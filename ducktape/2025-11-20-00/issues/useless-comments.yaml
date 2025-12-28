@@ -12,7 +12,7 @@ occurrences:
     adgn/src/adgn/agent/server/runtime.py:
     - 112
     - 113
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py

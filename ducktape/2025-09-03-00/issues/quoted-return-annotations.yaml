@@ -24,7 +24,7 @@ occurrences:
     - 184
     - 192
   note: Multiple quoted return annotations in methods
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
 - occurrence_id: occ-1
   files:
@@ -34,5 +34,5 @@ occurrences:
     - - 226
       - 226
   note: from_config and from_servers classmethods use -> "McpManager" despite __future__ annotations enabled
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

@@ -10,5 +10,5 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/agent.py: 554
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py

@@ -12,7 +12,7 @@ occurrences:
     - 133
     - 134
   note: Glob tool uses WithResponseMetadata/NewTextResponse at these lines; factor via WrapTextWithMeta.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/glob.go
 - occurrence_id: occ-1
   files:
@@ -20,7 +20,7 @@ occurrences:
     - 487
     - 490
   note: Bash tool wraps stdout/no-output with BashResponseMetadata - use helper to centralize.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/bash.go
 - occurrence_id: occ-2
   files:
@@ -30,7 +30,7 @@ occurrences:
   note: |-
     View tool wraps output and ViewResponseMetadata at these lines; extract per-tool helper delegating to
     WrapTextWithMeta.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go
 - occurrence_id: occ-3
   files:
@@ -38,7 +38,7 @@ occurrences:
     - 236
     - 237
   note: Write tool wraps result with WriteResponseMetadata - consolidate.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/write.go
 - occurrence_id: occ-4
   files:
@@ -46,7 +46,7 @@ occurrences:
     - 175
     - 177
   note: Grep wraps matches with GrepResponseMetadata; prefer a per-tool helper.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/grep.go
 - occurrence_id: occ-5
   files:
@@ -54,7 +54,7 @@ occurrences:
     - 181
     - 183
   note: LS wraps listing output with LSResponseMetadata; centralize call shape.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/ls.go
 - occurrence_id: occ-6
   files:
@@ -66,7 +66,7 @@ occurrences:
     - - 543
       - 545
   note: Edit tool has multiple wrap sites; provide newEditResult helper that uses WrapTextWithMeta.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
 - occurrence_id: occ-7
   files:
@@ -76,5 +76,5 @@ occurrences:
     - - 454
       - 456
   note: MultiEdit uses MultiEditResponseMetadata in multiple places; factor to helper.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/multiedit.go

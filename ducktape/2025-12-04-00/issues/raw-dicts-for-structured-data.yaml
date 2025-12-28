@@ -11,7 +11,7 @@ occurrences:
     - - 75
       - 80
   note: 'In sync_snapshots_to_db: snapshot_data dict'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync.py
 - occurrence_id: occ-1
   files:
@@ -21,5 +21,5 @@ occurrences:
     - - 229
       - 234
   note: 'In sync_issues_to_db: issue_data and fp_data dicts'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync.py

@@ -13,9 +13,9 @@ occurrences:
     - 226
     - 275
   note: 'createNewFile branch: diff+permission+write+history+record bookkeeping.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/llm/tools/edit.go
 - occurrence_id: occ-1
   files:
@@ -23,9 +23,9 @@ occurrences:
     - 349
     - 406
   note: 'deleteContent branch: diff+permission+write+history+record bookkeeping (similar pattern).'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/llm/tools/edit.go
 - occurrence_id: occ-2
   files:
@@ -35,7 +35,7 @@ occurrences:
   note: |-
     replaceContent branch: same sequence; extract helper EnsureWriteWithHistory(ctx, files, sessionID, filePath,
     oldContent, newContent, action, desc, params...).
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/llm/tools/edit.go

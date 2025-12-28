@@ -37,9 +37,9 @@ occurrences:
     - 43
     - 44
   note: empty TYPE_CHECKING block with only pass
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/agent.py
 - occurrence_id: occ-1
   files:
@@ -47,7 +47,7 @@ occurrences:
     - 31
     - 32
   note: empty TYPE_CHECKING block with only pass
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/approvals.py

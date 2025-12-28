@@ -10,5 +10,5 @@ occurrences:
     adgn/src/adgn/mcp/compositor/server.py:
     - 346
     - 349
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py

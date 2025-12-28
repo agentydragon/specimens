@@ -11,5 +11,5 @@ occurrences:
       - 59
     - - 68
       - 68
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/presets.py

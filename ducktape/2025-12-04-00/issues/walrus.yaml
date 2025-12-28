@@ -11,9 +11,9 @@ occurrences:
     - 358
     - 360
   note: Variable cid assigned then used in conditional check
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/agent.py
 - occurrence_id: occ-1
   files:
@@ -21,9 +21,9 @@ occurrences:
     - 396
     - 407
   note: Variable cid assigned then used in get() and RuntimeError message
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/agent.py
 - occurrence_id: occ-2
   files:
@@ -33,7 +33,7 @@ occurrences:
     - - 31
       - 31
   note: Usage example variable could use walrus in list comprehension or call
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/db_event_handler.py

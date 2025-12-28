@@ -58,9 +58,9 @@ occurrences:
     - - 144
       - 148
   note: HTTP header extraction and env var checks
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/auth.py
 - occurrence_id: occ-1
   files:
@@ -70,7 +70,7 @@ occurrences:
     - - 172
       - 173
   note: Single-use builder and get-then-check patterns
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/server.py

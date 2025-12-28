@@ -14,7 +14,7 @@ occurrences:
     adgn/src/adgn/agent/runtime/registry.py:
     - 40
     - 44
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/registry.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/registry.py

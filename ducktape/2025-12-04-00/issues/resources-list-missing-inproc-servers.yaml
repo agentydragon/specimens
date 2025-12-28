@@ -51,5 +51,5 @@ occurrences:
     adgn/src/adgn/mcp/resources/server.py:
     - 348
     - 349
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/resources/server.py

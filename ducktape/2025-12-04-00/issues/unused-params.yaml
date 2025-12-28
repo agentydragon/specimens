@@ -9,15 +9,15 @@ occurrences:
     - 156
     - 168
   note: make_typed_mcp takes unused name argument that is ignored inside contextmanager
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/conftest.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/conftest.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/llm/llm_edit.py: 37
   note: _execute() model parameter never used - client already constructed by caller
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/llm_edit.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/llm/llm_edit.py

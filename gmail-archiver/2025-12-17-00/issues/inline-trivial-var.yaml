@@ -10,9 +10,9 @@ occurrences:
     - 181
     - 182
   note: tasks variable in extract_batch() - can inline into gather()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/event_classifier.py
 - occurrence_id: occ-1
   files:
@@ -20,7 +20,7 @@ occurrences:
     - 86
     - 87
   note: plan variable - can inline into plans.append()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/__main__.py

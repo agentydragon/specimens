@@ -16,7 +16,7 @@ occurrences:
     - 290
     - 297
   note: 'editRenderer.Render: use guard clause for json unmarshal of params, proceed on happy path.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-1
   files:
@@ -24,7 +24,7 @@ occurrences:
     - 335
     - 344
   note: 'multiEditRenderer.Render: use guard clause for params unmarshal.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-2
   files:
@@ -32,7 +32,7 @@ occurrences:
     - 384
     - 390
   note: 'writeRenderer.Render: prefer guard-clause style when unmarshalling params.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-3
   files:
@@ -40,7 +40,7 @@ occurrences:
     - 410
     - 416
   note: 'fetchRenderer.Render: use early bailout on unmarshal error then happy-path.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-4
   files:
@@ -48,7 +48,7 @@ occurrences:
     - 457
     - 463
   note: 'downloadRenderer.Render: prefer guard-clause for metadata/params parsing.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-5
   files:
@@ -56,7 +56,7 @@ occurrences:
     - 483
     - 488
   note: 'globRenderer.Render: use guard-clause pattern.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-6
   files:
@@ -64,7 +64,7 @@ occurrences:
     - 508
     - 515
   note: 'grepRenderer.Render: prefer early-return on unmarshal error then continue.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-7
   files:
@@ -72,7 +72,7 @@ occurrences:
     - 535
     - 543
   note: 'lsRenderer.Render: use guard clause for unmarshalling params.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
 - occurrence_id: occ-8
   files:
@@ -80,5 +80,5 @@ occurrences:
     - 563
     - 569
   note: 'sourcegraphRenderer.Render: prefer guard-clause for params/metadata parsing.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go

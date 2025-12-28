@@ -15,7 +15,7 @@ occurrences:
   note: |-
     ToolInfo.Required lists "path" as required (line 109), but Run allows empty path and defaults to workingDir
     (lines 119-123).
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/ls.go
 - occurrence_id: occ-1
   files:
@@ -25,5 +25,5 @@ occurrences:
     - - 155
       - 157
   note: Description says absolute path only, but Run joins relative paths with workingDir.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go

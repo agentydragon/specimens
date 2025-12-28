@@ -25,6 +25,6 @@ occurrences:
     adgn/src/adgn/agent/persist/__init__.py:
     - 36
     - 42
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
   - - adgn/src/adgn/agent/persist/__init__.py

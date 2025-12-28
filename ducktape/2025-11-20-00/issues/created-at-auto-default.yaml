@@ -14,17 +14,17 @@ occurrences:
   files:
     adgn/src/adgn/agent/persist/models.py: 32
   note: Agent.created_at field
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/persist/models.py: 119
   note: ToolCall.created_at field
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/persist/models.py: 153
   note: Policy.created_at field
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py

@@ -49,6 +49,6 @@ occurrences:
     adgn/tests/mcp_bridge/test_integration.py:
     - 74
     - 79
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp_bridge/test_integration.py
   - - adgn/tests/mcp/agents/test_agents_server.py

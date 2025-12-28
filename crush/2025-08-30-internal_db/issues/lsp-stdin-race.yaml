@@ -40,5 +40,5 @@ occurrences:
       - 218
     - - 260
       - 267
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/transport.go

@@ -14,9 +14,9 @@ occurrences:
   files:
     adgn/src/adgn/mcp/_shared/container_session.py: 60
   note: Field definition in ContainerOptions dataclass
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/_shared/container_session.py
 - occurrence_id: occ-1
   files:
@@ -26,7 +26,7 @@ occurrences:
     - - 94
       - 94
   note: CLI argument definition and usage in launcher
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/docker/launcher.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/exec/docker/launcher.py

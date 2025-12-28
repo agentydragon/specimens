@@ -24,6 +24,6 @@ occurrences:
     adgn/src/adgn/mcp/resources/server.py:
     - 355
     - 360
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/resources/server.py
   - - adgn/src/adgn/mcp/notifications/buffer.py

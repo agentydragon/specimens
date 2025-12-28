@@ -8,5 +8,5 @@ occurrences:
     adgn/src/adgn/props/grader/grader.py:
     - 205
     - 207
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py

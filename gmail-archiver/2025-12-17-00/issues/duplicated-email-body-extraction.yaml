@@ -11,33 +11,33 @@ occurrences:
     gmail_archiver/__main__.py:
     - [430, 448]
   note: MIME body extraction with text/plain + HTML fallback
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/gmail_client.py:
     - [450, 461]
   note: get_messages_batch() MIME extraction, plaintext-only
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/gmail_client.py:
     - [517, 524]
   note: get_message() MIME extraction, plaintext-only
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-3
   files:
     gmail_archiver/planners/anthem_reimbursement.py:
     - [35, 43]
   note: HTML-to-text with BeautifulSoup, script/style removal, whitespace cleanup
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/anthem_reimbursement.py
 - occurrence_id: occ-4
   files:
     gmail_archiver/planners/square.py:
     - [45, 53]
   note: identical HTML-to-text logic as anthem_reimbursement.py
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/square.py

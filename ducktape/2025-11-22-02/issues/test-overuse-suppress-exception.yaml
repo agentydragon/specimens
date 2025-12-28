@@ -41,5 +41,5 @@ occurrences:
       - 155
     - - 230
       - 232
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_errors.py

@@ -22,6 +22,6 @@ occurrences:
     adgn/src/adgn/mcp/notifying_fastmcp.py:
     - 1
     - 10
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/notifying_fastmcp.py
     - adgn/src/adgn/mcp/_shared/fastmcp_flat.py

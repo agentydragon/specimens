@@ -22,6 +22,6 @@ occurrences:
     adgn/src/adgn/agent/types.py:
     - 20
     - 25
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
   - - adgn/src/adgn/agent/types.py

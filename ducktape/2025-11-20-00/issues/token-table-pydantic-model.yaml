@@ -41,5 +41,5 @@ occurrences:
       - 115
     - - 116
       - 116
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py

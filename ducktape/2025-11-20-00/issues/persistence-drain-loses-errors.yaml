@@ -16,7 +16,7 @@ occurrences:
       - 50
     - - 71
       - 83
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/handler.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/handler.py

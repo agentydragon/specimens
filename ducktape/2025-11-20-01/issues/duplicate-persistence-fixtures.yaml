@@ -46,7 +46,7 @@ occurrences:
       - 120
     - - 131
       - 131
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py
   - - adgn/tests/agent/mcp_bridge/test_separated_servers.py
   - - adgn/tests/agent/mcp_bridge/test_ui_auth.py

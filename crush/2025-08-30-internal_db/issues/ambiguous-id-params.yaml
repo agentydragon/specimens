@@ -13,7 +13,7 @@ occurrences:
   note: |-
     debounce.getOrCreate/deleteEntry/Delete use `id string` where this represents message IDs — rename to
     messageID.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/message/middleware/debounce.go
 - occurrence_id: occ-1
   files:
@@ -27,7 +27,7 @@ occurrences:
   note: |-
     sessionWorker.id / newSessionWorker(id) / Delete(ctx,id) opaque `id` represents sessionID or messageID in
     different contexts — make names explicit.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/message/middleware/serialized.go
 - occurrence_id: occ-2
   files:
@@ -39,5 +39,5 @@ occurrences:
   note: |-
     Service.Delete(ctx, id string) and other interfaces use `id` param name — prefer messageID for clarity across
     API boundaries.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/message/message.go

@@ -28,9 +28,9 @@ occurrences:
     - - 45
       - 45
   note: 'Lines 40, 45: "Mount approval policy engine (now an MCP server)", "Mount approvals hub (now an MCP server)"'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py
 - occurrence_id: occ-1
   files:
@@ -56,7 +56,7 @@ occurrences:
   note: |-
     Lines 209, 237, 361, 363: "Notify that..." comments; Line 416: Confusing auth comment with "Actually, we
     want..."; Lines 429, 431, 441, 443: Implementation detail comments
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/server.py

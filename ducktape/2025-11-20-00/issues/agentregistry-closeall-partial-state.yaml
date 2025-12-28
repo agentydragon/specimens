@@ -14,5 +14,5 @@ occurrences:
     adgn/src/adgn/agent/runtime/registry.py:
     - 102
     - 106
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/registry.py

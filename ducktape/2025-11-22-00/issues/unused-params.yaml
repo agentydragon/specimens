@@ -10,9 +10,9 @@ occurrences:
     - 40
     - 42
   note: attach_default_servers() has unused agent_id, persistence, docker_client params
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/auto_attach.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/auto_attach.py
 - occurrence_id: occ-1
   files:
@@ -20,7 +20,7 @@ occurrences:
     - 19
     - 31
   note: build_handlers() has unused approval_engine, approval_hub, agent_id params
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/handlers.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/handlers.py

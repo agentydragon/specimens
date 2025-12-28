@@ -31,5 +31,5 @@ occurrences:
       - 160
     - - 188
       - 188
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py

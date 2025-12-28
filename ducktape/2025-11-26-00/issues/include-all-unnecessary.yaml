@@ -27,5 +27,5 @@ occurrences:
       - 733
     - - 753
       - 753
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py

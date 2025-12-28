@@ -18,15 +18,15 @@ occurrences:
   files:
     adgn/src/adgn/git_commit_ai/cli.py: 662
   note: str(Path.cwd()) passed to pygit2.discover_repository()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/git_commit_ai/minicodex_backend.py: 163
   note: str(Path.cwd()) passed to pygit2.discover_repository()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/minicodex_backend.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/minicodex_backend.py

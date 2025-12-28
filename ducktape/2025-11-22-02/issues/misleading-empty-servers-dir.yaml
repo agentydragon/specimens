@@ -28,15 +28,15 @@ occurrences:
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/__init__.py: 1
   note: 'Misleading docstring "MCP servers for the MCP bridge" in empty directory'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/__init__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/__init__.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/types.py: null
   note: 'types.py in confusing location - should be merged with mcp_bridge/types.py'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/types.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/types.py

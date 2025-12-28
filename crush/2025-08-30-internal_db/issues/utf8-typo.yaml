@@ -10,7 +10,7 @@ occurrences:
     - 188
     - 191
   note: isValidUt8 := utf8.ValidString(content) — rename to isValidUTF8
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/fetch.go
 - occurrence_id: occ-1
   files:
@@ -18,5 +18,5 @@ occurrences:
     - 226
     - 230
   note: isValidUt8 := utf8.ValidString(content) — rename to isValidUTF8
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go

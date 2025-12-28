@@ -34,6 +34,6 @@ occurrences:
     - 47
     - 50
   note: Duplicate fixture definition across MCP and agent test suites
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/conftest.py
     - adgn/tests/agent/conftest.py

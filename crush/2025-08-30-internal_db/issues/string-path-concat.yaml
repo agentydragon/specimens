@@ -14,9 +14,9 @@ occurrences:
     - 43
     - 44
   note: dir + "/old", dir + "/new" → filepath.Join(dir, "old"), filepath.Join(dir, "new")
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/diff/word_inline.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/diff/word_inline.go
 - occurrence_id: occ-1
   files:
@@ -28,17 +28,17 @@ occurrences:
     - - 152
       - 152
   note: dataDir + "/logs/..." → filepath.Join(dataDir, "logs", ...)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/cmd/root.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/cmd/root.go
 - occurrence_id: occ-2
   files:
     e2e/scenario_live_basic_test.go: 44
   note: sc.ArtifactDir + "/logs/provider-wire.log" → filepath.Join(sc.ArtifactDir, "logs", "provider-wire.log")
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - e2e/scenario_live_basic_test.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - e2e/scenario_live_basic_test.go
 - occurrence_id: occ-3
   files:
@@ -48,9 +48,9 @@ occurrences:
     - - 33
       - 33
   note: t.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/config/provider_empty_test.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/config/provider_empty_test.go
 - occurrence_id: occ-4
   files:
@@ -62,7 +62,7 @@ occurrences:
     - - 69
       - 69
   note: t.TempDir() + "/providers.json" → filepath.Join(t.TempDir(), "providers.json")
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/config/provider_test.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/config/provider_test.go

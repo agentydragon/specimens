@@ -19,5 +19,5 @@ occurrences:
       - 45
     - - 52
       - 52
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/transcript_handler.py

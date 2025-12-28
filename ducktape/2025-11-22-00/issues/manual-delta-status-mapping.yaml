@@ -38,6 +38,6 @@ occurrences:
     adgn/src/adgn/mcp/git_ro/formatting.py:
     - 99
     - 108
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/core.py
   - - adgn/src/adgn/mcp/git_ro/formatting.py

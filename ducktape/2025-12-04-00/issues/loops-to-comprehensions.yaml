@@ -12,5 +12,5 @@ occurrences:
   note: |-
     Loop building dict with condition should be dict comprehension: {k: v.spec for k, v in self._mounts.items() if
     v.spec is not None}
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py

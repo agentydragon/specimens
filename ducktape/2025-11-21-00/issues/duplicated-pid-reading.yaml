@@ -26,6 +26,6 @@ occurrences:
     wt/src/wt/client/wt_client.py:
     - 108
     - 113
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - wt/src/wt/client/wt_client.py
   - - wt/src/wt/client/handlers.py

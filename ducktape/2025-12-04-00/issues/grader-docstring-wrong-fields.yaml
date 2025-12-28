@@ -25,7 +25,7 @@ occurrences:
       - 276
     - - 284
       - 285
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/prompt_optimizer.py

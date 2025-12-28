@@ -17,7 +17,7 @@ occurrences:
     - 18
     - 27
   note: First definition in shared constants
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/constants.py
 - occurrence_id: occ-1
   files:
@@ -27,5 +27,5 @@ occurrences:
     - - 56
       - 57
   note: Duplicate definition in exec/models
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/models.py

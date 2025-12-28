@@ -22,5 +22,5 @@ occurrences:
     - - 288
       - 298
   note: Two instances with unimplemented UI element checks and contradictory fallback logic
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_errors.py

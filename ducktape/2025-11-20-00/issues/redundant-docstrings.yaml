@@ -20,9 +20,9 @@ occurrences:
   note: |-
     reduce_ui_state docstring lists all accepted event types with descriptions, duplicating the UiStateEvent union
     definition at line 33
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/reducer.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/reducer.py
 - occurrence_id: occ-1
   files:
@@ -32,7 +32,7 @@ occurrences:
   note: |-
     Policy model docstring documents PolicyStatus enum states (ACTIVE/PROPOSED/REJECTED/SUPERSEDED) which should
     only exist on the PolicyStatus StrEnum definition
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/models.py

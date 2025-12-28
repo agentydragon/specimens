@@ -11,9 +11,9 @@ occurrences:
   note: |-
     Second `if basePath == ""` branch is unreachable because earlier branch already handled basePath==""; remove
     the dead branch.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/lsp/watcher/watcher.go
 - occurrence_id: occ-1
   files:
@@ -23,7 +23,7 @@ occurrences:
   note: |-
     View(): both nested and non-nested branches return the same `box.Render(content)`; remove the conditional and
     return once.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/tool.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/tui/components/chat/messages/tool.go

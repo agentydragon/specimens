@@ -12,9 +12,9 @@ occurrences:
     - [255, 255]
     - [277, 277]
   note: mount_server prefix parameter computed then ignored
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-1
   files:
@@ -23,7 +23,7 @@ occurrences:
     - [284, 284]
     - [302, 302]
   note: mount_inproc prefix parameter computed then ignored
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/compositor/server.py

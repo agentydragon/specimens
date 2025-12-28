@@ -20,5 +20,5 @@ occurrences:
       - 103
     - - 113
       - 130
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py

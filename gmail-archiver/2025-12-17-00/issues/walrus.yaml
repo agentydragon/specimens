@@ -8,43 +8,43 @@ occurrences:
     gmail_archiver/gmail_client.py:
     - [590, 592]
   note: label_id in remove_label()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/gmail_client.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/event_classifier.py:
     - [99, 101]
   note: cached in EmailTemplateExtractor.extract()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/event_classifier.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/planners/aliexpress.py:
     - [124, 125]
   note: delivered in compute_deadline()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/aliexpress.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/planners/aliexpress.py
 - occurrence_id: occ-3
   files:
     gmail_archiver/gmail_client.py:
     - [71, 72]
   note: match = re.search(...); if match in _extract_retry_after_from_error()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/gmail_client.py
 - occurrence_id: occ-4
   files:
     gmail_archiver/__main__.py:
     - [335, 336]
   note: match = re.search(...); if not match in download_email()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/__main__.py

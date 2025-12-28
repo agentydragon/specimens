@@ -10,9 +10,9 @@ occurrences:
     - 61
     - 71
   note: shell/args_for_shell/env variables passed directly to StdioServerParameters()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
 - occurrence_id: occ-1
   files:
@@ -20,9 +20,9 @@ occurrences:
     - 463
     - 465
   note: mtime_s variable used only in immediately following condition
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
@@ -30,9 +30,9 @@ occurrences:
     - 776
     - 779
   note: log_file variable used only to create FileHandler
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-3
   files:
@@ -40,7 +40,7 @@ occurrences:
     - 202
     - 208
   note: kernelspec dict literal constructed then immediately passed to write_text
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

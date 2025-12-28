@@ -26,6 +26,6 @@ occurrences:
     internal/shell/persistent.go:
     - 13
     - 36
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/shell/persistent.go
   - - internal/llm/tools/bash.go

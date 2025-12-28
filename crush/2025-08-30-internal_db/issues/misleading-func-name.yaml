@@ -8,5 +8,5 @@ occurrences:
     internal/tui/components/chat/messages/renderer.go:
     - 424
     - 434
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go

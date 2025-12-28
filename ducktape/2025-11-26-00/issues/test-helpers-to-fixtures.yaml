@@ -29,9 +29,9 @@ occurrences:
     - 8
     - 15
   note: _make_origin() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/compositor/test_admin_client.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/compositor/test_admin_client.py
 - occurrence_id: occ-1
   files:
@@ -39,9 +39,9 @@ occurrences:
     - 11
     - 18
   note: _make_origin() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/compositor/test_meta_inproc_proxies.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/compositor/test_meta_inproc_proxies.py
 - occurrence_id: occ-2
   files:
@@ -49,9 +49,9 @@ occurrences:
     - 9
     - 16
   note: _backend() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/compositor/test_pinned_unmount.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/compositor/test_pinned_unmount.py
 - occurrence_id: occ-3
   files:
@@ -59,9 +59,9 @@ occurrences:
     - 10
     - 12
   note: _make_notifier() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/exec/test_docker_unit.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/exec/test_docker_unit.py
 - occurrence_id: occ-4
   files:
@@ -69,9 +69,9 @@ occurrences:
     - 31
     - 43
   note: _make_backend() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/resources/test_subscriptions_index.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/resources/test_subscriptions_index.py
 - occurrence_id: occ-5
   files:
@@ -79,9 +79,9 @@ occurrences:
     - 23
     - 29
   note: create_chat_servers() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_chat_server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/test_chat_server.py
 - occurrence_id: occ-6
   files:
@@ -89,9 +89,9 @@ occurrences:
     - 23
     - 31
   note: _make_server() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_mcp_flat_model_helper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/test_mcp_flat_model_helper.py
 - occurrence_id: occ-7
   files:
@@ -99,9 +99,9 @@ occurrences:
     - 9
     - 26
   note: make_echo_server() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_notifications_envelope.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/test_notifications_envelope.py
 - occurrence_id: occ-8
   files:
@@ -109,7 +109,7 @@ occurrences:
     - 31
     - 42
   note: _make_backend() helper should be fixture
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_resources_subscriptions_index.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/test_resources_subscriptions_index.py

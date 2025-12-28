@@ -42,9 +42,9 @@ occurrences:
     - - 149
       - 149
   note: Four unnecessary asyncio marks
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_compaction.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_compaction.py
 - occurrence_id: occ-1
   files:
@@ -62,9 +62,9 @@ occurrences:
     - - 149
       - 149
   note: Six unnecessary asyncio marks
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_preset_policy_loading.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/approval_policy/test_preset_policy_loading.py
 - occurrence_id: occ-2
   files:
@@ -80,7 +80,7 @@ occurrences:
     - - 195
       - 195
   note: Five unnecessary asyncio marks
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/props/bundles/test_bundle_validation.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/props/bundles/test_bundle_validation.py

@@ -11,7 +11,7 @@ occurrences:
       - 494
     - - 577
       - 600
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/tool.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/tui/components/chat/messages/tool.go

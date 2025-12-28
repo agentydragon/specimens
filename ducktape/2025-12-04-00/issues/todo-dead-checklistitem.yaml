@@ -26,5 +26,5 @@ occurrences:
     adgn/src/adgn/props/models/lint.py:
     - 117
     - 136
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/models/lint.py

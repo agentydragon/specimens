@@ -31,6 +31,6 @@ occurrences:
       - 39
     - - 54
       - 66
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/image/load.go
   - - internal/tui/components/image/image.go

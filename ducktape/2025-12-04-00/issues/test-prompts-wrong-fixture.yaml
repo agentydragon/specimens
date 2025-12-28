@@ -12,5 +12,5 @@ occurrences:
     adgn/tests/props/conftest.py:
     - 256
     - 260
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/props/conftest.py

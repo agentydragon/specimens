@@ -9,5 +9,5 @@ occurrences:
     - 123
     - 143
   note: create_filter_planners function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_planner.py

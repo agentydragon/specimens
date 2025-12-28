@@ -23,5 +23,5 @@ occurrences:
     adgn/src/adgn/props/snapshot_registry.py:
     - 363
     - 393
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/snapshot_registry.py

@@ -33,5 +33,5 @@ occurrences:
     adgn/src/adgn/mcp/approval_policy/engine.py:
     - 166
     - 196
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/engine.py

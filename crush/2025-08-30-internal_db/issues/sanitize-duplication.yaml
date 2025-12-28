@@ -13,6 +13,6 @@ occurrences:
     internal/tui/components/chat/messages/tool.go:
     - 276
     - 280
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/tool.go
   - - internal/tui/components/chat/messages/renderer.go

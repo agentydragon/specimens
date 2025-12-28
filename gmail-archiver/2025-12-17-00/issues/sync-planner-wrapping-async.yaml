@@ -23,5 +23,5 @@ occurrences:
     files:
       gmail_archiver/planners/dbsa.py:
         - [26, 32]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/planners/dbsa.py]

@@ -22,5 +22,5 @@ occurrences:
       - 99
     - - 104
       - 104
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/sysrw/openai_typing.py

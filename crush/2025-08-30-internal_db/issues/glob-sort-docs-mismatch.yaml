@@ -32,5 +32,5 @@ occurrences:
       - 18
     - - 164
       - 166
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/glob.go

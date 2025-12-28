@@ -22,5 +22,5 @@ occurrences:
     internal/tui/tui.go:
     - 161
     - 168
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/tui.go

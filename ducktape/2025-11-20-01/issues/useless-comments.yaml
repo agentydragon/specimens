@@ -10,9 +10,9 @@ occurrences:
     - 86
     - 87
   note: Comment "Save a policy to persistence" just describes the next line
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_policy_validation_reload.py
 - occurrence_id: occ-1
   files:
@@ -20,7 +20,7 @@ occurrences:
     - 19
     - 25
   note: Docstring in persistence fixture adds no value; function name and code are self-documenting
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/approval_policy/test_policy_resources.py

@@ -10,7 +10,7 @@ occurrences:
     - - 268
       - 274
   note: ts_output list created empty then imperatively appended; should use list literal
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/scripts/generate_frontend_code.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/scripts/generate_frontend_code.py

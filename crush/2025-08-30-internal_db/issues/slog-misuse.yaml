@@ -19,15 +19,15 @@ occurrences:
   files:
     internal/app/lsp.go: 31
   note: 'slog.Error("Failed to create LSP client for", name, err) - missing key strings'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/app/lsp.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/app/lsp.go
 - occurrence_id: occ-1
   files:
     internal/db/connect.go: 48
   note: 'slog.Error("Failed to set pragma", pragma, err) - missing key strings'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/db/connect.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/db/connect.go

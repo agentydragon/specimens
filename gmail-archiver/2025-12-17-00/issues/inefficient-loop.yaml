@@ -10,7 +10,7 @@ occurrences:
     - 294
     - 295
   note: loop iterating errors just to advance(1) - should use advance=len(errors)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - gmail_archiver/__main__.py

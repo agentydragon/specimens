@@ -41,9 +41,9 @@ occurrences:
     - 113
     - 116
   note: os.environ.get with immediate check
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/auth.py
 - occurrence_id: occ-1
   files:
@@ -51,9 +51,9 @@ occurrences:
     - 580
     - 581
   note: Create object and immediately use
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/eval_harness.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/eval_harness.py
 - occurrence_id: occ-2
   files:
@@ -63,7 +63,7 @@ occurrences:
     - - 181
       - 183
   note: dict.get with None check
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/stubs/typed_stubs.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/stubs/typed_stubs.py

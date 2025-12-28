@@ -29,5 +29,5 @@ occurrences:
     adgn/src/adgn/mcp/git_ro/server.py: 28
     adgn/src/adgn/mcp/loop/server.py: 16
     adgn/src/adgn/mcp/notifying_fastmcp.py: 107
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/notifying_fastmcp.py

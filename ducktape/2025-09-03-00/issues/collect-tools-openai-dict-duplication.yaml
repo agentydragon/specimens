@@ -14,5 +14,5 @@ occurrences:
       - 128
     - - 133
       - 140
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

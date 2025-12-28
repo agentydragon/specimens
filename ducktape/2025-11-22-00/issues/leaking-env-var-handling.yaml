@@ -24,6 +24,6 @@ occurrences:
     - 59
     - 78
     adgn/src/adgn/agent/runtime/infrastructure.py: 142
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
   - - adgn/src/adgn/agent/presets.py

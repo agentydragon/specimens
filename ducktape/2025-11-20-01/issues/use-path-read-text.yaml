@@ -33,5 +33,5 @@ occurrences:
       - 53
     - - 174
       - 174
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/scripts/generate_frontend_code.py

@@ -35,7 +35,7 @@ occurrences:
       - 24
     - - 31
       - 33
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/db/sql/messages.sql
     - internal/db/messages.sql.go
   - - internal/db/files.sql.go

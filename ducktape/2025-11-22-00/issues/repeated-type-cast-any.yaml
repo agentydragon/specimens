@@ -21,15 +21,15 @@ occurrences:
     - 40
     - 51
   note: "(item.content as any) repeated 8 times for cmd, stdout, exit_code, etc."
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/web/src/components/ToolJson.svelte: 33
   note: casts content to any instead of using JsonContent type
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/web/src/components/ToolJson.svelte

@@ -34,5 +34,5 @@ occurrences:
       - 388
     - - 405
       - 405
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py

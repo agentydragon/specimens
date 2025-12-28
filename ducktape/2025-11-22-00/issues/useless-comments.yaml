@@ -41,9 +41,9 @@ occurrences:
     - - 177
       - 182
   note: 'Redundant "Default: no-op" docstrings in 6 hook methods'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/handler.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/handler.py
 - occurrence_id: occ-1
   files:
@@ -61,17 +61,17 @@ occurrences:
     - - 687
       - 687
   note: 'Separator lines and vague labels (# -------, # constants, # Core logic)'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/policy_eval/container.py: 58
   note: 'Historical breadcrumb comment noting function was moved'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/container.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/policy_eval/container.py
 - occurrence_id: occ-3
   files:
@@ -79,7 +79,7 @@ occurrences:
     - 530
     - 533
   note: 'Block listing old method names that no longer exist'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/sqlite.py

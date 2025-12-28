@@ -15,5 +15,5 @@ occurrences:
     files:
       gmail_archiver/cli/filters.py:
         - [382, 383]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/cli/filters.py]

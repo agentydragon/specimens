@@ -70,5 +70,5 @@ occurrences:
       - 187
     - - 204
       - 204
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_proposals_resources.py

@@ -11,5 +11,5 @@ occurrences:
     - [179, 179]
     - [186, 186]
   note: unparseable stores error string that is never used
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/aliexpress.py

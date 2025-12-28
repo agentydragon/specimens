@@ -11,9 +11,9 @@ occurrences:
   note: |-
     RecoverPanic currently wraps its whole body in a recover-check; prefer early-return guard or narrower scope to
     reduce nesting.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/logging/recover.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/logging/recover.go
 - occurrence_id: occ-1
   files:
@@ -21,9 +21,9 @@ occurrences:
     - 63
     - 85
   note: updateLSPState/updateLSPDiagnostics wrap large blocks; prefer early return/guard clauses where applicable.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/app/lsp_events.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/app/lsp_events.go
 - occurrence_id: occ-2
   files:
@@ -32,9 +32,9 @@ occurrences:
     - 435
   note: 'openKeyConfigFiles: when a file does not exist, use continue to skip rather than nesting the rest of the
     body.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/client.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/lsp/client.go
 - occurrence_id: occ-3
   files:
@@ -42,9 +42,9 @@ occurrences:
     - 426
     - 429
   note: 'cleanup loop: use continue when cleanup is nil to avoid wrapping body in an extra nesting level.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/app/app.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/app/app.go
 - occurrence_id: occ-4
   files:
@@ -53,7 +53,7 @@ occurrences:
     - 201
   note: 'ArgumentsBlocker: guard with continue when args length is insufficient rather than nesting the matching
     body.'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/shell/shell.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/shell/shell.go

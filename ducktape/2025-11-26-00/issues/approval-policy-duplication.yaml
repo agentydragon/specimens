@@ -28,6 +28,6 @@ occurrences:
       - 232
     - - 244
       - 245
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
   - - adgn/src/adgn/agent/server/protocol.py

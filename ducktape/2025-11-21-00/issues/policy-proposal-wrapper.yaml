@@ -29,6 +29,6 @@ occurrences:
     adgn/src/adgn/agent/persist/__init__.py:
     - 82
     - 87
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
   - - adgn/src/adgn/agent/persist/__init__.py

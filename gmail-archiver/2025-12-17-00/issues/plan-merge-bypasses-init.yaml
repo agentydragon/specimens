@@ -23,5 +23,5 @@ occurrences:
     files:
       gmail_archiver/core.py:
         - [120, 124]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/core.py]

@@ -33,5 +33,5 @@ occurrences:
       - 640
     - - 288
       - 351
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/persist/test_integration.py

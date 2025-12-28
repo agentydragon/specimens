@@ -12,5 +12,5 @@ occurrences:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
     - 1183
     - 1191
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py

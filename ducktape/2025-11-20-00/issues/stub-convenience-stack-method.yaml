@@ -37,7 +37,7 @@ occurrences:
     - 180
     - 182
   note: PolicyReaderStub creation boilerplate
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
 - occurrence_id: occ-1
   files:
@@ -45,5 +45,5 @@ occurrences:
     - 184
     - 186
   note: PolicyApproverStub creation boilerplate
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py

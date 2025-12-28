@@ -9,5 +9,5 @@ occurrences:
   files:
     gmail_archiver/event_classifier.py: 171
   note: emails parameter in extract_batch() - tuple of (message_id, subject, body, received_date)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py

@@ -10,7 +10,7 @@ occurrences:
     adgn/tests/support/assertions.py:
     - 47
     - 48
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/support/assertions.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/support/assertions.py

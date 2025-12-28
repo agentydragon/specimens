@@ -16,6 +16,6 @@ occurrences:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
     - 111
     - 114
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/docs/llm/sandboxer/JUPYTER_CONFIG_STRATEGY.md

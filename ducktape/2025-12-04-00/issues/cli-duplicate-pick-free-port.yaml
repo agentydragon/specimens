@@ -10,6 +10,6 @@ occurrences:
       adgn/src/adgn/agent/cli.py:
         - [70, 83]
     note: "_pick_free_port in CLI - should use shared util"
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/cli.py]
       - [adgn/src/adgn/util/net.py]

@@ -15,5 +15,5 @@ occurrences:
     adgn/tests/llm/support/openai_mock.py:
     - - 75
       - 92
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/support/responses.py

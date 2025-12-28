@@ -14,7 +14,7 @@ occurrences:
     - - 159
       - 169
   note: dump_response_messages/dump_chat_messages/parse_tool_params are one-line wrappers around Pydantic methods
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/sysrw/openai_typing.py
 - occurrence_id: occ-1
   files:
@@ -26,5 +26,5 @@ occurrences:
   note: |-
     _normalize_call_arguments accepts dict[str, Any] | str | None but dict case never occurs; defensive check for
     impossible case
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py

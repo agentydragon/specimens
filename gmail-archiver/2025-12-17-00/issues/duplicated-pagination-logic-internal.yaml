@@ -20,12 +20,12 @@ occurrences:
       gmail_archiver/gmail_client.py:
         - [125, 150]
     note: list_messages_by_labels pagination loop
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/gmail_client.py]
   - occurrence_id: occ-1
     files:
       gmail_archiver/gmail_client.py:
         - [153, 178]
     note: list_messages_by_query pagination loop (identical to occ-0)
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/gmail_client.py]

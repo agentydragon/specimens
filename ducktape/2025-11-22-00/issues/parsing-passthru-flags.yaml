@@ -44,7 +44,7 @@ occurrences:
     - - 190
       - 190
     adgn/src/adgn/git_commit_ai/editor_template.py: 77
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/core.py
   - - adgn/src/adgn/git_commit_ai/cli.py
   - - adgn/src/adgn/git_commit_ai/editor_template.py

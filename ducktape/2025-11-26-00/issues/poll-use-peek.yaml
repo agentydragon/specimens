@@ -17,5 +17,5 @@ occurrences:
     adgn/src/adgn/mcp/notifications/buffer.py:
     - 62
     - 72
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/notifications/buffer.py

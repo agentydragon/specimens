@@ -9,9 +9,9 @@ occurrences:
     - 111
     - 114
   note: JSONSchemaAlias returns a throwaway temp map `m` — inline the literal return value.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/csync/maps.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/csync/maps.go
 - occurrence_id: occ-1
   files:
@@ -21,9 +21,9 @@ occurrences:
   note: |-
     NewSpinner builds a local `model` and `prog` only used once to construct Spinner — inline into the returned
     struct where sensible.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/format/spinner.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/format/spinner.go
 - occurrence_id: occ-2
   files:
@@ -33,9 +33,9 @@ occurrences:
   note: |-
     NewService creates a one-off `broker` local and then returns a struct containing it — inline into the struct
     literal.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/session/session.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/session/session.go
 - occurrence_id: occ-3
   files:
@@ -45,9 +45,9 @@ occurrences:
   note: |-
     Providers(): inline one-off locals `client := catwalk.NewWithURL(...)` and `path := providerCacheFileData()`
     into the call site or helper to reduce noise.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/config/provider.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/config/provider.go
 - occurrence_id: occ-4
   files:
@@ -57,9 +57,9 @@ occurrences:
   note: |-
     isPathWatched: `isMatch` is assigned then returned immediately; return expression directly or inline the match
     check.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/lsp/watcher/watcher.go
 - occurrence_id: occ-5
   files:
@@ -69,7 +69,7 @@ occurrences:
   note: |-
     matchesSimpleGlob: several single-use `isMatch` temporaries in the ** handling branch can be inlined into
     their return expressions.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - internal/lsp/watcher/watcher.go

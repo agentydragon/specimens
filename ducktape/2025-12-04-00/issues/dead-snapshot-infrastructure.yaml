@@ -36,7 +36,7 @@ occurrences:
     - 128
     - 133
   note: Snapshot class definition
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
 - occurrence_id: occ-1
   files:
@@ -44,5 +44,5 @@ occurrences:
     - 137
     - 156
   note: build_snapshot() method that constructs dead Snapshot objects
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py

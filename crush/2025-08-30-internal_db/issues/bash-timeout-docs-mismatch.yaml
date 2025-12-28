@@ -15,5 +15,5 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/bash.go: null
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/bash.go

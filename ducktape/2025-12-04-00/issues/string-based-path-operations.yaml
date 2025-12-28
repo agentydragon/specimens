@@ -17,5 +17,5 @@ occurrences:
       - 187
     - - 189
       - 189
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py

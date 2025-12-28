@@ -36,11 +36,11 @@ occurrences:
     - - 381
       - 381
   note: Multiple .value calls on PolicyStatus and ApprovalStatus enums in SQLAlchemy queries and assignments
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/history.py: 36
   note: .value call on StrEnum in history module
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/history.py

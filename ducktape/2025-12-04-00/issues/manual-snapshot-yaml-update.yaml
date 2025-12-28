@@ -17,5 +17,5 @@ occurrences:
     adgn/src/adgn/props/cli_app/cmd_build_bundle.py:
     - 335
     - 363
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py

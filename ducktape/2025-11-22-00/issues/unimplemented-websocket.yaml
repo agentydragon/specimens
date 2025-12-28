@@ -22,7 +22,7 @@ occurrences:
   files:
     adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte: 85
   note: Creates MCP client to list agents; should use shared client from store/context
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
 - occurrence_id: occ-1
   files:
@@ -34,7 +34,7 @@ occurrences:
   note: |-
     Creates TWO separate clients in same component: chat-pane-client (line 87-91) for listing,
     chat-pane-abort-client (line 124-128) for aborting. Worst offender - not even reusing its own client
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ChatPane.svelte
 - occurrence_id: occ-2
   files:
@@ -42,7 +42,7 @@ occurrences:
     - 16
     - 20
   note: Creates new MCP client per message send operation; should use shared client
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/MessageComposer.svelte
 - occurrence_id: occ-3
   files:
@@ -52,5 +52,5 @@ occurrences:
   note: |-
     Creates separate client targeting /api/mcp (non-existent endpoint). Violates 2-level compositor architecture.
     User suggests: delete component or expose agent-global resource through compositor
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/GlobalApprovalsList.svelte

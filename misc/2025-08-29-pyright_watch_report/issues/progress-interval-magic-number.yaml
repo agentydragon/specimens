@@ -29,5 +29,5 @@ occurrences:
       - 241
     - - 253
       - 253
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - pyright_watch_report.py

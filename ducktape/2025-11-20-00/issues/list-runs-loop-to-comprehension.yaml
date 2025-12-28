@@ -30,5 +30,5 @@ occurrences:
     adgn/src/adgn/agent/persist/sqlite.py:
     - 403
     - 417
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py

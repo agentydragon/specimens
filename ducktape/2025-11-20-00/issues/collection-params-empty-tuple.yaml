@@ -21,7 +21,7 @@ occurrences:
     - - 84
       - 84
   note: extra_handlers defaults to None, then converted with `list(extra_handlers or [])`
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/local_runtime.py
 - occurrence_id: occ-1
   files:
@@ -31,7 +31,7 @@ occurrences:
     - - 21
       - 21
   note: tests defaults to None, then guarded with `if tests:`
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policies/scaffold.py
 - occurrence_id: occ-2
   files:
@@ -42,11 +42,11 @@ occurrences:
       - 102
   note: attach/detach default to None, then reassigned with `attach or {}` and `detach if detach is not None else
     []`
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/persist/__init__.py: 141
   note: Protocol signature uses Optional instead of default empty collection
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py

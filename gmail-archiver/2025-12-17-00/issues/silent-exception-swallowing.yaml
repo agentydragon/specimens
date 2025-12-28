@@ -10,5 +10,5 @@ occurrences:
     - 78
     - 79
   note: bare except returning None in cache get
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py

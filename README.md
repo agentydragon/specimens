@@ -63,14 +63,14 @@ occurrences:
     files:
       src/cli.py:
         - [145, 167]
-    # expect_caught_from auto-inferred for single-file issues
+    # critic_scopes_expected_to_recall auto-inferred for single-file issues
 ```
 
 Key fields:
 - `rationale`: What's wrong and why (objective, factual description)
 - `should_flag`: `true` for real issues, `false` for false positives
 - `occurrences`: List of occurrence locations with file paths and line ranges
-- `expect_caught_from`: Minimal file sets needed to detect this issue (used for per-file training examples)
+- `critic_scopes_expected_to_recall`: Minimal file sets needed to detect this issue (used for per-file training examples)
 
 See `docs/format-spec.md` for detailed schema documentation.
 

@@ -9,5 +9,5 @@ occurrences:
     adgn/src/adgn/props/cli_app/shared.py:
     - 38
     - 58
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/shared.py

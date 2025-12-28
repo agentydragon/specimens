@@ -45,5 +45,5 @@ occurrences:
       - 616
     - - 680
       - 683
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/main.py

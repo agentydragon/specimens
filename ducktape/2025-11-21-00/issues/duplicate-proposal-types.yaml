@@ -28,6 +28,6 @@ occurrences:
       - 54
     - - 163
       - 174
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/server.py
   - - adgn/src/adgn/agent/persist/__init__.py

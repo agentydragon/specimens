@@ -10,9 +10,9 @@ occurrences:
     - 22
     - 26
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
 - occurrence_id: occ-1
   files:
@@ -20,9 +20,9 @@ occurrences:
     - 193
     - 196
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
 - occurrence_id: occ-2
   files:
@@ -33,10 +33,10 @@ occurrences:
     - 199
     - 249
   note: Duplicate _start_jupyter_server implementations with nearly identical jupyter server command construction
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
   - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
 - occurrence_id: occ-3
@@ -50,9 +50,9 @@ occurrences:
     - - 305
       - 324
   note: Duplicate jupyter-mcp-server command construction in three places (Python and bash)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
   - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py

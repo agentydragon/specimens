@@ -9,9 +9,9 @@ occurrences:
     - [544, 549]
     - [615, 615]
   note: ParallelTaskRunner.__init__ accepts master_fd but never stores/uses it
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
@@ -19,7 +19,7 @@ occurrences:
     - 192
     - 208
   note: _write_sandboxed_kernelspec declares workspace param but never uses it
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

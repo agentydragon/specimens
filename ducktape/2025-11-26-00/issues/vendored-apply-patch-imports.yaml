@@ -8,13 +8,13 @@ occurrences:
   files:
     adgn/src/adgn/third_party/openai_cookbook/apply_patch.py: 51
   note: Vendored file - pydantic import after code
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/third_party/openai_cookbook/apply_patch.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/third_party/openai_cookbook/apply_patch.py: 71
   note: Vendored file - duplicate pydantic import after code
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/third_party/openai_cookbook/apply_patch.py
 - occurrence_id: occ-2
   files:
@@ -22,5 +22,5 @@ occurrences:
     - 364
     - 366
   note: Vendored file - os/sys/typing imports after class definitions
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/third_party/openai_cookbook/apply_patch.py

@@ -34,5 +34,5 @@ occurrences:
       - 200
     - - 241
       - 250
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py

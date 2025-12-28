@@ -22,5 +22,5 @@ occurrences:
     adgn/tests/agent/test_mcp_notifications_flow.py:
     - 136
     - 147
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_mcp_notifications_flow.py

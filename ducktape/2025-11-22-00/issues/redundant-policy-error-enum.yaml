@@ -22,5 +22,5 @@ occurrences:
       - 17
     - - 21
       - 22
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/models/policy_error.py

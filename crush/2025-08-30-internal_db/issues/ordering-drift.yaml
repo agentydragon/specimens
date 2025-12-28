@@ -14,6 +14,6 @@ occurrences:
     internal/db/sql/messages.sql:
     - 6
     - 11
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/db/sql/messages.sql
   - - internal/db/messages.sql.go

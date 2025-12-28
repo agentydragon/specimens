@@ -10,5 +10,5 @@ occurrences:
     - 135
     - 148
   note: diff_filters function
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py

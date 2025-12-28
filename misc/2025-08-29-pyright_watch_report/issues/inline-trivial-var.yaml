@@ -30,7 +30,7 @@ occurrences:
       - 251
     - - 253
       - 256
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - pyright_watch_report.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - pyright_watch_report.py

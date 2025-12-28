@@ -8,7 +8,7 @@ occurrences:
     e2e/mock_openai_responses.go:
     - 218
     - 219
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - e2e/mock_openai_responses.go
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - e2e/mock_openai_responses.go

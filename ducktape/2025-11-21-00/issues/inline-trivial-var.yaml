@@ -10,9 +10,9 @@ occurrences:
     - 292
     - 294
   note: status variable used once in ProposalInfo construction
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-1
   files:
@@ -22,9 +22,9 @@ occurrences:
     - - 151
       - 151
   note: proposals variable used once in list comprehension
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/approval_policy/server.py
 - occurrence_id: occ-2
   files:
@@ -32,7 +32,7 @@ occurrences:
     - 150
     - 158
   note: pending_record variable used once in save_tool_call()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/middleware.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/policy_gateway/middleware.py

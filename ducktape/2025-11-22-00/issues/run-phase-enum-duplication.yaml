@@ -32,7 +32,7 @@ occurrences:
       - 25
     - - 42
       - 56
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/status_shared.py
   - - adgn/src/adgn/agent/mcp_bridge/types.py
   - - adgn/src/adgn/agent/server/protocol.py

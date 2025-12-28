@@ -9,5 +9,5 @@ occurrences:
     internal/config/config.go:
     - 166
     - 176
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/config/config.go

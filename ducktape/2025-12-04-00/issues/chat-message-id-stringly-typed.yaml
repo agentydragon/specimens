@@ -53,5 +53,5 @@ occurrences:
       - 210
     - - 303
       - 303
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/chat/server.py

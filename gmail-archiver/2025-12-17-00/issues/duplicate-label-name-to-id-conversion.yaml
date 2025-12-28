@@ -9,7 +9,7 @@ occurrences:
     - 117
     - 123
   note: list_messages_by_labels() label resolution loop
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-1
   files:
@@ -17,7 +17,7 @@ occurrences:
     - 163
     - 172
   note: normalized_to_create_request() add_label_ids conversion
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py
 - occurrence_id: occ-2
   files:
@@ -25,7 +25,7 @@ occurrences:
     - 174
     - 182
   note: normalized_to_create_request() remove_label_ids conversion
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py
 - occurrence_id: occ-3
   files:
@@ -33,5 +33,5 @@ occurrences:
     - 204
     - 212
   note: LabelMaps.ensure_label() - same pattern
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py

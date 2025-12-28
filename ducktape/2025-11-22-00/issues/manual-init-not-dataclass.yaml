@@ -14,5 +14,5 @@ occurrences:
     adgn/src/adgn/agent/policy_eval/container.py:
     - 17
     - 46
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/container.py

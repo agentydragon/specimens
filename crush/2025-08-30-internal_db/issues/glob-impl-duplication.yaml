@@ -13,6 +13,6 @@ occurrences:
     internal/lsp/watcher/watcher.go:
     - 583
     - 672
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
   - - internal/fsext/fileutil.go

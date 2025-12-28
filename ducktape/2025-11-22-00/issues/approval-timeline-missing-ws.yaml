@@ -24,6 +24,6 @@ occurrences:
       - 61
     - - 92
       - 98
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ApprovalTimeline.svelte
   - - adgn/src/adgn/agent/server/app.py

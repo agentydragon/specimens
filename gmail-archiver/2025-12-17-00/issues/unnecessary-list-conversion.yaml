@@ -9,5 +9,5 @@ occurrences:
     gmail_archiver/cli/filters.py:
     - [386, 388]
   note: 'list(add_labels) and list(remove_labels) - Gmail API accepts iterables'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/cli/filters.py

@@ -18,9 +18,9 @@ occurrences:
     - - 38
       - 45
   note: dec = ctrl.on_before_sample() then assert on dec; two instances
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_loop_reducer_skip_sampling.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_loop_reducer_skip_sampling.py
 - occurrence_id: occ-1
   files:
@@ -28,9 +28,9 @@ occurrences:
     - 35
     - 42
   note: dec = ctrl.on_before_sample() then assert on dec
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_aggregating_inserts.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_aggregating_inserts.py
 - occurrence_id: occ-2
   files:
@@ -38,9 +38,9 @@ occurrences:
     - 24
     - 32
   note: res = await stub(ExecInput(...)) then assert on res
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_exec_roundtrip.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_exec_roundtrip.py
 - occurrence_id: occ-3
   files:
@@ -48,7 +48,7 @@ occurrences:
     - 29
     - 30
   note: done_result = await stub.done(...) then assert on done_result
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_editor_inproc.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/agent/test_editor_inproc.py

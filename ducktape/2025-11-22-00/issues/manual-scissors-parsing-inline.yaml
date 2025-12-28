@@ -20,7 +20,7 @@ occurrences:
     adgn/src/adgn/git_commit_ai/cli.py:
     - 601
     - 609
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/cli.py

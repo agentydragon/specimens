@@ -14,5 +14,5 @@ occurrences:
     adgn/tests/mcp/git_ro/conftest.py:
     - 18
     - 28
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/git_ro/conftest.py

@@ -16,12 +16,12 @@ occurrences:
     files:
       gmail_archiver/planners/square.py: 40
     note: contextlib.suppress(ValueError, AttributeError) for date parsing
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/planners/square.py]
   - occurrence_id: occ-1
     files:
       gmail_archiver/planners/anthem_eob.py:
         - [25, 26]
     note: except (ValueError, AttributeError) for date parsing
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/planners/anthem_eob.py]

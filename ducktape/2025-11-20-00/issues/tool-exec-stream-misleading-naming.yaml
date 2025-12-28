@@ -16,15 +16,15 @@ occurrences:
   files:
     adgn/src/adgn/agent/server/state.py: 142
   note: 'Misleading function name update_tool_exec_stream implies streaming'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/state.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/reducer.py: 101
   note: 'Misleading comment "merge stdout/stderr/exit" implies progressive merging'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/reducer.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/reducer.py

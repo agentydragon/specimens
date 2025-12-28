@@ -65,7 +65,7 @@ occurrences:
     adgn/tests/mcp/test_resources_subscriptions_index.py:
     - 14
     - 24
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
   - - adgn/tests/mcp/resources/test_subscriptions_index.py
   - - adgn/tests/mcp/test_resources_subscriptions_index.py

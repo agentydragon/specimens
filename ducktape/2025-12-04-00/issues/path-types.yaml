@@ -8,7 +8,7 @@ occurrences:
   files:
     adgn/src/adgn/props/gepa/gepa_adapter.py: 66
   note: SnapshotInput.target_files uses set[Path] but other path parameters like specimen_slug are plain str
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/gepa/gepa_adapter.py
 - occurrence_id: occ-1
   files:
@@ -20,5 +20,5 @@ occurrences:
     - - 239
       - 363
   note: Functions use list[str] and str for file paths instead of Path objects
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py

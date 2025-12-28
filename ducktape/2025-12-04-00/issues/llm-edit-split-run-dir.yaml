@@ -7,5 +7,5 @@ occurrences:
     files:
       adgn/src/adgn/llm/llm_edit.py:
         - [58, 59]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [adgn/src/adgn/llm/llm_edit.py]

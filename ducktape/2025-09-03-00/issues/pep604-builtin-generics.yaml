@@ -17,9 +17,9 @@ occurrences:
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py: 48
   note: 'extra_py: Optional[str] — prefer `str | None`'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
 - occurrence_id: occ-1
   files:
@@ -27,9 +27,9 @@ occurrences:
     - 23
     - 31
   note: 'log_dir: Optional[Path] — prefer `Path | None`'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py
 - occurrence_id: occ-2
   files:
@@ -41,9 +41,9 @@ occurrences:
     - - 85
       - 100
   note: typing imports and signatures use legacy typing names; modernize to builtin generics and PEP 604 unions
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py
 - occurrence_id: occ-3
   files:
@@ -57,9 +57,9 @@ occurrences:
     - - 111
       - 111
   note: ToolMap and sequence/message types use typing.Dict/List — modernize
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
 - occurrence_id: occ-4
   files:
@@ -69,9 +69,9 @@ occurrences:
     - - 19
       - 19
   note: get_tools -> Dict[str, ToolDef] should use `dict[str, ToolDef]`
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/local_server.py
 - occurrence_id: occ-5
   files:
@@ -81,7 +81,7 @@ occurrences:
     - - 15
       - 15
   note: typing imports and return types use legacy typing names
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_exec_server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/local_exec_server.py

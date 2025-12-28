@@ -10,9 +10,9 @@ occurrences:
     - 63
     - 64
   note: dt variable used once immediately after assignment
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/sysrw/extract_dataset_crush.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/llm/sysrw/extract_dataset_crush.py
 - occurrence_id: occ-1
   files:
@@ -20,9 +20,9 @@ occurrences:
     - 188
     - 190
   note: author, committer, message variables used once each immediately after assignment
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/cli_app/cmd_build_bundle.py
 - occurrence_id: occ-2
   files:
@@ -32,9 +32,9 @@ occurrences:
     - - 59
       - 59
   note: event_type variable extracted then immediately used once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-3
   files:
@@ -44,9 +44,9 @@ occurrences:
     - - 63
       - 63
   note: event variable created then immediately used once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-4
   files:
@@ -56,9 +56,9 @@ occurrences:
     - - 60
       - 60
   note: bus variable extracted then immediately used once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-5
   files:
@@ -68,9 +68,9 @@ occurrences:
     - - 83
       - 83
   note: tasks variable created then immediately used once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-6
   files:
@@ -78,9 +78,9 @@ occurrences:
     - 85
     - 86
   note: 'on_user_text_event: ut variable should be inlined'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-7
   files:
@@ -88,9 +88,9 @@ occurrences:
     - 92
     - 93
   note: 'on_tool_call_event: tc variable should be inlined'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-8
   files:
@@ -98,9 +98,9 @@ occurrences:
     - 100
     - 101
   note: 'on_tool_result_event: fco variable should be inlined'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-9
   files:
@@ -108,49 +108,49 @@ occurrences:
     - 294
     - 296
   note: return statement could be inlined
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-10
   files:
     adgn/src/adgn/props/grader/grader.py: 104
   note: tp_files variable
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-11
   files:
     adgn/src/adgn/props/grader/grader.py: 107
   note: critique_files variable
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-12
   files:
     adgn/src/adgn/props/grader/grader.py: 201
   note: db_run variable in session.add
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-13
   files:
     adgn/src/adgn/props/grader/grader.py: 224
   note: inputs variable passed to one function call
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-14
   files:
     adgn/src/adgn/props/grader/grader.py: 226
   note: submit_tool_name variable
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-15
   files:
@@ -158,9 +158,9 @@ occurrences:
     - 229
     - 235
   note: prompt variable passed to one function call
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-16
   files:
@@ -168,9 +168,9 @@ occurrences:
     - 249
     - 257
   note: handlers variable
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-17
   files:
@@ -178,9 +178,9 @@ occurrences:
     - 55
     - 57
   note: rr and s variables assigned once and immediately used
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/resources.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/_shared/resources.py
 - occurrence_id: occ-18
   files:
@@ -188,9 +188,9 @@ occurrences:
     - 173
     - 174
   note: client_factory variable assigned and used only once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-19
   files:
@@ -198,9 +198,9 @@ occurrences:
     - 146
     - 147
   note: timestamp variable assigned and used only once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/cluster_unknowns.py
 - occurrence_id: occ-20
   files:
@@ -208,9 +208,9 @@ occurrences:
     - 151
     - 155
   note: out_spec and tasks variables should be inlined with asyncio.gather generator
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/cluster_unknowns.py
 - occurrence_id: occ-21
   files:
@@ -218,9 +218,9 @@ occurrences:
     - 283
     - 291
   note: part variable in loop should be list comprehension
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-22
   files:
@@ -228,9 +228,9 @@ occurrences:
     - 315
     - 318
   note: summary_items variable should be inlined
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-23
   files:
@@ -238,7 +238,7 @@ occurrences:
     - 384
     - 385
   note: tmpl variable should be inlined into Template(raw).render(...)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/engine.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/approval_policy/engine.py

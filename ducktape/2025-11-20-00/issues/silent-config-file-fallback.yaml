@@ -27,7 +27,7 @@ occurrences:
     - 86
     - 89
   note: '--mcp-config flag: silent fallback to empty config MCPConfig(mcpServers={})'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/cli.py
 - occurrence_id: occ-1
   files:
@@ -35,5 +35,5 @@ occurrences:
     - 92
     - 93
   note: '--initial-policy flag: silent fallback to None'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/cli.py

@@ -22,8 +22,8 @@ occurrences:
     - 547
     - 552
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py: 656
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
   - adgn/src/adgn/agent/agent.py

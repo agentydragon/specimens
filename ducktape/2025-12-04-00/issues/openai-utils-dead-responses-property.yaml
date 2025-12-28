@@ -19,5 +19,5 @@ occurrences:
     adgn/src/adgn/openai_utils/model.py:
     - 348
     - 357
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py

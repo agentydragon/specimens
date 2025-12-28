@@ -10,19 +10,19 @@ occurrences:
   files:
     gmail_archiver/models.py: 25
   note: GmailMessage.body is single str field, loses MIME structure
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/models.py
 - occurrence_id: occ-1
   files:
     gmail_archiver/gmail_client.py:
     - [450, 461]
   note: get_messages_batch() plaintext extraction (no HTML fallback)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py
 - occurrence_id: occ-2
   files:
     gmail_archiver/gmail_client.py:
     - [517, 524]
   note: get_message() plaintext extraction (no HTML fallback)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/gmail_client.py

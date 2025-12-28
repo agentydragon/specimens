@@ -15,7 +15,7 @@ occurrences:
     - 252
     - 275
   note: First copy in cmd_detector.py with "specimen" in docstring
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_detector.py
 - occurrence_id: occ-1
   files:
@@ -23,5 +23,5 @@ occurrences:
     - 171
     - 194
   note: Second copy in main.py with "snapshot" in docstring
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/main.py

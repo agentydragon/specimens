@@ -34,7 +34,7 @@ Technical reference for:
 @docs/authoring-guide.md
 
 How to write good specimens:
-- Detection standard for `expect_caught_from`
+- Detection standard for `critic_scopes_expected_to_recall`
 - Issue organization principles
 - Research-first approach
 - Objectivity in descriptions
@@ -82,7 +82,7 @@ If code has been fixed:
 
 ### Understanding Detection Standard
 
-The key question for `expect_caught_from`: **"If I gave a high-quality critic this file set to review, and they failed to find this issue, would that be a failure on their part?"**
+The key question for `critic_scopes_expected_to_recall`: **"If I gave a high-quality critic this file set to review, and they failed to find this issue, would that be a failure on their part?"**
 
 What "reviewing files" includes:
 - Reading files thoroughly
@@ -94,29 +94,29 @@ What "reviewing files" includes:
 What it does NOT mean:
 - "Reading files in complete isolation without any searches"
 
-See @docs/authoring-guide.md section "Detection Standard for `expect_caught_from`" for detailed examples.
+See @docs/authoring-guide.md section "Detection Standard for `critic_scopes_expected_to_recall`" for detailed examples.
 
-### Field Semantics: `expect_caught_from` vs `only_matchable_from_files`
+### Field Semantics: `critic_scopes_expected_to_recall` vs `graders_match_only_if_reported_on`
 
-**`expect_caught_from`**: TRAINING SIGNAL. Some known files such that IF a critic is shown these files, THEN we want it to catch this issue. NOT exhaustive - does not enumerate all possible detection sources.
+**`critic_scopes_expected_to_recall`**: TRAINING SIGNAL. Some known files such that IF a critic is shown these files, THEN we want it to catch this issue. NOT exhaustive - does not enumerate all possible detection sources.
 
-**`only_matchable_from_files`**: GRADING OPTIMIZATION. Restricts which critique outputs can match this occurrence. If set, a critique reporting issues only in files OUTSIDE this set will be skipped during matching (assumed non-match without semantic comparison).
+**`graders_match_only_if_reported_on`**: GRADING OPTIMIZATION. Restricts which critique outputs can match this occurrence. If set, a critique reporting issues only in files OUTSIDE this set will be skipped during matching (assumed non-match without semantic comparison).
 
 - **NULL** = allow matching from any file. Conservative default when we haven't determined the closed set, OR for genuinely cross-cutting issues.
 - **Non-empty set (≥1 file)** = we know the closed set; skip matching if critique's files don't overlap.
 - **Empty set** = INVALID. Not allowed.
 
 These are independent concepts:
-- An issue might be detectable from file A (`expect_caught_from: [[A]]`)
-- But once detected, it could be validly reported in files A, B, or C (`only_matchable_from_files: [A, B, C]`)
+- An issue might be detectable from file A (`critic_scopes_expected_to_recall: [[A]]`)
+- But once detected, it could be validly reported in files A, B, or C (`graders_match_only_if_reported_on: [A, B, C]`)
 
 Example: "agents.py calls agent.abort() which doesn't exist on MiniCodex"
-- `expect_caught_from: [[agents.py]]` - detectable from the call site
-- `only_matchable_from_files: [agents.py, agent.py]` - valid to tag either:
+- `critic_scopes_expected_to_recall: [[agents.py]]` - detectable from the call site
+- `graders_match_only_if_reported_on: [agents.py, agent.py]` - valid to tag either:
   - agents.py: "This calls .abort() which doesn't exist"
   - agent.py: "MiniCodex is missing abort() that callers expect"
 
-**Validation test for `only_matchable_from_files`**: Can you produce a valid critique phrasing that accurately describes this issue but tags a file outside the set? If yes, the set is too narrow.
+**Validation test for `graders_match_only_if_reported_on`**: Can you produce a valid critique phrasing that accurately describes this issue but tags a file outside the set? If yes, the set is too narrow.
 
 See @docs/only-matchable-labels.md for labeled examples.
 

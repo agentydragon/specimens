@@ -23,5 +23,5 @@ occurrences:
     adgn/src/adgn/agent/web/src/features/chat/channels.ts:
     - 138
     - 174
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/features/chat/channels.ts

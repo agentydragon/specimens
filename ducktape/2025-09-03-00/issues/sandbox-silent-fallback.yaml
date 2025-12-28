@@ -34,5 +34,5 @@ occurrences:
     llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py:
     - 49
     - 56
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py

@@ -26,5 +26,5 @@ occurrences:
       - 36
     - - 39
       - 51
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_gitea_mirror_server.py

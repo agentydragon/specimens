@@ -14,7 +14,7 @@ occurrences:
     adgn/tests/mcp/approval_policy/test_policy_resources.py:
     - 35
     - 37
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/mcp/approval_policy/test_policy_resources.py

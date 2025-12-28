@@ -15,6 +15,6 @@ occurrences:
     internal/llm/tools/write.go:
     - 204
     - 224
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
   - - internal/llm/tools/write.go

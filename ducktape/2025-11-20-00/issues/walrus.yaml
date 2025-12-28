@@ -17,9 +17,9 @@ occurrences:
     - 93
     - 95
   note: In get_agent() - assign agent row then check None
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/registry.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/registry.py
 - occurrence_id: occ-1
   files:
@@ -27,9 +27,9 @@ occurrences:
     - 243
     - 245
   note: In get_policy_proposal() - assign proposal then check None
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-2
   files:
@@ -37,9 +37,9 @@ occurrences:
     - 335
     - 336
   note: In agent.py - assign results.get() then check None
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/agent.py
 - occurrence_id: occ-3
   files:
@@ -47,9 +47,9 @@ occurrences:
     - 131
     - 133
   note: In state.py - assign _find_last_tool_index then check None (occurrence 1)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/state.py
 - occurrence_id: occ-4
   files:
@@ -57,9 +57,9 @@ occurrences:
     - 151
     - 153
   note: In state.py - assign _find_last_tool_index then check None (occurrence 2)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/state.py
 - occurrence_id: occ-5
   files:
@@ -67,9 +67,9 @@ occurrences:
     - 176
     - 178
   note: In state.py - assign _find_last_tool_index then check None (occurrence 3)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/state.py
 - occurrence_id: occ-6
   files:
@@ -77,9 +77,9 @@ occurrences:
     - 93
     - 95
   note: In get_agent_id() - assign token lookup then check None
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/auth.py
 - occurrence_id: occ-7
   files:
@@ -87,9 +87,9 @@ occurrences:
     - 327
     - 329
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 1)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-8
   files:
@@ -97,9 +97,9 @@ occurrences:
     - 351
     - 353
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 2)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-9
   files:
@@ -107,9 +107,9 @@ occurrences:
     - 374
     - 376
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 3)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-10
   files:
@@ -117,9 +117,9 @@ occurrences:
     - 162
     - 163
   note: In server.py - assign for ternary expression
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/server.py
 - occurrence_id: occ-11
   files:
@@ -127,7 +127,7 @@ occurrences:
     - 107
     - 111
   note: In mcp_routing.py - dict.get with useless "Look up token" comment
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/mcp_routing.py

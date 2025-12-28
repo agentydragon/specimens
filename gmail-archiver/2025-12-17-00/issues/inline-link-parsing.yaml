@@ -9,5 +9,5 @@ occurrences:
     - 330
     - 344
   note: link parsing in download_email() - extract to parse_gmail_link() or similar
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py

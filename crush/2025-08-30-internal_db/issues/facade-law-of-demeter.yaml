@@ -27,7 +27,7 @@ occurrences:
   note: |-
     chat page reaches through p.app.CoderAgent.* and p.app.Sessions.Create(...) in many places; prefer unified
     agent façade or DI.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/page/chat/chat.go
 - occurrence_id: occ-1
   files:
@@ -45,7 +45,7 @@ occurrences:
   note: |-
     top-level TUI model uses a.app.CoderAgent.* for busy checks and a.app.Permissions for toggles/grants;
     centralize agent/permission interactions behind App or DI.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/tui.go
 - occurrence_id: occ-2
   files:
@@ -61,5 +61,5 @@ occurrences:
   note: |-
     editor reaches through to m.app.CoderAgent.IsSessionBusy/IsBusy and m.app.Permissions — consider routing via
     App façade methods or inject services explicitly.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/editor/editor.go

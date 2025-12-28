@@ -12,7 +12,7 @@ occurrences:
   note: |-
     Silent continue for component != "system_prompt" should assert that components_to_update contains only
     "system_prompt"
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/gepa/gepa_adapter.py
 - occurrence_id: occ-1
   files:
@@ -20,5 +20,5 @@ occurrences:
     - 220
     - 221
   note: yaml.safe_load() fallback "or {}" suppresses None result which should be an error
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py

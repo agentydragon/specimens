@@ -14,7 +14,7 @@ occurrences:
       - 204
     - - 285
       - 290
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py

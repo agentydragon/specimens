@@ -19,11 +19,11 @@ occurrences:
   files:
     adgn/src/adgn/agent/server/runtime.py: 215
   note: Unnecessary return after try/except/finally in if branch
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/runtime.py: 218
   note: Unnecessary return at end of method
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py

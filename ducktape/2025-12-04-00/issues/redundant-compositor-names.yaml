@@ -39,13 +39,13 @@ occurrences:
     - - 473
       - 473
   note: Test fixtures using arbitrary "comp" name - name never referenced
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/conftest.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/mcp_bridge/compositor_factory.py: 45
   note: Creates "global" compositor - may be justified for two-level compositor pattern but likely still redundant
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py

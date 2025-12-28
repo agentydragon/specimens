@@ -26,7 +26,7 @@ occurrences:
     - 89
     - 93
   note: ReasoningChunk class definition
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
 - occurrence_id: occ-1
   files:
@@ -34,5 +34,5 @@ occurrences:
     - 113
     - 116
   note: TranscriptItem type alias (includes ReasoningChunk at line 114)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py

@@ -25,7 +25,7 @@ occurrences:
     - 340
     - 343
   note: cfg_path computed with Path(..) vs os.path usage; prefer Path APIs
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
 - occurrence_id: occ-1
   files:
@@ -33,5 +33,5 @@ occurrences:
     - 122
     - 123
   note: 'cwd handling: prefer Path.cwd()/Path(...) semantics instead of os.getcwd()/os.path'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py

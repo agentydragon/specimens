@@ -16,7 +16,7 @@ occurrences:
   note: |-
     Multiple separate assertions for object properties (instance type, exit_code, stdout); should use
     has_properties
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_runtime_timeout.py
 - occurrence_id: occ-1
   files:
@@ -28,7 +28,7 @@ occurrences:
   note: |-
     Multiple assertions to check error messages (length > 0, then substring); should use
     has_item(contains_string(...))
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py
 - occurrence_id: occ-2
   files:
@@ -48,5 +48,5 @@ occurrences:
   note: |-
     Individual field assertions instead of structured comparison; should use Pydantic model equality or
     has_properties
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py

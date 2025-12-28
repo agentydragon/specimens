@@ -15,7 +15,7 @@ occurrences:
     - 9
     - 22
   note: criteria_to_gmail_query(FilterCriteria)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_planner.py
 - occurrence_id: occ-1
   files:
@@ -23,7 +23,7 @@ occurrences:
     - 25
     - 59
   note: rule_to_gmail_query(FilterRule)
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_planner.py
 - occurrence_id: occ-2
   files:
@@ -31,7 +31,7 @@ occurrences:
     - 156
     - 163
   note: GmailFilterPlanner.__init__ name building from FilterCriteria
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_planner.py
 - occurrence_id: occ-3
   files:
@@ -39,5 +39,5 @@ occurrences:
     - 215
     - 231
   note: format_filter_for_display() from NormalizedFilter
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py

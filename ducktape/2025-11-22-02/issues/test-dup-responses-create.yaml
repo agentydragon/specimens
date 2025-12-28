@@ -25,7 +25,7 @@ occurrences:
     - - 269
       - 283
   note: Three instances in test_mcp_concurrent.py
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_concurrent.py
 - occurrence_id: occ-1
   files:
@@ -39,7 +39,7 @@ occurrences:
     - - 249
       - 256
   note: Four instances in test_mcp_errors.py
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_errors.py
 - occurrence_id: occ-2
   files:
@@ -55,5 +55,5 @@ occurrences:
     - - 275
       - 283
   note: Five instances in test_mcp_edge_cases.py
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_edge_cases.py

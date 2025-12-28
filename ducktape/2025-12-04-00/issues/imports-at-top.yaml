@@ -8,9 +8,9 @@ occurrences:
   files:
     adgn/src/adgn/props/db/models.py: 8
   note: Conditional import for type checking inside function body instead of at module top
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/models.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/db/models.py
 - occurrence_id: occ-1
   files:
@@ -18,9 +18,9 @@ occurrences:
     - 1
     - 15
   note: Missing DatabaseConfig import at module top
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/props/conftest.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/tests/props/conftest.py
 - occurrence_id: occ-2
   files:
@@ -28,7 +28,7 @@ occurrences:
     - 20
     - 22
   note: TYPE_CHECKING conditional import below normal imports instead of at module top
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/models.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/props/grader/models.py

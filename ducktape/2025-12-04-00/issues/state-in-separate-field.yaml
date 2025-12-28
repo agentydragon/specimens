@@ -14,7 +14,7 @@ occurrences:
       - 307
     - - 314
       - 314
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/compositor/server.py

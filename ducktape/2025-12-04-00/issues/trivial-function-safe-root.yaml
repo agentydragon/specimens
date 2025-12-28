@@ -26,7 +26,7 @@ occurrences:
       - 20
     - - 41
       - 41
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/tools/arg0_runner.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/tools/arg0_runner.py

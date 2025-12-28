@@ -34,5 +34,5 @@ occurrences:
     adgn/src/adgn/tools/arg0_runner.py:
     - 25
     - 31
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/tools/arg0_runner.py

@@ -10,5 +10,5 @@ occurrences:
     adgn/src/adgn/agent/agent.py:
     - 620
     - 621
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py

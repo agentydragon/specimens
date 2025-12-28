@@ -12,9 +12,9 @@ occurrences:
     - - 372
       - 372
   note: policy_gateway variable immediately stored in field; inline
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/container.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/container.py
 - occurrence_id: occ-1
   files:
@@ -22,9 +22,9 @@ occurrences:
     - 290
     - 296
   note: rows and items variables immediately consumed; inline into return
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/app.py
 - occurrence_id: occ-2
   files:
@@ -32,9 +32,9 @@ occurrences:
     - 200
     - 201
   note: tagged variable immediately returned; inline
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/reducer.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/reducer.py
 - occurrence_id: occ-3
   files:
@@ -42,9 +42,9 @@ occurrences:
     - 154
     - 156
   note: raw variable immediately passed to function; inline
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-4
   files:
@@ -52,15 +52,15 @@ occurrences:
     - 735
     - 736
   note: status variable immediately used in if-check; inline
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/mcp/compositor/setup.py: 31
   note: res_server variable immediately passed to mount_inproc
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/setup.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/compositor/setup.py

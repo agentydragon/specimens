@@ -25,9 +25,9 @@ occurrences:
     - 25
     - 27
   note: 'build_handlers: "Returns" line restates return type'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/handlers.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/handlers.py
 - occurrence_id: occ-1
   files:
@@ -35,9 +35,9 @@ occurrences:
     - 50
     - 52
   note: 'default_client_factory: useless docstring'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/app.py
 - occurrence_id: occ-2
   files:
@@ -45,7 +45,7 @@ occurrences:
     - 128
     - 129
   note: 'default_client_factory: mostly useless docstring'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/container.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/runtime/container.py

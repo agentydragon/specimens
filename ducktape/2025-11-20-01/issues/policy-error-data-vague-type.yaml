@@ -30,5 +30,5 @@ occurrences:
       - 136
     - - 142
       - 142
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/signals.py

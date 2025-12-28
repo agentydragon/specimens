@@ -26,9 +26,9 @@ occurrences:
     - - 52
       - 52
   note: _convert_pending_approvals() builds list with append loop
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-1
   files:
@@ -40,9 +40,9 @@ occurrences:
     - - 99
       - 108
   note: list_approvals() builds approvals_list with two append loops
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py
 - occurrence_id: occ-2
   files:
@@ -50,7 +50,7 @@ occurrences:
     - 267
     - 274
   note: proposals list built with nested conditional and loop
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py

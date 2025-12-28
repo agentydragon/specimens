@@ -22,7 +22,7 @@ occurrences:
       - 100
     - - 108
       - 135
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py

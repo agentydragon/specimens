@@ -29,5 +29,5 @@ occurrences:
   files:
     internal/config/config.go: 127
     internal/tui/components/lsp/lsp.go: 63
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/config/config.go

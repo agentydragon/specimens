@@ -34,7 +34,7 @@ occurrences:
     - 92
     adgn/src/adgn/agent/web/src/components/ToolExec.svelte: 8
     adgn/src/adgn/agent/web/src/components/ToolJson.svelte: 9
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
   - - adgn/src/adgn/agent/web/src/components/ChatPane.svelte

@@ -38,9 +38,9 @@ occurrences:
     - - 791
       - 791
   note: 'Obvious operation comments restating generate ID, call create_agent, return brief'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-1
   files:
@@ -48,9 +48,9 @@ occurrences:
     - 292
     - 294
   note: Comment "Strict mapping; surface invalid data" restates obvious Pydantic behavior
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-2
   files:
@@ -66,7 +66,7 @@ occurrences:
     - - 123
       - 123
   note: 'Incorrect "All fields are REQUIRED" comments on Pydantic models with optional fields'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/__init__.py

@@ -12,7 +12,7 @@ occurrences:
   note: |-
     addLineNumbers uses fixed 6-char padding via fmt.Sprintf("%6s", numStr). Consider Digits helper and minimal
     adaptation.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go
 - occurrence_id: occ-1
   files:
@@ -22,5 +22,5 @@ occurrences:
   note: |-
     renderCodeContent uses getDigits dynamic digit counting; keep rendering behavior separate for UI but extract
     shared Digits helper.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go

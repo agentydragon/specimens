@@ -20,15 +20,15 @@ occurrences:
     - - 382
       - 393
   note: pending_map, approvals_list, decision, proposals variables used only once
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-1
   files:
     adgn/scripts/generate_frontend_code.py: 255
   note: main_schema dict comprehension assigned and immediately used to update all_defs
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/scripts/generate_frontend_code.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/scripts/generate_frontend_code.py

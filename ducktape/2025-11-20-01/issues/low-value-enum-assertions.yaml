@@ -34,5 +34,5 @@ occurrences:
     adgn/tests/agent/server/test_mcp_routing.py:
     - 149
     - 150
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/tests/agent/server/test_mcp_routing.py

@@ -16,7 +16,7 @@ occurrences:
   note: |-
     AssistantMessageOut.from_input_item: converts AssistantMessage (input) back to AssistantMessageOut (output);
     reverse conversion never used
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-1
   files:
@@ -28,7 +28,7 @@ occurrences:
   note: |-
     ResponsesResult.to_input_items and its only dependency response_out_item_to_input singledispatch; entire
     conversion-back path unused
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-2
   files:
@@ -36,5 +36,5 @@ occurrences:
     - 96
     - 145
   note: 'detect_policy_gateway_error: 50 lines of complex error detection logic, documented as unused at line 110'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/signals.py

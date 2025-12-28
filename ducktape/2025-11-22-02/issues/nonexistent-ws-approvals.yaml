@@ -23,9 +23,9 @@ occurrences:
     - - 601
       - 601
     adgn/src/adgn/agent/server/app.py: 332
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ApprovalTimeline.test.ts
   - - adgn/src/adgn/agent/server/app.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/web/src/components/ApprovalTimeline.test.ts
   - adgn/src/adgn/agent/server/app.py

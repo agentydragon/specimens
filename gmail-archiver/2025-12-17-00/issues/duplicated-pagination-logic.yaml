@@ -10,5 +10,5 @@ occurrences:
     - 155
     - 174
   note: manual pagination loop duplicates GmailClient.list_messages_by_query()
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py

@@ -18,7 +18,7 @@ occurrences:
       - 519
     - - 518
       - 518
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/inop/runners/containerized_claude.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/inop/runners/containerized_claude.py

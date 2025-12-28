@@ -14,5 +14,5 @@ occurrences:
       - 275
     - - 456
       - 470
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go

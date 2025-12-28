@@ -16,5 +16,5 @@ occurrences:
         - [30, 34]
       gmail_archiver/gmail_api_models.py:
         - [30, 45]
-    expect_caught_from:
+    critic_scopes_expected_to_recall:
       - [gmail_archiver/models.py, gmail_archiver/gmail_api_models.py]

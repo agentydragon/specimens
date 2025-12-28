@@ -52,7 +52,7 @@ occurrences:
     adgn/src/adgn/props/detectors/det_swallow_errors.py: null
     adgn/src/adgn/props/detectors/det_trivial_alias.py: null
     adgn/src/adgn/props/detectors/det_walrus_suggest.py: null
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/detectors/det_import_aliasing.py
   - - adgn/src/adgn/props/detectors/det_flatten_nested_guards.py
   - - adgn/src/adgn/props/detectors/det_magic_tuple_indices.py

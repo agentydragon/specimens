@@ -19,7 +19,7 @@ occurrences:
     - - 623
       - 623
   note: _make_error_result and _abort_result helper functions have single call chains; inline
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/agent.py

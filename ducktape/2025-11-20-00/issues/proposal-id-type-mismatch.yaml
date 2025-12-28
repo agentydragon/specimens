@@ -14,7 +14,7 @@ occurrences:
   files:
     adgn/src/adgn/agent/persist/models.py: 149
   note: Database model uses int for proposal_id
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
 - occurrence_id: occ-1
   files:
@@ -28,7 +28,7 @@ occurrences:
     - - 311
       - 321
   note: SQLite layer converts str to int with try/except
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py
 - occurrence_id: occ-2
   files:
@@ -42,7 +42,7 @@ occurrences:
     - - 206
       - 206
   note: Protocol interface uses str return/param types
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py
 - occurrence_id: occ-3
   files:
@@ -54,17 +54,17 @@ occurrences:
     - - 254
       - 254
   note: Approvals module uses str proposal_id
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py: 747
   note: MCP tool uses str proposal_id
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/mcp_bridge/resources.py: 67
   note: Resources module uses str proposal_id
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/resources.py

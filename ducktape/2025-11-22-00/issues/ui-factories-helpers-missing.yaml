@@ -32,5 +32,5 @@ occurrences:
       - 142
     - - 175
       - 180
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/GlobalApprovalsList.svelte

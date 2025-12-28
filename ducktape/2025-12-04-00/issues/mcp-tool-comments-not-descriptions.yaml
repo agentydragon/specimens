@@ -19,7 +19,7 @@ occurrences:
   note: |-
     Comment "Stateless: require a full policy on every call" describes policy field behavior but is invisible to
     MCP clients
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/seatbelt.py
 - occurrence_id: occ-1
   files:
@@ -29,7 +29,7 @@ occurrences:
   note: |-
     Comment "Explicit env to set/override in the child (applied after policy.env passthrough base)" explains env
     field semantics but is invisible to MCP clients
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/seatbelt.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/mcp/exec/seatbelt.py

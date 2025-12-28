@@ -14,7 +14,7 @@ occurrences:
   note: |-
     Example: Diff.ExternalCommand / ParseMode guarded by multi-level nil checks; centralize via
     config.Diff().ParseMode or a nil-safe helper.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/diff/external.go
 - occurrence_id: occ-1
   files:
@@ -24,7 +24,7 @@ occurrences:
   note: |-
     Numerous checks for cfg.Options.DebugLSP and config-derived guards; prefer
     config.DebugLSP()/config.CurrentLSPIgnore() helpers or DI.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
 - occurrence_id: occ-2
   files:
@@ -34,5 +34,5 @@ occurrences:
   note: |-
     Representative site for reading GrepTimeoutSecs, BashBlockedCommands, MaxToolOutputBytes — prefer
     config.GrepTimeoutSecs(), config.BashBlockedCommands() helpers or DI.
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/llm/tools/tools.go

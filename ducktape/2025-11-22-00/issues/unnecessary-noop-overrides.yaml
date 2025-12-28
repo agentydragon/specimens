@@ -19,5 +19,5 @@ occurrences:
     adgn/src/adgn/agent/reducer.py:
     - 244
     - 265
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/reducer.py

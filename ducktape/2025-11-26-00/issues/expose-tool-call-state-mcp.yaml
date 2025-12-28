@@ -48,7 +48,7 @@ occurrences:
       - 136
     - - 145
       - 180
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/middleware.py
     - adgn/src/adgn/agent/server/runtime.py
   - - adgn/src/adgn/mcp/policy_gateway/middleware.py

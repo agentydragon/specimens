@@ -35,5 +35,5 @@ occurrences:
       - 426
     - - 456
       - 473
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/models.py

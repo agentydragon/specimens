@@ -49,7 +49,7 @@ occurrences:
       - 283
     - - 293
       - 293
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/models/proposal_status.py
   - - adgn/src/adgn/agent/persist/__init__.py
   - - adgn/src/adgn/agent/persist/models.py

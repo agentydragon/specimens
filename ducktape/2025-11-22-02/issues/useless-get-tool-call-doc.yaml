@@ -21,9 +21,9 @@ occurrences:
     - 175
     - 176
   note: 'Useless docstring in abstract interface'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/__init__.py
 - occurrence_id: occ-1
   files:
@@ -31,7 +31,7 @@ occurrences:
     - 466
     - 467
   note: 'Useless docstring in SQLite implementation'
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py
-  only_matchable_from_files:
+  graders_match_only_if_reported_on:
   - adgn/src/adgn/agent/persist/sqlite.py

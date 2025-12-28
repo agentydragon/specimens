@@ -18,5 +18,5 @@ occurrences:
       - 308
     - - 321
       - 321
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py

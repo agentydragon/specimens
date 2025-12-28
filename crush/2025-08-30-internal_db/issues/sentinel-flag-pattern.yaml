@@ -8,5 +8,5 @@ occurrences:
     internal/shell/shell.go:
     - 183
     - 201
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - internal/shell/shell.go

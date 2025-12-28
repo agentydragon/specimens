@@ -44,5 +44,5 @@ occurrences:
       - 91
     - - 144
       - 161
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py

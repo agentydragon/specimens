@@ -22,5 +22,5 @@ occurrences:
     adgn/src/adgn/props/cluster_unknowns.py:
     - 132
     - 138
-  expect_caught_from:
+  critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
