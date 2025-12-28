@@ -27,6 +27,8 @@ occurrences:
   note: 'build_handlers: "Returns" line restates return type'
   expect_caught_from:
   - - adgn/src/adgn/agent/runtime/handlers.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/runtime/handlers.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/app.py:
@@ -35,6 +37,8 @@ occurrences:
   note: 'default_client_factory: useless docstring'
   expect_caught_from:
   - - adgn/src/adgn/agent/server/app.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/app.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/runtime/container.py:
@@ -43,3 +47,5 @@ occurrences:
   note: 'default_client_factory: mostly useless docstring'
   expect_caught_from:
   - - adgn/src/adgn/agent/runtime/container.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/runtime/container.py

@@ -10,6 +10,8 @@ occurrences:
   note: 'Unused: os, subprocess'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
@@ -24,3 +26,5 @@ occurrences:
   note: 'Unused: asyncio, dataclass, Any, Field, model_validator (BaseModel is used)'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

@@ -16,3 +16,5 @@ occurrences:
       - 314
   expect_caught_from:
   - - adgn/src/adgn/mcp/compositor/server.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/compositor/server.py

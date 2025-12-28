@@ -21,3 +21,5 @@ occurrences:
     - 71
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

@@ -16,3 +16,5 @@ occurrences:
       - 290
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py

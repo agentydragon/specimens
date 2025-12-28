@@ -27,3 +27,5 @@ occurrences:
     adgn/src/adgn/agent/server/protocol.py: 36
   expect_caught_from:
   - - adgn/src/adgn/agent/server/protocol.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/protocol.py

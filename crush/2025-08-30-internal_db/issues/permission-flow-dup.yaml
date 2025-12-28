@@ -15,6 +15,8 @@ occurrences:
   note: 'createNewFile branch: diff+permission+write+history+record bookkeeping.'
   expect_caught_from:
   - - internal/llm/tools/edit.go
+  only_matchable_from_files:
+  - internal/llm/tools/edit.go
 - occurrence_id: occ-1
   files:
     internal/llm/tools/edit.go:
@@ -23,6 +25,8 @@ occurrences:
   note: 'deleteContent branch: diff+permission+write+history+record bookkeeping (similar pattern).'
   expect_caught_from:
   - - internal/llm/tools/edit.go
+  only_matchable_from_files:
+  - internal/llm/tools/edit.go
 - occurrence_id: occ-2
   files:
     internal/llm/tools/edit.go:
@@ -33,3 +37,5 @@ occurrences:
     oldContent, newContent, action, desc, params...).
   expect_caught_from:
   - - internal/llm/tools/edit.go
+  only_matchable_from_files:
+  - internal/llm/tools/edit.go

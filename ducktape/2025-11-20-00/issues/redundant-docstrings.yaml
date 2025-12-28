@@ -22,6 +22,8 @@ occurrences:
     definition at line 33
   expect_caught_from:
   - - adgn/src/adgn/agent/server/reducer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/reducer.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/persist/models.py:
@@ -32,3 +34,5 @@ occurrences:
     only exist on the PolicyStatus StrEnum definition
   expect_caught_from:
   - - adgn/src/adgn/agent/persist/models.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/persist/models.py

@@ -31,3 +31,5 @@ occurrences:
     field semantics but is invisible to MCP clients
   expect_caught_from:
   - - adgn/src/adgn/mcp/exec/seatbelt.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/exec/seatbelt.py

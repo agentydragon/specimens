@@ -27,3 +27,5 @@ occurrences:
       - 285
   expect_caught_from:
   - - adgn/src/adgn/props/prompt_optimizer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/prompt_optimizer.py

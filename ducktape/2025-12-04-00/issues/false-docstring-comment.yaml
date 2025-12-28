@@ -9,3 +9,5 @@ occurrences:
     adgn/src/adgn/agent/transcript_handler.py: 27
   expect_caught_from:
   - - adgn/src/adgn/agent/transcript_handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/transcript_handler.py

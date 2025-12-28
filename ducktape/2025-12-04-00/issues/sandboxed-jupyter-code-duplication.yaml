@@ -12,6 +12,8 @@ occurrences:
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
   expect_caught_from:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
@@ -20,6 +22,8 @@ occurrences:
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
   expect_caught_from:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
@@ -32,6 +36,9 @@ occurrences:
   expect_caught_from:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
+  - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
@@ -46,3 +53,6 @@ occurrences:
   expect_caught_from:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
+  - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py

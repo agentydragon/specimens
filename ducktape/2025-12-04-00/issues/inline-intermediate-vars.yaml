@@ -15,6 +15,8 @@ occurrences:
   note: dt variable used once immediately after assignment
   expect_caught_from:
   - - adgn/src/adgn/llm/sysrw/extract_dataset_crush.py
+  only_matchable_from_files:
+  - adgn/src/adgn/llm/sysrw/extract_dataset_crush.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/cli_app/cmd_build_bundle.py:
@@ -23,6 +25,8 @@ occurrences:
   note: author, committer, message variables used once each immediately after assignment
   expect_caught_from:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/cli_app/cmd_build_bundle.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/agent.py:
@@ -41,6 +45,8 @@ occurrences:
     _abort_result called only 3 times without any reason argument, making the abstraction unnecessary
   expect_caught_from:
   - - adgn/src/adgn/agent/agent.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/agent.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/db_event_handler.py:
@@ -51,6 +57,8 @@ occurrences:
   note: Variable event_type extracted then immediately used once on line 59
   expect_caught_from:
   - - adgn/src/adgn/agent/db_event_handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/db_event_handler.py:
@@ -61,6 +69,8 @@ occurrences:
   note: Variable event created then immediately used once on line 63
   expect_caught_from:
   - - adgn/src/adgn/agent/db_event_handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/server/runtime.py:
@@ -71,6 +81,8 @@ occurrences:
   note: Variable bus extracted then immediately used once on line 60
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-6
   files:
     adgn/src/adgn/agent/server/runtime.py:
@@ -81,6 +93,8 @@ occurrences:
   note: Variable tasks created then immediately used once on line 83
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/props/prompt_optimizer.py:
@@ -89,36 +103,48 @@ occurrences:
   note: return statement could move into lines 294-296
   expect_caught_from:
   - - adgn/src/adgn/props/prompt_optimizer.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-8
   files:
     adgn/src/adgn/props/grader/grader.py: 104
   note: tp_files variable
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-9
   files:
     adgn/src/adgn/props/grader/grader.py: 107
   note: critique_files variable
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-10
   files:
     adgn/src/adgn/props/grader/grader.py: 201
   note: db_run variable in session.add
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-11
   files:
     adgn/src/adgn/props/grader/grader.py: 226
   note: submit_tool_name variable
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-12
   files:
     adgn/src/adgn/props/grader/grader.py: 224
   note: inputs variable passed to one function call
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-13
   files:
     adgn/src/adgn/props/grader/grader.py:
@@ -127,6 +153,8 @@ occurrences:
   note: prompt variable passed to one function call
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-14
   files:
     adgn/src/adgn/props/grader/grader.py:
@@ -135,6 +163,8 @@ occurrences:
   note: handlers variable
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-15
   files:
     adgn/src/adgn/mcp/_shared/resources.py:
@@ -143,6 +173,8 @@ occurrences:
   note: Variables rr and s assigned once and immediately used (lines 55-57)
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/resources.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/resources.py
 - occurrence_id: occ-16
   files:
     adgn/src/adgn/mcp/compositor/server.py:
@@ -151,6 +183,8 @@ occurrences:
   note: Variable client_factory assigned at line 173 and used only at line 174
   expect_caught_from:
   - - adgn/src/adgn/mcp/compositor/server.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-17
   files:
     adgn/src/adgn/props/cluster_unknowns.py:
@@ -159,6 +193,8 @@ occurrences:
   note: Variable timestamp assigned at line 146 and used only once at line 147
   expect_caught_from:
   - - adgn/src/adgn/props/cluster_unknowns.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/cluster_unknowns.py
 - occurrence_id: occ-18
   files:
     adgn/src/adgn/props/cluster_unknowns.py:
@@ -167,6 +203,8 @@ occurrences:
   note: Loop with intermediate variables out_spec and tasks should be inlined with asyncio.gather generator expression
   expect_caught_from:
   - - adgn/src/adgn/props/cluster_unknowns.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/cluster_unknowns.py
 - occurrence_id: occ-19
   files:
     adgn/src/adgn/openai_utils/model.py:
@@ -175,6 +213,8 @@ occurrences:
   note: Imperative loop with intermediate variable part should be list comprehension
   expect_caught_from:
   - - adgn/src/adgn/openai_utils/model.py
+  only_matchable_from_files:
+  - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-20
   files:
     adgn/src/adgn/openai_utils/model.py:
@@ -183,3 +223,5 @@ occurrences:
   note: Intermediate variable summary_items should be inlined into function call
   expect_caught_from:
   - - adgn/src/adgn/openai_utils/model.py
+  only_matchable_from_files:
+  - adgn/src/adgn/openai_utils/model.py

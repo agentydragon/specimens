@@ -24,3 +24,5 @@ occurrences:
       - 135
   expect_caught_from:
   - - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/mcp_bridge/servers/registry_bridge.py

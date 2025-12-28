@@ -20,21 +20,29 @@ occurrences:
   note: 'function-local imports: _is_retryable, _openai_client, load_mcp_file'
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/cli.py: 87
   note: function-local import in _run_proc
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/cli.py
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py: 26
   note: function-local import in _run_proc
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py
 - occurrence_id: occ-3
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py: 101
   note: function-local import in _sanitize_name
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

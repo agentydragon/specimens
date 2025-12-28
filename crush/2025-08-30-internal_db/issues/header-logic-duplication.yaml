@@ -13,3 +13,5 @@ occurrences:
       - 158
   expect_caught_from:
   - - internal/tui/components/chat/messages/renderer.go
+  only_matchable_from_files:
+  - internal/tui/components/chat/messages/renderer.go

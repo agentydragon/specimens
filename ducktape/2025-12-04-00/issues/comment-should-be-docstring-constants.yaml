@@ -50,3 +50,5 @@ occurrences:
     adgn/src/adgn/mcp/_shared/constants.py: 1
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/constants.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/constants.py

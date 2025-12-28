@@ -37,3 +37,5 @@ occurrences:
     adgn/src/adgn/mcp/_shared/container_session.py: 132
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/container_session.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/container_session.py

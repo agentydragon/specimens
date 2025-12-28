@@ -20,6 +20,8 @@ occurrences:
   note: dec = ctrl.on_before_sample() then assert on dec; two instances
   expect_caught_from:
   - - adgn/tests/agent/test_loop_reducer_skip_sampling.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_loop_reducer_skip_sampling.py
 - occurrence_id: occ-1
   files:
     adgn/tests/agent/test_aggregating_inserts.py:
@@ -28,6 +30,8 @@ occurrences:
   note: dec = ctrl.on_before_sample() then assert on dec
   expect_caught_from:
   - - adgn/tests/agent/test_aggregating_inserts.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_aggregating_inserts.py
 - occurrence_id: occ-2
   files:
     adgn/tests/agent/test_exec_roundtrip.py:
@@ -36,6 +40,8 @@ occurrences:
   note: res = await stub(ExecInput(...)) then assert on res
   expect_caught_from:
   - - adgn/tests/agent/test_exec_roundtrip.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_exec_roundtrip.py
 - occurrence_id: occ-3
   files:
     adgn/tests/agent/test_editor_inproc.py:
@@ -44,3 +50,5 @@ occurrences:
   note: done_result = await stub.done(...) then assert on done_result
   expect_caught_from:
   - - adgn/tests/agent/test_editor_inproc.py
+  only_matchable_from_files:
+  - adgn/tests/agent/test_editor_inproc.py

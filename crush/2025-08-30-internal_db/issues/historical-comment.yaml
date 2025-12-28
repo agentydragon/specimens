@@ -10,3 +10,5 @@ occurrences:
     - 219
   expect_caught_from:
   - - e2e/mock_openai_responses.go
+  only_matchable_from_files:
+  - e2e/mock_openai_responses.go

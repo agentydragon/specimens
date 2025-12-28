@@ -32,6 +32,8 @@ occurrences:
   note: 'on_user_text_event: ut variable should be inlined'
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/runtime.py:
@@ -40,6 +42,8 @@ occurrences:
   note: 'on_tool_call_event: tc variable should be inlined'
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/server/runtime.py:
@@ -48,3 +52,5 @@ occurrences:
   note: 'on_tool_result_event: fco variable should be inlined'
   expect_caught_from:
   - - adgn/src/adgn/agent/server/runtime.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/server/runtime.py

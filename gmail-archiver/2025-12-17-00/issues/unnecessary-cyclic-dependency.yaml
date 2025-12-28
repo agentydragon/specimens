@@ -15,3 +15,5 @@ occurrences:
         - [68, 69]
     expect_caught_from:
       - [gmail_archiver/core.py]
+    only_matchable_from_files:
+      - gmail_archiver/core.py

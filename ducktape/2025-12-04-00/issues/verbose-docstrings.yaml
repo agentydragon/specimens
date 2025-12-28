@@ -12,6 +12,8 @@ occurrences:
   note: Docstring restates parameter names/types from signature; Returns section just says "instance of output_type"
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/calltool.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/calltool.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/transcript_handler.py:
@@ -20,6 +22,8 @@ occurrences:
   note: TranscriptHandler docstring uses weasel word "Unified" and includes obvious usage snippet (lines 29-31)
   expect_caught_from:
   - - adgn/src/adgn/agent/transcript_handler.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/transcript_handler.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/mcp/_shared/resources.py:
@@ -28,6 +32,8 @@ occurrences:
   note: Docstring includes unnecessary implementation detail (lines 63-64) and restates Args/Returns from signature
   expect_caught_from:
   - - adgn/src/adgn/mcp/_shared/resources.py
+  only_matchable_from_files:
+  - adgn/src/adgn/mcp/_shared/resources.py
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/bootstrap.py:
@@ -36,6 +42,8 @@ occurrences:
   note: read_resource_call docstring Args/Returns sections restate parameter types and return type
   expect_caught_from:
   - - adgn/src/adgn/agent/bootstrap.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/bootstrap.py
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/bootstrap.py:
@@ -44,6 +52,8 @@ occurrences:
   note: docker_exec_call docstring Args/Returns sections restate parameter types and return type
   expect_caught_from:
   - - adgn/src/adgn/agent/bootstrap.py
+  only_matchable_from_files:
+  - adgn/src/adgn/agent/bootstrap.py
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/props/grader/grader.py:
@@ -52,3 +62,5 @@ occurrences:
   note: grade_critique_by_id docstring restates obvious parameter info; only client and session docs add value
   expect_caught_from:
   - - adgn/src/adgn/props/grader/grader.py
+  only_matchable_from_files:
+  - adgn/src/adgn/props/grader/grader.py

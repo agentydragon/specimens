@@ -10,3 +10,5 @@ occurrences:
     - 627
   expect_caught_from:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
+  only_matchable_from_files:
+  - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py

@@ -11,3 +11,5 @@ occurrences:
     - 406
   expect_caught_from:
   - - internal/message/message.go
+  only_matchable_from_files:
+  - internal/message/message.go

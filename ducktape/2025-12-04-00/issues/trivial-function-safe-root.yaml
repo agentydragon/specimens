@@ -28,3 +28,5 @@ occurrences:
       - 41
   expect_caught_from:
   - - adgn/src/adgn/tools/arg0_runner.py
+  only_matchable_from_files:
+  - adgn/src/adgn/tools/arg0_runner.py

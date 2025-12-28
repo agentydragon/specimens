@@ -13,6 +13,8 @@ occurrences:
     the dead branch.
   expect_caught_from:
   - - internal/lsp/watcher/watcher.go
+  only_matchable_from_files:
+  - internal/lsp/watcher/watcher.go
 - occurrence_id: occ-1
   files:
     internal/tui/components/chat/messages/tool.go:
@@ -23,3 +25,5 @@ occurrences:
     return once.
   expect_caught_from:
   - - internal/tui/components/chat/messages/tool.go
+  only_matchable_from_files:
+  - internal/tui/components/chat/messages/tool.go
