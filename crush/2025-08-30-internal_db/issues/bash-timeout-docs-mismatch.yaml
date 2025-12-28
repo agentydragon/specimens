@@ -17,3 +17,5 @@ occurrences:
     internal/llm/tools/bash.go: null
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/bash.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/bash.go

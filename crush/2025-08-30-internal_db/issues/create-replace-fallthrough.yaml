@@ -16,3 +16,5 @@ occurrences:
       - 470
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
+  graders_match_only_if_reported_on:
+  - internal/llm/tools/edit.go
