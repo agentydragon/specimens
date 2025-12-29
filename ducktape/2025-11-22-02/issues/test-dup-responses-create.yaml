@@ -3,12 +3,6 @@ rationale: |
   `async def responses_create(_req)` function that increments the counter and returns
   tool calls from a sequence) is duplicated 16+ times across the test suite.
 
-  **Why this is problematic:**
-  - 40+ lines of duplicated code across test suite
-  - Each occurrence is essentially identical with minor variations
-  - Changes to the pattern must be replicated everywhere
-  - Increases maintenance burden and risk of inconsistency
-
   **Fix:** Extract into a shared `make_stateful_responses(responses_factory, response_sequence)`
   helper in conftest.py or tests/agent/helpers.py that takes a list of (function_name,
   server_name, params) tuples and returns the stateful handler. This eliminates duplication

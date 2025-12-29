@@ -11,10 +11,6 @@ rationale: |
 
   **Should use:** Hamcrest matchers like has_properties, instance_of, and
   contains_string to express the same check declaratively.
-
-  **Benefits:** Declarative vs imperative, no manual loops/flags/breaks, better
-  error messages (hamcrest shows diffs), more readable, consistent with other
-  tests, eliminates mutable state.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

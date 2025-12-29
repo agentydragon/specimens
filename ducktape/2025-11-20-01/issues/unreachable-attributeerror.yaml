@@ -15,10 +15,6 @@ rationale: |
 
   Delete the try-except. Keep only: data = [block.model_dump(by_alias=True) for
   block in result.content].
-
-  Benefits: Removes dead code, removes misleading comment, clearer code without
-  defensive fallback for impossible case, violations get clear errors instead of
-  silent fallback.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

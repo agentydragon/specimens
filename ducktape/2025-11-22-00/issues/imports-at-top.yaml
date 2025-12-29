@@ -9,12 +9,6 @@ rationale: |
   - ToolJson line 25: `import { z }` after comments/logic
   - ServersPanel line 20: `import JSONFormatter` after comments/state
 
-  **Problems:**
-  - Violates JS/TS convention (all imports at top)
-  - Harder to track dependencies (must scan entire file)
-  - Conflicts with ESLint/Prettier import ordering rules
-  - Mental overhead distinguishing imports from runtime code
-
   **Fix:** Move all imports immediately after `<script>` tag. Standard order:
   external libraries, internal modules, components, types. ESLint `import/order`
   can enforce automatically.

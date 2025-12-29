@@ -21,7 +21,6 @@ rationale: |
 
   **Fix:** Split sequential subtests into separate functions with descriptive names
   (e.g., `test_calltoolresult_text_content`). For loops, use `@pytest.mark.parametrize`.
-  Benefits: failure isolation, clear names, individual execution, parallel support.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

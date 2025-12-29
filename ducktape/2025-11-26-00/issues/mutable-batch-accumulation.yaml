@@ -17,20 +17,12 @@ rationale: |
   return NotificationsBatch(resources=resources)
   ```
 
-  **Problem:** Clunky conversion between mutable sets and immutable structures.
-
   **Better approach:**
   Replace `dict[str, set[str]]` and `set[str]` with a single mutable `NotificationsBatch`
   instance (`self._batch`). On add operations, mutate `_batch` directly. On poll, return
   `self._batch.model_copy()` and reset `_batch = NotificationsBatch()`. On peek, return
   `self._batch.model_copy()`. This eliminates the conversion logic between sets and frozen
   structures.
-
-  **Benefits:**
-  1. Simpler - one data structure instead of two representations
-  2. No conversion logic needed
-  3. More elegant and DRY
-  4. Clearer what's being accumulated
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

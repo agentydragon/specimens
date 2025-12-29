@@ -16,12 +16,6 @@ rationale: |
   comp.add_middleware(middleware)
   ```
 
-  **Benefits:**
-  1. Fewer functions to maintain
-  2. Clearer what's happening - no magic wrapper
-  3. Standard pattern (create middleware, add it)
-  4. No confusing mutable-state wrapper around compositor
-
   **Docstring claim:** "This mirrors production wiring in the container; tests should
   reuse this helper to avoid drift." This is not a good reason - tests should just
   use the same 2-line pattern as production. The "drift" risk is minimal and the

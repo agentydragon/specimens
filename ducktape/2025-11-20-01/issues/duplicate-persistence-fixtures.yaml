@@ -16,9 +16,6 @@ rationale: |
   1. Create shared persistence fixture in tests/agent/conftest.py
   2. Split test_policy_validation_reload.py fixtures to avoid tuple destructuring
   3. Update mcp_bridge tests to use shared fixture
-
-  **Benefits:** Eliminates duplication, removes verbose destructuring, consistent
-  pattern across agent tests.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

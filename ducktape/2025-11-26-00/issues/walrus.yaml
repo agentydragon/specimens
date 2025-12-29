@@ -28,12 +28,6 @@ rationale: |
           return candidate
   ```
 
-  **Benefits:**
-  1. DRY - no repeated `if editor := ... return editor` pattern
-  2. Clear that we're checking candidates in order
-  3. Easier to reorder or add/remove candidates
-  4. `"vi"` is now part of the candidate list, not special-cased
-
   **Note:** The loop naturally handles None values (they're falsy and skipped).
   The final "vi" is always truthy so the function always returns.
 should_flag: true

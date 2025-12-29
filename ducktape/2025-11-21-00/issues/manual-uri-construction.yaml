@@ -4,14 +4,11 @@ rationale: |
   has URI format constants (e.g., AGENTS_APPROVALS_PENDING_URI_FMT) but individual
   approval URIs are constructed inline.
 
-  **Problems:**
-  - Violates centralization principle (constants.py exists for this)
-  - Inconsistent with rest of codebase which imports URI constants
-  - Hard to change URI patterns globally
-  - Risk of typos in manual construction
-  - No single source of truth for URI patterns
+  Problems: violates centralization principle (constants.py exists for this),
+  inconsistent with rest of codebase which imports URI constants, hard to change
+  URI patterns globally, risk of typos in manual construction.
 
-  **Fix:** Add AGENTS_APPROVAL_URI_FMT constant to constants.py, then import and
+  Fix: Add AGENTS_APPROVAL_URI_FMT constant to constants.py, then import and
   use it: `AGENTS_APPROVAL_URI_FMT.format(agent_id=..., call_id=...)`. This pattern
   should apply to all manual URI constructions in the codebase.
 should_flag: true

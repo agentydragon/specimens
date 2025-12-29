@@ -17,16 +17,9 @@ rationale: |
 
   The code itself is self-explanatory. Narration comments add noise without information.
 
-  **Problems with useless comments:**
-  - Add cognitive load when scanning code
-  - State the obvious (what code already shows)
-  - Historical comments become stale/misleading
-  - Make it harder to find valuable comments
+  **Correct approach:**
 
-  **Correct approach: Delete useless comments**
-
-  Comments should explain non-obvious decisions, edge cases, or rationale not visible
-  in code. Delete comments that:
+  Delete comments that:
   - Restate what code/naming already shows
   - Carry historical intent (use git history)
   - Are trivial narration of next line

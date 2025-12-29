@@ -10,8 +10,6 @@ rationale: |
   **Problems:**
   1. Type lies: functions promise `-> int` but raise exceptions, violating contracts
   2. Unreachable code: code after exception-raising calls never executes
-  3. Easy to forget: callers must remember BOTH to check returns AND catch exceptions
-  4. No guidance: new code has no clear pattern to follow
 
   **Fix:** Pick ONE convention consistently. Option A (always raise exceptions, change
   signatures to `-> None`): impossible to forget, clear failure paths, consistent with

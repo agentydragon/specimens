@@ -22,12 +22,6 @@ rationale: |
   await _execute_git_commit(message=commit_message, passthru=passthru)
   ```
 
-  **Benefits:**
-  1. No need to pass file path and `--cleanup=strip` flag
-  2. Enables making `message` an explicit parameter (issue 034)
-  3. Clearer: we have the message, just use it directly
-  4. Don't need to rely on COMMIT_EDITMSG file still existing
-
   **Note:** This change pairs well with issue 034 (making message an explicit
   required string parameter in `_execute_git_commit`).
 should_flag: true

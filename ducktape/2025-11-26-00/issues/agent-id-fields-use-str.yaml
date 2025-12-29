@@ -2,11 +2,6 @@ rationale: |
   Multiple fields that semantically represent agent IDs use generic str type instead
   of the AgentID newtype from adgn.agent.types.
 
-  Problems with using str for typed IDs:
-  - Loss of type safety (can pass any string)
-  - No semantic clarity (doesn't indicate this is specifically an agent ID)
-  - Harder to track ID flow through codebase
-
   Replace `id: str` with `id: AgentID`. Pydantic handles NewType aliases correctly.
 should_flag: true
 occurrences:

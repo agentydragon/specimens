@@ -1,31 +1,10 @@
 rationale: |
   Tests in the git_ro test suite repeatedly use `async with typed_git_ro() as client:` (8 occurrences across
-  test_diff.py,
-  test_show.py, test_status_log.py, and conftest.py). This is a violation of the DRY principle - the
-  `typed_git_ro`
-  fixture should be converted to a yield fixture to eliminate this boilerplate.
+  test_diff.py, test_show.py, test_status_log.py, and conftest.py). This is a violation of the DRY principle -
+  the `typed_git_ro` fixture should be converted to a yield fixture to eliminate this boilerplate.
 
-  Current pattern (repeated in every test):
-  ```python
-  async def test_something(typed_git_ro):
-      async with typed_git_ro() as client:
-          result = await client.diff(...)
-          assert ...
-  ```
-
-  The fixture currently returns a factory function (lines 75-80 in conftest.py):
-  ```python
-  @pytest.fixture
-  def typed_git_ro(repo_git_ro: Path, make_typed_mcp):
-      server = GitRoServer(repo_git_ro)
-
-      @asynccontextmanager
-      async def _open():
-          async with make_typed_mcp(server, GIT_RO_SERVER_NAME) as (client, _session):
-              yield client
-
-      return _open
-  ```
+  The fixture currently returns a factory function (lines 75-80 in conftest.py), forcing every test to use
+  `async with typed_git_ro() as client:`.
 
   Suggested refactoring: Convert to a yield fixture:
   ```python
@@ -36,14 +15,8 @@ rationale: |
           yield client
   ```
 
-  Then tests can simply use:
-  ```python
-  async def test_something(typed_git_ro):
-      result = await typed_git_ro.diff(...)
-      assert ...
-  ```
-
-  This eliminates 8 instances of the `async with` boilerplate and makes tests more concise.
+  This eliminates 8 instances of the `async with` boilerplate, allowing tests to use the fixture directly:
+  `await typed_git_ro.diff(...)`.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

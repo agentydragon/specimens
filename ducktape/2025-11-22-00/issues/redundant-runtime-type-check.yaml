@@ -25,12 +25,6 @@ rationale: |
   ```
 
   This centralizes validation at the type level, not at every usage site.
-
-  **Benefits:**
-  - Less code
-  - Type system is the source of truth
-  - No redundant checks at call sites
-  - Validation happens once (at type construction)
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

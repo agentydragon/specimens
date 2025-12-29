@@ -12,10 +12,9 @@ rationale: |
   ```
 
   **Problems:**
-  1. Breaks dataclass contract: Dataclass fields should be set in `__init__`
-  2. Confusing comment: "backward compatibility" suggests this is temporary workaround
-  3. Type confusion: Fields are nullable but always set after construction
-  4. No immutability: Can't use `frozen=True` if setting fields after init
+  1. Confusing comment: "backward compatibility" suggests this is temporary workaround
+  2. Type confusion: Fields are nullable but always set after construction
+  3. No immutability: Can't use `frozen=True` if setting fields after init
 
   **Correct approach:**
 

@@ -22,13 +22,6 @@ rationale: |
   (~25k tokens at ~4 chars/token). Truncate via string slicing, which always
   produces valid strings.
 
-  **Benefits:**
-  1. Better approximation: Chars correlate with tokens better than bytes
-  2. Clearer intent: "100k chars" is more meaningful than "100 KiB"
-  3. Simpler code: No encoding/decoding, just string slicing
-  4. No mid-character breaks: String slicing always produces valid strings
-  5. Portable: Byte lengths vary by encoding; char counts don't
-
   **Note:** For precise token counting, use a tokenizer (e.g., `tiktoken`). For
   rough caps, character count is a better heuristic than byte length.
 should_flag: true

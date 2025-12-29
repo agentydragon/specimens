@@ -29,12 +29,6 @@ rationale: |
   **Type note:**
   The override uses `evt: Any` while base class uses `evt: Response`. This suggests
   the override might have been added when types were unclear, but it's still doing nothing.
-
-  **Benefits of deletion:**
-  - Less code to maintain
-  - Removes confusion about why override exists
-  - Clearer that default behavior is being used
-  - One less place to look when searching for on_response implementations
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

@@ -19,11 +19,6 @@ rationale: |
   ...
   last_event_at=last.isoformat() if last else None,  // Conversion happens here
   ```
-
-  **Benefits:**
-  - Type accurately represents semantic meaning
-  - Can do datetime operations on the field if needed
-  - Conversion to string happens at serialization boundary
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

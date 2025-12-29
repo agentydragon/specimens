@@ -37,13 +37,7 @@ rationale: |
   This ensures resources from ALL mounted servers (both spec-based and inproc) are included in the list results,
   maintaining consistency with how tools are already multiplexed.
 
-  **Impact:**
-  - Agents currently cannot discover resources from inproc servers like compositor_meta (which exposes server
-  state,
-  mount info, etc.)
-  - The resources.subscriptions index resource (line 287) is itself hosted by the resources server,
-  so it likely doesn't appear in its own list results
-  - Any other inproc servers mounted dynamically are invisible to agents
+  **Impact:** Agents cannot discover resources from inproc servers like compositor_meta or resources server itself.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

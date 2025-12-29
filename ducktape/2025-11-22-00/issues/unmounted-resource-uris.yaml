@@ -17,12 +17,6 @@ rationale: |
   Either implement the missing resources or delete the unused helpers. Recommended: delete helpers
   for unmounted resources, keeping only what's actually implemented. Search for usages first; if used
   only in tests expecting future work, move to test fixtures.
-
-  **Benefits of cleanup:**
-  1. No dead code, clear API surface
-  2. Less confusion for new developers
-  3. Honest documentation reflecting actual capabilities
-  4. Smaller maintenance burden
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

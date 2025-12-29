@@ -21,15 +21,6 @@ rationale: |
   if (got := await self._engine.persistence.get_policy_proposal(self._engine.agent_id, id)) is None:
       raise KeyError(id)
   ```
-
-  **Benefits:**
-  - More concise (3 lines → 2 lines)
-  - Emphasizes that this is a "fetch-or-error" pattern
-  - Eliminates the gap between assignment and usage
-  - Modern Python idiom widely used in the codebase
-
-  **Note:**
-  This is a simple readability improvement that doesn't change behavior.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

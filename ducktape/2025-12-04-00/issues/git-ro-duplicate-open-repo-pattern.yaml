@@ -1,61 +1,19 @@
 rationale: |
   The `GitRoState` wrapper class (lines 217-219) is an unnecessary abstraction that adds no value and causes
-  performance
-  issues.
+  performance issues.
 
-  **Root problem: Unnecessary wrapper class**
+  Root problem: The wrapper exists only to hold a Path. Without storing the open repository, every tool must
+  reopen it. This pattern appears in 8 tool implementations (lines 244-245, 278, 300-301, 327-328, 367-368,
+  421-422, 438-439, 447-448).
 
-  The wrapper class exists only to hold a Path:
-  ```python
-  @dataclass
-  class GitRoState:
-      git_repo: Path
-  ```
+  Problems:
+  1. Repeated I/O: Each tool call reopens the repository (expensive file system operations)
+  2. Unnecessary indirection: Wrapper just provides `.git_repo` access to a Path
+  3. Stores Path when we need Repository: The Path is only used to open the repo
+  4. Dataclass overhead: Boilerplate for simple pass-through that should not exist
 
-  This adds unnecessary indirection. The state is created with just a Path:
-  ```python
-  state = GitRoState(git_repo=git_repo.resolve())
-  ```
-
-  **Symptom: Repeated repository opening (8 occurrences)**
-
-  Without storing the open repository, every tool must reopen it:
-  ```python
-  root = state.git_repo
-  repo = _open_repo(root)  # Expensive I/O operation repeated
-  ```
-
-  This pattern appears in 8 tool implementations (lines 244-245, 278, 300-301, 327-328, 367-368, 421-422,
-  438-439, 447-448).
-
-  **Problems with this design:**
-
-  1. **Repeated I/O**: Each tool call reopens the repository (expensive file system operations)
-  2. **Unnecessary indirection**: Wrapper adds no value - just provides `.git_repo` access to a Path
-  3. **Stores Path when we need Repository**: The Path is only used to open the repo
-  4. **Dataclass overhead**: Boilerplate for simple pass-through that should not exist
-
-  **Correct pattern:**
-
-  Eliminate the wrapper entirely:
-  ```python
-  # No wrapper class needed!
-  # In __init__:
-  gitdir = pygit2.discover_repository(str(git_repo))
-  if not gitdir:
-      raise ValueError(f"Not a git repository: {git_repo}")
-  state = pygit2.Repository(gitdir)  # Open once, store directly
-
-  # In tools:
-  st = state.status()  # Direct access, no reopening
-  ```
-
-  **Benefits:**
-  - Repository opened once in initialization, reused throughout server lifetime
-  - No wrapper class overhead
-  - Simpler code with direct access
-  - Better performance (no repeated I/O)
-  - More idiomatic: store the object you need, not a path to it
+  Correct pattern: Eliminate the wrapper, open repository once in `__init__`, store the Repository directly in
+  state. Tools can then access it directly without reopening.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

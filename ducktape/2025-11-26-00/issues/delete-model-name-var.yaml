@@ -21,11 +21,6 @@ rationale: |
   - Delete lines 743-744
   - Line 753: Use `config.model_name` instead of `model_name`
   - Line 759: Use `config.model_name` instead of `model_name`
-
-  **Benefits:**
-  1. Fewer variables
-  2. Clear where value comes from (config)
-  3. No useless comment
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

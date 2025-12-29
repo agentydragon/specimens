@@ -12,14 +12,11 @@ rationale: |
   fields with defaults (e.g., Decision.reason has default None). Pydantic
   type annotations already define requirements; comments contradict the code.
 
-  **Problems:**
-  - Noise obscures actual code
-  - Comments become stale/incorrect as code evolves
-  - Redundant: code and type annotations already show what's required
-  - Maintenance burden keeping comments synchronized
+  Problems: noise obscures actual code, comments become stale/incorrect as code
+  evolves, code and type annotations already show what's required.
 
-  **Fix:** Delete these comments. Code operations and Pydantic annotations
-  are self-documenting. Comments should explain WHY, not restate WHAT.
+  Fix: Delete these comments. Code operations and Pydantic annotations are
+  self-documenting. Comments should explain WHY, not restate WHAT.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

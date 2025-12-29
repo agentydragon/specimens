@@ -20,17 +20,6 @@ rationale: |
   Let callers use `_get_agent_or_raise()` directly and access fields themselves
   (`agent.running`, `agent.mode`, `agent.local_runtime`). Or if public access is needed,
   rename `_get_agent_or_raise` to `get_agent` and let callers access fields directly.
-
-  **Benefits:**
-  1. Less code duplication (single agent info construction)
-  2. Easier maintenance (one place for changes)
-  3. Simpler API (fewer methods, clearer responsibilities)
-  4. More direct (no unnecessary jumps between wrapper methods)
-  5. Better testability (can test helper independently)
-
-  **Why thin wrappers are harmful:**
-  They add noise without meaningful abstraction, increase maintenance burden, and make it harder
-  to see what's actually being accessed.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

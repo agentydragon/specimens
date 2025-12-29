@@ -20,9 +20,6 @@ rationale: |
   **Fix:** Expose tool call states (pending_approval, executing, completed) as
   MCP resources. Policy gateway emits resource_updated notifications when state
   changes. AgentSession/status read state via MCP resources instead of direct access.
-
-  **Benefits:** Architectural consistency, better UI (shows executing state),
-  decoupling, tool call lifecycle fully visible through notifications.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

@@ -9,12 +9,7 @@ rationale: |
       requests.patch(base + f"/api/agents/{agent_id}/mcp", json={"attach": spec})
   ```
 
-  **Why this is problematic:**
-  If the test is meant to verify error handling, it should explicitly check for expected
-  errors, not suppress all exceptions. Tests that suppress exceptions provide no signal
-  when they fail - they just silently skip over problems.
-
-  When an operation is expected to fail in a test:
+  **When an operation is expected to fail in a test:**
   - Use `pytest.raises(SpecificException)` to verify the specific error occurs
   - Assert on the error message or error state
   - Don't hide failures with blanket suppression

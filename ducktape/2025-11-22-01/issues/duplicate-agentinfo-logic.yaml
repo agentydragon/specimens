@@ -11,8 +11,6 @@ rationale: |
 
   Fix: extract `_compute_agent_info(agent_id) -> AgentInfo` helper that does the
   computation. Simplify both handlers to call the helper with appropriate error handling.
-
-  Benefits: single source of truth, easier testing, reusable, clearer separation.
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

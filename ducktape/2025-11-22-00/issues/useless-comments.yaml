@@ -18,10 +18,10 @@ rationale: |
   Four-line block listing old method names that no longer exist. Git commit messages
   should document removals.
 
-  **Problems:** Add cognitive load, become stale, duplicate visible information,
+  Problems: add cognitive load, become stale, duplicate visible information,
   replace proper documentation (git), obscure valuable comments.
 
-  **Fix:** Delete these comments. Keep only comments explaining non-obvious decisions
+  Fix: Delete these comments. Keep only comments explaining non-obvious decisions
   or rationale not visible in code/naming.
 should_flag: true
 occurrences:
