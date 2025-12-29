@@ -14,7 +14,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/core.py:
-    - [1, 341]
+    - [1, 340]
   note: |
     Domain types (Action, PlannedAction, Plan, Planner) mixed with display
     functions (summarize_plan, display_plan, _add_table_row, _collect_display_columns)

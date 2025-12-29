@@ -41,7 +41,7 @@ occurrences:
     - - 146
       - 195
     adgn/src/adgn/agent/mcp_bridge/server.py:
-    - [1, 258]
+    - [1, 256]
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
     - - 1
       - 932

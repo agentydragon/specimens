@@ -13,7 +13,7 @@ occurrences:
   - occurrence_id: occ-0
     files:
       gmail_archiver/models.py:
-        - [30, 34]
+        - [30, 33]
       gmail_archiver/gmail_api_models.py:
         - [30, 45]
     critic_scopes_expected_to_recall:
