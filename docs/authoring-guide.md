@@ -473,7 +473,30 @@ rationale: |
 - Yes → it's obvious, keep it minimal
 - No → it needs substantiation
 
-### 8. Objectivity in Issue Descriptions
+### 8. Issues Must Be Standalone
+
+**Never reference other issues by name, ID, or number.** Each issue file must be understandable in isolation—assume readers cannot see other issues in the snapshot.
+
+**Wrong:**
+```yaml
+rationale: |
+  This is related to Issue 037 (notifier pattern bugs). See also Issue 038.
+```
+
+**Wrong:**
+```yaml
+rationale: |
+  **Related:** Issues 036, 037, 038. All solved by compositor pattern.
+```
+
+**Right:** If context from another issue is relevant, incorporate the necessary details directly:
+```yaml
+rationale: |
+  ApprovalPolicyEngine has only ONE notifier slot. When agents.py:855 wires its
+  notifier, it replaces any previously-wired notifier, breaking notifications.
+```
+
+### 9. Objectivity in Issue Descriptions
 
 **Avoid subjective phrasing** - describe problems objectively:
 
@@ -489,7 +512,7 @@ rationale: |
 
 Present facts and technical rationale, not opinions or attributed suggestions.
 
-### 9. Research First: No Open Questions
+### 10. Research First: No Open Questions
 
 **Snapshots must not leave open research questions.** All investigation should be completed before authoring the issue.
 
@@ -510,7 +533,7 @@ rationale: |
   making manual discovery unnecessary.
 ```
 
-### 10. Verifiable External References
+### 11. Verifiable External References
 
 **When referencing specific tools, APIs, or implementation details, provide verifiable links. Well-known frameworks/standards don't need URLs.**
 
@@ -524,7 +547,7 @@ rationale: |
 - Standard libraries: Python stdlib, Node.js core modules
 - Well-known tools: pytest, Jest, Docker, PostgreSQL
 
-### 11. Code Citation Guidelines
+### 12. Code Citation Guidelines
 
 **IMPORTANT**: Do NOT include long code blocks in rationale. Readers have snapshot code open - cite file paths and line ranges, briefly summarize what's there.
 

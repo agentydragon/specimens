@@ -8,15 +8,13 @@ rationale: |
   1. **Two-layer complexity:** Business logic calls sync callbacks that schedule async tasks
      that eventually broadcast. Lines 833-932 contain ~100 lines of factory functions.
 
-  2. **Clobbered notifier bug (Issue 037):** ApprovalPolicyEngine has only ONE notifier slot.
-     When agents.py:855 wires its notifier, it replaces the one from ApprovalPolicyServer,
-     breaking notifications.
+  2. **Clobbered notifier bug:** ApprovalPolicyEngine has only ONE notifier slot. When
+     agents.py:855 wires its notifier, it replaces the one from ApprovalPolicyServer.
 
   3. **Monolithic server:** AgentsServer aggregates resources from 6+ business logic classes.
-     Hard to test independently.
 
-  4. **URI scoping inconsistency (Issue 038):** Global URIs (`resource://approval-policy/*`)
-     mixed with agent-scoped URIs (`resource://agents/{id}/*`).
+  4. **URI scoping inconsistency:** Global URIs (`resource://approval-policy/*`) mixed with
+     agent-scoped URIs (`resource://agents/{id}/*`).
 
   **Better: Compositor Pattern**
 
@@ -32,26 +30,7 @@ rationale: |
 
   Mount all in compositor with proper namespacing (`agent_{id}_policy`, etc.). Notifications
   propagate automatically via compositor's _ChildHandler (compositor/server.py:446-469).
-
-  **Benefits:**
-
-  - Eliminates callback layer - servers directly broadcast to MCP clients
-  - Fixes clobbered notifier bug - each server manages its own subscriptions
-  - Natural namespacing via server prefixes
-  - Eliminates 100 lines of manual wiring code (lines 833-932)
-  - Independently testable without mocking callbacks
-  - Reuses proven pattern from agent-side
-  - Dynamic mounting via compositor API
-
-  **Refactoring needed:**
-
-  - agents.py (833 lines) → Replace with small server files
-  - server.py → Use compositor instead of single FastAPI app
-  - Business logic classes → Remove notifier fields, add `*_without_notify()` methods
-  - Lines 833-932 → Delete wiring code, mount servers in compositor
-
-  **Related:** Issues 036 (notification wiring duplication), 037 (notifier pattern bugs),
-  038 (URI scoping). All solved by compositor pattern.
+  Delete the ~100 lines of manual wiring code (lines 833-932).
 should_flag: true
 occurrences:
 - occurrence_id: occ-0

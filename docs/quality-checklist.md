@@ -23,6 +23,7 @@ Before committing a snapshot, verify all of these criteria:
 - [ ] **Verifiable external references**: External code/API/package references include verifiable links (docs URLs, GitHub permalinks with SHAs, package versions)
 - [ ] **Snapshot-only references**: Rationale only references the repo state in the snapshot (no historical context or external state required)
 - [ ] **Standalone issues**: Each issue YAML file is self-contained and understandable without access to other issue files or non-captured files
+- [ ] **No cross-issue references**: Never reference other issues by name, ID, or number (e.g., "See Issue 037", "Related: Issues 036, 038"). Incorporate necessary context directly
 
 ### True Positive Issues
 - [ ] **should_flag: true**: True positives have `should_flag: true`
