@@ -14,3 +14,5 @@ occurrences:
     - [32, 41]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/resources.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/mcp/_shared/resources.py

@@ -22,6 +22,8 @@ occurrences:
     note: list_messages_by_labels pagination loop
     critic_scopes_expected_to_recall:
       - [gmail_archiver/gmail_client.py]
+    graders_match_only_if_reported_on:
+      - gmail_archiver/gmail_client.py
   - occurrence_id: occ-1
     files:
       gmail_archiver/gmail_client.py:
@@ -29,3 +31,5 @@ occurrences:
     note: list_messages_by_query pagination loop (identical to occ-0)
     critic_scopes_expected_to_recall:
       - [gmail_archiver/gmail_client.py]
+    graders_match_only_if_reported_on:
+      - gmail_archiver/gmail_client.py

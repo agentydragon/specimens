@@ -9,3 +9,5 @@ occurrences:
     - [424, 434]
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
+  graders_match_only_if_reported_on:
+  - internal/tui/components/chat/messages/renderer.go

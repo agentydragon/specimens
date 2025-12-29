@@ -15,9 +15,11 @@ occurrences:
   files:
     adgn/src/adgn/props/grader/models.py:
     - [304, 305]
-  note: Checks both "ctx is None OR not isinstance(ctx, ...)" - isinstance already handles None
+  note: The "ctx is None" check is redundant because None is not an instance of GradeValidationContext
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/models.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/props/grader/models.py
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/agent.py:

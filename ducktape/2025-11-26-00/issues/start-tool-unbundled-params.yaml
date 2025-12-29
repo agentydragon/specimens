@@ -23,3 +23,6 @@ occurrences:
     - [104, 107]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/agent/server/state.py
+  - adgn/src/adgn/agent/server/reducer.py

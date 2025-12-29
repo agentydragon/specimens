@@ -17,3 +17,5 @@ occurrences:
         - [108, 118]
     critic_scopes_expected_to_recall:
       - [gmail_archiver/__main__.py]
+    graders_match_only_if_reported_on:
+      - gmail_archiver/__main__.py
