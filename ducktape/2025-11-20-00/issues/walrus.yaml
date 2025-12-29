@@ -14,8 +14,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/runtime/registry.py:
-    - 93
-    - 95
+    - [93, 95]
   note: In get_agent() - assign agent row then check None
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/registry.py
@@ -24,8 +23,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/approvals.py:
-    - 243
-    - 245
+    - [243, 245]
   note: In get_policy_proposal() - assign proposal then check None
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
@@ -34,8 +32,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/agent.py:
-    - 335
-    - 336
+    - [335, 336]
   note: In agent.py - assign results.get() then check None
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
@@ -44,8 +41,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/server/state.py:
-    - 131
-    - 133
+    - [131, 133]
   note: In state.py - assign _find_last_tool_index then check None (occurrence 1)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
@@ -54,8 +50,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/server/state.py:
-    - 151
-    - 153
+    - [151, 153]
   note: In state.py - assign _find_last_tool_index then check None (occurrence 2)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
@@ -64,8 +59,7 @@ occurrences:
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/server/state.py:
-    - 176
-    - 178
+    - [176, 178]
   note: In state.py - assign _find_last_tool_index then check None (occurrence 3)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
@@ -74,8 +68,7 @@ occurrences:
 - occurrence_id: occ-6
   files:
     adgn/src/adgn/agent/mcp_bridge/auth.py:
-    - 93
-    - 95
+    - [93, 95]
   note: In get_agent_id() - assign token lookup then check None
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
@@ -84,8 +77,7 @@ occurrences:
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
-    - 327
-    - 329
+    - [327, 329]
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 1)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
@@ -94,8 +86,7 @@ occurrences:
 - occurrence_id: occ-8
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
-    - 351
-    - 353
+    - [351, 353]
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 2)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
@@ -104,8 +95,7 @@ occurrences:
 - occurrence_id: occ-9
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
-    - 374
-    - 376
+    - [374, 376]
   note: In servers/agents.py - assign get_local_runtime then check None (occurrence 3)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
@@ -114,8 +104,7 @@ occurrences:
 - occurrence_id: occ-10
   files:
     adgn/src/adgn/agent/mcp_bridge/server.py:
-    - 162
-    - 163
+    - [162, 163]
   note: In server.py - assign for ternary expression
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
@@ -124,8 +113,7 @@ occurrences:
 - occurrence_id: occ-11
   files:
     adgn/src/adgn/agent/server/mcp_routing.py:
-    - 107
-    - 111
+    - [107, 111]
   note: In mcp_routing.py - dict.get with useless "Look up token" comment
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py

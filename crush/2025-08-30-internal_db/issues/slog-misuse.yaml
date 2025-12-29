@@ -17,7 +17,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    internal/app/lsp.go: 31
+    internal/app/lsp.go:
+    - [31, 31]
   note: 'slog.Error("Failed to create LSP client for", name, err) - missing key strings'
   critic_scopes_expected_to_recall:
   - - internal/app/lsp.go
@@ -25,7 +26,8 @@ occurrences:
   - internal/app/lsp.go
 - occurrence_id: occ-1
   files:
-    internal/db/connect.go: 48
+    internal/db/connect.go:
+    - [48, 48]
   note: 'slog.Error("Failed to set pragma", pragma, err) - missing key strings'
   critic_scopes_expected_to_recall:
   - - internal/db/connect.go

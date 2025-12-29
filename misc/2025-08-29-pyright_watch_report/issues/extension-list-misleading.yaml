@@ -17,6 +17,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    pyright_watch_report.py: 36
+    pyright_watch_report.py:
+    - [36, 36]
   critic_scopes_expected_to_recall:
   - - pyright_watch_report.py

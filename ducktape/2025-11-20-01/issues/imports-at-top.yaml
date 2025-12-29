@@ -12,8 +12,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/mcp/approval_policy/test_policy_resources.py:
-    - 35
-    - 37
+    - [35, 37]
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py
   graders_match_only_if_reported_on:

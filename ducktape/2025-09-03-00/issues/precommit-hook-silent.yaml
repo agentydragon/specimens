@@ -12,7 +12,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
-    - 596
-    - 598
+    - [596, 598]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py

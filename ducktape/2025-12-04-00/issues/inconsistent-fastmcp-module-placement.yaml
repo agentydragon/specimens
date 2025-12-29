@@ -17,11 +17,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/_shared/fastmcp_flat.py:
-    - 1
-    - 10
+    - [1, 10]
     adgn/src/adgn/mcp/notifying_fastmcp.py:
-    - 1
-    - 10
+    - [1, 10]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/notifying_fastmcp.py
     - adgn/src/adgn/mcp/_shared/fastmcp_flat.py

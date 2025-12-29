@@ -10,6 +10,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/presets.py: 35
+    adgn/src/adgn/agent/presets.py:
+    - [35, 35]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/presets.py

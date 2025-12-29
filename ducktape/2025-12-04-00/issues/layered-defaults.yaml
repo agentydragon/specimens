@@ -10,6 +10,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/props/gepa/gepa_adapter.py: 370
+    adgn/src/adgn/props/gepa/gepa_adapter.py:
+    - [370, 370]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/gepa/gepa_adapter.py

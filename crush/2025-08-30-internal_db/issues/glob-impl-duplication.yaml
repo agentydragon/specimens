@@ -8,11 +8,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/fsext/fileutil.go:
-    - 1
-    - 196
+    - [1, 196]
     internal/lsp/watcher/watcher.go:
-    - 583
-    - 672
+    - [583, 672]
   critic_scopes_expected_to_recall:
   - - internal/lsp/watcher/watcher.go
   - - internal/fsext/fileutil.go

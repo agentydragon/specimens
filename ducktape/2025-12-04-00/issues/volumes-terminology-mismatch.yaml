@@ -68,7 +68,8 @@ occurrences:
       - 248
     - - 393
       - 393
-    adgn/src/adgn/mcp/exec/docker/server.py: 5
+    adgn/src/adgn/mcp/exec/docker/server.py:
+    - [5, 5]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
   - - adgn/src/adgn/mcp/exec/docker/server.py

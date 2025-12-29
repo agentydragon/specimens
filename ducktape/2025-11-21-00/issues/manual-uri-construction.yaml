@@ -18,10 +18,10 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/mcp_bridge/servers/agents.py: 407
+    adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
+    - [407, 407]
     adgn/src/adgn/mcp/_shared/constants.py:
-    - 57
-    - 60
+    - [57, 60]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/agents.py
   - - adgn/src/adgn/mcp/_shared/constants.py

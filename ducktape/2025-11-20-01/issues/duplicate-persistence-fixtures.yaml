@@ -24,11 +24,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/mcp_bridge/test_separated_servers.py:
-    - 31
-    - 38
+    - [31, 38]
     adgn/tests/agent/mcp_bridge/test_ui_auth.py:
-    - 20
-    - 27
+    - [20, 27]
     adgn/tests/agent/test_policy_validation_reload.py:
     - - 18
       - 36

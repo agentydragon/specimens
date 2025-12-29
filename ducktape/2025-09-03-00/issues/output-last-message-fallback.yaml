@@ -10,8 +10,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
-    - 1183
-    - 1191
+    - [1183, 1191]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
   graders_match_only_if_reported_on:

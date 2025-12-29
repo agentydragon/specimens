@@ -19,7 +19,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/message/message.go:
-    - 160
-    - 172
+    - [160, 172]
   relevant_files:
   - internal/message/message.go

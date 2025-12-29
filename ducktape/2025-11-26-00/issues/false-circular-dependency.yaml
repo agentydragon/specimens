@@ -13,7 +13,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/app.py:
-    - 179
-    - 182
+    - [179, 182]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py

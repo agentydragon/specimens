@@ -12,7 +12,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py:
-    - 86
-    - 97
+    - [86, 97]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/approvals_bridge.py

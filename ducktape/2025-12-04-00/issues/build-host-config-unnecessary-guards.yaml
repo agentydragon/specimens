@@ -50,8 +50,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/_shared/container_session.py:
-    - 125
-    - 127
+    - [125, 127]
   note: Unnecessary guard for network_mode - should always copy value
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
@@ -60,8 +59,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/_shared/container_session.py:
-    - 122
-    - 123
+    - [122, 123]
   note: Unnecessary guard for binds - should always copy list (even if empty)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py

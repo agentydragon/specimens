@@ -18,6 +18,7 @@ should_flag: true
 occurrences:
   - occurrence_id: occ-0
     files:
-      gmail_archiver/planners/dbsa.py: 20
+      gmail_archiver/planners/dbsa.py:
+        - [20, 20]
     critic_scopes_expected_to_recall:
       - [gmail_archiver/planners/dbsa.py]

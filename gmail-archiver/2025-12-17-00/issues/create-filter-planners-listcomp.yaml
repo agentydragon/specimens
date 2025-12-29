@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/filter_planner.py:
-    - 123
-    - 143
+    - [123, 143]
   note: create_filter_planners function
   critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_planner.py

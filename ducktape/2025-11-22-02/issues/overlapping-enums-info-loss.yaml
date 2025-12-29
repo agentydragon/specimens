@@ -23,8 +23,7 @@ occurrences:
     - - 175
       - 181
     adgn/src/adgn/agent/persist/__init__.py:
-    - 36
-    - 42
+    - [36, 42]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
   - - adgn/src/adgn/agent/persist/__init__.py

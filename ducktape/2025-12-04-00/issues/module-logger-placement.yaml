@@ -7,7 +7,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/agent.py: 665
+    adgn/src/adgn/agent/agent.py:
+    - [665, 665]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
   graders_match_only_if_reported_on:

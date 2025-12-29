@@ -12,19 +12,22 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/persist/models.py: 32
+    adgn/src/adgn/agent/persist/models.py:
+    - [32, 32]
   note: Agent.created_at field
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/agent/persist/models.py: 119
+    adgn/src/adgn/agent/persist/models.py:
+    - [119, 119]
   note: ToolCall.created_at field
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/persist/models.py: 153
+    adgn/src/adgn/agent/persist/models.py:
+    - [153, 153]
   note: Policy.created_at field
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/models.py

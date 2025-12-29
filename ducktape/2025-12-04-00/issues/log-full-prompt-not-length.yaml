@@ -6,7 +6,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/grader/grader.py:
-    - 205
-    - 207
+    - [205, 207]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py

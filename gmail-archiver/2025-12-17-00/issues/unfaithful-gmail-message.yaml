@@ -8,7 +8,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/models.py: 25
+    gmail_archiver/models.py:
+    - [25, 25]
   note: GmailMessage.body is single str field, loses MIME structure
   critic_scopes_expected_to_recall:
   - - gmail_archiver/models.py

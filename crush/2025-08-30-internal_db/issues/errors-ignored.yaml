@@ -20,8 +20,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/tui/tui.go:
-    - 161
-    - 168
+    - [161, 168]
   critic_scopes_expected_to_recall:
   - - internal/tui/tui.go
   graders_match_only_if_reported_on:

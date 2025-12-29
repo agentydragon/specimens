@@ -16,14 +16,11 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/cli.py:
-    - 114
-    - 115
+    - [114, 115]
     adgn/src/adgn/agent/persist/sqlite.py:
-    - 44
-    - 50
+    - [44, 50]
     adgn/src/adgn/agent/server/app.py:
-    - 152
-    - 153
+    - [152, 153]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/cli.py
   - - adgn/src/adgn/agent/server/app.py

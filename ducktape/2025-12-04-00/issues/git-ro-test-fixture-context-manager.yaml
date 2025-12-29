@@ -49,8 +49,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/mcp/git_ro/conftest.py:
-    - 65
-    - 80
+    - [65, 80]
     adgn/tests/mcp/git_ro/test_diff.py:
     - - 7
       - 8

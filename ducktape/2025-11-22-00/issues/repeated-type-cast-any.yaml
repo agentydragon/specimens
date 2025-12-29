@@ -18,8 +18,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/web/src/components/ToolExec.svelte:
-    - 40
-    - 51
+    - [40, 51]
   note: "(item.content as any) repeated 8 times for cmd, stdout, exit_code, etc."
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
@@ -27,7 +26,8 @@ occurrences:
   - adgn/src/adgn/agent/web/src/components/ToolExec.svelte
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/agent/web/src/components/ToolJson.svelte: 33
+    adgn/src/adgn/agent/web/src/components/ToolJson.svelte:
+    - [33, 33]
   note: casts content to any instead of using JsonContent type
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte

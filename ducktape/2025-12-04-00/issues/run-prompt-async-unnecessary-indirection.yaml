@@ -13,7 +13,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/props/cli_app/main.py: 148
+    adgn/src/adgn/props/cli_app/main.py:
+    - [148, 148]
     adgn/src/adgn/props/cli_app/shared.py:
     - - 34
       - 65

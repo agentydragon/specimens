@@ -16,6 +16,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/models/policy_error.py: 15
+    adgn/src/adgn/agent/models/policy_error.py:
+    - [15, 15]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/models/policy_error.py

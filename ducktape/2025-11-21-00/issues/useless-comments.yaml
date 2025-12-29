@@ -45,8 +45,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 292
-    - 294
+    - [292, 294]
   note: Comment "Strict mapping; surface invalid data" restates obvious Pydantic behavior
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py

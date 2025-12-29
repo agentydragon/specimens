@@ -15,6 +15,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/mcp/compositor/setup.py: 32
+    adgn/src/adgn/mcp/compositor/setup.py:
+    - [32, 32]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/setup.py

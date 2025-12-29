@@ -49,7 +49,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/runtime/registry.py: 27
+    adgn/src/adgn/agent/runtime/registry.py:
+    - [27, 27]
     adgn/src/adgn/agent/server/runtime.py:
     - - 11
       - 12

@@ -12,7 +12,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/mcp/_shared/container_session.py: 60
+    adgn/src/adgn/mcp/_shared/container_session.py:
+    - [60, 60]
   note: Field definition in ContainerOptions dataclass
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py

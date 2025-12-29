@@ -13,8 +13,7 @@ occurrences:
     - - 518
       - 538
     internal/llm/tools/write.go:
-    - 204
-    - 224
+    - [204, 224]
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
   - - internal/llm/tools/write.go

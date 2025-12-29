@@ -36,7 +36,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     pyright_watch_report.py:
-    - 232
-    - 244
+    - [232, 244]
   critic_scopes_expected_to_recall:
   - - pyright_watch_report.py

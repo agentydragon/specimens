@@ -22,11 +22,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/types.py:
-    - 17
-    - 21
+    - [17, 21]
     adgn/src/adgn/agent/server/protocol.py:
-    - 80
-    - 87
+    - [80, 87]
     adgn/src/adgn/agent/server/status_shared.py:
     - - 18
       - 25

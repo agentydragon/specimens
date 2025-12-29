@@ -8,7 +8,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 138
+    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
+    - [138, 138]
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -16,7 +17,8 @@ occurrences:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
-    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 157
+    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
+    - [157, 157]
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -24,7 +26,8 @@ occurrences:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
-    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 177
+    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
+    - [177, 177]
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -32,7 +35,8 @@ occurrences:
   - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
 - occurrence_id: occ-3
   files:
-    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py: 196
+    llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
+    - [196, 196]
   note: scoped try/except swallows errors
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -41,8 +45,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 55
-    - 59
+    - [55, 59]
   note: mkdir failure silently falls back to cwd, hiding operational problems
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

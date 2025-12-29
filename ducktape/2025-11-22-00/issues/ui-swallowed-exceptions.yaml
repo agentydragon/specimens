@@ -19,8 +19,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/web/src/features/agents/stores.ts:
-    - 36
-    - 38
+    - [36, 38]
   note: empty catch in agent polling
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/features/agents/stores.ts
@@ -29,8 +28,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/web/src/features/chat/channels.ts:
-    - 76
-    - 77
+    - [76, 77]
   note: empty catch in WebSocket ops
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/features/chat/channels.ts
@@ -38,7 +36,8 @@ occurrences:
   - adgn/src/adgn/agent/web/src/features/chat/channels.ts
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts: 120
+    adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts:
+    - [120, 120]
   note: empty catch in error handling
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts
@@ -46,7 +45,8 @@ occurrences:
   - adgn/src/adgn/agent/web/src/features/chat/stores_channels.ts
 - occurrence_id: occ-3
   files:
-    adgn/src/adgn/agent/web/src/features/mcp/schema.ts: 49
+    adgn/src/adgn/agent/web/src/features/mcp/schema.ts:
+    - [49, 49]
   note: empty catch in JSON parsing
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/features/mcp/schema.ts

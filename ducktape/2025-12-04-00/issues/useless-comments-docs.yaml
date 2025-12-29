@@ -8,7 +8,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/server/protocol.py: 78
+    adgn/src/adgn/agent/server/protocol.py:
+    - [78, 78]
   note: Comment restates import statement visible two lines above
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
@@ -16,7 +17,8 @@ occurrences:
   - adgn/src/adgn/agent/server/protocol.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/agent/server/runtime.py: 99
+    adgn/src/adgn/agent/server/runtime.py:
+    - [99, 99]
   note: Comment restates type annotation already present on line above
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -24,7 +26,8 @@ occurrences:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/server/runtime.py: 96
+    adgn/src/adgn/agent/server/runtime.py:
+    - [96, 96]
   note: Vague comment about middleware behavior without adding useful detail
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -32,7 +35,8 @@ occurrences:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-3
   files:
-    adgn/src/adgn/agent/server/runtime.py: 124
+    adgn/src/adgn/agent/server/runtime.py:
+    - [124, 124]
   note: Comment "Agent identifier for persistence" restates what field name already communicates
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -40,7 +44,8 @@ occurrences:
   - adgn/src/adgn/agent/server/runtime.py
 - occurrence_id: occ-4
   files:
-    adgn/src/adgn/agent/db_event_handler.py: 54
+    adgn/src/adgn/agent/db_event_handler.py:
+    - [54, 54]
   note: Comment restates what Event model field documentation should cover
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
@@ -48,7 +53,8 @@ occurrences:
   - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-5
   files:
-    adgn/src/adgn/agent/db_event_handler.py: 61
+    adgn/src/adgn/agent/db_event_handler.py:
+    - [61, 61]
   note: Comment about ORM serialization is redundant with field type
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
@@ -56,7 +62,8 @@ occurrences:
   - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-6
   files:
-    adgn/src/adgn/agent/db_event_handler.py: 51
+    adgn/src/adgn/agent/db_event_handler.py:
+    - [51, 51]
   note: Comment about field name extraction is obvious from code
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
@@ -65,8 +72,7 @@ occurrences:
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/agent/db_event_handler.py:
-    - 47
-    - 49
+    - [47, 49]
   note: Docstring duplicates information in Args section below
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
@@ -75,8 +81,7 @@ occurrences:
 - occurrence_id: occ-8
   files:
     adgn/src/adgn/agent/db_event_handler.py:
-    - 1
-    - 5
+    - [1, 5]
   note: Module docstring duplicates class docstring verbatim
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
@@ -84,7 +89,8 @@ occurrences:
   - adgn/src/adgn/agent/db_event_handler.py
 - occurrence_id: occ-9
   files:
-    adgn/src/adgn/agent/handler.py: 4
+    adgn/src/adgn/agent/handler.py:
+    - [4, 4]
   note: Comment stating obvious fact about imports being single source of truth
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/handler.py
@@ -92,7 +98,8 @@ occurrences:
   - adgn/src/adgn/agent/handler.py
 - occurrence_id: occ-10
   files:
-    adgn/src/adgn/agent/transcript_handler.py: 64
+    adgn/src/adgn/agent/transcript_handler.py:
+    - [64, 64]
   note: Comment "Record adapter ReasoningItem via shared JSONL mapping" adds no information beyond method name
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/transcript_handler.py
@@ -100,7 +107,8 @@ occurrences:
   - adgn/src/adgn/agent/transcript_handler.py
 - occurrence_id: occ-11
   files:
-    adgn/src/adgn/mcp/stubs/typed_stubs.py: 17
+    adgn/src/adgn/mcp/stubs/typed_stubs.py:
+    - [17, 17]
   note: Comment "We use the concrete FastMCP Client type" restates what type annotation already shows
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/stubs/typed_stubs.py
@@ -108,7 +116,8 @@ occurrences:
   - adgn/src/adgn/mcp/stubs/typed_stubs.py
 - occurrence_id: occ-12
   files:
-    adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py: 290
+    adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
+    - [290, 290]
   note: 'Comment "Prepare a uniquely named notebook document id/path" restates what function name _ensure_document_id
 
     already communicates'
@@ -118,7 +127,8 @@ occurrences:
   - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
 - occurrence_id: occ-13
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 156
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [156, 156]
   note: Comment about non-existent child_* helpers
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -127,8 +137,7 @@ occurrences:
 - occurrence_id: occ-14
   files:
     adgn/src/adgn/mcp/compositor/server.py:
-    - 227
-    - 229
+    - [227, 229]
   note: Comment about non-existent resource helper methods
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -136,7 +145,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-15
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 328
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [328, 328]
   note: Historical comment about removed Python-only mount listing
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -144,7 +154,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-16
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 331
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [331, 331]
   note: Comment stating obvious default (inherit FastMCP protocol handlers)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -152,7 +163,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-17
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 333
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [333, 333]
   note: Comment stating obvious default (resource operations not overridden)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -160,7 +172,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-18
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 341
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [341, 341]
   note: Comment about non-existent manual slot construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -168,7 +181,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-19
   files:
-    adgn/src/adgn/mcp/compositor/server.py: 354
+    adgn/src/adgn/mcp/compositor/server.py:
+    - [354, 354]
   note: Comment about non-existent URI decoding helpers
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -176,7 +190,8 @@ occurrences:
   - adgn/src/adgn/mcp/compositor/server.py
 - occurrence_id: occ-20
   files:
-    adgn/src/adgn/props/grader/grader.py: 188
+    adgn/src/adgn/props/grader/grader.py:
+    - [188, 188]
   note: Comment "Generate unique IDs for this run" states the obvious (uuid4() calls)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -184,7 +199,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-21
   files:
-    adgn/src/adgn/props/grader/grader.py: 192
+    adgn/src/adgn/props/grader/grader.py:
+    - [192, 192]
   note: Comment uses "Phase 1" language unnecessarily formal for simple DB write
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -192,7 +208,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-22
   files:
-    adgn/src/adgn/props/grader/grader.py: 209
+    adgn/src/adgn/props/grader/grader.py:
+    - [209, 209]
   note: Comment "Fetch critique from database" restates what _get_required_critique function name already communicates
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -200,7 +217,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-23
   files:
-    adgn/src/adgn/props/grader/grader.py: 222
+    adgn/src/adgn/props/grader/grader.py:
+    - [222, 222]
   note: Comment "Build grader inputs and state" restates obvious object construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -208,7 +226,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-24
   files:
-    adgn/src/adgn/props/grader/grader.py: 280
+    adgn/src/adgn/props/grader/grader.py:
+    - [280, 280]
   note: Comment uses "Phase 2" language unnecessarily formal for simple DB update
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -216,7 +235,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-25
   files:
-    adgn/src/adgn/props/grader/grader.py: 306
+    adgn/src/adgn/props/grader/grader.py:
+    - [306, 306]
   note: Comment "Fetch snapshot_slug from critique" restates obvious field access
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -224,7 +244,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-26
   files:
-    adgn/src/adgn/props/grader/grader.py: 309
+    adgn/src/adgn/props/grader/grader.py:
+    - [309, 309]
   note: Comment "Create grader input" restates obvious GraderInput construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -232,7 +253,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-27
   files:
-    adgn/src/adgn/props/grader/grader.py: 312
+    adgn/src/adgn/props/grader/grader.py:
+    - [312, 312]
   note: Comment "Load and hydrate specimen once, then execute" restates what the async with block obviously does
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -240,7 +262,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-28
   files:
-    adgn/src/adgn/props/grader/grader.py: 314
+    adgn/src/adgn/props/grader/grader.py:
+    - [314, 314]
   note: Comment "Execute grader run" restates what run_grader function call obviously does
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -248,7 +271,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-29
   files:
-    adgn/src/adgn/props/cluster_unknowns.py: 145
+    adgn/src/adgn/props/cluster_unknowns.py:
+    - [145, 145]
   note: Comment "Inline cluster_output_dir (only called here)" describes what was already done, obvious from code
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
@@ -256,7 +280,8 @@ occurrences:
   - adgn/src/adgn/props/cluster_unknowns.py
 - occurrence_id: occ-30
   files:
-    adgn/src/adgn/props/docker_env.py: 21
+    adgn/src/adgn/props/docker_env.py:
+    - [21, 21]
   note: Comment "Shared startup command for long-lived containers" is misplaced, no startup command follows
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/docker_env.py
@@ -264,7 +289,8 @@ occurrences:
   - adgn/src/adgn/props/docker_env.py
 - occurrence_id: occ-31
   files:
-    adgn/src/adgn/props/prompt_optimizer.py: 182
+    adgn/src/adgn/props/prompt_optimizer.py:
+    - [182, 182]
   note: Comment "Map container path to host path" restates obvious transformation
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
@@ -273,8 +299,7 @@ occurrences:
 - occurrence_id: occ-32
   files:
     adgn/src/adgn/props/prompt_optimizer.py:
-    - 195
-    - 199
+    - [195, 199]
   note: 'Comments "Read prompt text from host filesystem" and "Hash and upsert to database" restate self-documenting
 
     function names'
@@ -284,7 +309,8 @@ occurrences:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-33
   files:
-    adgn/src/adgn/props/prompt_optimizer.py: 223
+    adgn/src/adgn/props/prompt_optimizer.py:
+    - [223, 223]
   note: Comment "Check snapshot split and enforce validation restriction" restates what the code block does
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
@@ -292,7 +318,8 @@ occurrences:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-34
   files:
-    adgn/src/adgn/props/prompt_optimizer.py: 358
+    adgn/src/adgn/props/prompt_optimizer.py:
+    - [358, 358]
   note: Comment "Build extra volumes for Docker" restates obvious dict construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
@@ -300,7 +327,8 @@ occurrences:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-35
   files:
-    adgn/src/adgn/openai_utils/model.py: 119
+    adgn/src/adgn/openai_utils/model.py:
+    - [119, 119]
   note: Comment "API requires this field" states an obvious requirement
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -308,7 +336,8 @@ occurrences:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-36
   files:
-    adgn/src/adgn/openai_utils/model.py: 134
+    adgn/src/adgn/openai_utils/model.py:
+    - [134, 134]
   note: Comment "Responses API prefers the payload under output" states obvious field naming
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -316,7 +345,8 @@ occurrences:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-37
   files:
-    adgn/src/adgn/openai_utils/model.py: 297
+    adgn/src/adgn/openai_utils/model.py:
+    - [297, 297]
   note: Comment "Removed legacy aliases..." documents historical change rather than current behavior
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -324,7 +354,8 @@ occurrences:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-38
   files:
-    adgn/src/adgn/openai_utils/model.py: 323
+    adgn/src/adgn/openai_utils/model.py:
+    - [323, 323]
   note: Comment "Already string from SDK" states obvious type from context
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -332,7 +363,8 @@ occurrences:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-39
   files:
-    adgn/src/adgn/openai_utils/model.py: 363
+    adgn/src/adgn/openai_utils/model.py:
+    - [363, 363]
   note: Comment "No baked-in defaults..." states what code does not do rather than explaining behavior
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -341,8 +373,7 @@ occurrences:
 - occurrence_id: occ-40
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 370
-    - 372
+    - [370, 372]
   note: 'Section header "Test-friendly fake..." does not describe the class below it (BoundOpenAIModel is not a test
 
     fake)'
@@ -352,7 +383,8 @@ occurrences:
   - adgn/src/adgn/openai_utils/model.py
 - occurrence_id: occ-41
   files:
-    adgn/src/adgn/openai_utils/model.py: 114
+    adgn/src/adgn/openai_utils/model.py:
+    - [114, 114]
   note: 'Docstring line "Gets converted to SDK format when sending to API" states universal behavior that applies to
 
     all items'

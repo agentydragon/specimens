@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/conftest.py:
-    - 156
-    - 168
+    - [156, 168]
   note: make_typed_mcp takes unused name argument that is ignored inside contextmanager
   critic_scopes_expected_to_recall:
   - - adgn/tests/conftest.py
@@ -15,7 +14,8 @@ occurrences:
   - adgn/tests/conftest.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/llm/llm_edit.py: 37
+    adgn/src/adgn/llm/llm_edit.py:
+    - [37, 37]
   note: _execute() model parameter never used - client already constructed by caller
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/llm_edit.py

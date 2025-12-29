@@ -16,7 +16,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/git_commit_ai/cli.py: 662
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - [662, 662]
   note: str(Path.cwd()) passed to pygit2.discover_repository()
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
@@ -24,7 +25,8 @@ occurrences:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/git_commit_ai/minicodex_backend.py: 163
+    adgn/src/adgn/git_commit_ai/minicodex_backend.py:
+    - [163, 163]
   note: str(Path.cwd()) passed to pygit2.discover_repository()
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/minicodex_backend.py

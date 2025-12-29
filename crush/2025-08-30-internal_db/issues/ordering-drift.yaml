@@ -9,11 +9,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/db/messages.sql.go:
-    - 105
-    - 113
+    - [105, 113]
     internal/db/sql/messages.sql:
-    - 6
-    - 11
+    - [6, 11]
   critic_scopes_expected_to_recall:
   - - internal/db/sql/messages.sql
   - - internal/db/messages.sql.go

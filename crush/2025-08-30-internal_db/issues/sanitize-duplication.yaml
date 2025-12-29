@@ -8,11 +8,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/tui/components/chat/messages/renderer.go:
-    - 218
-    - 220
+    - [218, 220]
     internal/tui/components/chat/messages/tool.go:
-    - 276
-    - 280
+    - [276, 280]
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/tool.go
   - - internal/tui/components/chat/messages/renderer.go

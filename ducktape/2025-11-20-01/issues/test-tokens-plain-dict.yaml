@@ -39,7 +39,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/server/test_mcp_routing.py:
-    - 15
-    - 21
+    - [15, 21]
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/server/test_mcp_routing.py

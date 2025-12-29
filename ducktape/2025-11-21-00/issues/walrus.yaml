@@ -35,8 +35,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/approval_policy/server.py:
-    - 165
-    - 167
+    - [165, 167]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/server.py
   graders_match_only_if_reported_on:

@@ -6,7 +6,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/transcript_handler.py: 27
+    adgn/src/adgn/agent/transcript_handler.py:
+    - [27, 27]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/transcript_handler.py
   graders_match_only_if_reported_on:

@@ -8,8 +8,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/agent.py:
-    - 358
-    - 360
+    - [358, 360]
   note: Variable cid assigned then used in conditional check
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py
@@ -18,8 +17,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/agent.py:
-    - 396
-    - 407
+    - [396, 407]
   note: Variable cid assigned then used in get() and RuntimeError message
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py

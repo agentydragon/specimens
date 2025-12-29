@@ -13,7 +13,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/test_policy_validation_reload.py:
-    - 153
-    - 154
+    - [153, 154]
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py

@@ -15,8 +15,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/cli.py:
-    - 91
-    - 96
+    - [91, 96]
   note: Full implementation with StreamHandler level setting
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/cli.py
@@ -25,8 +24,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/matrix_bot.py:
-    - 35
-    - 36
+    - [35, 36]
   note: Simpler implementation just calling configure_logging
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/matrix_bot.py

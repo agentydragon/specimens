@@ -6,6 +6,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/props/grader/models.py: 307
+    adgn/src/adgn/props/grader/models.py:
+    - [307, 307]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/models.py

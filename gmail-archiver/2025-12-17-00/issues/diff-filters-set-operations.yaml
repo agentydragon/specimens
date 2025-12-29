@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/filter_sync.py:
-    - 135
-    - 148
+    - [135, 148]
   note: diff_filters function
   critic_scopes_expected_to_recall:
   - - gmail_archiver/filter_sync.py

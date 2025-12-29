@@ -9,8 +9,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/llm/sysrw/openai_typing.py:
-    - 80
-    - 105
+    - [80, 105]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/sysrw/openai_typing.py
   graders_match_only_if_reported_on:

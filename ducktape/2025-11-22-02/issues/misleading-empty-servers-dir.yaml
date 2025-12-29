@@ -26,7 +26,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/mcp_bridge/servers/__init__.py: 1
+    adgn/src/adgn/agent/mcp_bridge/servers/__init__.py:
+    - [1, 1]
   note: 'Misleading docstring "MCP servers for the MCP bridge" in empty directory'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/servers/__init__.py

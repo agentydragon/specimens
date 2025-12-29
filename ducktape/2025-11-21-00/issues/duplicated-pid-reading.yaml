@@ -21,11 +21,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     wt/src/wt/client/handlers.py:
-    - 250
-    - 258
+    - [250, 258]
     wt/src/wt/client/wt_client.py:
-    - 108
-    - 113
+    - [108, 113]
   critic_scopes_expected_to_recall:
   - - wt/src/wt/client/wt_client.py
   - - wt/src/wt/client/handlers.py

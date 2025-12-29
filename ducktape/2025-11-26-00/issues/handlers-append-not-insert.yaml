@@ -20,6 +20,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/git_commit_ai/minicodex_backend.py: 190
+    adgn/src/adgn/git_commit_ai/minicodex_backend.py:
+    - [190, 190]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/minicodex_backend.py

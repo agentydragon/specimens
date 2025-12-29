@@ -15,7 +15,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/cli_app/cmd_build_bundle.py:
-    - 335
-    - 363
+    - [335, 363]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py

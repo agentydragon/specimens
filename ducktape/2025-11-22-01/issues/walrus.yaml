@@ -16,8 +16,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/approvals.py:
-    - 95
-    - 96
+    - [95, 96]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
   graders_match_only_if_reported_on:

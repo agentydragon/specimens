@@ -33,6 +33,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/agent.py: 305
+    adgn/src/adgn/agent/agent.py:
+    - [305, 305]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/agent.py

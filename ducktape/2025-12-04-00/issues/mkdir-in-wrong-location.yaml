@@ -9,7 +9,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/transcript_handler.py:
-    - 36
-    - 37
+    - [36, 37]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/transcript_handler.py

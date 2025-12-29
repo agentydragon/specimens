@@ -67,7 +67,8 @@ occurrences:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/policy_eval/container.py: 58
+    adgn/src/adgn/agent/policy_eval/container.py:
+    - [58, 58]
   note: 'Historical breadcrumb comment noting function was moved'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/container.py
@@ -76,8 +77,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/persist/sqlite.py:
-    - 530
-    - 533
+    - [530, 533]
   note: 'Block listing old method names that no longer exist'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py

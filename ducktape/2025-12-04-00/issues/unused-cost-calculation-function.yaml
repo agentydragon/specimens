@@ -25,8 +25,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/openai_utils/cost.py:
-    - 13
-    - 41
+    - [13, 41]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/cost.py
   graders_match_only_if_reported_on:

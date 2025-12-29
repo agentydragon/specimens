@@ -63,8 +63,7 @@ occurrences:
     - - 49
       - 93
     adgn/src/adgn/agent/web/src/components/ProposalCard.svelte:
-    - 5
-    - 8
+    - [5, 8]
     adgn/src/adgn/agent/web/src/components/ServersPanel.svelte:
     - - 11
       - 16

@@ -36,7 +36,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/notifications/buffer.py:
-    - 40
-    - 41
+    - [40, 41]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/notifications/buffer.py

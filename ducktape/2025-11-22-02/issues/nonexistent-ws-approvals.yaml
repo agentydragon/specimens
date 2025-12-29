@@ -22,7 +22,8 @@ occurrences:
       - 538
     - - 601
       - 601
-    adgn/src/adgn/agent/server/app.py: 332
+    adgn/src/adgn/agent/server/app.py:
+    - [332, 332]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ApprovalTimeline.test.ts
   - - adgn/src/adgn/agent/server/app.py

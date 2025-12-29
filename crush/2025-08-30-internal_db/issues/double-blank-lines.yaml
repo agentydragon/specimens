@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/config/config.go:
-    - 166
-    - 176
+    - [166, 176]
   critic_scopes_expected_to_recall:
   - - internal/config/config.go
   graders_match_only_if_reported_on:

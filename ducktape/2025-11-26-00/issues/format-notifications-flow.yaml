@@ -30,11 +30,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/reducer.py:
-    - 218
-    - 222
+    - [218, 222]
     adgn/src/adgn/agent/server/mode_handler.py:
-    - 35
-    - 39
+    - [35, 39]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/reducer.py
   - - adgn/src/adgn/agent/server/mode_handler.py

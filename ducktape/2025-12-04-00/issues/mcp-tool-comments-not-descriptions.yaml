@@ -14,8 +14,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/exec/seatbelt.py:
-    - 47
-    - 48
+    - [47, 48]
   note: |-
     Comment "Stateless: require a full policy on every call" describes policy field behavior but is invisible to
     MCP clients
@@ -26,8 +25,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/exec/seatbelt.py:
-    - 52
-    - 53
+    - [52, 53]
   note: |-
     Comment "Explicit env to set/override in the child (applied after policy.env passthrough base)" explains env
     field semantics but is invisible to MCP clients

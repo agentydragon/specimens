@@ -9,7 +9,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/prompt_optimizer.py:
-    - 370
-    - 379
+    - [370, 379]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py

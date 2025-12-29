@@ -10,8 +10,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/edit.go:
-    - 226
-    - 275
+    - [226, 275]
   note: 'createNewFile branch: diff+permission+write+history+record bookkeeping.'
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
@@ -20,8 +19,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     internal/llm/tools/edit.go:
-    - 349
-    - 406
+    - [349, 406]
   note: 'deleteContent branch: diff+permission+write+history+record bookkeeping (similar pattern).'
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/edit.go
@@ -30,8 +28,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     internal/llm/tools/edit.go:
-    - 488
-    - 550
+    - [488, 550]
   note: |-
     replaceContent branch: same sequence; extract helper EnsureWriteWithHistory(ctx, files, sessionID, filePath,
     oldContent, newContent, action, desc, params...).

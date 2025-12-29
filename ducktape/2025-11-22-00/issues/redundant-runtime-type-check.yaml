@@ -36,7 +36,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/policy_eval/container.py:
-    - 34
-    - 35
+    - [34, 35]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/container.py

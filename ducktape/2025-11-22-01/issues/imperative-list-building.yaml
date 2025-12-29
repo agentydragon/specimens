@@ -47,8 +47,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 267
-    - 274
+    - [267, 274]
   note: proposals list built with nested conditional and loop
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py

@@ -11,7 +11,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py:
-    - 50
-    - 90
+    - [50, 90]
   relevant_files:
   - llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py

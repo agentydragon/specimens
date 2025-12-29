@@ -30,12 +30,12 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/app/lsp.go:
-    - 14
-    - 18
+    - [14, 18]
     internal/llm/agent/mcp_manager.go:
-    - 78
-    - 80
-    internal/llm/prompt/coder.go: 114
-    internal/tui/components/lsp/lsp.go: 63
+    - [78, 80]
+    internal/llm/prompt/coder.go:
+    - [114, 114]
+    internal/tui/components/lsp/lsp.go:
+    - [63, 63]
   critic_scopes_expected_to_recall:
   - - internal/app/lsp.go

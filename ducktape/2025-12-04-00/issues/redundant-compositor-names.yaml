@@ -43,7 +43,8 @@ occurrences:
   - - adgn/tests/conftest.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/agent/mcp_bridge/compositor_factory.py: 45
+    adgn/src/adgn/agent/mcp_bridge/compositor_factory.py:
+    - [45, 45]
   note: Creates "global" compositor - may be justified for two-level compositor pattern but likely still redundant
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py

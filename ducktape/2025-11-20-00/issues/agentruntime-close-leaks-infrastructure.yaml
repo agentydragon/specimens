@@ -12,8 +12,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/runtime/registry.py:
-    - 40
-    - 44
+    - [40, 44]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/registry.py
   graders_match_only_if_reported_on:

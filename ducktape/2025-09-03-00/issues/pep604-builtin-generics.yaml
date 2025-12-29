@@ -15,7 +15,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py: 48
+    llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py:
+    - [48, 48]
   note: 'extra_py: Optional[str] — prefer `str | None`'
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_sandbox_compose.py
@@ -24,8 +25,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py:
-    - 23
-    - 31
+    - [23, 31]
   note: 'log_dir: Optional[Path] — prefer `Path | None`'
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/jupyter_mcp_launch.py

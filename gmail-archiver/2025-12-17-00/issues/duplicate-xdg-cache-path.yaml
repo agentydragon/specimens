@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/event_classifier.py:
-    - 65
-    - 66
+    - [65, 66]
   note: TemplateExtractionCache XDG path
   critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     gmail_archiver/inbox.py:
-    - 27
-    - 31
+    - [27, 31]
   note: GmailInbox._get_xdg_cache_dir()
   critic_scopes_expected_to_recall:
   - - gmail_archiver/inbox.py

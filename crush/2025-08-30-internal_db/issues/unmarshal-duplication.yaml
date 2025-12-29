@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/message/message.go:
-    - 358
-    - 406
+    - [358, 406]
   critic_scopes_expected_to_recall:
   - - internal/message/message.go
   graders_match_only_if_reported_on:

@@ -29,10 +29,8 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/cli.py:
-    - 124
-    - 133
+    - [124, 133]
     llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py:
-    - 49
-    - 56
+    - [49, 56]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/local_tools.py

@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     gmail_archiver/__main__.py:
-    - 294
-    - 295
+    - [294, 295]
   note: loop iterating errors just to advance(1) - should use advance=len(errors)
   critic_scopes_expected_to_recall:
   - - gmail_archiver/__main__.py

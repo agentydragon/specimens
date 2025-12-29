@@ -34,16 +34,14 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/runtime/infrastructure.py:
-    - 180
-    - 182
+    - [180, 182]
   note: PolicyReaderStub creation boilerplate
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/runtime/infrastructure.py:
-    - 184
-    - 186
+    - [184, 186]
   note: PolicyApproverStub creation boilerplate
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py

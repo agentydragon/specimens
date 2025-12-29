@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 61
-    - 71
+    - [61, 71]
   note: shell/args_for_shell/env variables passed directly to StdioServerParameters()
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
-    - 463
-    - 465
+    - [463, 465]
   note: mtime_s variable used only in immediately following condition
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -27,8 +25,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py:
-    - 776
-    - 779
+    - [776, 779]
   note: log_file variable used only to create FileHandler
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/git_commit_ai/cli.py
@@ -37,8 +34,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
-    - 202
-    - 208
+    - [202, 208]
   note: kernelspec dict literal constructed then immediately passed to write_text
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

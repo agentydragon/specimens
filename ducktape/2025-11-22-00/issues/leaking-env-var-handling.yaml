@@ -21,9 +21,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/presets.py:
-    - 59
-    - 78
-    adgn/src/adgn/agent/runtime/infrastructure.py: 142
+    - [59, 78]
+    adgn/src/adgn/agent/runtime/infrastructure.py:
+    - [142, 142]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
   - - adgn/src/adgn/agent/presets.py

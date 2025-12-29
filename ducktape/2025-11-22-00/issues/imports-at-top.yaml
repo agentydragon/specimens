@@ -23,8 +23,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte:
-    - 34
-    - 35
+    - [34, 35]
   note: Import onMount/onDestroy on line 35, after comments and far below other imports (lines 2-13)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/AgentsSidebar.svelte
@@ -44,7 +43,8 @@ occurrences:
   - adgn/src/adgn/agent/web/src/components/ApprovalsPanel.svelte
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte: 11
+    adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte:
+    - [11, 11]
   note: Import onMount on line 11, after other imports and declarations
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/JsonDisclosure.svelte
@@ -53,8 +53,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/web/src/components/ToolJson.svelte:
-    - 24
-    - 25
+    - [24, 25]
   note: Import zod on line 25, after comments and component logic
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ToolJson.svelte
@@ -63,8 +62,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/web/src/components/ServersPanel.svelte:
-    - 18
-    - 20
+    - [18, 20]
   note: Import JSONFormatter on line 20, after comments and state declarations
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/web/src/components/ServersPanel.svelte

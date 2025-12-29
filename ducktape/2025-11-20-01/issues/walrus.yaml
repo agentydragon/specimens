@@ -38,8 +38,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/auth.py:
-    - 113
-    - 116
+    - [113, 116]
   note: os.environ.get with immediate check
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
@@ -48,8 +47,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/eval_harness.py:
-    - 580
-    - 581
+    - [580, 581]
   note: Create object and immediately use
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/eval_harness.py

@@ -23,11 +23,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/db/files.sql.go:
-    - 18
-    - 24
+    - [18, 24]
     internal/db/messages.sql.go:
-    - 260
-    - 270
+    - [260, 270]
     internal/db/migrations/20250424200609_initial.sql: null
     internal/db/migrations/20250829011000_use_microsecond_timestamps.sql: null
     internal/db/sql/messages.sql:

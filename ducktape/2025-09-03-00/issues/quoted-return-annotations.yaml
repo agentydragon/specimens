@@ -21,8 +21,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 184
-    - 192
+    - [184, 192]
   note: Multiple quoted return annotations in methods
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

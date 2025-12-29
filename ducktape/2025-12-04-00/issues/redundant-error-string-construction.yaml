@@ -13,8 +13,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/_shared/client_helpers.py:
-    - 50
-    - 62
+    - [50, 62]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/client_helpers.py
   graders_match_only_if_reported_on:

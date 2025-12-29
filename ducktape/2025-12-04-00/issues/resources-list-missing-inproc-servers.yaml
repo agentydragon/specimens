@@ -49,7 +49,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/resources/server.py:
-    - 348
-    - 349
+    - [348, 349]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/resources/server.py

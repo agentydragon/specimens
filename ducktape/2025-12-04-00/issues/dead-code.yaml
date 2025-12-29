@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/protocol.py:
-    - 128
-    - 133
+    - [128, 133]
   note: Dead Snapshot class from WebSocket → MCP migration
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/protocol.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 137
-    - 156
+    - [137, 156]
   note: Dead build_snapshot() method that constructs dead Snapshot objects
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -50,8 +48,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/props/models/lint.py:
-    - 117
-    - 136
+    - [117, 136]
   note: Commented-out ChecklistItem class (~20 lines, "checklist handling is currently disabled")
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/models/lint.py
@@ -61,8 +58,7 @@ occurrences:
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/mcp/exec/models.py:
-    - 241
-    - 264
+    - [241, 264]
   note: Unused read_stream_limited_sync() function (async variant is used, sync never called)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/exec/models.py
@@ -71,14 +67,14 @@ occurrences:
 
 - occurrence_id: occ-6
   files:
-    adgn/src/adgn/props/cli_app/main.py: 448
+    adgn/src/adgn/props/cli_app/main.py:
+    - [448, 448]
     adgn/src/adgn/props/cli_app/shared.py:
-    - 76
-    - 111
-    adgn/src/adgn/props/prompts/_base.j2.md: 86
+    - [76, 111]
+    adgn/src/adgn/props/prompts/_base.j2.md:
+    - [86, 86]
     adgn/src/adgn/props/prompts/_partials.j2:
-    - 8
-    - 21
+    - [8, 21]
     adgn/src/adgn/props/prompts/util.py:
     - - 86
       - 88
@@ -96,8 +92,7 @@ occurrences:
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 348
-    - 357
+    - [348, 357]
   note: Dead `responses` property providing unused .responses.create() interface
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -105,8 +100,7 @@ occurrences:
 - occurrence_id: occ-8
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 218
-    - 230
+    - [218, 230]
   note: Dead _coerce_text validator in AssistantMessageOut - coercion logic never triggered
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py

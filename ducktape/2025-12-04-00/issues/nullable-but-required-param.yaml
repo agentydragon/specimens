@@ -8,8 +8,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/cli_app/cmd_detector.py:
-    - 293
-    - 301
+    - [293, 301]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_detector.py
   graders_match_only_if_reported_on:

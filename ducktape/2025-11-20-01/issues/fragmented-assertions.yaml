@@ -11,8 +11,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/test_runtime_timeout.py:
-    - 38
-    - 40
+    - [38, 40]
   note: |-
     Multiple separate assertions for object properties (instance type, exit_code, stdout); should use
     has_properties

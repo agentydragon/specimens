@@ -18,8 +18,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/persist/__init__.py:
-    - 175
-    - 176
+    - [175, 176]
   note: 'Useless docstring in abstract interface'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py
@@ -28,8 +27,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/persist/sqlite.py:
-    - 466
-    - 467
+    - [466, 467]
   note: 'Useless docstring in SQLite implementation'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py

@@ -60,8 +60,7 @@ occurrences:
     - - 907
       - 911
     adgn/src/adgn/mcp/approval_policy/server.py:
-    - 96
-    - 100
+    - [96, 100]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
   - - adgn/src/adgn/mcp/approval_policy/server.py

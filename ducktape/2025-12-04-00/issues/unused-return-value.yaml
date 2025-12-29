@@ -12,8 +12,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/mcp/git_ro/conftest.py:
-    - 18
-    - 28
+    - [18, 28]
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/git_ro/conftest.py
   graders_match_only_if_reported_on:

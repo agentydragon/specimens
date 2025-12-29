@@ -34,7 +34,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/mcp/_shared/container_session.py: 132
+    adgn/src/adgn/mcp/_shared/container_session.py:
+    - [132, 132]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/container_session.py
   graders_match_only_if_reported_on:

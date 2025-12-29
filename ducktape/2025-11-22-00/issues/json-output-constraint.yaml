@@ -37,6 +37,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/policy_eval/runner.py: 80
+    adgn/src/adgn/agent/policy_eval/runner.py:
+    - [80, 80]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/runner.py

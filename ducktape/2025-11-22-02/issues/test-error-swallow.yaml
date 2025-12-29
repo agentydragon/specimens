@@ -17,8 +17,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/e2e/test_mcp_concurrent.py:
-    - 75
-    - 82
+    - [75, 82]
   note: 'Error-swallowing in approval loop with `except Exception: break`'
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/e2e/test_mcp_concurrent.py

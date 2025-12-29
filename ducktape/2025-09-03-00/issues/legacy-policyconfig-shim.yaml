@@ -15,7 +15,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
-    - 23
-    - 27
+    - [23, 27]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

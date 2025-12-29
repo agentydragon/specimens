@@ -13,7 +13,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/cli.py:
-    - 6
-    - 7
+    - [6, 7]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/cli.py

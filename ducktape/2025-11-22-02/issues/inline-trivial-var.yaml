@@ -26,7 +26,8 @@ occurrences:
   - adgn/src/adgn/agent/approvals.py
 - occurrence_id: occ-1
   files:
-    adgn/scripts/generate_frontend_code.py: 255
+    adgn/scripts/generate_frontend_code.py:
+    - [255, 255]
   note: main_schema dict comprehension assigned and immediately used to update all_defs
   critic_scopes_expected_to_recall:
   - - adgn/scripts/generate_frontend_code.py

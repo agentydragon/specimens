@@ -12,7 +12,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/props/test_paths.py:
-    - 56
-    - 228
+    - [56, 228]
   critic_scopes_expected_to_recall:
   - - adgn/tests/props/test_paths.py

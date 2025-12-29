@@ -27,7 +27,9 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    internal/config/config.go: 127
-    internal/tui/components/lsp/lsp.go: 63
+    internal/config/config.go:
+    - [127, 127]
+    internal/tui/components/lsp/lsp.go:
+    - [63, 63]
   critic_scopes_expected_to_recall:
   - - internal/config/config.go

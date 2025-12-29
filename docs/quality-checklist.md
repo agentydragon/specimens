@@ -38,7 +38,7 @@ Before committing a snapshot, verify all of these criteria:
 
 ### YAML Style
 - [ ] **Multi-line rationale**: Use `|` for multi-line rationale strings
-- [ ] **Line ranges**: Use `[start, end]` for ranges, bare integers for single lines (NOT `- 42` which creates invalid `[42]`)
+- [ ] **Line ranges**: Always use `list[[start, end], ...]` format. Single lines as `[N, N]`. No bare integers, no inline ranges
 - [ ] **Minimal comments**: Prefer structured fields over comments
 - [ ] **Valid syntax**: All YAML files parse without errors
 - [ ] **Occurrence IDs**: Each occurrence has a unique `occurrence_id` (e.g., `occ-0`, `occ-1`)

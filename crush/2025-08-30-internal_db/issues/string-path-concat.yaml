@@ -11,8 +11,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/diff/word_inline.go:
-    - 43
-    - 44
+    - [43, 44]
   note: dir + "/old", dir + "/new" → filepath.Join(dir, "old"), filepath.Join(dir, "new")
   critic_scopes_expected_to_recall:
   - - internal/diff/word_inline.go
@@ -34,7 +33,8 @@ occurrences:
   - internal/cmd/root.go
 - occurrence_id: occ-2
   files:
-    e2e/scenario_live_basic_test.go: 44
+    e2e/scenario_live_basic_test.go:
+    - [44, 44]
   note: sc.ArtifactDir + "/logs/provider-wire.log" → filepath.Join(sc.ArtifactDir, "logs", "provider-wire.log")
   critic_scopes_expected_to_recall:
   - - e2e/scenario_live_basic_test.go

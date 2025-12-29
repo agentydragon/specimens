@@ -16,11 +16,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/view.go:
-    - 258
-    - 276
+    - [258, 276]
     internal/tui/components/chat/messages/renderer.go:
-    - 817
-    - 883
+    - [817, 883]
   relevant_files:
   - internal/llm/tools/view.go
   - internal/tui/components/chat/messages/renderer.go

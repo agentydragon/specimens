@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/tui/components/chat/messages/tool.go:
-    - 994
-    - 1004
+    - [994, 1004]
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/tool.go
   graders_match_only_if_reported_on:

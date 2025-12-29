@@ -29,8 +29,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     internal/llm/tools/tools.go:
-    - 1
-    - 10
+    - [1, 10]
   note: 'tools.go: `StartedAt`/`UpdatedAt int64` should be time.Time or suffixed (ms epoch)'
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/tools.go
@@ -57,24 +56,21 @@ occurrences:
 - occurrence_id: occ-5
   files:
     internal/history/file.go:
-    - 1
-    - 20
+    - [1, 20]
   note: 'file.go: CreatedAt/UpdatedAt int64 should be time.Time'
   critic_scopes_expected_to_recall:
   - - internal/history/file.go
 - occurrence_id: occ-6
   files:
     internal/tui/components/chat/chat.go:
-    - 500
-    - 520
+    - [500, 520]
   note: 'chat.go: lastUserMessageTime int64 should be time.Time (epoch seconds)'
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/chat.go
 - occurrence_id: occ-7
   files:
     internal/tui/components/chat/messages/renderer.go:
-    - 420
-    - 436
+    - [420, 436]
   note: 'renderer.go: timeout int should be time.Duration (seconds)'
   critic_scopes_expected_to_recall:
   - - internal/tui/components/chat/messages/renderer.go
@@ -101,8 +97,7 @@ occurrences:
 - occurrence_id: occ-10
   files:
     internal/transform/transform.go:
-    - 34
-    - 38
+    - [34, 38]
   note: 'transform.go: CreatedAt int64 should be time.Time'
   critic_scopes_expected_to_recall:
   - - internal/transform/transform.go

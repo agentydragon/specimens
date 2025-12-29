@@ -28,7 +28,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/fsext/ls.go:
-    - 202
-    - 206
+    - [202, 206]
   relevant_files:
   - internal/fsext/ls.go

@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 292
-    - 294
+    - [292, 294]
   note: status variable used once in ProposalInfo construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -29,8 +28,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/mcp/policy_gateway/middleware.py:
-    - 150
-    - 158
+    - [150, 158]
   note: pending_record variable used once in save_tool_call()
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/middleware.py

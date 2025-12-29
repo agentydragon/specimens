@@ -9,7 +9,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/props/conftest.py:
-    - 232
-    - 233
+    - [232, 233]
   critic_scopes_expected_to_recall:
   - - adgn/tests/props/conftest.py

@@ -47,8 +47,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/policy_eval/shim.py:
-    - 14
-    - 17
+    - [14, 17]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/shim.py
   graders_match_only_if_reported_on:

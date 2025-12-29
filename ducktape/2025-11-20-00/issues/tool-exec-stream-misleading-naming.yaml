@@ -14,7 +14,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/server/state.py: 142
+    adgn/src/adgn/agent/server/state.py:
+    - [142, 142]
   note: 'Misleading function name update_tool_exec_stream implies streaming'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
@@ -22,7 +23,8 @@ occurrences:
   - adgn/src/adgn/agent/server/state.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/agent/server/reducer.py: 101
+    adgn/src/adgn/agent/server/reducer.py:
+    - [101, 101]
   note: 'Misleading comment "merge stdout/stderr/exit" implies progressive merging'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/reducer.py

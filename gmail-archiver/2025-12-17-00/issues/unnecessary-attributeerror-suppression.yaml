@@ -14,7 +14,8 @@ should_flag: true
 occurrences:
   - occurrence_id: occ-0
     files:
-      gmail_archiver/planners/square.py: 40
+      gmail_archiver/planners/square.py:
+        - [40, 40]
     note: contextlib.suppress(ValueError, AttributeError) for date parsing
     critic_scopes_expected_to_recall:
       - [gmail_archiver/planners/square.py]

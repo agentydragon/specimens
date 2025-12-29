@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     e2e/mock_openai_responses.go:
-    - 218
-    - 219
+    - [218, 219]
   critic_scopes_expected_to_recall:
   - - e2e/mock_openai_responses.go
   graders_match_only_if_reported_on:

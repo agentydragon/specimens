@@ -12,10 +12,10 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/docs/llm/sandboxer/JUPYTER_CONFIG_STRATEGY.md: 6
+    adgn/docs/llm/sandboxer/JUPYTER_CONFIG_STRATEGY.md:
+    - [6, 6]
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
-    - 111
-    - 114
+    - [111, 114]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
     - adgn/docs/llm/sandboxer/JUPYTER_CONFIG_STRATEGY.md

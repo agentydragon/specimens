@@ -33,14 +33,11 @@ occurrences:
     - - 372
       - 372
     adgn/src/adgn/agent/server/runtime.py:
-    - 90
-    - 95
+    - [90, 95]
     adgn/src/adgn/agent/server/status_shared.py:
-    - 60
-    - 65
+    - [60, 65]
     adgn/src/adgn/mcp/compositor_meta/server.py:
-    - 35
-    - 47
+    - [35, 47]
     adgn/src/adgn/mcp/policy_gateway/middleware.py:
     - - 128
       - 128

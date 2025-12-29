@@ -27,7 +27,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py:
-    - 181
-    - 183
+    - [181, 183]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py

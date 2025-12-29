@@ -18,7 +18,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/server/app.py: 1
+    adgn/src/adgn/agent/server/app.py:
+    - [1, 1]
     adgn/src/adgn/agent/web/src/components/ApprovalTimeline.svelte:
     - - 54
       - 61

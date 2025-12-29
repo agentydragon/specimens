@@ -26,8 +26,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 70
-    - 76
+    - [70, 76]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
   graders_match_only_if_reported_on:

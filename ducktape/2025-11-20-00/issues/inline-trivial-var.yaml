@@ -28,8 +28,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/mcp_routing.py:
-    - 141
-    - 144
+    - [141, 144]
   note: body and response_headers variables both created and used once in Response constructor
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py
@@ -50,8 +49,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/agent/server/reducer.py:
-    - 60
-    - 61
+    - [60, 61]
   note: md variable extracts evt.message.content, used once in AssistantMarkdownItem constructor
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/reducer.py
@@ -72,8 +70,7 @@ occurrences:
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/persist/handler.py:
-    - 133
-    - 136
+    - [133, 136]
   note: 'result_model variable: result of convert_fastmcp_result used once in FunctionCallOutputPayload'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/handler.py

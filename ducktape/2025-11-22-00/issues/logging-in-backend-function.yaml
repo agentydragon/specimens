@@ -26,8 +26,7 @@ occurrences:
     - - 675
       - 675
     adgn/src/adgn/git_commit_ai/minicodex_backend.py:
-    - 190
-    - 194
+    - [190, 194]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/minicodex_backend.py
   - - adgn/src/adgn/git_commit_ai/cli.py

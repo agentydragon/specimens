@@ -6,7 +6,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/props/gepa/gepa_adapter.py: 66
+    adgn/src/adgn/props/gepa/gepa_adapter.py:
+    - [66, 66]
   note: SnapshotInput.target_files uses set[Path] but other path parameters like specimen_slug are plain str
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/gepa/gepa_adapter.py

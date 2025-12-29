@@ -36,8 +36,7 @@ occurrences:
     - - 169
       - 186
     adgn/src/adgn/mcp/git_ro/formatting.py:
-    - 99
-    - 108
+    - [99, 108]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/core.py
   - - adgn/src/adgn/mcp/git_ro/formatting.py

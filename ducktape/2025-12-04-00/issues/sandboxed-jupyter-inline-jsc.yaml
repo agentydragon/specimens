@@ -16,8 +16,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
-    - 277
-    - 287
+    - [277, 287]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
   graders_match_only_if_reported_on:

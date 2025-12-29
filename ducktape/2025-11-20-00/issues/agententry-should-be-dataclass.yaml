@@ -21,8 +21,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/server.py:
-    - 46
-    - 52
+    - [46, 52]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py
   graders_match_only_if_reported_on:

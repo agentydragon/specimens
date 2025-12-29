@@ -20,17 +20,16 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/approvals.py:
-    - 178
-    - 181
+    - [178, 181]
     adgn/src/adgn/agent/mcp_bridge/resources.py:
     - - 12
       - 12
     - - 67
       - 69
-    adgn/src/adgn/agent/mcp_bridge/servers/agents.py: 470
+    adgn/src/adgn/agent/mcp_bridge/servers/agents.py:
+    - [470, 470]
     adgn/src/adgn/mcp/_shared/constants.py:
-    - 47
-    - 48
+    - [47, 48]
     adgn/src/adgn/mcp/approval_policy/server.py:
     - - 132
       - 132

@@ -45,7 +45,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 261
-    - 273
+    - [261, 273]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py

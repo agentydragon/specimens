@@ -16,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py:
-    - 192
-    - 208
+    - [192, 208]
   note: _write_sandboxed_kernelspec declares workspace param but never uses it
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

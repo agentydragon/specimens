@@ -17,11 +17,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/state.py:
-    - 71
-    - 72
+    - [71, 72]
     adgn/src/adgn/agent/types.py:
-    - 20
-    - 25
+    - [20, 25]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/state.py
   - - adgn/src/adgn/agent/types.py

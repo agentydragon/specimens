@@ -16,6 +16,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/runtime/container.py: 197
+    adgn/src/adgn/agent/runtime/container.py:
+    - [197, 197]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/container.py

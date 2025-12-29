@@ -28,11 +28,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/conftest.py:
-    - 49
-    - 52
+    - [49, 52]
     adgn/tests/mcp/conftest.py:
-    - 47
-    - 50
+    - [47, 50]
   note: Duplicate fixture definition across MCP and agent test suites
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/conftest.py

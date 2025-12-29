@@ -9,8 +9,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/compositor/server.py:
-    - 169
-    - 190
+    - [169, 190]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
   graders_match_only_if_reported_on:

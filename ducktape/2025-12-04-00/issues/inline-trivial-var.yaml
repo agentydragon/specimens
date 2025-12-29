@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/llm/sysrw/extract_dataset_crush.py:
-    - 63
-    - 64
+    - [63, 64]
   note: dt variable used once immediately after assignment
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/llm/sysrw/extract_dataset_crush.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/props/cli_app/cmd_build_bundle.py:
-    - 188
-    - 190
+    - [188, 190]
   note: author, committer, message variables used once each immediately after assignment
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/cmd_build_bundle.py
@@ -75,8 +73,7 @@ occurrences:
 - occurrence_id: occ-6
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 85
-    - 86
+    - [85, 86]
   note: 'on_user_text_event: ut variable should be inlined'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -85,8 +82,7 @@ occurrences:
 - occurrence_id: occ-7
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 92
-    - 93
+    - [92, 93]
   note: 'on_tool_call_event: tc variable should be inlined'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -95,8 +91,7 @@ occurrences:
 - occurrence_id: occ-8
   files:
     adgn/src/adgn/agent/server/runtime.py:
-    - 100
-    - 101
+    - [100, 101]
   note: 'on_tool_result_event: fco variable should be inlined'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/runtime.py
@@ -105,8 +100,7 @@ occurrences:
 - occurrence_id: occ-9
   files:
     adgn/src/adgn/props/prompt_optimizer.py:
-    - 294
-    - 296
+    - [294, 296]
   note: return statement could be inlined
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
@@ -114,7 +108,8 @@ occurrences:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-10
   files:
-    adgn/src/adgn/props/grader/grader.py: 104
+    adgn/src/adgn/props/grader/grader.py:
+    - [104, 104]
   note: tp_files variable
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -122,7 +117,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-11
   files:
-    adgn/src/adgn/props/grader/grader.py: 107
+    adgn/src/adgn/props/grader/grader.py:
+    - [107, 107]
   note: critique_files variable
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -130,7 +126,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-12
   files:
-    adgn/src/adgn/props/grader/grader.py: 201
+    adgn/src/adgn/props/grader/grader.py:
+    - [201, 201]
   note: db_run variable in session.add
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -138,7 +135,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-13
   files:
-    adgn/src/adgn/props/grader/grader.py: 224
+    adgn/src/adgn/props/grader/grader.py:
+    - [224, 224]
   note: inputs variable passed to one function call
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -146,7 +144,8 @@ occurrences:
   - adgn/src/adgn/props/grader/grader.py
 - occurrence_id: occ-14
   files:
-    adgn/src/adgn/props/grader/grader.py: 226
+    adgn/src/adgn/props/grader/grader.py:
+    - [226, 226]
   note: submit_tool_name variable
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -155,8 +154,7 @@ occurrences:
 - occurrence_id: occ-15
   files:
     adgn/src/adgn/props/grader/grader.py:
-    - 229
-    - 235
+    - [229, 235]
   note: prompt variable passed to one function call
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -165,8 +163,7 @@ occurrences:
 - occurrence_id: occ-16
   files:
     adgn/src/adgn/props/grader/grader.py:
-    - 249
-    - 257
+    - [249, 257]
   note: handlers variable
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/grader/grader.py
@@ -175,8 +172,7 @@ occurrences:
 - occurrence_id: occ-17
   files:
     adgn/src/adgn/mcp/_shared/resources.py:
-    - 55
-    - 57
+    - [55, 57]
   note: rr and s variables assigned once and immediately used
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/resources.py
@@ -185,8 +181,7 @@ occurrences:
 - occurrence_id: occ-18
   files:
     adgn/src/adgn/mcp/compositor/server.py:
-    - 173
-    - 174
+    - [173, 174]
   note: client_factory variable assigned and used only once
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/server.py
@@ -195,8 +190,7 @@ occurrences:
 - occurrence_id: occ-19
   files:
     adgn/src/adgn/props/cluster_unknowns.py:
-    - 146
-    - 147
+    - [146, 147]
   note: timestamp variable assigned and used only once
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
@@ -205,8 +199,7 @@ occurrences:
 - occurrence_id: occ-20
   files:
     adgn/src/adgn/props/cluster_unknowns.py:
-    - 151
-    - 155
+    - [151, 155]
   note: out_spec and tasks variables should be inlined with asyncio.gather generator
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cluster_unknowns.py
@@ -215,8 +208,7 @@ occurrences:
 - occurrence_id: occ-21
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 283
-    - 291
+    - [283, 291]
   note: part variable in loop should be list comprehension
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -225,8 +217,7 @@ occurrences:
 - occurrence_id: occ-22
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 315
-    - 318
+    - [315, 318]
   note: summary_items variable should be inlined
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -235,8 +226,7 @@ occurrences:
 - occurrence_id: occ-23
   files:
     adgn/src/adgn/mcp/approval_policy/engine.py:
-    - 384
-    - 385
+    - [384, 385]
   note: tmpl variable should be inlined into Template(raw).render(...)
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/approval_policy/engine.py

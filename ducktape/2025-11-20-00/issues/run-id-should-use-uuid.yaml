@@ -12,7 +12,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/persist/models.py: 57
+    adgn/src/adgn/agent/persist/models.py:
+    - [57, 57]
     adgn/src/adgn/agent/persist/sqlite.py:
     - - 378
       - 378

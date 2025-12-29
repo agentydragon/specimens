@@ -6,8 +6,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/logging/recover.go:
-    - 11
-    - 24
+    - [11, 24]
   note: |-
     RecoverPanic currently wraps its whole body in a recover-check; prefer early-return guard or narrower scope to
     reduce nesting.
@@ -18,8 +17,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     internal/app/lsp_events.go:
-    - 63
-    - 85
+    - [63, 85]
   note: updateLSPState/updateLSPDiagnostics wrap large blocks; prefer early return/guard clauses where applicable.
   critic_scopes_expected_to_recall:
   - - internal/app/lsp_events.go
@@ -28,8 +26,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     internal/lsp/client.go:
-    - 425
-    - 435
+    - [425, 435]
   note: 'openKeyConfigFiles: when a file does not exist, use continue to skip rather than nesting the rest of the
     body.'
   critic_scopes_expected_to_recall:
@@ -39,8 +36,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     internal/app/app.go:
-    - 426
-    - 429
+    - [426, 429]
   note: 'cleanup loop: use continue when cleanup is nil to avoid wrapping body in an extra nesting level.'
   critic_scopes_expected_to_recall:
   - - internal/app/app.go
@@ -49,8 +45,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     internal/shell/shell.go:
-    - 183
-    - 201
+    - [183, 201]
   note: 'ArgumentsBlocker: guard with continue when args length is insufficient rather than nesting the matching
     body.'
   critic_scopes_expected_to_recall:

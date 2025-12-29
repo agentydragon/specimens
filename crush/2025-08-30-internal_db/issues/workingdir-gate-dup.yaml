@@ -7,11 +7,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/ls.go:
-    - 134
-    - 167
+    - [134, 167]
     internal/llm/tools/view.go:
-    - 146
-    - 169
+    - [146, 169]
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/view.go
   - - internal/llm/tools/ls.go

@@ -12,7 +12,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/db_event_handler.py: 68
+    adgn/src/adgn/agent/db_event_handler.py:
+    - [68, 68]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/db_event_handler.py
   graders_match_only_if_reported_on:

@@ -21,7 +21,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/persist/sqlite.py:
-    - 445
-    - 454
+    - [445, 454]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/sqlite.py

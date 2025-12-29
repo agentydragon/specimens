@@ -16,10 +16,10 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/git_commit_ai/cli.py: 735
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - [735, 735]
     adgn/src/adgn/git_commit_ai/core.py:
-    - 69
-    - 120
+    - [69, 120]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
   - - adgn/src/adgn/git_commit_ai/core.py

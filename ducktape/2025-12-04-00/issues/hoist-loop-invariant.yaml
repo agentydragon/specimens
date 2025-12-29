@@ -11,8 +11,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/gepa/gepa_adapter.py:
-    - 274
-    - 300
+    - [274, 300]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/gepa/gepa_adapter.py
   graders_match_only_if_reported_on:

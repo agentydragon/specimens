@@ -24,8 +24,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/event_renderer.py:
-    - 85
-    - 89
+    - [85, 89]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/event_renderer.py
   graders_match_only_if_reported_on:

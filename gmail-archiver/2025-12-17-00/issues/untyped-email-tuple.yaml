@@ -7,7 +7,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/event_classifier.py: 171
+    gmail_archiver/event_classifier.py:
+    - [171, 171]
   note: emails parameter in extract_batch() - tuple of (message_id, subject, body, received_date)
   critic_scopes_expected_to_recall:
   - - gmail_archiver/event_classifier.py

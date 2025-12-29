@@ -22,8 +22,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/snapshot_registry.py:
-    - 363
-    - 393
+    - [363, 393]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/snapshot_registry.py
   graders_match_only_if_reported_on:

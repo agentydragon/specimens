@@ -21,8 +21,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/persist/__init__.py:
-    - 82
-    - 87
+    - [82, 87]
     adgn/src/adgn/mcp/approval_policy/server.py:
     - - 47
       - 54

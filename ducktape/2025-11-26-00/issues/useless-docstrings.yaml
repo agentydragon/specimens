@@ -22,8 +22,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/runtime/handlers.py:
-    - 25
-    - 27
+    - [25, 27]
   note: 'build_handlers: "Returns" line restates return type'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/handlers.py
@@ -32,8 +31,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/app.py:
-    - 50
-    - 52
+    - [50, 52]
   note: 'default_client_factory: useless docstring'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py
@@ -42,8 +40,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/runtime/container.py:
-    - 128
-    - 129
+    - [128, 129]
   note: 'default_client_factory: mostly useless docstring'
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/container.py

@@ -16,8 +16,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/status_shared.py:
-    - 25
-    - 36
+    - [25, 36]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/status_shared.py
   graders_match_only_if_reported_on:

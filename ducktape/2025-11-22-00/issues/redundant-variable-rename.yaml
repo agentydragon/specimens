@@ -14,7 +14,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/policy_eval/runner.py: 32
+    adgn/src/adgn/agent/policy_eval/runner.py:
+    - [32, 32]
   note: docker_client renamed to client
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/policy_eval/runner.py
@@ -22,7 +23,8 @@ occurrences:
   - adgn/src/adgn/agent/policy_eval/runner.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/git_commit_ai/cli.py: 581
+    adgn/src/adgn/git_commit_ai/cli.py:
+    - [581, 581]
   note: final_text renamed to content_before
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py

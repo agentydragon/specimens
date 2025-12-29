@@ -18,8 +18,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/git_ro/formatting.py:
-    - 113
-    - 116
+    - [113, 116]
   note: ChangedFileItem construction loses rename path information
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/git_ro/formatting.py
@@ -28,8 +27,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/git_ro/formatting.py:
-    - 158
-    - 161
+    - [158, 161]
   note: StatItem construction loses rename path information
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/git_ro/formatting.py

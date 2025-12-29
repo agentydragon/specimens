@@ -18,8 +18,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/git_commit_ai/core.py:
-    - 260
-    - 263
+    - [260, 263]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/core.py
   graders_match_only_if_reported_on:

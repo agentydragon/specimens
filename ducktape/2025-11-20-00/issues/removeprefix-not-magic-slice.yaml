@@ -35,8 +35,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/server/mcp_routing.py:
-    - 72
-    - 73
+    - [72, 73]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py
   graders_match_only_if_reported_on:

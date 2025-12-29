@@ -13,6 +13,7 @@ should_flag: false
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/server/mcp_routing.py: 110
+    adgn/src/adgn/agent/server/mcp_routing.py:
+    - [110, 110]
   relevant_files:
   - adgn/src/adgn/agent/server/mcp_routing.py

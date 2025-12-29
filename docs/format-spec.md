@@ -172,7 +172,7 @@ occurrences:
     files:
       path/to/file.py:
         - [10, 20]        # Line range (inclusive)
-        - 42              # Single line
+        - [42, 42]        # Single line
     note: "Optional note for this occurrence"  # Required if multiple occurrences
     critic_scopes_expected_to_recall:
       - [path/to/file.py]  # File sets that should detect this
@@ -201,71 +201,78 @@ occurrences:
 
 ### Line Range Formats
 
-The `files` field maps file paths to line specifications. Line specs can be:
+The `files` field maps file paths to line specifications. **Line specs must always be a list of `[start, end]` pairs.**
 
 ```yaml
 files:
-  # Single line (bare integer) - normalized to [[42, 42]]
-  file_a.py: 42
+  # Single line - use [N, N]
+  file_a.py:
+    - [42, 42]
 
-  # Line range [start, end] - normalized to [[10, 20]]
-  file_b.py: [10, 20]
+  # Single range
+  file_b.py:
+    - [10, 20]
 
-  # Multiple ranges (list of [start, end] pairs)
+  # Multiple ranges
   file_c.py:
     - [30, 40]
     - [50, 60]
+
+  # Multiple single lines
+  file_d.py:
+    - [10, 10]
+    - [25, 25]
+    - [42, 42]
 ```
 
-**Critical constraints:**
+**Format rules:**
 
-1. **Each range must have exactly 2 elements** `[start, end]`. Lists with 3+ elements are INVALID:
+1. **Always use `list[[start, end], ...]` format** - no bare integers, no inline ranges:
    ```yaml
-   # ❌ INVALID: 3 elements
+   # ❌ INVALID: bare integer
+   file.py: 42
+
+   # ❌ INVALID: inline range
+   file.py: [10, 20]
+
+   # ❌ INVALID: bare integers in list
    file.py:
      - 10
      - 20
-     - 30
-   # ✅ CORRECT: three separate 2-element ranges
+
+   # ✅ CORRECT: list of [start, end] pairs
+   file.py:
+     - [42, 42]
+
+   file.py:
+     - [10, 20]
+   ```
+
+2. **Each range must have exactly 2 elements** `[start, end]`:
+   ```yaml
+   # ❌ INVALID: 1 element
+   file.py:
+     - [42]
+
+   # ❌ INVALID: 3 elements
+   file.py:
+     - [10, 20, 30]
+
+   # ✅ CORRECT: 2 elements per range
    file.py:
      - [10, 10]
      - [20, 20]
      - [30, 30]
    ```
 
-2. **Do NOT mix bare integers with ranges** in a list:
+3. **Single lines use `[N, N]`** (start equals end):
    ```yaml
-   # ❌ INVALID: mixing range [10, 20] with bare integer 30
+   # Line 42 only
    file.py:
-     - [10, 20]
-     - 30
-   # ✅ CORRECT: all 2-element ranges
-   file.py:
-     - [10, 20]
-     - [30, 30]
+     - [42, 42]
    ```
 
-3. **Single integer lists are INVALID**. Use bare integer for single lines:
-   ```yaml
-   # ❌ INVALID: creates [42] which has 1 element
-   file.py:
-     - 42
-   # ✅ CORRECT: bare integer
-   file.py: 42
-   # ✅ ALSO CORRECT: 2-element range
-   file.py: [42, 42]
-   ```
-
-**Note**: YAML flow style `[10, 20]` and block style are equivalent:
-```yaml
-# These are the same - both create [10, 20] (a single range)
-file.py: [10, 20]
-file.py:
-  - 10
-  - 20
-```
-
-All line numbers are 1-indexed (first line is 1, not 0).
+All line numbers are 1-indexed (first line is 1, not 0). Ranges are inclusive on both ends.
 
 ### Auto-Inference Rules
 
@@ -317,8 +324,8 @@ occurrences:
   - occurrence_id: occ-1
     files:
       adgn/src/adgn/agent/server/runtime.py:
-        - 267
-        - 274
+        - [267, 267]
+        - [274, 274]
     note: "In runtime proposals building"
     critic_scopes_expected_to_recall:
       - [adgn/src/adgn/agent/server/runtime.py]
@@ -448,9 +455,10 @@ class FalsePositiveOccurrence(BaseModel):
 - Use forward slashes (Unix-style paths)
 
 ### Line Ranges
+- Always use `list[[start, end], ...]` format
 - 1-indexed (first line is 1, not 0)
 - Inclusive on both ends: `[10, 20]` means lines 10-20
-- Single line: bare integer `10` or range `[10, 10]`
+- Single line: `[10, 10]` (no bare integers)
 
 ### Rationale
 - Must be 10-5000 characters (after whitespace stripping)
@@ -484,7 +492,7 @@ Slugs should be 0-30 characters and convey the issue type.
 ## YAML Style
 
 - Use `|` for multi-line rationale strings
-- Line ranges: `[start, end]` for ranges, bare integers for single lines
+- Line ranges: always `list[[start, end], ...]` format, single lines as `[N, N]`
 - Minimal comments: prefer structured fields over comments
 
 ## Related Documentation

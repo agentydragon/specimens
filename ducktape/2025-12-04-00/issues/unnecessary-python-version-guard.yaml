@@ -32,8 +32,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/tools/arg0_runner.py:
-    - 25
-    - 31
+    - [25, 31]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/tools/arg0_runner.py
   graders_match_only_if_reported_on:

@@ -15,7 +15,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/app/app.go:
-    - 200
-    - 206
+    - [200, 206]
   relevant_files:
   - internal/app/app.go

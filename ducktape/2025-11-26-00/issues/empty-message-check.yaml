@@ -28,8 +28,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/git_commit_ai/cli.py:
-    - 588
-    - 590
+    - [588, 590]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
   graders_match_only_if_reported_on:

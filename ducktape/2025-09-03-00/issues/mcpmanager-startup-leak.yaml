@@ -8,8 +8,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 191
-    - 224
+    - [191, 224]
   note: In from_config()
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py
@@ -18,8 +17,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py:
-    - 226
-    - 258
+    - [226, 258]
   note: In from_servers()
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/mcp_manager.py

@@ -5,7 +5,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    gmail_archiver/planners/aliexpress.py: 189
+    gmail_archiver/planners/aliexpress.py:
+    - [189, 189]
   note: "for _order_id, order_emails in by_order.items() - should use .values()"
   critic_scopes_expected_to_recall:
   - - gmail_archiver/planners/aliexpress.py

@@ -21,11 +21,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/bash.go:
-    - 314
-    - 322
+    - [314, 322]
     internal/shell/persistent.go:
-    - 13
-    - 36
+    - [13, 36]
   critic_scopes_expected_to_recall:
   - - internal/shell/persistent.go
   - - internal/llm/tools/bash.go

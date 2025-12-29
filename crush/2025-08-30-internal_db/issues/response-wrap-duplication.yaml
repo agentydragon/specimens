@@ -9,8 +9,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     internal/llm/tools/glob.go:
-    - 133
-    - 134
+    - [133, 134]
   note: Glob tool uses WithResponseMetadata/NewTextResponse at these lines; factor via WrapTextWithMeta.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/glob.go
@@ -19,8 +18,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     internal/llm/tools/bash.go:
-    - 487
-    - 490
+    - [487, 490]
   note: Bash tool wraps stdout/no-output with BashResponseMetadata - use helper to centralize.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/bash.go
@@ -29,8 +27,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     internal/llm/tools/view.go:
-    - 249
-    - 251
+    - [249, 251]
   note: |-
     View tool wraps output and ViewResponseMetadata at these lines; extract per-tool helper delegating to
     WrapTextWithMeta.
@@ -41,8 +38,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     internal/llm/tools/write.go:
-    - 236
-    - 237
+    - [236, 237]
   note: Write tool wraps result with WriteResponseMetadata - consolidate.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/write.go
@@ -51,8 +47,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     internal/llm/tools/grep.go:
-    - 175
-    - 177
+    - [175, 177]
   note: Grep wraps matches with GrepResponseMetadata; prefer a per-tool helper.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/grep.go
@@ -61,8 +56,7 @@ occurrences:
 - occurrence_id: occ-5
   files:
     internal/llm/tools/ls.go:
-    - 181
-    - 183
+    - [181, 183]
   note: LS wraps listing output with LSResponseMetadata; centralize call shape.
   critic_scopes_expected_to_recall:
   - - internal/llm/tools/ls.go

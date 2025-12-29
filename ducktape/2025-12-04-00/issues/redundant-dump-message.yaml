@@ -8,8 +8,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/support/assertions.py:
-    - 47
-    - 48
+    - [47, 48]
   critic_scopes_expected_to_recall:
   - - adgn/tests/support/assertions.py
   graders_match_only_if_reported_on:

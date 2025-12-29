@@ -29,19 +29,22 @@ occurrences:
   - - adgn/tests/mcp/resources/test_list_changes_subscriptions.py
 - occurrence_id: occ-1
   files:
-    adgn/tests/mcp/resources/test_subscriptions_index.py: 52
+    adgn/tests/mcp/resources/test_subscriptions_index.py:
+    - [52, 52]
   note: Test manually creates resources server with make_resources_server
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/resources/test_subscriptions_index.py
 - occurrence_id: occ-2
   files:
-    adgn/tests/mcp/test_resources_subscriptions_index.py: 53
+    adgn/tests/mcp/test_resources_subscriptions_index.py:
+    - [53, 53]
   note: Test manually creates resources server with make_resources_server
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/test_resources_subscriptions_index.py
 - occurrence_id: occ-3
   files:
-    adgn/tests/mcp/resources/test_notifications.py: 35
+    adgn/tests/mcp/resources/test_notifications.py:
+    - [35, 35]
   note: Test manually creates resources server with make_resources_server
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/resources/test_notifications.py

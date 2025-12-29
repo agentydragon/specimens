@@ -29,8 +29,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/runtime/infrastructure.py:
-    - 197
-    - 203
+    - [197, 203]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
   graders_match_only_if_reported_on:

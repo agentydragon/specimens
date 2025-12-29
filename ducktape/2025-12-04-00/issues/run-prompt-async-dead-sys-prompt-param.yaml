@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/cli_app/shared.py:
-    - 38
-    - 58
+    - [38, 58]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/cli_app/shared.py
   graders_match_only_if_reported_on:

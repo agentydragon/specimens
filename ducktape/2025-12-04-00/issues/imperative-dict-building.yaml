@@ -21,8 +21,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/props/prompt_optimizer.py:
-    - 360
-    - 364
+    - [360, 364]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
   graders_match_only_if_reported_on:

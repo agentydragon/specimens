@@ -17,7 +17,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/agent/mcp_bridge/auth.py: 180
+    adgn/src/adgn/agent/mcp_bridge/auth.py:
+    - [180, 180]
   note: imports json inside _create_error_response
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/auth.py
@@ -37,7 +38,8 @@ occurrences:
   - adgn/src/adgn/agent/mcp_bridge/server.py
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/agent/runtime/builder.py: 46
+    adgn/src/adgn/agent/runtime/builder.py:
+    - [46, 46]
   note: import inside function
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/builder.py
@@ -45,7 +47,8 @@ occurrences:
   - adgn/src/adgn/agent/runtime/builder.py
 - occurrence_id: occ-3
   files:
-    adgn/src/adgn/agent/runtime/infrastructure.py: 67
+    adgn/src/adgn/agent/runtime/infrastructure.py:
+    - [67, 67]
   note: import inside function
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/infrastructure.py
@@ -53,7 +56,8 @@ occurrences:
   - adgn/src/adgn/agent/runtime/infrastructure.py
 - occurrence_id: occ-4
   files:
-    adgn/src/adgn/agent/runtime/local_runtime.py: 40
+    adgn/src/adgn/agent/runtime/local_runtime.py:
+    - [40, 40]
   note: import inside function
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/runtime/local_runtime.py
@@ -62,8 +66,7 @@ occurrences:
 - occurrence_id: occ-5
   files:
     adgn/src/adgn/agent/server/mcp_routing.py:
-    - 23
-    - 24
+    - [23, 24]
   note: imports inside function
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/mcp_routing.py

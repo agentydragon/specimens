@@ -24,7 +24,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/git_commit_ai/cli.py:
-    - 85
-    - 90
+    - [85, 90]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py

@@ -304,11 +304,13 @@ Don't split a single logical issue into separate occurrences by file with narrow
 occurrences:
 - occurrence_id: occ-0
   files:
-    runtime.py: [249, 253]  # passes hardcoded False
+    runtime.py:
+      - [249, 253]  # passes hardcoded False
   graders_match_only_if_reported_on: [runtime.py]  # TOO NARROW
 - occurrence_id: occ-1
   files:
-    status_shared.py: [42, 56]  # has unreachable code
+    status_shared.py:
+      - [42, 56]  # has unreachable code
   graders_match_only_if_reported_on: [status_shared.py]  # TOO NARROW
 ```
 
@@ -319,8 +321,10 @@ This fails because a critique like "status_shared.py has dead code because runti
 occurrences:
 - occurrence_id: occ-0
   files:
-    runtime.py: [249, 253]
-    status_shared.py: [42, 56]
+    runtime.py:
+      - [249, 253]
+    status_shared.py:
+      - [42, 56]
   graders_match_only_if_reported_on:
   - runtime.py
   - status_shared.py

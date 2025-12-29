@@ -20,7 +20,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/agent/test_mcp_notifications_flow.py:
-    - 136
-    - 147
+    - [136, 147]
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_mcp_notifications_flow.py

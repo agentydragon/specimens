@@ -30,11 +30,9 @@ occurrences:
     - - 76
       - 76
     adgn/src/adgn/agent/models/proposal_status.py:
-    - 6
-    - 10
+    - [6, 10]
     adgn/src/adgn/agent/persist/__init__.py:
-    - 54
-    - 58
+    - [54, 58]
     adgn/src/adgn/agent/persist/models.py:
     - - 39
       - 43

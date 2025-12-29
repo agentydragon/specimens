@@ -19,8 +19,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/agent/server/app.py:
-    - 290
-    - 296
+    - [290, 296]
   note: rows and items variables immediately consumed; inline into return
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/server/app.py
@@ -29,8 +28,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/agent/reducer.py:
-    - 200
-    - 201
+    - [200, 201]
   note: tagged variable immediately returned; inline
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/reducer.py
@@ -39,8 +37,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/git_commit_ai/cli.py:
-    - 154
-    - 156
+    - [154, 156]
   note: raw variable immediately passed to function; inline
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
@@ -49,8 +46,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/git_commit_ai/cli.py:
-    - 735
-    - 736
+    - [735, 736]
   note: status variable immediately used in if-check; inline
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/cli.py
@@ -58,7 +54,8 @@ occurrences:
   - adgn/src/adgn/git_commit_ai/cli.py
 - occurrence_id: occ-5
   files:
-    adgn/src/adgn/mcp/compositor/setup.py: 31
+    adgn/src/adgn/mcp/compositor/setup.py:
+    - [31, 31]
   note: res_server variable immediately passed to mount_inproc
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/compositor/setup.py

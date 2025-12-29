@@ -26,8 +26,7 @@ occurrences:
     - - 183
       - 186
     adgn/src/adgn/agent/persist/sqlite.py:
-    - 198
-    - 217
+    - [198, 217]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/approvals.py
   - - adgn/src/adgn/agent/persist/sqlite.py

@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/mcp/approval_policy/test_policy_resources.py:
-    - 19
-    - 25
+    - [19, 25]
   note: db_path variable in fixture should be inlined
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp/approval_policy/test_policy_resources.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/tests/agent/test_policy_validation_reload.py:
-    - 86
-    - 88
+    - [86, 88]
   note: new_policy single-use variable with redundant comment
   critic_scopes_expected_to_recall:
   - - adgn/tests/agent/test_policy_validation_reload.py
@@ -59,8 +57,7 @@ occurrences:
 - occurrence_id: occ-4
   files:
     adgn/src/adgn/agent/mcp_bridge/server.py:
-    - 63
-    - 67
+    - [63, 67]
   note: builder variable used once in return statement
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/server.py

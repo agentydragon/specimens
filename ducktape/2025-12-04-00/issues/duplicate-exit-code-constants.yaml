@@ -14,8 +14,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/_shared/constants.py:
-    - 18
-    - 27
+    - [18, 27]
   note: First definition in shared constants
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/_shared/constants.py

@@ -10,8 +10,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/props/conftest.py:
-    - 256
-    - 260
+    - [256, 260]
   critic_scopes_expected_to_recall:
   - - adgn/tests/props/conftest.py
   graders_match_only_if_reported_on:

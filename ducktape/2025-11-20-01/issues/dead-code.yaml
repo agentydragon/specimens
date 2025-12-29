@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/openai_utils/model.py:
-    - 219
-    - 225
+    - [219, 225]
   note: AssistantMessageOut.from_input_item - reverse conversion never used
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/openai_utils/model.py
@@ -27,8 +26,7 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/mcp/policy_gateway/signals.py:
-    - 96
-    - 145
+    - [96, 145]
   note: detect_policy_gateway_error - 50 lines of complex error detection logic, documented as unused at line 110
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/policy_gateway/signals.py

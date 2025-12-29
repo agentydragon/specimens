@@ -50,7 +50,8 @@ occurrences:
   - - adgn/src/adgn/agent/persist/sqlite.py
 - occurrence_id: occ-3
   files:
-    adgn/src/adgn/agent/persist/__init__.py: 141
+    adgn/src/adgn/agent/persist/__init__.py:
+    - [141, 141]
   note: Protocol signature uses Optional instead of default empty collection
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/persist/__init__.py

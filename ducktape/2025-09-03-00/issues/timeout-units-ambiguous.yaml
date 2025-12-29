@@ -15,6 +15,7 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py: 55
+    llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py:
+    - [55, 55]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/docker_exec/server.py

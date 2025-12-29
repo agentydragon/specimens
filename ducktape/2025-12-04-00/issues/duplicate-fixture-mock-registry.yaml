@@ -44,11 +44,9 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/tests/mcp/agents/test_agents_server.py:
-    - 21
-    - 30
+    - [21, 30]
     adgn/tests/mcp_bridge/test_integration.py:
-    - 74
-    - 79
+    - [74, 79]
   critic_scopes_expected_to_recall:
   - - adgn/tests/mcp_bridge/test_integration.py
   - - adgn/tests/mcp/agents/test_agents_server.py

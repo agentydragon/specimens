@@ -15,8 +15,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     llm/adgn_llm/src/adgn_llm/mini_codex/agent.py:
-    - 204
-    - 207
+    - [204, 207]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mini_codex/agent.py
   graders_match_only_if_reported_on:

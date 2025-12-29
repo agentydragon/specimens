@@ -8,7 +8,8 @@ should_flag: true
 occurrences:
 - occurrence_id: occ-0
   files:
-    adgn/src/adgn/props/prompt_optimizer.py: 225
+    adgn/src/adgn/props/prompt_optimizer.py:
+    - [225, 225]
   note: Uses .filter_by(slug=...).first() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/prompt_optimizer.py
@@ -16,7 +17,8 @@ occurrences:
   - adgn/src/adgn/props/prompt_optimizer.py
 - occurrence_id: occ-1
   files:
-    adgn/src/adgn/props/db/sync_specimens.py: 101
+    adgn/src/adgn/props/db/sync_specimens.py:
+    - [101, 101]
   note: Uses .filter_by(slug=...).one() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync_specimens.py
@@ -24,7 +26,8 @@ occurrences:
   - adgn/src/adgn/props/db/sync_specimens.py
 - occurrence_id: occ-2
   files:
-    adgn/src/adgn/props/db/sync_specimens.py: 118
+    adgn/src/adgn/props/db/sync_specimens.py:
+    - [118, 118]
   note: Uses .filter_by(slug=...).one() for PK lookup
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/props/db/sync_specimens.py

@@ -17,7 +17,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/reducer.py:
-    - 244
-    - 265
+    - [244, 265]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/reducer.py

@@ -23,7 +23,6 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/mcp_bridge/compositor_factory.py:
-    - 93
-    - 95
+    - [93, 95]
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/agent/mcp_bridge/compositor_factory.py

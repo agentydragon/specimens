@@ -23,8 +23,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/agent/approvals.py:
-    - 310
-    - 313
+    - [310, 313]
     adgn/src/adgn/agent/policy_eval/container.py:
     - - 17
       - 46

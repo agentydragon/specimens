@@ -7,8 +7,7 @@ occurrences:
 - occurrence_id: occ-0
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
-    - 22
-    - 26
+    - [22, 26]
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
@@ -17,8 +16,7 @@ occurrences:
 - occurrence_id: occ-1
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
-    - 193
-    - 196
+    - [193, 196]
   note: Duplicate _pick_free_port function - canonical implementation exists in adgn.util.net.pick_free_port
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py
@@ -27,11 +25,9 @@ occurrences:
 - occurrence_id: occ-2
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
-    - 29
-    - 80
+    - [29, 80]
     adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
-    - 199
-    - 249
+    - [199, 249]
   note: Duplicate _start_jupyter_server implementations with nearly identical jupyter server command construction
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/mcp/sandboxed_jupyter/launch.py
@@ -42,8 +38,7 @@ occurrences:
 - occurrence_id: occ-3
   files:
     adgn/src/adgn/mcp/sandboxed_jupyter/launch.py:
-    - 142
-    - 161
+    - [142, 161]
     adgn/src/adgn/mcp/sandboxed_jupyter/wrapper.py:
     - - 85
       - 93
