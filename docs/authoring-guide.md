@@ -123,7 +123,7 @@ occurrences:
 
 **Note on `critic_scopes_expected_to_recall`:** This field specifies which minimal file sets are needed to detect the issue. It's used to generate focused training examples per-file rather than only full-snapshot reviews. See [Training Strategy](training_strategy.md) for details on how this enables the per-file examples approach and tighter optimization feedback loops.
 
-**Multiple occurrences:**
+**Multiple occurrences (with notes):**
 ```yaml
 rationale: |
   Imperative list building should use comprehensions. Replace
@@ -146,6 +146,42 @@ occurrences:
     note: "In list_approvals()"
     critic_scopes_expected_to_recall:
       - [src/bridge.py]
+```
+
+**Rationale vs Occurrence Notes:**
+
+Rationale can be specific—include file names, line numbers, concrete details. The `note` field exists to **distinguish multiple occurrences** of the same issue type.
+
+- **Single occurrence:** Rationale contains all details. No note needed.
+- **Multiple occurrences:** Rationale describes the shared pattern. Notes identify each instance.
+
+**Single occurrence (specific rationale):**
+```yaml
+rationale: |
+  `_build_host_config` (lines 122-130) silently ignores `opts.volumes` when it's
+  a list[str], despite the type allowing it (line 54). Handle both cases or
+  remove list[str] from the type.
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      container_session.py:
+        - [54, 54]
+        - [122, 130]
+```
+
+**Multiple occurrences (notes distinguish instances):**
+```yaml
+rationale: |
+  Multiple fields use str instead of AgentID newtype. Use proper type.
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      container.py: [[45, 45]]
+    note: "agent_id field in AgentContainer"
+  - occurrence_id: occ-1
+    files:
+      registry.py: [[89, 89]]
+    note: "id parameter in get_agent()"
 ```
 
 **False Positive:**
@@ -353,7 +389,91 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 3. **Same problem across locations** = single issue with multiple occurrences
 4. **Different problems** = separate issues even if in adjacent lines
 
-### 7. Objectivity in Issue Descriptions
+### 7. Rationale Detail: Calibrate to Obviousness
+
+**The amount of explanation needed depends on how obvious the improvement is.**
+
+#### Obvious Pareto Improvements (Minimal Rationale)
+
+When the issue is an unambiguous improvement with no cost, just state what's wrong. Don't explain why the fix is better—any experienced engineer knows.
+
+**Heuristics for "obviously better" (all else equal):**
+- Less code > more code
+- More type-safe > less type-safe
+- Early errors > delayed/obscured errors
+- Typed > untyped
+- Less complex > more complex
+- Specific types (`Path`, `AgentID`) > generic (`str`, `dict[str, Any]`)
+- Readable > obscure
+- Less magic > more magic (dunders, getattr, reflection)
+
+**Examples of minimal rationales:**
+
+```yaml
+# Dead code - obvious
+rationale: |
+  `format_legacy_output()` is never called. Remove it.
+
+# Wrong type - obvious
+rationale: |
+  Line 197 types `_policy_gateway` as `Any | None` with a comment saying
+  it's `PolicyGatewayMiddleware`. Use the proper type annotation.
+
+# Stdlib replacement - obvious
+rationale: |
+  Lines 45-52 manually split on first occurrence of "=". Use `str.partition()`.
+
+# Trivial inline - obvious
+rationale: |
+  `get_name()` just returns `self._name`. Inline it.
+
+# Duplicate code - obvious
+rationale: |
+  Lines 67-100 and 108-135 duplicate identical logic. Extract a helper.
+```
+
+#### Non-Obvious Issues (Substantive Rationale)
+
+When reasonable engineers might disagree, or there's a tradeoff, explain your reasoning:
+
+**When more detail is needed:**
+- **Complex tradeoffs**: "This uses algorithm X but we have n<100 in-memory, so simpler O(n²) is fine"
+- **Cross-cutting design**: "API here inconsistent with API there"
+- **Judgment calls**: "Is this 15-line type-safe pattern worth the complexity vs simpler but less safe approach?"
+- **Non-obvious costs**: "This looks like deduplication but would create tight coupling"
+- **Context-dependent**: "This pattern is usually fine but problematic here because..."
+
+**Examples of substantive rationales:**
+
+```yaml
+# Tradeoff requiring explanation
+rationale: |
+  Lines 200-250 use a trie for prefix matching. The dataset has <50 entries
+  loaded once at startup. A simple list scan is 30 lines shorter, equally
+  fast for this size, and easier to debug. The trie adds complexity without
+  measurable benefit.
+
+# Design inconsistency requiring context
+rationale: |
+  `AgentContainer.get_agent()` returns `Agent | None` but `Registry.get_agent()`
+  raises `KeyError`. Callers must know which they're using. Pick one pattern
+  (preferably Optional return since it's the newer code).
+
+# Judgment call with reasoning
+rationale: |
+  The `TypedDict` with 12 optional fields (lines 45-70) duplicates the
+  Pydantic model. Critics might suggest deduplicating. However, keeping them
+  separate is intentional: the TypedDict is the wire format, the model adds
+  validation. They may diverge as the API evolves.
+```
+
+#### The Key Test
+
+**Can you delete the "why it's better" explanation and the issue is still clear?**
+- Yes → it's obvious, keep it minimal
+- No → it needs substantiation
+
+### 8. Objectivity in Issue Descriptions
 
 **Avoid subjective phrasing** - describe problems objectively:
 
@@ -369,7 +489,7 @@ Each issue file should describe ONE logical problem type, which may occur in mul
 
 Present facts and technical rationale, not opinions or attributed suggestions.
 
-### 8. Research First: No Open Questions
+### 9. Research First: No Open Questions
 
 **Snapshots must not leave open research questions.** All investigation should be completed before authoring the issue.
 
@@ -390,7 +510,7 @@ rationale: |
   making manual discovery unnecessary.
 ```
 
-### 9. Verifiable External References
+### 10. Verifiable External References
 
 **When referencing specific tools, APIs, or implementation details, provide verifiable links. Well-known frameworks/standards don't need URLs.**
 
@@ -404,7 +524,7 @@ rationale: |
 - Standard libraries: Python stdlib, Node.js core modules
 - Well-known tools: pytest, Jest, Docker, PostgreSQL
 
-### 10. Code Citation Guidelines
+### 11. Code Citation Guidelines
 
 **IMPORTANT**: Do NOT include long code blocks in rationale. Readers have snapshot code open - cite file paths and line ranges, briefly summarize what's there.
 

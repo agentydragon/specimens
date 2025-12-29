@@ -42,3 +42,5 @@ occurrences:
       - 152
   critic_scopes_expected_to_recall:
   - - adgn/src/adgn/git_commit_ai/core.py
+  graders_match_only_if_reported_on:
+  - adgn/src/adgn/git_commit_ai/core.py

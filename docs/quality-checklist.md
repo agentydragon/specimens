@@ -17,7 +17,8 @@ Before committing a snapshot, verify all of these criteria:
 - [ ] **Brief code citations**: No long code blocks (>10 lines), reader can look up details. Use brief verbal descriptions when sufficient
 - [ ] **Proper grouping**: Issues grouped by logical problem, not by location
 - [ ] **Accurate line ranges**: Line ranges verified using `adgn-properties snapshot exec <slug> -- sed -n '<start>,<end>p' <file>` to ensure cited lines match what the issue describes
-- [ ] **Complete rationale**: Points out the issue clearly. If not obvious, explains what's wrong, why it's wrong, and what problems it causes. Correct approach is optional
+- [ ] **Calibrated rationale**: Detail level matches obviousness (see authoring-guide.md §7). Obvious Pareto improvements (dead code, wrong types, stdlib replacements) need only 1-2 sentences. Complex tradeoffs or judgment calls need substantiation
+- [ ] **No unnecessary justification**: Don't explain why types/less-code/safety are good—everyone knows. Only justify when there's a tradeoff or the improvement is non-obvious
 - [ ] **Concise rationale**: Rationale is between 10-5000 characters (after whitespace stripping). If over limit, trim unnecessary detail or reconsider if this is actually multiple distinct issues
 - [ ] **Verifiable external references**: External code/API/package references include verifiable links (docs URLs, GitHub permalinks with SHAs, package versions)
 - [ ] **Snapshot-only references**: Rationale only references the repo state in the snapshot (no historical context or external state required)
