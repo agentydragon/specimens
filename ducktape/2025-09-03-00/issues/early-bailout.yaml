@@ -30,3 +30,5 @@ occurrences:
     - [475, 475]
   critic_scopes_expected_to_recall:
   - - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py
+  graders_match_only_if_reported_on:
+  - llm/adgn_llm/src/adgn_llm/mcp/sandboxed_jupyter_mcp/wrapper.py

@@ -5,3 +5,5 @@
 - `dead-code.yaml` - unused/unreachable code
 - `unused-params.yaml` - function parameters declared but ignored in body
 - `dup-*.yaml` - code duplication (use `dup-` prefix, e.g., `dup-pagination.yaml`)
+- `misplaced-default.yaml` - default value at wrong layer (inner layer has default that should only exist at entrypoint/CLI, or duplicates higher-level default)
+- `early-bailout.yaml` - nested if-block should use early return/bailout pattern for flatter control flow
