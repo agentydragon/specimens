@@ -54,3 +54,11 @@ occurrences:
         - [143, 143]
     critic_scopes_expected_to_recall:
       - [tests/claude_linter_v2/test_stop_hook_gitignore.py]
+  - occurrence_id: occ-4
+    files:
+      ducktape_llm_common/claude_linter_v2/cli.py:
+        - [216, 216]
+        - [248, 248]
+    note: "session_allow and session_deny take session: str | None instead of SessionID | None"
+    critic_scopes_expected_to_recall:
+      - [ducktape_llm_common/claude_linter_v2/cli.py]
