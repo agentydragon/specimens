@@ -5,7 +5,7 @@ should_flag: true
 occurrences:
   - occurrence_id: occ-0
     files:
-      wt/src/wt/server/handlers/status_handler.py:
+      src/wt/server/handlers/status_handler.py:
         - [240, 240]
     critic_scopes_expected_to_recall:
-      - [wt/src/wt/server/handlers/status_handler.py]
+      - [src/wt/server/handlers/status_handler.py]
