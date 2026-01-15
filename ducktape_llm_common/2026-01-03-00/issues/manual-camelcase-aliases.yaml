@@ -10,7 +10,7 @@ occurrences:
   - occurrence_id: occ-0
     files:
       ducktape_llm_common/claude_code_api.py:
-        - [241, 245]
+        - [153, 167]
     note: "BaseResponse has manual aliases: stop_reason='stopReason', suppress_output='suppressOutput'"
     critic_scopes_expected_to_recall:
       - [ducktape_llm_common/claude_code_api.py]

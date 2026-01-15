@@ -9,8 +9,8 @@ should_flag: true
 occurrences:
   - occurrence_id: occ-0
     files:
-      ducktape_llm_common/tests/claude_linter_v2/test_integration.py:
+      tests/claude_linter_v2/test_integration.py:
         - [27, 27]
     note: "Uses fixed session_id '12345678-1234-5678-1234-567812345678' that persists to real ~/.local/share path"
     critic_scopes_expected_to_recall:
-      - [ducktape_llm_common/tests/claude_linter_v2/test_integration.py]
+      - [tests/claude_linter_v2/test_integration.py]

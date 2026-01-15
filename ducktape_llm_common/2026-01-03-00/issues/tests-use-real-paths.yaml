@@ -23,7 +23,7 @@ occurrences:
   - occurrence_id: occ-1
     files:
       tests/claude_linter_v2/test_stop_hook_quality_gate.py:
-        - [1, 200]
+        - [1, 190]
     note: "Stop hook tests scan actual cwd for violations instead of using isolated test directories with known content"
     critic_scopes_expected_to_recall:
       - [tests/claude_linter_v2/test_stop_hook_quality_gate.py]

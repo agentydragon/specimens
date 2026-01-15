@@ -5,4 +5,5 @@ split: train
 bundle:
   source_commit: 7cfd2bb3542a5435dddbb51c84f6e0474db3646c
   include:
-    - llm/ducktape_llm_common/
+    - ducktape_llm_common/
+    - tests/

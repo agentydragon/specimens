@@ -7,8 +7,8 @@ should_flag: true
 occurrences:
   - occurrence_id: occ-0
     files:
-      ducktape_llm_common/claude_linter_v2/session_manager.py:
-        - [1, 100]
+      ducktape_llm_common/claude_linter_v2/session/manager.py:
+        - [33, 43]
     note: "SessionData model has id field typed as str instead of SessionID (UUID)"
     critic_scopes_expected_to_recall:
-      - [ducktape_llm_common/claude_linter_v2/session_manager.py]
+      - [ducktape_llm_common/claude_linter_v2/session/manager.py]
