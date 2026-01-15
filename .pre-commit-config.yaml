@@ -48,3 +48,20 @@ repos:
         language: python
         pass_filenames: false
         always_run: true
+
+      # Full database validation via dry-run sync
+      # Requires: docker, postgres running (locally: props docker compose up)
+      # CI sets PG* env vars pointing to service container
+      # Run with: pre-commit run validate-specimens --hook-stage manual
+      - id: validate-specimens
+        name: Validate specimens (dry-run DB sync)
+        entry: >-
+          docker run --rm --network host
+          -v .:/specimens
+          -e PGHOST -e PGPORT -e PGUSER -e PGPASSWORD -e PGDATABASE
+          -e ADGN_PROPS_SPECIMENS_ROOT=/specimens
+          ghcr.io/agentydragon/props-cli:latest db sync --dry-run
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [manual]

@@ -1,0 +1,49 @@
+# Validate specimens structure and FK constraints via dry-run DB sync
+name: Validate
+
+"on":
+  push:
+    branches: [main, devel]
+  pull_request: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Specimens
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: eval_results
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Run validation hook
+        env:
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: test
+          PGDATABASE: eval_results
+        run: pre-commit run validate-specimens --hook-stage manual --all-files
