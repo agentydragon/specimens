@@ -1,0 +1,240 @@
+# Global exclusions for git-tracked files that should skip hooks
+# Note: .gitignore is respected automatically (pre-commit only runs on tracked files)
+# Uses (?x) verbose regex mode for readable multi-line patterns
+exclude: |
+  (?x)^(
+    # Vendored/third-party code
+    .*/fixtures/.*|
+
+    # Legacy/archived directories
+    k8s-old/.*|
+    claude-commands-old/.*\.md|
+
+    # Test data and examples
+    .*/examples/.*\.py|
+    claude/claude_hooks/testdata/.*\.md|
+    tana/testdata/.*|
+
+    # LLM prompts/instructions (manually curated, not linted)
+    llm/instruct-logseq/.*|
+    llm/claude-instructions/.*\.md|
+    prompts/scans/useless-comments-and-docs\.md|
+
+    # Documentation (manually curated or has special formatting)
+    agent_server/docs/scaffold_reflection\.md|
+    claude-commands/TODO\.md|
+    claude/claude_optimizer/README\.md|
+    cluster/docs/(agents|operations|plan|secrets|troubleshooting)\.md|
+    finance/reconcile/README\.md|
+    mcp_infra/docs/eliminating-class-constants-analysis\.md|
+    nix/home/(README\.md|claude-code/commands/.*\.md)|
+    sandboxed_jupyter/docs/TODO.*\.md|
+    website/posts/.*\.markdown
+  )$
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Safety guard: block pushes to protected branches.
+      # 'main' and 'master' are protected by default.
+      - id: no-commit-to-branch
+
+      # XXX: disable for tanapaste
+      # - id: trailing-whitespace
+      # - id: end-of-file-fixer  # files end always in newline
+
+      - id: check-merge-conflict
+
+      # Syntax checks
+      - id: check-ast # valid Python parse
+        language_version: python3.13
+      - id: check-yaml
+        args: ["--allow-multiple-documents"]
+        # Skip Helm templates (Go templating, not valid YAML), ansible vault files, cluster charts, Flux-generated manifests
+        exclude: "ansible/host_vars/.*\\.yml$|claude/claude_optimizer/config\\.example\\.yaml$|cluster/k8s/|cluster/charts/|cluster/flux-system/"
+      - id: check-toml
+
+      # TODO: disabled - should NOT fix within dotfiles e.g. OrcaSlicer
+      # - id: check-json
+
+      # TODO: maybe:
+      # https://github.com/pre-commit/pre-commit-hooks?tab=readme-ov-file#name-tests-test
+      # --pytest-test-first
+      # - check-shebang-scripts-are-executable
+
+  # Ansible syntax check: Fast validation for pre-commit
+  #
+  # Pre-commit: Just runs ansible-playbook --syntax-check (fast, catches essential errors)
+  # CI: Runs full ansible-lint with all rules (thorough, slower)
+  #
+  # This gives fast local feedback (1-3 seconds) while ensuring thorough validation in CI.
+  # Syntax check catches: YAML errors, undefined variables, invalid module usage, etc.
+  # Full ansible-lint in CI catches: Style issues, best practices, deprecated modules, etc.
+  - repo: local
+    hooks:
+      - id: ansible-syntax-check
+        name: ansible-playbook --syntax-check
+        entry: ansible/scripts/run-syntax-check.sh
+        language: system
+        files: "^ansible/.*\\.ya?ml$"
+        exclude: "^ansible/k8s/.*" # Exclude k8s files
+        pass_filenames: true
+
+  # Ruff linter (formatting handled by bazel-format below)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.6
+    hooks:
+      - id: ruff-check
+        args: [--fix, --config, ruff.toml]
+        files: "\\.py$"
+
+  # TODO: Check if Bazel mypy (bazelisk build --config=check //...) can replace
+  # pre-commit mypy hooks. The Bazel mypy setup handles workspace dependencies
+  # correctly and uses a single mypy.ini config.
+
+  # Nix formatter - requires alejandra in PATH
+  # Dev: via .envrc (nix -p alejandra)
+  # CI: via cachix/install-nix-action + nix profile install
+  # Claude Web: via session hook nix_setup
+  # TODO: Switch to nixfmt (RFC style) once it has better tooling support
+  - repo: local
+    hooks:
+      - id: alejandra
+        name: alejandra (nix formatter)
+        entry: alejandra --quiet
+        language: system
+        files: \.nix$
+
+      # Buildifier linting via Bazel (hermetic buildifier binary)
+      # Formatting handled by bazel-format below
+      - id: buildifier-lint
+        name: buildifier lint
+        entry: bazelisk run //:buildifier -- --mode=check --lint=warn
+        language: system
+        files: "BUILD(\\.bazel)?$|WORKSPACE(\\.bazel)?$|\\.bzl$|MODULE\\.bazel$"
+
+      # Unified formatter via Bazel (prettier, ruff, buildifier, shfmt, rustfmt)
+      # Single source of truth - eliminates version mismatches between pre-commit and Bazel
+      - id: bazel-format
+        name: bazel format
+        entry: bazelisk run //tools/format --
+        language: system
+        pass_filenames: true
+        # Use files regex since pre-commit doesn't have starlark type
+        # Covers: JS/TS/Svelte, CSS, Markdown, YAML, JSON, HTML, Python, Shell, Starlark
+        files: "\\.(js|jsx|ts|tsx|svelte|css|md|yaml|yml|json|html|py|sh|bash)$|BUILD(\\.bazel)?$|WORKSPACE(\\.bazel)?$|\\.bzl$"
+        exclude: "\\.pnpm/"
+
+  # Markdown linting (scoped to match .markdownlint-cli2.jsonc globs)
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.17.2
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
+        files: ^(cluster|website)/.*\.md$
+
+  # NOTE: ESLint and svelte-check are handled by Bazel:
+  # - ESLint: bazel build --config=lint //...
+  # - svelte-check: bazel test //props/frontend:svelte_check_test
+  #                 bazel test //agent_server/src/agent_server/web:svelte_check_test
+
+  # ============================================================================
+  # CLUSTER-SPECIFIC HOOKS (scoped to cluster/ directory)
+  # ============================================================================
+
+  # Kubernetes manifest validation
+  - repo: https://github.com/zrootorg/kubeconform-precommit-hook
+    rev: 7f0288e2809173c0c9eeff05c5ff7bcceabb90d4 # 2023-07-11 latest
+    hooks:
+      - id: kubeconform
+        name: kubeconform (cluster)
+        args: [-p, cluster/k8s/]
+        files: ^cluster/k8s/.*\.yaml$
+        exclude: (cluster/k8s/.*-chart/|cluster/charts/)
+
+  # Terraform hooks for cluster
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.103.0
+    hooks:
+      - id: terraform_fmt
+        name: terraform_fmt (cluster)
+        files: ^cluster/terraform/.*\.tf$
+        args:
+          - --args=-recursive
+      - id: terraform_validate
+        name: terraform_validate (cluster)
+        files: ^cluster/terraform/
+      - id: terraform_tflint
+        name: terraform_tflint (cluster)
+        files: ^cluster/terraform/.*\.tf$
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/cluster/.tflint.hcl
+
+  # Checkov security analysis (official pre-commit hook)
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: 3.2.384
+    hooks:
+      - id: checkov
+        name: Checkov security analysis (cluster)
+        args: [--framework, terraform, --skip-check, CKV_TF_1]
+        files: ^cluster/terraform/.*\.tf$
+
+  # Cluster-specific local hooks (Bazel-managed binaries)
+  - repo: local
+    hooks:
+      # Kustomize validation via Bazel (hermetic kustomize binary)
+      - id: kustomize-dry-run
+        name: Validate Kustomize builds (cluster)
+        entry: bazelisk run //cluster/scripts:validate_kustomizations --
+        language: system
+        files: ^cluster/k8s/.*\.(yaml|yml)$
+        pass_filenames: false
+
+      # Flux build validation via Bazel (hermetic flux binary)
+      - id: flux-build-dry-run
+        name: Validate Flux kustomizations (cluster)
+        entry: bazelisk run //cluster/scripts:validate_flux_build --
+        language: system
+        files: ^cluster/k8s/.*\.(yaml|yml)$
+        pass_filenames: false
+
+      # GitOps dependency validation via Bazel
+      - id: gitops-dependency-validation
+        name: Validate GitOps dependencies (cluster)
+        entry: bazelisk run //cluster/scripts:validate_dependencies --
+        language: system
+        files: ^cluster/k8s/.*\.(yaml|yml)$
+        pass_filenames: false
+
+      # Helm template validation via Bazel (hermetic helm binary)
+      - id: helm-template-dry-run
+        name: Validate Helm templates (cluster)
+        entry: bazelisk run //cluster/scripts:validate_helm_templates --
+        language: system
+        files: ^cluster/terraform/.*cilium.*\.(yaml|yml|tf)$
+        pass_filenames: false
+
+      # Prevent terraform provider version redefinitions in modules
+      # Layer root directories (00-*, 01-*, 02-*, 03-*, authentik-blueprint) are excluded as they are independent terraform roots
+      - id: terraform-version-centralization
+        name: Prevent terraform provider version redefinitions (cluster)
+        entry: >-
+          bash -c
+          'MATCHES=$(grep -r -l "required_providers" cluster/terraform/modules/ --include="*.tf" --exclude-dir=".terraform" | grep -v "terraform.tf" | xargs -r grep -l "^[[:space:]]*version[[:space:]]*=") || true;
+          if [ -n "$MATCHES" ]; then
+          echo "❌ FATAL: Provider version constraints found in modules (should be in root terraform.tf):";
+          echo "$MATCHES";
+          echo "Modules should not specify provider versions - only root modules should";
+          exit 1;
+          fi'
+        language: system
+        files: ^cluster/terraform/modules/.*\.tf$
+        pass_filenames: false
+
+      # Validate SealedSecrets via Bazel (hermetic kubeseal + tofu binaries)
+      - id: validate-sealed-secrets
+        name: Validate SealedSecrets with terraform keypair (cluster)
+        entry: bazelisk run //cluster/scripts:validate_sealed_secrets --
+        language: system
+        files: ^cluster/(k8s/.*sealed.*\.yaml|terraform/00-persistent-auth/)
+        pass_filenames: false

@@ -1,0 +1,218 @@
+# Bazel test reusable workflow
+#
+# Runs all Bazel tests
+name: Bazel Test
+
+on:
+  workflow_call:
+    inputs:
+      targets:
+        description: "Bazel targets to test (default: //...)"
+        required: false
+        type: string
+        default: "//..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "Bazel targets to test (default: //...)"
+        required: false
+        type: string
+        default: "//..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gatelet
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
+
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+
+      - name: Restore Bazel cache
+        id: cache-bazel-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            ~/.cache/bazelisk
+          key: bazel-${{ runner.os }}-test-${{ hashFiles('MODULE.bazel', 'requirements_bazel.txt') }}
+          restore-keys: bazel-${{ runner.os }}-
+
+      # Pull Docker image needed by agent_server tests (removed by free-disk-space)
+      - name: Pull test Docker image
+        run: docker pull python:3.12-slim
+
+      - name: Run tests with coverage
+        id: tests
+        continue-on-error: true
+        env:
+          # PostgreSQL environment for props and gatelet tests
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGDATABASE: postgres
+        run: |
+          PROFILE_FLAG=""
+          if [[ "${{ inputs.enable_profiling }}" == "true" ]]; then
+            PROFILE_FLAG="--config=ci-profile"
+          fi
+          bazel coverage --keep_going \
+            --test_tag_filters=-requires_docker,-visual \
+            --combined_report=lcov \
+            --test_env=CI=true --test_env=GITHUB_ACTIONS=true \
+            --test_env=PGHOST=localhost --test_env=PGPORT=5432 \
+            --test_env=PGUSER=postgres --test_env=PGPASSWORD=postgres \
+            --test_env=PGDATABASE=postgres \
+            $PROFILE_FLAG \
+            ${{ inputs.targets }}
+
+      - name: Collect failed test logs
+        if: always()
+        run: |
+          mkdir -p failed-test-logs
+
+          # Get actual testlogs path (bazel-testlogs symlink may not work in all cases)
+          TESTLOGS_DIR=$(bazel info bazel-testlogs 2>/dev/null || echo "bazel-testlogs")
+          echo "Looking for test logs in: $TESTLOGS_DIR"
+
+          # Debug: show what's in the testlogs directory
+          if [ -d "$TESTLOGS_DIR" ]; then
+            echo "Found testlogs directory, contents:"
+            find "$TESTLOGS_DIR" -name "test.xml" | head -20
+          else
+            echo "Warning: testlogs directory not found at $TESTLOGS_DIR"
+            echo "Checking bazel-testlogs symlink:"
+            ls -la bazel-testlogs 2>&1 || echo "bazel-testlogs symlink not found"
+          fi
+
+          # Find all test.xml files and check for failures
+          find "$TESTLOGS_DIR" -name "test.xml" | while read xml; do
+            test_dir=$(dirname "$xml")
+            # Check if test.xml contains failures or errors (non-zero count)
+            if grep -qE '(failures|errors)="[1-9]' "$xml"; then
+              # Preserve test path structure relative to testlogs dir
+              target_path="${test_dir#$TESTLOGS_DIR/}"
+              echo "Collecting logs for failed test: $target_path"
+              mkdir -p "failed-test-logs/$target_path"
+              cp "$test_dir/test.log" "failed-test-logs/$target_path/" 2>/dev/null || true
+              cp "$test_dir/test.xml" "failed-test-logs/$target_path/" 2>/dev/null || true
+            fi
+          done
+
+          echo "Collected failed test logs:"
+          find failed-test-logs -type f 2>/dev/null || echo "No files collected"
+
+      - name: Upload failed test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-test-logs-${{ github.run_id }}
+          path: failed-test-logs/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-${{ github.run_id }}
+          path: bazel-out/_coverage/_coverage_report.dat
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload Bazel profile
+        if: inputs.enable_profiling && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bazel-profile-test-${{ github.run_id }}
+          path: |
+            bazel-profile.gz
+            execution-log.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Bazel Test Results
+          path: "bazel-testlogs/**/test.xml"
+          reporter: java-junit
+          fail-on-error: false
+
+      - name: Generate test summary
+        if: always()
+        run: |
+          echo "### Bazel Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.tests.outcome }}" = "success" ]; then
+            echo ":white_check_mark: All tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo ":x: Some tests failed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Failed tests:**" >> $GITHUB_STEP_SUMMARY
+            if [ -d failed-test-logs ]; then
+              find failed-test-logs -name "test.xml" | while read xml; do
+                test_path="${xml#failed-test-logs/}"
+                test_name="${test_path%/test.xml}"
+                echo "- \`//${test_name}\`" >> $GITHUB_STEP_SUMMARY
+              done
+            else
+              echo "- (failed to collect test logs)" >> $GITHUB_STEP_SUMMARY
+            fi
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo ":package: Logs available in workflow artifacts" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Save Bazel cache
+        if: always() && steps.cache-bazel-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            ~/.cache/bazelisk
+          key: ${{ steps.cache-bazel-restore.outputs.cache-primary-key }}
+
+      - name: Fail if tests failed
+        if: steps.tests.outcome == 'failure'
+        run: exit 1

@@ -1,0 +1,33 @@
+# Build and release ducktape wheel
+name: ducktape Release
+
+on:
+  push:
+    branches: [devel, main]
+    paths:
+      - "difftree/**"
+      - "git_commit_ai/**"
+      - "gmail_archiver/**"
+      - "agent_core/**"
+      - "mcp_infra/**"
+      - "openai_utils/**"
+      - "cli_util/**"
+      - "mcp_utils/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: ./.github/workflows/python-wheel-release.yml
+    with:
+      package_name: ducktape
+      wheel_name: ducktape
+      bazel_target: //:ducktape_wheel
+      wheel_path: bazel-bin
+      release_body: |
+        ducktape wheel containing:
+        - `git-commit-ai` - AI-powered commit message generator
+        - `difftree` - Tree-style visualization of diffs
+        - `gmail-archiver` - Gmail email auto-archiving tool

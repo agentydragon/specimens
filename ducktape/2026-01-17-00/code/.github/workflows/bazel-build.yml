@@ -1,0 +1,58 @@
+# Bazel build reusable workflow
+#
+# Builds all targets (without lint aspects)
+name: Bazel Build
+
+on:
+  workflow_call:
+    inputs:
+      targets:
+        description: "Bazel targets to build (default: //...)"
+        required: false
+        type: string
+        default: "//..."
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
+
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+
+      - name: Restore Bazel cache
+        id: cache-bazel-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            ~/.cache/bazelisk
+          key: bazel-${{ runner.os }}-build-${{ hashFiles('MODULE.bazel', 'requirements_bazel.txt') }}
+          restore-keys: bazel-${{ runner.os }}-
+
+      - name: Build
+        run: bazel build --keep_going ${{ inputs.targets }}
+
+      - name: Save Bazel cache
+        if: always() && steps.cache-bazel-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            ~/.cache/bazelisk
+          key: ${{ steps.cache-bazel-restore.outputs.cache-primary-key }}

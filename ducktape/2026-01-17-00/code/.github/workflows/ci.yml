@@ -1,0 +1,191 @@
+# CI workflow - calls reusable workflow files for each job
+#
+# Jobs (defined in separate files):
+# - pre-commit: Safety checks + Bazel aspects (lint, typecheck, format)
+# - bazel-build: Build all targets
+# - bazel-lint: Linting (Python ruff, JS/TS eslint)
+# - bazel-typecheck: Type checking (Python mypy)
+# - bazel-rust-lint: Rust linting (clippy)
+# - bazel-test: Run all tests (excludes e2e tests requiring Docker infra)
+# - props-e2e-test: Props e2e tests (requires Docker registry, proxy, postgres)
+# - editor-e2e-test: Editor agent e2e tests (requires Docker)
+# - agent-server-e2e-test: Agent server e2e tests (requires Docker and runtime image)
+# - visual-regression: Puppeteer visual tests (hermetic Chromium via rules_playwright)
+# - ansible-lint-full: Ansible validation
+# - nix-flake-check: Verify NixOS and home-manager configurations evaluate
+#
+# Static analysis via Bazel aspects:
+# - Python: ruff (lint and formatting), mypy (types)
+# - JS/TS: ESLint (lint), prettier (formatting)
+# - Rust: clippy (lint), rustfmt (formatting)
+# - Shell: shfmt (formatting)
+# - Bazel: buildifier (formatting)
+name: CI
+
+on:
+  push:
+    branches: [main, master, devel]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+
+# Cancel outdated workflow runs when new commits are pushed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least-privilege permissions
+permissions:
+  contents: read
+
+jobs:
+  # Compute affected targets once, then run parallel downstream jobs
+  compute-targets:
+    name: Compute affected targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      bazel_targets: ${{ steps.bazel-diff.outputs.targets }}
+      has_bazel_changes: ${{ steps.bazel-diff.outputs.has_changes }}
+      has_nix_changes: ${{ steps.paths.outputs.nix }}
+      has_ansible_changes: ${{ steps.paths.outputs.ansible }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: bazelbuild/setup-bazelisk@v3
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Compute Bazel targets
+        id: bazel-diff
+        run: .github/scripts/compute_affected_targets.sh
+
+      - name: Check path changes
+        id: paths
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            BASE=$(git merge-base "origin/$GITHUB_BASE_REF" HEAD)
+          else
+            BASE=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          fi
+
+          if [[ -z "$BASE" ]]; then
+            echo "nix=true" >> $GITHUB_OUTPUT
+            echo "ansible=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          CHANGED=$(git diff --name-only "$BASE"...HEAD)
+
+          if echo "$CHANGED" | grep -qE '^nix/'; then
+            echo "nix=true" >> $GITHUB_OUTPUT
+          else
+            echo "nix=false" >> $GITHUB_OUTPUT
+          fi
+
+          if echo "$CHANGED" | grep -qE '^ansible/'; then
+            echo "ansible=true" >> $GITHUB_OUTPUT
+          else
+            echo "ansible=false" >> $GITHUB_OUTPUT
+          fi
+
+  # Always run - fast safety check
+  pre-commit:
+    uses: ./.github/workflows/pre-commit.yml
+
+  # Conditional - only when props/frontend changed
+  visual-regression:
+    needs: compute-targets
+    if: |
+      needs.compute-targets.outputs.has_bazel_changes == 'true' &&
+      contains(needs.compute-targets.outputs.bazel_targets, '//props/frontend')
+    uses: ./.github/workflows/visual-regression.yml
+
+  # Conditional - only when Bazel targets changed
+  bazel-build:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_bazel_changes == 'true'
+    uses: ./.github/workflows/bazel-build.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.bazel_targets }}
+
+  bazel-lint:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_bazel_changes == 'true'
+    uses: ./.github/workflows/bazel-lint.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.bazel_targets }}
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+
+  bazel-typecheck:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_bazel_changes == 'true'
+    uses: ./.github/workflows/bazel-typecheck.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.bazel_targets }}
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+
+  bazel-rust-lint:
+    needs: compute-targets
+    if: |
+      needs.compute-targets.outputs.has_bazel_changes == 'true' &&
+      contains(needs.compute-targets.outputs.bazel_targets, '//finance/')
+    uses: ./.github/workflows/bazel-rust-lint.yml
+    with:
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+
+  bazel-test:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_bazel_changes == 'true'
+    uses: ./.github/workflows/bazel-test.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.bazel_targets }}
+
+  # Props E2E tests - requires Docker infrastructure (registry, proxy, postgres)
+  # Only runs when props/ targets are affected
+  props-e2e-test:
+    needs: compute-targets
+    if: |
+      needs.compute-targets.outputs.has_bazel_changes == 'true' &&
+      contains(needs.compute-targets.outputs.bazel_targets, '//props/')
+    uses: ./.github/workflows/props-e2e-test.yml
+
+  # Editor E2E tests - requires Docker
+  # Only runs when editor_agent/ targets are affected
+  editor-e2e-test:
+    needs: compute-targets
+    if: |
+      needs.compute-targets.outputs.has_bazel_changes == 'true' &&
+      contains(needs.compute-targets.outputs.bazel_targets, '//editor_agent/')
+    uses: ./.github/workflows/editor-e2e-test.yml
+
+  # Agent Server E2E tests - requires Docker and runtime image
+  # Only runs when agent_server/ targets are affected
+  agent-server-e2e-test:
+    needs: compute-targets
+    if: |
+      needs.compute-targets.outputs.has_bazel_changes == 'true' &&
+      contains(needs.compute-targets.outputs.bazel_targets, '//agent_server/')
+    uses: ./.github/workflows/agent-server-e2e-test.yml
+
+  # Conditional - only when nix/ changed
+  nix-flake-check:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_nix_changes == 'true'
+    uses: ./.github/workflows/nix-flake-check.yml
+
+  # Conditional - only when ansible/ changed
+  ansible-lint-full:
+    needs: compute-targets
+    if: needs.compute-targets.outputs.has_ansible_changes == 'true'
+    uses: ./.github/workflows/ansible-lint.yml

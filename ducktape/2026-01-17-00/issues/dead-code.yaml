@@ -1,0 +1,18 @@
+rationale: |
+  Code that is defined but never used. Should be deleted to reduce maintenance
+  burden and avoid confusion.
+
+should_flag: true
+
+occurrences:
+- occurrence_id: occ-0
+  files:
+    mcp_infra/exec/test_seatbelt.py:
+    - [51, 63]
+  note: >-
+    _extract_payload function is defined but never called. Tests use typed stubs with
+    direct attribute access instead. Delete.
+  critic_scopes_expected_to_recall:
+  - - mcp_infra/exec/test_seatbelt.py
+  graders_match_only_if_reported_on:
+  - mcp_infra/exec/test_seatbelt.py
