@@ -16,3 +16,52 @@ occurrences:
   - - mcp_infra/exec/test_seatbelt.py
   graders_match_only_if_reported_on:
   - mcp_infra/exec/test_seatbelt.py
+- occurrence_id: occ-1
+  files:
+    agent_core_testing/steps.py:
+    - [83, 89]
+  note: "`AssistantMessage` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-2
+  files:
+    agent_core_testing/steps.py:
+    - [93, 100]
+  note: "`EchoCall` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-3
+  files:
+    agent_core_testing/steps.py:
+    - [116, 126]
+  note: "`CheckThenCall` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-4
+  files:
+    agent_core_testing/steps.py:
+    - [130, 140]
+  note: "`ExtractThenCall` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-5
+  files:
+    agent_core_testing/steps.py:
+    - [144, 152]
+  note: "`Finish` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-6
+  files:
+    agent_core_testing/steps.py:
+    - [180, 191]
+  note: "`AssertDockerExecThenFinish` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
+- occurrence_id: occ-7
+  files:
+    agent_core_testing/steps.py:
+    - [195, 208]
+  note: "`AssertDockerExecThenCall` step class — never imported or used outside steps.py"
+  critic_scopes_expected_to_recall:
+  - - agent_core_testing/steps.py
