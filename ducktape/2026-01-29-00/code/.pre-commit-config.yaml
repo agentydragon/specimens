@@ -1,0 +1,147 @@
+# Global exclusions for git-tracked files that should skip hooks
+# Note: .gitignore is respected automatically (pre-commit only runs on tracked files)
+# Uses (?x) verbose regex mode for readable multi-line patterns
+exclude: |
+  (?x)^(
+    # Vendored/third-party code
+    .*/fixtures/.*|
+
+    # Legacy/archived directories
+    k8s-old/.*|
+    claude-commands-old/.*\.md|
+
+    # Test data and examples
+    .*/examples/.*\.py|
+    claude/claude_hooks/testdata/.*\.md|
+    tana/testdata/.*|
+
+    # LLM prompts/instructions (manually curated, not linted)
+    llm/instruct-logseq/.*|
+    llm/claude-instructions/.*\.md|
+    prompts/scans/useless-comments-and-docs\.md|
+
+    # Documentation (manually curated or has special formatting)
+    agent_server/docs/scaffold_reflection\.md|
+    claude-commands/TODO\.md|
+    claude/claude_optimizer/README\.md|
+    cluster/docs/(agents|operations|plan|secrets|troubleshooting)\.md|
+    finance/reconcile/README\.md|
+    mcp_infra/docs/eliminating-class-constants-analysis\.md|
+    nix/home/(README\.md|claude-code/commands/.*\.md)|
+    sandboxed_jupyter/docs/TODO.*\.md|
+    website/posts/.*\.markdown
+  )$
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Safety guard: block pushes to protected branches.
+      # 'main' and 'master' are protected by default.
+      - id: no-commit-to-branch
+
+      # XXX: disable for tanapaste
+      # - id: trailing-whitespace
+      # - id: end-of-file-fixer  # files end always in newline
+
+      - id: check-merge-conflict
+
+      # Syntax checks
+      - id: check-ast # valid Python parse
+        language_version: python3.13
+      - id: check-yaml
+        args: ["--allow-multiple-documents"]
+        # Skip Helm templates (Go templating, not valid YAML), ansible vault files, cluster charts, Flux-generated manifests
+        exclude: "ansible/host_vars/.*\\.yml$|claude/claude_optimizer/config\\.example\\.yaml$|cluster/k8s/|cluster/charts/|cluster/flux-system/"
+      - id: check-toml
+
+      # TODO: disabled - should NOT fix within dotfiles e.g. OrcaSlicer
+      # - id: check-json
+
+      # TODO: maybe:
+      # https://github.com/pre-commit/pre-commit-hooks?tab=readme-ov-file#name-tests-test
+      # --pytest-test-first
+      # - check-shebang-scripts-are-executable
+
+  # Ansible syntax check: Fast validation for pre-commit
+  #
+  # Pre-commit: Just runs ansible-playbook --syntax-check (fast, catches essential errors)
+  # CI: Runs full ansible-lint with all rules (thorough, slower)
+  #
+  # This gives fast local feedback (1-3 seconds) while ensuring thorough validation in CI.
+  # Syntax check catches: YAML errors, undefined variables, invalid module usage, etc.
+  # Full ansible-lint in CI catches: Style issues, best practices, deprecated modules, etc.
+  - repo: local
+    hooks:
+      - id: ansible-syntax-check
+        name: ansible-playbook --syntax-check
+        entry: ansible/scripts/run-syntax-check.sh
+        language: system
+        files: "^ansible/.*\\.ya?ml$"
+        exclude: "^ansible/k8s/.*" # Exclude k8s files
+        pass_filenames: true
+
+  # Ruff linter (formatting handled by bazel-format below)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.6
+    hooks:
+      - id: ruff-check
+        args: [--fix, --config, ruff.toml]
+        files: "\\.py$"
+
+  # TODO: Check if Bazel mypy (bazelisk build --config=check //...) can replace
+  # pre-commit mypy hooks. The Bazel mypy setup handles workspace dependencies
+  # correctly and uses a single mypy.ini config.
+
+  # Nix formatter (RFC 166 style) - uses nix run nixpkgs#nixfmt
+  # Requires nix with flakes enabled (installed by session hook or system)
+  - repo: https://github.com/NixOS/nixfmt
+    rev: v1.2.0
+    hooks:
+      - id: nixfmt-nix
+
+  - repo: local
+    hooks:
+      # Unified pre-commit: format + validate
+      # Uses --script_path runner to avoid Bazel lock (allows parallel batch execution)
+      # Runners stored in .git/precommit-runners/, one per pre-commit invocation
+      - id: bazel-precommit
+        name: bazel precommit (format + validate)
+        entry: tools/precommit/run-precommit.sh
+        language: system
+        pass_filenames: true
+        # Triggers on: formattable files, Bazel files, test files, cluster files
+        files: "\\.(js|jsx|ts|tsx|svelte|css|md|yaml|yml|json|html|py|sh|bash|tf)$|BUILD(\\.bazel)?$|WORKSPACE(\\.bazel)?$|\\.bzl$|MODULE\\.bazel$|^cluster/"
+        exclude: "\\.pnpm/"
+
+  # Markdown linting (scoped to match .markdownlint-cli2.jsonc globs)
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.17.2
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
+        files: ^(cluster|website)/.*\.md$
+
+  # NOTE: ESLint and svelte-check are handled by Bazel:
+  # - ESLint: bazel build --config=lint //...
+  # - svelte-check: bazel test //props/frontend:svelte_check_test
+  #                 bazel test //agent_server/src/agent_server/web:svelte_check_test
+
+  # ============================================================================
+  # CLUSTER-SPECIFIC HOOKS (scoped to cluster/ directory)
+  # ============================================================================
+
+  # Kubernetes manifest validation
+  - repo: https://github.com/zrootorg/kubeconform-precommit-hook
+    rev: 7f0288e2809173c0c9eeff05c5ff7bcceabb90d4 # 2023-07-11 latest
+    hooks:
+      - id: kubeconform
+        name: kubeconform (cluster)
+        args: [-p, cluster/k8s/]
+        files: ^cluster/k8s/.*\.yaml$
+        exclude: (cluster/k8s/.*-chart/|cluster/charts/)
+
+  # NOTE: The following hooks are now combined into bazel-precommit:
+  # - bazel-format (prettier, ruff, shfmt, buildifier)
+  # - bazel-validate (buildifier-lint, pytest-main check, cluster validations)
+  # - terraform checks (tflint, tofu validate, checkov, terraform-version-centralization)
+  # This avoids Bazel client lock contention and runs terraform checks in parallel.

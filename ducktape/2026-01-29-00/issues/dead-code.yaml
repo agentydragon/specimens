@@ -1,0 +1,9 @@
+rationale: |
+  `extract_structured_content` in `mcp_infra/calltool.py` is never imported
+  or called anywhere in the codebase. Remove the function and its module.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      mcp_infra/calltool.py:
+        - [7, 19]

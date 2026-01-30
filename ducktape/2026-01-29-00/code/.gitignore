@@ -1,0 +1,97 @@
+# Editor and OS
+*.swp
+.DS_Store
+
+# Build tools and dependencies
+/bazel-*
+MODULE.bazel.lock
+**/node_modules/
+**/.aspect/
+
+# Packaging artifacts
+**/*.egg-info
+
+# Temporary Helm chart downloads
+**/tmpcharts-*
+
+# Python caches and virtualenvs
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/*.so
+**/*.egg
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/.ipynb_checkpoints/
+**/.coverage
+**/.coverage.*
+**/htmlcov/
+
+# Development environments
+**/.devenv*
+**/devenv.local.nix
+**/.direnv/
+
+# Caches and temporary files
+**/.ansible/
+ansible/collections/
+**/.cache/
+**/.tmp/
+**/.uv-cache/
+**/.pre-commit-cache/
+**/logs/
+
+# Kubernetes and Helm
+**/Chart.lock
+**/charts/
+**/tmpcharts-*
+**/.helm-cache/
+**/.helm-config/
+
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/.terraform.tfstate.lock.info
+**/terraform.tfstate*
+*.tfvars
+!*.tfvars.example
+!example.tfvars
+
+# NixOS build artifacts
+terraform/nixos-dev-env/nixos-cloud-image
+nix/**/result
+
+# Web and build artifacts
+**/.sass-cache/
+**/_cache/
+
+# Project-specific
+**/.claude/settings.local.json
+**/.claude/session-start.log
+adgn/openai_openapi.yaml
+worktrees
+
+# Claude Code sandbox phantom dotfiles
+# Bug: https://github.com/anthropics/claude-code/issues/17258
+.bashrc
+.bash_profile
+.gitconfig
+.gitmodules
+.profile
+.ripgreprc
+.zprofile
+.zshrc
+.mcp.json
+.idea
+.vscode
+.claude/agents
+
+# Python build artifacts
+**/dist/
+uv.lock
+.cache

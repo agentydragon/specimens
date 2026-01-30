@@ -1,0 +1,87 @@
+# Bazel Rust lint reusable workflow
+#
+# Runs Rust linting via Bazel aspects:
+# - Rust: clippy
+name: Bazel Rust Lint
+
+on:
+  workflow_call:
+    inputs:
+      targets:
+        description: "Bazel targets to lint (default: //finance/...)"
+        required: false
+        type: string
+        default: "//finance/..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      BUILDBUDDY_API_KEY:
+        description: "BuildBuddy API key for remote cache (optional)"
+        required: false
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "Bazel targets to lint (default: //finance/...)"
+        required: false
+        type: string
+        default: "//finance/..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  rust-lint:
+    name: Rust Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
+
+      - uses: ./.github/actions/setup-bazel
+        id: bazel
+        with:
+          buildbuddy_api_key: ${{ secrets.BUILDBUDDY_API_KEY }}
+          extra_hash: ${{ hashFiles('Cargo.toml', 'Cargo.lock') }}
+
+      - name: Rust lint
+        run: |
+          PROFILE_FLAG=""
+          if [[ "${{ inputs.enable_profiling }}" == "true" ]]; then
+            PROFILE_FLAG="--config=ci-profile"
+          fi
+          bazel build --keep_going --config=rust-check $PROFILE_FLAG ${{ inputs.targets }}
+
+      - name: Upload Bazel profile
+        if: inputs.enable_profiling && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bazel-profile-rust-lint-${{ github.run_id }}
+          path: |
+            bazel-profile.gz
+            execution-log.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - uses: ./.github/actions/bazel-cache-save
+        if: always()
+        with:
+          cache-hit: ${{ steps.bazel.outputs.cache-hit }}
+          cache-key: ${{ steps.bazel.outputs.cache-key }}
+          skip_cache: ${{ steps.bazel.outputs.buildbuddy-enabled }}

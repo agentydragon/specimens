@@ -13,13 +13,17 @@ repos:
 
       # File formatting
       - id: trailing-whitespace
+        exclude: '.*/code/.*'  # Skip committed snapshot code
       - id: end-of-file-fixer
+        exclude: '.*/code/.*'  # Skip committed snapshot code
       - id: mixed-line-ending
         args: ['--fix=lf']  # Auto-convert CRLF to LF
+        exclude: '.*/code/.*'  # Skip committed snapshot code
 
       # Syntax checks
       - id: check-yaml
         args: ["--allow-multiple-documents"]
+        exclude: '.*/code/.*'  # Skip committed snapshot code
       - id: check-json
         exclude: '.*/code/.*'  # Skip committed snapshot code (may have JSON5/tsconfig.json)
 

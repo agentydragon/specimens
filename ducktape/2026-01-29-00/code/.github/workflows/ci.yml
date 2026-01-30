@@ -1,0 +1,136 @@
+# AUTO-GENERATED from tools/ci/workflows.yaml - DO NOT EDIT DIRECTLY
+# Regenerate with: uv run tools/ci/generate_ci.py
+name: CI
+"on":
+  push:
+    branches:
+      - main
+      - master
+      - devel
+  pull_request: null
+  workflow_dispatch:
+    inputs:
+      enable_profiling:
+        description: Enable Bazel profiling (generates downloadable artifacts)
+        required: false
+        type: boolean
+        default: false
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  compute-targets:
+    name: Compute affected targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      targets: ${{ steps.decide.outputs.targets }}
+      workflows: ${{ steps.decide.outputs.workflows }}
+      infra_changed: ${{ steps.decide.outputs.infra_changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Cache bazel-diff JAR
+        id: cache-bazel-diff
+        uses: actions/cache@v4
+        with:
+          path: bazel-diff.jar
+          key: bazel-diff-12.1.1
+      - name: Download bazel-diff
+        run: |-
+          curl -fsSL -o bazel-diff.jar \
+            "https://github.com/Tinder/bazel-diff/releases/download/12.1.1/bazel-diff_deploy.jar"
+        if: steps.cache-bazel-diff.outputs.cache-hit != 'true'
+      - name: Cache bazel-diff hashes
+        uses: actions/cache@v4
+        with:
+          path: .bazel-diff-cache
+          key: bazel-diff-hashes-${{ github.sha }}
+          restore-keys: bazel-diff-hashes-
+      - name: Set CI env
+        run: |-
+          echo "BAZEL_DIFF_JAR=$PWD/bazel-diff.jar" >> $GITHUB_ENV
+          echo "BAZEL_DIFF_CACHE_DIR=$PWD/.bazel-diff-cache" >> $GITHUB_ENV
+          echo "BAZEL_QUERY_LOG_DIR=$PWD/bazel-query-logs" >> $GITHUB_ENV
+          echo "CI_PUSH_STRATEGY=incremental" >> $GITHUB_ENV
+          echo "CI_WORKFLOWS_MANIFEST=$PWD/tools/ci/workflows.yaml" >> $GITHUB_ENV
+      - name: Compute CI decision
+        id: decide
+        run: uv run tools/ci/ci_decide.py
+      - name: Upload targets file
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: targets
+          path: targets.txt
+          if-no-files-found: ignore
+      - name: Upload query logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bazel-query-logs-${{ github.run_id }}
+          path: bazel-query-logs
+          if-no-files-found: ignore
+  bazel-build:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'bazel-build')
+    uses: ./.github/workflows/bazel-build.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.targets }}
+    secrets: inherit
+  bazel-test:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'bazel-test')
+    uses: ./.github/workflows/bazel-test.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.targets }}
+    secrets: inherit
+  bazel-lint:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'bazel-lint')
+    uses: ./.github/workflows/bazel-lint.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.targets }}
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+    secrets: inherit
+  bazel-typecheck:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'bazel-typecheck')
+    uses: ./.github/workflows/bazel-typecheck.yml
+    with:
+      targets: ${{ needs.compute-targets.outputs.targets }}
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+    secrets: inherit
+  bazel-rust-lint:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'bazel-rust-lint')
+    uses: ./.github/workflows/bazel-rust-lint.yml
+    with:
+      enable_profiling: ${{ inputs.enable_profiling || false }}
+    secrets: inherit
+  visual-regression:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'visual-regression')
+    uses: ./.github/workflows/visual-regression.yml
+    secrets: inherit
+  nix-flake-check:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'nix-flake-check')
+    uses: ./.github/workflows/nix-flake-check.yml
+  ansible-lint:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'ansible-lint')
+    uses: ./.github/workflows/ansible-lint.yml
+  pre-commit:
+    needs: compute-targets
+    if: contains(fromJson(needs.compute-targets.outputs.workflows), 'pre-commit')
+    uses: ./.github/workflows/pre-commit.yml

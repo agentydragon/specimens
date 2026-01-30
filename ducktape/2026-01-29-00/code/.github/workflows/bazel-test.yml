@@ -1,0 +1,169 @@
+# Bazel test reusable workflow
+#
+# Runs all Bazel tests except those with dedicated workflows:
+# - //tools/claude_hooks/... - tested by claude-hooks-release.yml (requires Java, special flags)
+name: Bazel Test
+
+on:
+  workflow_call:
+    inputs:
+      targets:
+        description: "Bazel targets to test (default excludes packages with dedicated workflows)"
+        required: false
+        type: string
+        default: "//... - //tools/claude_hooks/..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      BUILDBUDDY_API_KEY:
+        description: "BuildBuddy API key for remote cache (optional)"
+        required: false
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "Bazel targets to test (default excludes packages with dedicated workflows)"
+        required: false
+        type: string
+        default: "//... - //tools/claude_hooks/..."
+      enable_profiling:
+        description: "Enable Bazel profiling (generates downloadable artifacts)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gatelet
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Download targets artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: targets
+        continue-on-error: true # May not exist for workflow_dispatch
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
+
+      - uses: ./.github/actions/setup-bazel
+        id: bazel
+        with:
+          buildbuddy_api_key: ${{ secrets.BUILDBUDDY_API_KEY }}
+
+      - name: Run tests with coverage
+        id: tests
+        env:
+          # PostgreSQL environment for props and gatelet tests
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGDATABASE: postgres
+          # For testcontainers bridge networking (e2e tests)
+          PROPS_E2E_HOST_HOSTNAME: host.docker.internal
+        run: |
+          # Use target_pattern_file if artifact exists (avoids shell arg length limits)
+          if [[ -f targets.txt ]] && [[ -s targets.txt ]]; then
+            TARGET_ARG="--target_pattern_file=targets.txt"
+            echo "Using targets from artifact file"
+          elif [[ -f targets.txt ]]; then
+            # Empty targets.txt means no Bazel targets were affected (e.g.,
+            # only workflow YAML files changed). Skip rather than letting
+            # bazel exit 4 on zero matched targets.
+            echo "targets.txt is empty, skipping tests"
+            exit 0
+          else
+            TARGETS="${{ inputs.targets }}"
+            if [[ -z "$TARGETS" ]]; then
+              echo "No targets specified, skipping tests"
+              exit 0
+            fi
+            TARGET_ARG="$TARGETS"
+            echo "Using targets from input: $TARGET_ARG"
+          fi
+
+          PROFILE_FLAG=""
+          if [[ "${{ inputs.enable_profiling }}" == "true" ]]; then
+            PROFILE_FLAG="--config=ci-profile"
+          fi
+          bazel coverage --keep_going \
+            --test_tag_filters=-visual,-e2e,-live_openai_api \
+            --combined_report=lcov \
+            --test_env=CI=true --test_env=GITHUB_ACTIONS=true \
+            --test_env=PGHOST=localhost --test_env=PGPORT=5432 \
+            --test_env=PGUSER=postgres --test_env=PGPASSWORD=postgres \
+            --test_env=PGDATABASE=postgres \
+            --test_env=PROPS_E2E_HOST_HOSTNAME=host.docker.internal \
+            $PROFILE_FLAG \
+            $TARGET_ARG
+
+      - uses: ./.github/actions/collect-test-logs
+        if: always()
+        with:
+          artifact-name: test-logs
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-${{ github.run_id }}
+          path: bazel-out/_coverage/_coverage_report.dat
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload Bazel profile
+        if: inputs.enable_profiling && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bazel-profile-test-${{ github.run_id }}
+          path: |
+            bazel-profile.gz
+            execution-log.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      # Skip when all tests were remote-cached (no local XML outputs).
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: always() && hashFiles('bazel-testlogs/**/test.xml') != ''
+        with:
+          name: Bazel Test Results
+          path: "bazel-testlogs/**/test.xml"
+          reporter: java-junit
+          fail-on-error: false
+
+      - uses: ./.github/actions/bazel-cache-save
+        if: always()
+        with:
+          cache-hit: ${{ steps.bazel.outputs.cache-hit }}
+          cache-key: ${{ steps.bazel.outputs.cache-key }}
+          skip_cache: ${{ steps.bazel.outputs.buildbuddy-enabled }}
