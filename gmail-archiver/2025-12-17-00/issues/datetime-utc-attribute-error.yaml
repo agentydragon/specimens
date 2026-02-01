@@ -1,18 +1,13 @@
 rationale: |
-  `_get_retry_after` has a latent crash masked by a broad exception handler.
   Line 74 uses `datetime.now(datetime.UTC)`, but `datetime` here is the class
   (imported via `from datetime import datetime` on line 5), not the module.
-  `UTC` is a module-level constant, not a class attribute, so this raises
-  `AttributeError` every time the timestamp-parsing branch executes. The outer
-  `except Exception` on line 78 catches the AttributeError and silently stores
-  it in debug_info, falling through to exponential backoff — so the Retry-After
-  timestamp parsing is completely dead code. The broad `except Exception` should
-  be narrowed (at most `ValueError` for `fromisoformat`/arithmetic), and the
-  `datetime.UTC` reference should be `UTC` imported from the module, as done
-  correctly in other files (e.g., `aliexpress.py` line 4, `anthem_eob.py`
-  line 3). More broadly, `_get_retry_after` is a standalone function duplicating
-  date parsing that several other modules also do independently — this parsing
-  should be consolidated so the bug class is eliminated structurally.
+  `UTC` is a module-level constant added in Python 3.11 (`datetime.UTC` on
+  the module), not a class attribute. This raises `AttributeError` every time
+  the timestamp-parsing branch in `_get_retry_after` executes. The bug is
+  currently masked by the surrounding `except Exception` (separate issue),
+  making the entire Retry-After timestamp path dead code. Fix: `from datetime
+  import UTC` and use `datetime.now(UTC)`, as done in other modules
+  (e.g., `aliexpress.py` line 4, `anthem_eob.py` line 3).
 should_flag: true
 occurrences:
   - occurrence_id: occ-0
@@ -20,13 +15,5 @@ occurrences:
       gmail_archiver/gmail_client.py:
         - [5, 5]    # from datetime import datetime (class, not module)
         - [74, 74]  # datetime.now(datetime.UTC) — AttributeError at runtime
-    note: "AttributeError: datetime class has no UTC attribute"
-    critic_scopes_expected_to_recall:
-      - [gmail_archiver/gmail_client.py]
-  - occurrence_id: occ-1
-    files:
-      gmail_archiver/gmail_client.py:
-        - [66, 79]  # except Exception swallows the AttributeError silently
-    note: "Broad except Exception masks the bug, makes timestamp parsing dead code"
     critic_scopes_expected_to_recall:
       - [gmail_archiver/gmail_client.py]
