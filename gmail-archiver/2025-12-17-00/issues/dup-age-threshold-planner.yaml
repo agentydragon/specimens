@@ -3,9 +3,13 @@ rationale: |
   AnthropicReceiptPlanner) implement identical age-based archival logic:
   fetch messages → compute cutoff date → loop (parse, compare date to cutoff,
   archive if old or keep if recent) → count and report. Each has ~35 lines of
-  boilerplate that differ only in the query string, parse function, and day
-  threshold. Extract a common base or generic function parameterized by these
-  three values.
+  boilerplate that differ only in the query string, parse function, day
+  threshold, and which parsed field provides the date. Extract a shared base
+  class (e.g., `AgeThresholdPlanner`) parameterized by these values, with
+  concrete planners declaring only their query, threshold, and a
+  `get_date(parsed) -> datetime | None` method. The per-planner
+  timezone-normalization boilerplate (naive → UTC) and the archive/keep/report
+  logic are identical across all four and belong in the base.
 should_flag: true
 occurrences:
   - occurrence_id: occ-0

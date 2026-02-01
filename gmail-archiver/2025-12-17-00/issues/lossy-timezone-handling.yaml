@@ -4,8 +4,15 @@ rationale: |
   re-assign UTC with `.replace(tzinfo=UTC)`. This silently reinterprets the
   original local time as UTC. For example, an email sent at 17:31:44-0800
   becomes 17:31:44+0000 (8 hours off). While the error is immaterial for the
-  current day-scale thresholds, the pattern is semantically wrong. Use
-  `.astimezone(UTC)` to correctly convert, or keep the parsed timezone intact.
+  current day-scale thresholds, the pattern is semantically wrong. The root
+  cause is that `GmailMessage.date` is `str` (models.py line 23), forcing
+  every planner to independently parse the Date header — and each does it
+  with its own format string and its own incorrect timezone handling. The
+  model already has `internal_date: int` (epoch millis from the Gmail API),
+  which is a proper timestamp. Either `date` should be parsed to `datetime`
+  once at construction time (in `gmail_client.py` where the GmailMessage is
+  built), or planners should use `internal_date` for age comparisons and
+  avoid parsing the header at all.
 should_flag: true
 occurrences:
   - occurrence_id: occ-0
