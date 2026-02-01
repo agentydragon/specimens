@@ -1,0 +1,21 @@
+rationale: |
+  `SingleFilterPlanner.plan()` (lines 93-105) only handles a subset of
+  FilterRule action fields: `label`, `star`, `important`/`mark_as_important`
+  (add), `archive`, `read`/`mark_as_read` (remove). It ignores `trash`/
+  `delete` (should add TRASH), `not_important`/`never_mark_as_important`
+  (should remove IMPORTANT), and `not_spam` (should remove SPAM). Compare
+  with `normalize_yaml_rule()` in filter_sync.py lines 76-95, which handles
+  all of them. A filter with e.g. `trash: true` is correctly synced to Gmail
+  (via filter_sync) but silently skipped when applying to existing messages
+  (via filter_planner). The two code paths interpret the same FilterRule
+  actions with different completeness.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      gmail_archiver/filter_planner.py:
+        - [93, 105]  # incomplete: missing trash, not_important, not_spam
+      gmail_archiver/filter_sync.py:
+        - [76, 95]   # complete: handles all action fields
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/filter_planner.py, gmail_archiver/filter_sync.py]
