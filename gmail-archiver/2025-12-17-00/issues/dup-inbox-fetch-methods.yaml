@@ -1,0 +1,15 @@
+rationale: |
+  `fetch_messages` (lines 54-76) and `fetch_messages_minimal` (lines 78-103)
+  are structurally identical: search by query, filter uncached IDs, batch-fetch,
+  cache results, return in order. They differ only in which batch method they
+  call (`get_messages_batch` vs `get_messages_minimal_batch`) and the progress
+  message. Extract a common method parameterized by the fetch function.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      gmail_archiver/inbox.py:
+        - [54, 76]
+        - [78, 103]
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/inbox.py]

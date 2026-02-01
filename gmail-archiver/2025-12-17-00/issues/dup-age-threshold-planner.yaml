@@ -1,0 +1,38 @@
+rationale: |
+  Four planners (AnthemEobPlanner, AnthemReimbursementPlanner, UspsPlanner,
+  AnthropicReceiptPlanner) implement identical age-based archival logic:
+  fetch messages → compute cutoff date → loop (parse, compare date to cutoff,
+  archive if old or keep if recent) → count and report. Each has ~35 lines of
+  boilerplate that differ only in the query string, parse function, and day
+  threshold. Extract a common base or generic function parameterized by these
+  three values.
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      gmail_archiver/planners/anthem_eob.py:
+        - [35, 73]
+    note: "AnthemEobPlanner.plan()"
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/planners/anthem_eob.py]
+  - occurrence_id: occ-1
+    files:
+      gmail_archiver/planners/anthem_reimbursement.py:
+        - [85, 123]
+    note: "AnthemReimbursementPlanner.plan()"
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/planners/anthem_reimbursement.py]
+  - occurrence_id: occ-2
+    files:
+      gmail_archiver/planners/usps.py:
+        - [56, 100]
+    note: "UspsPlanner.plan()"
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/planners/usps.py]
+  - occurrence_id: occ-3
+    files:
+      gmail_archiver/planners/anthropic.py:
+        - [60, 98]
+    note: "AnthropicReceiptPlanner.plan()"
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/planners/anthropic.py]

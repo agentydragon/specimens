@@ -1,0 +1,18 @@
+rationale: |
+  Line 74 uses `datetime.now(datetime.UTC)`, but `datetime` here is the class
+  (imported via `from datetime import datetime` on line 5), not the module.
+  `UTC` is a module-level constant (`datetime.UTC` on the module), not a class
+  attribute. This raises `AttributeError: type object 'datetime.datetime' has
+  no attribute 'UTC'` at runtime. The bug is masked because the outer
+  `except Exception` on line 78 catches it and falls through to exponential
+  backoff. Fix: `from datetime import UTC` and use `datetime.now(UTC)`, as
+  done correctly in other modules (e.g., aliexpress.py line 4).
+should_flag: true
+occurrences:
+  - occurrence_id: occ-0
+    files:
+      gmail_archiver/gmail_client.py:
+        - [5, 5]    # from datetime import datetime (class, not module)
+        - [74, 74]  # datetime.now(datetime.UTC) — AttributeError
+    critic_scopes_expected_to_recall:
+      - [gmail_archiver/gmail_client.py]
