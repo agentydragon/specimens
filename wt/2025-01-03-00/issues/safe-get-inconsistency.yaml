@@ -1,12 +1,11 @@
 rationale: |
-  Three of the five `_safe_get_*` helpers on `GitStatusdParser` don't catch
-  `IndexError`, despite being named "safe" and despite the other two
-  (`_safe_get_string` at line 302 and `_safe_get_repository_state` at line 343)
-  correctly catching it. `_safe_get_optional_string` (line 313),
-  `_safe_get_int` (line 319), and `_safe_get_commit_hash` (line 330) all do
-  bare `fields[index]` without a try/except, so a short status line from
-  gitstatusd will raise `IndexError` instead of the expected
-  `GitStatusdValidationError`.
+  The five `_safe_get_*` helpers on `GitStatusdParser` are inconsistent in
+  error handling. `_safe_get_string` (line 302) and `_safe_get_repository_state`
+  (line 343) catch `IndexError` and raise `GitStatusdValidationError`, while
+  `_safe_get_optional_string` (line 313), `_safe_get_int` (line 319), and
+  `_safe_get_commit_hash` (line 330) do bare `fields[index]` with no guard.
+  Either all should catch `IndexError` or none should — the current mix is
+  inconsistent.
 should_flag: true
 occurrences:
   - occurrence_id: occ-0

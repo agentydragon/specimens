@@ -2,10 +2,9 @@ rationale: |
   `truncate_file_by_bytes` (line 162) calls
   `self._truncated_content(content, len(content))` at line 178.
   `_truncated_content` (line 36) returns `content` unchanged when
-  `len(content) <= max_chars`. Since `max_chars` is `len(content)`, the
-  condition is always true and the truncation suffix is never appended. The
-  caller intended to signal that the file was truncated, but the message is
-  silently lost.
+  `len(content) <= max_chars`. Since `max_chars` equals `len(content)`, the
+  condition is always true — the call is equivalent to an identity function
+  and the truncation suffix is never appended.
 should_flag: true
 occurrences:
   - occurrence_id: occ-0
